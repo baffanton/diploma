@@ -2,6 +2,7 @@ import React, { createRef, FC, PropsWithChildren } from "react";
 import cx from 'classnames';
 import { AlignItemsTypes, DirectionTypes, JustifyContentTypes } from "enums/flexTypes";
 import { IField } from "./types";
+import './style.scss';
 
 const Field: FC<PropsWithChildren<IField>> = ({
     id = '',
