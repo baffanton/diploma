@@ -25,7 +25,9 @@ const Header = () => {
     return (
         <Row className="header" ai={AlignItemsTypes.center} jc={JustifyContentTypes.spaceBetween}>
             <Row className="header__links" noFlex>
-                <FontAwesomeIcon className="header__link" icon={faVk} />
+                <a href="https://vk.com/eurochem_prof" target="_blank" rel="noreferrer">
+                    <FontAwesomeIcon className="header__link" icon={faVk} />
+                </a>
                 <FontAwesomeIcon className="header__link" icon={faTelegram} />
             </Row>
             <Link to="/home">

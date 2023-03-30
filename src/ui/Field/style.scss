@@ -63,4 +63,12 @@
             align-items: stretch;
         }
     }
+
+    &_fullHeight {
+        height: 100%;
+    }
+
+    &_wrap {
+        flex-wrap: wrap;
+    }
 }

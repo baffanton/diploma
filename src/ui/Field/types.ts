@@ -8,4 +8,6 @@ export interface IField {
     noFlex?: boolean,
     id?: string;
     onClick?: any;
+    fullHeight?: boolean;
+    wrap?: boolean;
 }

@@ -1,0 +1,22 @@
+.home-help {
+    padding: 15px 60px;
+    width: 500px;
+    min-width: 500px;
+
+    &__title {
+        font-weight: 700;
+        font-size: 40px;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0;
+        cursor: default;
+        margin-top: 0;
+    }
+
+    &__item {
+        margin: 10px 0;
+        border: 2px solid #0693E3;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+}

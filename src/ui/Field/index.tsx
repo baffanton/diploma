@@ -13,6 +13,8 @@ const Field: FC<PropsWithChildren<IField>> = ({
     direction = DirectionTypes.default,
     noFlex = false,
     onClick,
+    fullHeight,
+    wrap,
     ...params
 }) => {
     const ref = createRef<HTMLDivElement>();
@@ -22,7 +24,9 @@ const Field: FC<PropsWithChildren<IField>> = ({
         jc && `field_jc_${jc}`,
         ai && `field_ai_${ai}`,
         noFlex && `field_no-flex`,
-        direction && `field_${direction}`
+        direction && `field_${direction}`,
+        fullHeight && 'field_fullHeight',
+        wrap && 'field_wrap'
     )
 
     if (id) {
