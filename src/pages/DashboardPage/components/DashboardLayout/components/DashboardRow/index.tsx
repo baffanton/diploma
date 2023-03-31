@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AlignItemsTypes } from 'enums/flexTypes';
-import { IControlPanel } from 'pages/DashboardPage/config';
 import { useNavigate } from 'react-router-dom';
 import { Column, Row } from 'ui/Field';
 import './style.scss';
+import { IControlPanel } from '../../config';
 
 interface IDashboardRow {
     panels: IControlPanel[];
