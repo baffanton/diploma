@@ -1,0 +1,27 @@
+.dashboard-row {
+    padding: 10px 0;
+    height: calc(100% / 3);
+}
+
+.control-panel {
+    padding-top: 30px;
+    border-radius: 20px;
+    border: 5px solid #0693E3;
+    margin: 0px 20px;
+    height: 100%;
+    width: 280px;
+    cursor: pointer;
+
+    &__icon {
+        color: #FCB900;
+        height: 80px;
+    }
+
+    &__title {
+        margin: 0;
+        padding-top: 10px;
+        color: #002E45;
+        font-size: 30px;
+        text-align: center;
+    }
+}

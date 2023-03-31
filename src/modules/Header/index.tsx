@@ -24,7 +24,7 @@ const Header = () => {
 
     return (
         <Row className="header" ai={AlignItemsTypes.center} jc={JustifyContentTypes.spaceBetween}>
-            <Row className="header__links" noFlex>
+            <Row className="header__links">
                 <a href="https://vk.com/eurochem_prof" target="_blank" rel="noreferrer">
                     <FontAwesomeIcon className="header__link" icon={faVk} />
                 </a>
@@ -36,9 +36,14 @@ const Header = () => {
                 </Row>
             </Link>
             
-            <Row className="header__profile-data" noFlex ai={AlignItemsTypes.center}>
+            <Row className="header__profile-data" ai={AlignItemsTypes.center}>
                 <Profile />
-                {admin && <FontAwesomeIcon className="header__settings" icon={faGear} /> }
+                {admin && (
+                    <Link to="/dashboard">
+                        <FontAwesomeIcon className="header__settings" icon={faGear} />
+                    </Link>
+                )}
+                
             </Row>
         </Row>
     )

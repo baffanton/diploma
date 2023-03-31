@@ -6,6 +6,7 @@
 
     &__links {
         height: 50px;
+        width: 300px;
     }
 
     &__link {
@@ -17,6 +18,10 @@
         &:hover {
             color: #FCB900;
         }
+    }
+
+    &__profile-data {
+        width: 300px;
     }
 
     &__settings {
