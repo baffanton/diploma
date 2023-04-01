@@ -1,0 +1,36 @@
+.dashboard-more {
+    padding: 30px 120px;
+
+    &__back {
+        color: #0693E3;
+        height: 50px;
+        cursor: pointer;
+    }
+
+    &__title {
+        color: #002E45;
+        font-size: 60px;
+        margin: 0 20px 0 10px;
+    }
+
+    &__user-edit {
+        height: 60px;
+        background-color: #002E45;
+        width: 180px;
+        border-radius: 20px;
+        padding: 0 20px;
+        margin-left: 20px;
+    }
+
+    &__user-plus {
+        color: white;
+        cursor: pointer;
+        height: 45px;
+    }
+
+    &__user-minus {
+        color: white;
+        cursor: pointer;
+        height: 45px;
+    }
+}

@@ -32,6 +32,18 @@
         border: 5px solid #0693E3;
         background-color: white;
         cursor: default;
+
+        &:hover {
+            background-color: #0693E3;
+
+            .event__title, .event__date, .event__place {
+                color: white;
+            }
+
+            .event__button {
+                color: #002E45;
+            }
+        }
     }
 
     &__title {
