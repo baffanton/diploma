@@ -3,12 +3,13 @@ import './style.scss';
 import { AlignItemsTypes, JustifyContentTypes } from 'enums/flexTypes';
 import { HomeSvgSelector } from 'ui/HomeSvgSelector';
 import { ImageEnum } from 'enums/images';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { schema } from './validateScheme';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Input } from 'ui/Input';
 import { InputTypesEnum } from 'enums/inputTypes';
 import { Button } from 'ui/Button';
+import { ILoginData, getLoginUser } from './helpers';
 
 const AuthPage = () => {
     const {
@@ -17,12 +18,15 @@ const AuthPage = () => {
         formState: {
             errors
         }
-    } = useForm({
+    } = useForm<ILoginData>({
         mode: 'onSubmit',
         resolver: yupResolver(schema)
     });
 
-    const onSubmit = (data: any) => console.log(data);
+    const onSubmit: SubmitHandler<ILoginData> = data => {
+        getLoginUser(data);
+    }
+
     return (
         <Column className="auth-page" fullHeight ai={AlignItemsTypes.center} jc={JustifyContentTypes.center}>
             <Column className="auth-page__body" ai={AlignItemsTypes.center}>
