@@ -2,8 +2,8 @@ import { IDashboardPage } from "pages/DashboardPage/config";
 import './style.scss';
 import { Column, Row } from "ui/Field";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faUserMinus, faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import { ExportButton } from "ui/ExportButton";
+import { faArrowLeft, faDownload, faUserMinus, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { ButtonWithIcon } from "ui/ButtonWithIcon";
 import { AlignItemsTypes, JustifyContentTypes } from "enums/flexTypes";
 import { useNavigate } from "react-router-dom";
 import { DashboardPagesUrlEnum } from "enums/dashboardPages";
@@ -33,7 +33,7 @@ const DashboardMore: React.FC<IDashboardMore> = ({ page }) => {
             <Row className="dashboard-more__work-elements" ai={AlignItemsTypes.center}>
                 <FontAwesomeIcon className="dashboard-more__back" icon={faArrowLeft} onClick={onBackButtonHandler} />
                 <p className="dashboard-more__title">{title}</p>
-                <ExportButton onClick={exportFunction} />
+                <ButtonWithIcon icon={faDownload} onClick={exportFunction} />
                 {id === DashboardPagesUrlEnum.members && (
                     <Row 
                         className="dashboard-more__user-edit" 
