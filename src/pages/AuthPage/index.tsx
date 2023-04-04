@@ -9,7 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Input } from 'ui/Input';
 import { InputTypesEnum } from 'enums/inputTypes';
 import { Button } from 'ui/Button';
-import { ILoginData, getLoginUser } from './helpers';
+import { ILoginData, logIn } from './helpers';
 
 const AuthPage = () => {
     const {
@@ -24,7 +24,7 @@ const AuthPage = () => {
     });
 
     const onSubmit: SubmitHandler<ILoginData> = data => {
-        getLoginUser(data);
+        logIn(data);
     }
 
     return (

@@ -35,7 +35,6 @@ const Header = () => {
                     <HomeSvgSelector icon={ImageEnum.logo} />
                 </Row>
             </Link>
-            
             <Row className="header__profile-data" ai={AlignItemsTypes.center}>
                 <Profile />
                 {admin && (
@@ -43,7 +42,6 @@ const Header = () => {
                         <FontAwesomeIcon className="header__settings" icon={faGear} />
                     </Link>
                 )}
-                
             </Row>
         </Row>
     )

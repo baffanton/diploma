@@ -1,5 +1,6 @@
 import { RequestApiEnum } from "enums/requestApi";
 import { RequestTypesEnum } from "enums/requestTypes";
+import { TokenTypesEnum } from "enums/tokenTypes";
 import { request } from "helpers/request";
 
 export interface ILoginData {
@@ -7,8 +8,22 @@ export interface ILoginData {
     password: string;
 }
 
-export const getLoginUser = (data: ILoginData) => {
-    request(RequestTypesEnum.post, RequestApiEnum.getLogin, data)
+export const logIn = (data: ILoginData) => {
+    // request(RequestTypesEnum.post, RequestApiEnum.getLogin, data)
+    //     .then(res => {
+    //         const { data } = res;
+
+    //         if (!data) {
+    //             return console.log("Ошибка в запросе");
+    //         }
+
+    //         const { accessToken, refreshToken } = data;
+    //         localStorage.setItem('accessToken', accessToken);
+    //         localStorage.setItem('refreshToken', refreshToken);
+    //     }
+    // )
+
+    request(RequestTypesEnum.get, RequestApiEnum.test, null, TokenTypesEnum.accessToken)
         .then(res => {
             const { data } = res;
 
@@ -16,7 +31,9 @@ export const getLoginUser = (data: ILoginData) => {
                 return console.log("Ошибка в запросе");
             }
 
-            const { token } = data;
-            localStorage.setItem('access_token', token);
-        })
+            const { accessToken, refreshToken } = data;
+            localStorage.setItem('accessToken', accessToken);
+            localStorage.setItem('refreshToken', refreshToken);
+        }
+    )
 }
