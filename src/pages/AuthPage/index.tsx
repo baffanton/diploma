@@ -9,9 +9,22 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Input } from 'ui/Input';
 import { InputTypesEnum } from 'enums/inputTypes';
 import { Button } from 'ui/Button';
-import { ILoginData, logIn } from './helpers';
+import { ILoginData, logIn, tryAutoLogIn } from './helpers';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const AuthPage = () => {
+    const [rememberLogInData, setRememberLogInData] = useState<boolean>(false);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const autoLogIn = tryAutoLogIn();
+
+        if (autoLogIn) {
+            navigate('/home');
+        }
+    })
+
     const {
         register,
         handleSubmit,
@@ -23,8 +36,12 @@ const AuthPage = () => {
         resolver: yupResolver(schema)
     });
 
+    const onChangeHandler = () => {
+        setRememberLogInData(!rememberLogInData);
+    }
+
     const onSubmit: SubmitHandler<ILoginData> = data => {
-        logIn(data);
+        logIn(data, rememberLogInData);
     }
 
     return (
@@ -64,6 +81,8 @@ const AuthPage = () => {
                             id="user-leave" 
                             label="Не выходить из системы"
                             classNameContainer='manage-panel__leave'
+                            checked={rememberLogInData}
+                            onChange={onChangeHandler}
                         />
                         <p className="manage-panel__forgot">Забыли пароль?</p>
                         

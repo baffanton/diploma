@@ -4,7 +4,6 @@ import { RequestTypesEnum } from 'enums/requestTypes';
 import { TokenTypesEnum } from 'enums/tokenTypes';
 
 axios.defaults.baseURL = 'http://192.168.0.52:8080';
-axios.defaults.withCredentials = true;
 
 const METHODS = {
     get: axios.get,
@@ -38,8 +37,6 @@ export function request(method: RequestTypesEnum, api: RequestApiEnum, params: a
     if (!tokenType) {
         return METHODS[method](api, params);
     }
-
-    debugger;
 
     const config = getConfigWithAuth(tokenType);
 
