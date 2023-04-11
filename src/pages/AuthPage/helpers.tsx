@@ -9,6 +9,7 @@ export interface ILoginData {
 }
 
 export const logIn = (data: ILoginData, remember: boolean) => {
+    return;
     request(RequestTypesEnum.post, RequestApiEnum.getLogin, data)
         .then(res => {
             const { data } = res;

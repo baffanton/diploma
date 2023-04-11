@@ -1,5 +1,5 @@
 import { JustifyContentTypes } from "enums/flexTypes";
-import { Header } from "modules/Header";
+import Header from "modules/Header";
 import { Row } from "ui/Field";
 import { HomeEvents } from "./components/HomeEvents";
 import { HomeHelp } from "./components/HomeHelp";

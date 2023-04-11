@@ -1,0 +1,23 @@
+.profile {
+    cursor: default;
+    
+    &__name {
+        color: white;
+        margin-right: 10px;
+    }
+
+    &__logo-container {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    &__logo {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        border-radius: inherit;
+    }
+}

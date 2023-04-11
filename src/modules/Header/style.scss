@@ -4,11 +4,6 @@
     background-color: #0693E3;
     padding: 0 120px;
 
-    &__links {
-        height: 50px;
-        width: 300px;
-    }
-
     &__link {
         height: 50px;
         cursor: pointer;
@@ -20,39 +15,13 @@
         }
     }
 
-    &__profile-data {
-        width: 300px;
-    }
-
     &__settings {
         cursor: pointer;
+        margin-left: 10px;
         font-size: 50px;
         color: #002E45;
         &:hover {
             color: #FCB900;
         }
-    }
-}
-
-.profile {
-    margin-right: 10px;
-    &__name {
-        color: white;
-        margin-right: 10px;
-    }
-
-    &__logo-container {
-        height: 50px;
-        width: 50px;
-        border-radius: 50%;
-        cursor: pointer;
-    }
-
-    &__logo {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        object-position: center;
-        border-radius: inherit;
     }
 }

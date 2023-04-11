@@ -3,41 +3,35 @@ import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AlignItemsTypes, JustifyContentTypes } from "enums/flexTypes";
 import { ImageEnum } from "enums/images";
+import { UserRolesEnum } from "enums/userTypes";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Row } from "ui/Field"
 import { HomeSvgSelector } from "ui/HomeSvgSelector";
+import Profile from "./components/Profile";
 import './style.scss';
 
-const Profile: React.FC<any> = () => {
-    return (
-        <Row className="profile" ai={AlignItemsTypes.center}>
-            <p className="profile__name">Баяндин А.В.</p>
-            <Row className="profile__logo-container">
-                <img className="profile__logo" src="https://snappygoat.com/b/8b34e326b7d1fdc739b28c8cb2f81a9ef65778a4" alt="" />
-            </Row>
-        </Row>
-    )
+interface IHeader {
+    role: UserRolesEnum;
 }
 
-const Header = () => {
-    const admin = true;
-
+const Header: React.FC<IHeader> = ({ role }) => {
     return (
-        <Row className="header" ai={AlignItemsTypes.center} jc={JustifyContentTypes.spaceBetween}>
+        <Row className="header" ai={AlignItemsTypes.center}>
             <Row className="header__links">
                 <a href="https://vk.com/eurochem_prof" target="_blank" rel="noreferrer">
                     <FontAwesomeIcon className="header__link" icon={faVk} />
                 </a>
                 <FontAwesomeIcon className="header__link" icon={faTelegram} />
             </Row>
-            <Link to="/home">
-                <Row className="header__company" noFlex>
+            <Row className="header__company" jc={JustifyContentTypes.center}>
+                <Link to="/home">
                     <HomeSvgSelector icon={ImageEnum.logo} />
-                </Row>
-            </Link>
+                </Link>
+            </Row>
             <Row className="header__profile-data" ai={AlignItemsTypes.center}>
                 <Profile />
-                {admin && (
+                {role === UserRolesEnum.admin && (
                     <Link to="/dashboard">
                         <FontAwesomeIcon className="header__settings" icon={faGear} />
                     </Link>
@@ -47,4 +41,12 @@ const Header = () => {
     )
 }
 
-export { Header };
+const mapStateToProps = (state: any) => {
+    const { user } = state;
+
+    return {
+        role: user.role
+    }
+}
+
+export default connect(mapStateToProps)(Header);

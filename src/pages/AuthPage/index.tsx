@@ -42,6 +42,7 @@ const AuthPage = () => {
 
     const onSubmit: SubmitHandler<ILoginData> = data => {
         logIn(data, rememberLogInData);
+        navigate("/home");
     }
 
     return (

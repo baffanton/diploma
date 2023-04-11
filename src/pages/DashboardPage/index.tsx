@@ -1,4 +1,4 @@
-import { Header } from 'modules/Header';
+import Header from 'modules/Header';
 
 const DashboardPage = () => {
     const withHeader = true;
@@ -6,7 +6,6 @@ const DashboardPage = () => {
         <>
             {withHeader && <Header />}
         </>
-        
     )
 }
 

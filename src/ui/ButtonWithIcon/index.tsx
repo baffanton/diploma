@@ -5,13 +5,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { AlignItemsTypes } from "enums/flexTypes";
 
-interface IExportButton {
+interface IButtonWithIcon {
     className?: string;
     onClick: any;
     icon: IconDefinition;
 }
 
-const ButtonWithIcon: React.FC<IExportButton> = ({ className, onClick, icon }) => {
+const ButtonWithIcon: React.FC<IButtonWithIcon> = ({ className, onClick, icon }) => {
 
     const classNames = cx('button-w-icon', className);
 
