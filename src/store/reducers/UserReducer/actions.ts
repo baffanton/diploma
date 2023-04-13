@@ -16,16 +16,16 @@ export const authUser = () => (dispatch: (arg0: IAuthUser) => void) => {
 export const fetchUser = (data: ILoginData, rememberData?: boolean) => (dispatch: (arg0: IFetchUser) => void) => {
     const { username, password } = data;
 
-    localStorage.setItem("username", username);
-    localStorage.setItem("password", password);
+    // localStorage.setItem("username", username);
+    // localStorage.setItem("password", password);
 
-    dispatch({
-        type: USER_FETCH,
-        role: UserRolesEnum.admin,
-        auth: true,
-    })
+    // dispatch({
+    //     type: USER_FETCH,
+    //     role: UserRolesEnum.admin,
+    //     auth: true,
+    // })
 
-    return;
+    // return;
 
     request(RequestTypesEnum.post, RequestApiEnum.getLogin, data)
         .then(res => {

@@ -3,6 +3,9 @@ import { RequestApiEnum } from "enums/requestApi";
 import { usersConfig } from './tableConfigs/users';
 import { ITableColumn } from "helpers/tableConfigTypes";
 import { awardsConfig } from "./tableConfigs/awards";
+import { eventsConfig } from "./tableConfigs/events";
+import { userAwardsConfig } from "./tableConfigs/userAwards";
+import { userEventsConfig } from "./tableConfigs/userEvents";
 
 export interface IDashboardPage {
     id: DashboardPagesUrlEnum;
@@ -19,31 +22,31 @@ export const DashboardPagesConfig: IDashboardPage[] = [
         title: "Награждения",
         tableConfig: awardsConfig,
         url: DashboardPagesUrlEnum.awards,
-        exportUrl: RequestApiEnum.usersExport,
+        exportUrl: RequestApiEnum.awardsExport,
         isClickable: false
     },
     {
         id: DashboardPagesUrlEnum.education,
-        title: "Обучение",
-        tableConfig: usersConfig,
+        title: "Мероприятия",
+        tableConfig: eventsConfig,
         url: DashboardPagesUrlEnum.education,
-        exportUrl: RequestApiEnum.usersExport,
+        exportUrl: RequestApiEnum.eventsExport,
         isClickable: false
     },
     {
         id: DashboardPagesUrlEnum.financialHelp,
-        title: "Материальная помощь",
-        tableConfig: usersConfig,
+        title: "Награды пользователей",
+        tableConfig: userAwardsConfig,
         url: DashboardPagesUrlEnum.financialHelp,
-        exportUrl: RequestApiEnum.usersExport,
+        exportUrl: RequestApiEnum.userAwardsExport,
         isClickable: false
     },
     {
         id: DashboardPagesUrlEnum.legalHelp,
-        title: "Юридическая помощь",
-        tableConfig: usersConfig,
+        title: "Мероприятия пользователей",
+        tableConfig: userEventsConfig,
         url: DashboardPagesUrlEnum.legalHelp,
-        exportUrl: RequestApiEnum.usersExport,
+        exportUrl: RequestApiEnum.userEventsExport,
         isClickable: false
     },
     {

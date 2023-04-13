@@ -11,8 +11,8 @@ const HomePage: React.FC<any> = () => {
     return (
         <>
             {withHeader && <Header />}
-            <Row className="home-page" jc={JustifyContentTypes.spaceBetween} fullHeight>
-                <HomeHelp />
+            <Row className="home-page" jc={JustifyContentTypes.spaceAround} fullHeight>
+                {/* <HomeHelp /> */}
                 <HomeNews />
                 <HomeEvents />
             </Row>

@@ -2,10 +2,6 @@ import { ITableColumn } from "helpers/tableConfigTypes";
 
 export const awardsConfig: ITableColumn[] = [
     {
-        Header: "Идентификатор",
-        accessor: "id",
-    },
-    {
         Header: "Название",
         accessor: "name",
     },

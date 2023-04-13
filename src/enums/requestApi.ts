@@ -1,6 +1,17 @@
 export enum RequestApiEnum {
     getLogin = '/login',
-    usersExport = 'http://192.168.0.52:8080/users/export',
+    usersExport = 'http://192.168.0.52:8080/export/users',
     getUsers = '/users',
-    deleteUser = '/users/delete'
+    getAwards = '/awards',
+    getEvents = '/events',
+    getUserEvents = '/userEvents',
+    getUserAwards = '/userAwards',
+    deleteUser = '/users',
+    addUser = '/users',
+    userIsExist = '/users',
+    editUser = '/users/update',
+    awardsExport = 'http://192.168.0.52:8080/export/awards',
+    eventsExport = 'http://192.168.0.52:8080/export/events',
+    userAwardsExport = 'http://192.168.0.52:8080/export/userAwards',
+    userEventsExport = 'http://192.168.0.52:8080/export/userEvents',
 }

@@ -20,19 +20,25 @@
     &__user-edit {
         height: 60px;
         background-color: #002E45;
-        width: 180px;
+        width: 250px;
         border-radius: 20px;
         padding: 0 20px;
         margin-left: 20px;
     }
 
-    &__user-plus {
+    &__button-user-plus {
         color: white;
         cursor: pointer;
         height: 45px;
     }
 
-    &__user-minus {
+    &__button-user-minus {
+        color: white;
+        cursor: pointer;
+        height: 45px;
+    }
+
+    &__button-user-edit {
         color: white;
         cursor: pointer;
         height: 45px;

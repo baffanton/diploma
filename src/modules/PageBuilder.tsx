@@ -8,13 +8,28 @@ import { HomePage } from "pages/HomePage";
 import { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { Outlet, Route, Routes, useNavigate } from "react-router-dom";
-import { Column } from "ui/Field";;
+import { IModal } from "store/reducers/ModalReducer/helpers";
+import { Column } from "ui/Field";
+import { Modal } from "ui/Modal";
+
 
 interface IPageBuilder {
     auth: boolean;
+    isOpen: boolean;
+    modal: IModal | null;
 }
 
-const PageBuilder: React.FC<IPageBuilder> = ({ auth }) => {
+const getModal = (isOpen: boolean, modal: IModal | null) => {
+    if (!isOpen || !modal) {
+        return null;
+    }
+
+    const { type, onClose, option } = modal;
+
+    return <Modal type={type} closeModal={onClose} option={option} />
+}
+
+const PageBuilder: React.FC<IPageBuilder> = ({ auth, isOpen, modal }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -40,15 +55,18 @@ const PageBuilder: React.FC<IPageBuilder> = ({ auth }) => {
                     })}
                 </Route>
             </Routes>
+            {getModal(isOpen, modal)}
         </Column>
     )
 }
 
 const mapStateToProps = (state: any) => {
-    const { user } = state;
+    const { user, modal } = state;
 
     return {
         auth: user.auth,
+        isOpen: modal.isOpen,
+        modal: modal.modal
     }
 }
 

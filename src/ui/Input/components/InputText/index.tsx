@@ -17,6 +17,7 @@ interface IInputText {
     placeholder?: string;
     error?: any;
     register?: any;
+    value?: string;
 }
 
 const InputText: React.FC<IInputText> = ({
@@ -31,6 +32,7 @@ const InputText: React.FC<IInputText> = ({
     placeholder = '',
     error,
     register,
+    value,
     ...props
 }) => {
     const inputClassNames = cx('input-text', classNameInput);
@@ -49,7 +51,8 @@ const InputText: React.FC<IInputText> = ({
                 className={inputClassNames} 
                 placeholder={placeholder} 
                 type={type}
-                onChange={onChange} 
+                onChange={onChange}
+                value={value}
                 {...register}
                 {...props} 
             />

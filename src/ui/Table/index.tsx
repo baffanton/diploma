@@ -38,6 +38,10 @@ const Table: React.FC<ITable> = ({
             return null;
         }
 
+        if (id === selectedRowIndex) {
+            return setSelectedRowIndex(null);
+        }
+
         setSelectedRowIndex(id);
     }
 

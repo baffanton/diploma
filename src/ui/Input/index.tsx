@@ -17,6 +17,7 @@ interface IInput {
     error?: any;
     checked?: boolean;
     register?: any;
+    value?: string;
 }
 
 const Input: React.FC<IInput> = ({
