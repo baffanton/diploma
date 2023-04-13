@@ -2,18 +2,25 @@ import { IDashboardPage } from "pages/DashboardPage/config";
 import './style.scss';
 import { Column, Row } from "ui/Field";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faDownload, faUserMinus, faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import { ButtonWithIcon } from "ui/ButtonWithIcon";
+import { faArrowLeft, faUserMinus, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { AlignItemsTypes, JustifyContentTypes } from "enums/flexTypes";
 import { useNavigate } from "react-router-dom";
 import { DashboardPagesUrlEnum } from "enums/dashboardPages";
+import { ExportButton } from "ui/ExportButton";
+import { Table } from "ui/Table";
+import { connect } from "react-redux";
+import { IUserModel } from "store/reducers/TableReducer/helpers";
+import { getTableData } from "./helpers";
 
 interface IDashboardMore {
     page: IDashboardPage;
+    users: IUserModel[] | null;
 }
 
-const DashboardMore: React.FC<IDashboardMore> = ({ page }) => {
-    const { id, title, exportFunction } = page;
+const DashboardMore: React.FC<IDashboardMore> = ({ page, users }) => {
+    const { id, title, exportUrl, tableConfig } = page;
+    const tableData = getTableData(id);
+
     const navigate = useNavigate();
 
     const onBackButtonHandler = () => {
@@ -25,7 +32,7 @@ const DashboardMore: React.FC<IDashboardMore> = ({ page }) => {
     }
 
     const onRemoveMemberButtonHandler = () => {
-
+        // dispatch()
     }
 
     return (
@@ -33,20 +40,37 @@ const DashboardMore: React.FC<IDashboardMore> = ({ page }) => {
             <Row className="dashboard-more__work-elements" ai={AlignItemsTypes.center}>
                 <FontAwesomeIcon className="dashboard-more__back" icon={faArrowLeft} onClick={onBackButtonHandler} />
                 <p className="dashboard-more__title">{title}</p>
-                <ButtonWithIcon icon={faDownload} onClick={exportFunction} />
-                {id === DashboardPagesUrlEnum.members && (
+                <ExportButton url={exportUrl} />
+                {id === DashboardPagesUrlEnum.users && (
                     <Row 
                         className="dashboard-more__user-edit" 
                         ai={AlignItemsTypes.center} 
                         jc={JustifyContentTypes.spaceBetween}
                     >
-                        <FontAwesomeIcon className="dashboard-more__user-plus" icon={faUserPlus} onClick={onAddMemberButtonHandler} />
-                        <FontAwesomeIcon className="dashboard-more__user-minus" icon={faUserMinus} onClick={onRemoveMemberButtonHandler} />
+                        <FontAwesomeIcon 
+                            className="dashboard-more__user-plus" 
+                            icon={faUserPlus} 
+                            onClick={onAddMemberButtonHandler} 
+                        />
+                        <FontAwesomeIcon 
+                            className="dashboard-more__user-minus" 
+                            icon={faUserMinus} 
+                            onClick={onRemoveMemberButtonHandler} 
+                        />
                     </Row>
                 )}
             </Row>
+            <Table config={tableConfig} tableData={tableData}></Table>
         </Column>
     )
 }
 
-export { DashboardMore };
+const mapStateToProps = (state: any) => {
+    const { table } = state;
+
+    return {
+        users: table.users,
+    }
+}
+
+export default connect(mapStateToProps)(DashboardMore);

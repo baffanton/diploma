@@ -1,7 +1,6 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios from 'axios';
 import { RequestApiEnum } from 'enums/requestApi';
 import { RequestTypesEnum } from 'enums/requestTypes';
-import { TokenTypesEnum } from 'enums/tokenTypes';
 
 axios.defaults.baseURL = 'http://192.168.0.52:8080';
 
@@ -13,38 +12,9 @@ const METHODS = {
     default: axios.get,
 };
 
-const getConfigWithAuth = (tokenType: TokenTypesEnum): AxiosRequestConfig => {
-    let token  = null;
-    switch (tokenType) {
-        case TokenTypesEnum.accessToken:
-            token = localStorage.getItem('accessToken');
-            break;
-        case TokenTypesEnum.refreshToken:
-            token = localStorage.getItem('refreshToken');
-            break;
-    }
+export function request(method: RequestTypesEnum, api: RequestApiEnum | string, params: any) {
 
-    const config = {
-        headers: {
-            "Authorization": `Bearer ${token}`
-        }
-    }
-
-    return config;
-}
-
-export function request(method: RequestTypesEnum, api: RequestApiEnum, params: any, tokenType?: TokenTypesEnum) {
-    if (!tokenType) {
-        return METHODS[method](api, params);
-    }
-
-    const config = getConfigWithAuth(tokenType);
-
-    if (method === RequestTypesEnum.get) {
-        return METHODS[method](api, config);
-    }
-
-    return METHODS[method](api, params, config);
+    return METHODS[method](api, params);
 }
 
 export const getParseResponse = (res: any, method = 'get') => {

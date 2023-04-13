@@ -9,21 +9,27 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Input } from 'ui/Input';
 import { InputTypesEnum } from 'enums/inputTypes';
 import { Button } from 'ui/Button';
-import { ILoginData, logIn, tryAutoLogIn } from './helpers';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { connect, useDispatch } from 'react-redux';
+import { ILoginData } from 'store/reducers/UserReducer/helpers';
+import { fetchUser } from 'store/reducers/UserReducer/actions';
 
-const AuthPage = () => {
+interface IAuthPage {
+    auth: boolean;
+}
+
+const AuthPage: React.FC<IAuthPage> = ({ auth }) => {
     const [rememberLogInData, setRememberLogInData] = useState<boolean>(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        const autoLogIn = tryAutoLogIn();
-
-        if (autoLogIn) {
-            navigate('/home');
+        if (auth) {
+            navigate("/home");
         }
-    })
+
+    }, [auth, navigate])
 
     const {
         register,
@@ -41,8 +47,8 @@ const AuthPage = () => {
     }
 
     const onSubmit: SubmitHandler<ILoginData> = data => {
-        logIn(data, rememberLogInData);
-        navigate("/home");
+        // @ts-ignore
+        dispatch(fetchUser(data, rememberLogInData));
     }
 
     return (
@@ -65,7 +71,7 @@ const AuthPage = () => {
                             register={register('username')}          
                         />
                         <Input 
-                            type={InputTypesEnum.text} 
+                            type={InputTypesEnum.password} 
                             id="user-password"
                             name="password"
                             label="Пароль"
@@ -95,4 +101,12 @@ const AuthPage = () => {
     )
 }
 
-export { AuthPage };
+const mapStateToProps = (state: any) => {
+    const { user } = state;
+
+    return {
+        auth: user.auth,
+    }
+}
+
+export default connect(mapStateToProps)(AuthPage);

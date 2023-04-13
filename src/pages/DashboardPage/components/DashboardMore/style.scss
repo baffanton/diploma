@@ -1,6 +1,10 @@
 .dashboard-more {
     padding: 30px 120px;
 
+    &__work-elements {
+        margin-bottom: 30px;
+    }
+
     &__back {
         color: #0693E3;
         height: 50px;

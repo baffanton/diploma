@@ -6,10 +6,10 @@ const getCookie = (name: string): string | null => {
     return matches ? decodeURIComponent(matches[1]) : null;
 }
 
-const setCookie = (name: string, value: any) => {
+const setCookie = (name: string, value: any, opt?: any) => {
     const options = {
         path: '/',
-        maxAge: 604800,
+        ...opt
     };
 
     const updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + `; max-age=${options.maxAge}`;
@@ -17,4 +17,8 @@ const setCookie = (name: string, value: any) => {
     document.cookie = updatedCookie;
 }
 
-export { getCookie, setCookie };
+const deleteCookie = (name: string) => {
+    setCookie(name, "", { maxAge: -1 })
+  }
+
+export { getCookie, setCookie, deleteCookie };

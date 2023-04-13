@@ -1,7 +1,8 @@
 export enum InputTypesEnum {
     text = 'text',
     checkbox = 'checkbox',
-    radio = 'radio'
+    radio = 'radio',
+    password = 'password'
 }
 
 export enum InputPositionEnum {

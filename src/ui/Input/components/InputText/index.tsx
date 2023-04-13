@@ -2,9 +2,11 @@ import cx from 'classnames';
 import './style.scss';
 import { Column, Row } from 'ui/Field';
 import { AlignItemsTypes, JustifyContentTypes } from 'enums/flexTypes';
+import { InputTypesEnum } from 'enums/inputTypes';
 
 interface IInputText {
     id: string;
+    type: InputTypesEnum;
     name?: string;
     label?: string;
     onClick?: any;
@@ -19,6 +21,7 @@ interface IInputText {
 
 const InputText: React.FC<IInputText> = ({
     id,
+    type = "text",
     name = '',
     label,
     onChange,
@@ -45,7 +48,7 @@ const InputText: React.FC<IInputText> = ({
                 name={name}
                 className={inputClassNames} 
                 placeholder={placeholder} 
-                type="text" 
+                type={type}
                 onChange={onChange} 
                 {...register}
                 {...props} 

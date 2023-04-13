@@ -1,0 +1,28 @@
+.table {
+    padding: 15px;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    &__thead {
+        color: white;
+        height: 70px;
+        background-color: #0693E3;
+    }
+
+    &__tbody {
+        &_tr {
+            height: 60px;
+            border-bottom: 3px solid #0693E3;
+        }
+
+        &_td {
+            padding: 0 10px;
+
+            &:not(:last-child) {
+                border-right: 3px solid #0693E3;
+            }
+        }
+        
+    }
+}

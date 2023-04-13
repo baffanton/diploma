@@ -26,7 +26,8 @@ const Input: React.FC<IInput> = ({
 }) => {
     switch (type) {
         case InputTypesEnum.text:
-            return <InputText id={id} {...props} />
+        case InputTypesEnum.password:
+            return <InputText id={id} type={type} {...props} />
         case InputTypesEnum.checkbox:
             return <InputCheckbox id={id} {...props} />
         default:

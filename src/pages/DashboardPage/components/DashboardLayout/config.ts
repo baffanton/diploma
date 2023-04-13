@@ -38,7 +38,7 @@ export const ControlRows: IControlRow[] = [
                 id: "members",
                 title: "Участники",
                 icon: faPeopleGroup,
-                url: DashboardPagesUrlEnum.members,
+                url: DashboardPagesUrlEnum.users,
             },
             {
                 id: "financialHelp",

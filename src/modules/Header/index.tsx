@@ -1,21 +1,28 @@
 import { faTelegram, faVk } from "@fortawesome/free-brands-svg-icons";
-import { faGear } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightFromBracket, faGear } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AlignItemsTypes, JustifyContentTypes } from "enums/flexTypes";
 import { ImageEnum } from "enums/images";
 import { UserRolesEnum } from "enums/userTypes";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Row } from "ui/Field"
 import { HomeSvgSelector } from "ui/HomeSvgSelector";
-import Profile from "./components/Profile";
 import './style.scss';
+import { unauthUser } from "store/reducers/UserReducer/actions";
 
 interface IHeader {
     role: UserRolesEnum;
 }
 
 const Header: React.FC<IHeader> = ({ role }) => {
+    const dispatch = useDispatch();
+
+    const onLogOutClick = () => {
+        // @ts-ignore
+        dispatch(unauthUser())
+    }
+
     return (
         <Row className="header" ai={AlignItemsTypes.center}>
             <Row className="header__links">
@@ -29,8 +36,12 @@ const Header: React.FC<IHeader> = ({ role }) => {
                     <HomeSvgSelector icon={ImageEnum.logo} />
                 </Link>
             </Row>
-            <Row className="header__profile-data" ai={AlignItemsTypes.center}>
-                <Profile />
+            <Row className="header__profile-data" ai={AlignItemsTypes.center} jc={JustifyContentTypes.flexEnd}>
+                <FontAwesomeIcon 
+                    className="header__log-out" 
+                    icon={faArrowRightFromBracket} 
+                    onClick={() => onLogOutClick()}
+                />
                 {role === UserRolesEnum.admin && (
                     <Link to="/dashboard">
                         <FontAwesomeIcon className="header__settings" icon={faGear} />

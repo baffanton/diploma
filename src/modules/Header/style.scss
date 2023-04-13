@@ -24,4 +24,14 @@
             color: #FCB900;
         }
     }
+
+    &__log-out {
+        height: 40px;
+        cursor: pointer;
+        color: #002E45;
+
+        &:hover {
+            color: #FCB900;
+        }
+    }
 }

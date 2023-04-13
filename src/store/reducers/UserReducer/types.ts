@@ -12,23 +12,17 @@ export interface IAuthUser {
 export interface IUnauthUser {
     type: typeof USER_UNAUTH;
     auth: boolean;
+    role: UserRolesEnum | null;
 }
 
 export interface IFetchUser {
     type: typeof USER_FETCH;
-    name: string;
-    surname: string;
-    patronymic: string;
-    picture: string;
     role: UserRolesEnum;
+    auth: boolean;
 }
 
 export interface IUserReducerModel {
     readonly auth: boolean;
-    readonly name: string | null;
-    readonly surname: string | null;
-    readonly patronymic: string | null;
-    readonly picture: string | null;
     readonly role: UserRolesEnum | null;
 }
 

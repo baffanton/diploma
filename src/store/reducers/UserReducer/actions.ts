@@ -1,9 +1,10 @@
-import { RequestTypesEnum } from "enums/requestTypes";
-import { IAuthUser, IFetchUser, IUnauthUser, USER_AUTH, USER_FETCH, USER_UNAUTH } from "./types";
-import { RequestApiEnum } from "enums/requestApi";
 import { request } from "helpers/request";
-import { TokenTypesEnum } from "enums/tokenTypes";
+import { IAuthUser, IFetchUser, IUnauthUser, USER_AUTH, USER_FETCH, USER_UNAUTH } from "./types";
 import { UserRolesEnum } from "enums/userTypes";
+import { RequestTypesEnum } from "enums/requestTypes";
+import { RequestApiEnum } from "enums/requestApi";
+import { ILoginData } from "./helpers";
+import { deleteCookie, setCookie } from "helpers/cookie";
 
 export const authUser = () => (dispatch: (arg0: IAuthUser) => void) => {
     dispatch({
@@ -12,56 +13,56 @@ export const authUser = () => (dispatch: (arg0: IAuthUser) => void) => {
     })
 }
 
+export const fetchUser = (data: ILoginData, rememberData?: boolean) => (dispatch: (arg0: IFetchUser) => void) => {
+    const { username, password } = data;
+
+    localStorage.setItem("username", username);
+    localStorage.setItem("password", password);
+
+    dispatch({
+        type: USER_FETCH,
+        role: UserRolesEnum.admin,
+        auth: true,
+    })
+
+    return;
+
+    request(RequestTypesEnum.post, RequestApiEnum.getLogin, data)
+        .then(res => {
+            const { data } = res;
+
+            if (!data) {
+                return null;
+            }
+
+            if (rememberData) {
+                localStorage.setItem("username", username);
+                localStorage.setItem("password", password);
+            }
+
+            if (!rememberData) {
+                setCookie("username", username);
+                setCookie("password", password);
+            }
+
+            dispatch({
+                type: USER_FETCH,
+                role: UserRolesEnum[data as UserRolesEnum],
+                auth: true,
+            })
+        })
+}
+
 export const unauthUser = () => (dispatch: (arg0: IUnauthUser) => void) => {
+    deleteCookie("username");
+    deleteCookie("password");
+
+    localStorage.removeItem("username");
+    localStorage.removeItem("password");
+
     dispatch({
         type: USER_UNAUTH,
         auth: false,
+        role: null
     })
-}
-
-export const fetchUser = () => (dispatch: (arg0: IFetchUser) => void) => {
-    dispatch({
-        type: USER_FETCH,
-        name: "Антон",
-        surname: "Баяндин",
-        patronymic: "Викторович",
-        picture: "https://snappygoat.com/b/8b34e326b7d1fdc739b28c8cb2f81a9ef65778a4",
-        role: UserRolesEnum.admin
-    })
-
-    // request(RequestTypesEnum.get, RequestApiEnum.getUser, null, TokenTypesEnum.accessToken)
-    //     .then(res => {
-    //         const { data } = res;
-
-    //         if (!data) {
-    //             return null;
-    //         }
-
-    //         const { name, surname, patronymic, picture, role } = data;
-
-    //         if (role === UserRolesEnum.user) {
-    //             dispatch({
-    //                 type: USER_FETCH,
-    //                 name,
-    //                 surname,
-    //                 patronymic,
-    //                 picture,
-    //                 role: UserRolesEnum.user
-    //             })
-    //         }
-
-    //         dispatch({
-    //             type: USER_FETCH,
-    //             name,
-    //             surname,
-    //             patronymic,
-    //             picture,
-    //             role: UserRolesEnum.admin
-    //         })
-
-            
-    //     })
-    //     .catch(error => {
-    //         console.log(`Произошла ошибка: ${error}`);
-    //     })
 }

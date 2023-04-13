@@ -1,7 +1,9 @@
+import { table } from "./Table";
 import { user } from "./User";
 
 const state = {
-    user
+    user,
+    table
 }
 
 export default state;
