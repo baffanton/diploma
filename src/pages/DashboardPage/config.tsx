@@ -10,6 +10,7 @@ export interface IDashboardPage {
     tableConfig: ITableColumn[];
     url: DashboardPagesUrlEnum;
     exportUrl: RequestApiEnum;
+    isClickable: boolean;
 }
 
 export const DashboardPagesConfig: IDashboardPage[] = [
@@ -19,6 +20,7 @@ export const DashboardPagesConfig: IDashboardPage[] = [
         tableConfig: awardsConfig,
         url: DashboardPagesUrlEnum.awards,
         exportUrl: RequestApiEnum.usersExport,
+        isClickable: false
     },
     {
         id: DashboardPagesUrlEnum.education,
@@ -26,6 +28,7 @@ export const DashboardPagesConfig: IDashboardPage[] = [
         tableConfig: usersConfig,
         url: DashboardPagesUrlEnum.education,
         exportUrl: RequestApiEnum.usersExport,
+        isClickable: false
     },
     {
         id: DashboardPagesUrlEnum.financialHelp,
@@ -33,6 +36,7 @@ export const DashboardPagesConfig: IDashboardPage[] = [
         tableConfig: usersConfig,
         url: DashboardPagesUrlEnum.financialHelp,
         exportUrl: RequestApiEnum.usersExport,
+        isClickable: false
     },
     {
         id: DashboardPagesUrlEnum.legalHelp,
@@ -40,6 +44,7 @@ export const DashboardPagesConfig: IDashboardPage[] = [
         tableConfig: usersConfig,
         url: DashboardPagesUrlEnum.legalHelp,
         exportUrl: RequestApiEnum.usersExport,
+        isClickable: false
     },
     {
         id: DashboardPagesUrlEnum.users,
@@ -47,6 +52,7 @@ export const DashboardPagesConfig: IDashboardPage[] = [
         tableConfig: usersConfig,
         url: DashboardPagesUrlEnum.users,
         exportUrl: RequestApiEnum.usersExport,
+        isClickable: true
     },
     {
         id: DashboardPagesUrlEnum.osha,
@@ -54,6 +60,7 @@ export const DashboardPagesConfig: IDashboardPage[] = [
         tableConfig: usersConfig,
         url: DashboardPagesUrlEnum.osha,
         exportUrl: RequestApiEnum.usersExport,
+        isClickable: false
     },
     {
         id: DashboardPagesUrlEnum.sport,
@@ -61,5 +68,6 @@ export const DashboardPagesConfig: IDashboardPage[] = [
         tableConfig: usersConfig,
         url: DashboardPagesUrlEnum.sport,
         exportUrl: RequestApiEnum.usersExport,
+        isClickable: false
     },
 ]

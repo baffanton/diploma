@@ -8,9 +8,11 @@ import { useNavigate } from "react-router-dom";
 import { DashboardPagesUrlEnum } from "enums/dashboardPages";
 import { ExportButton } from "ui/ExportButton";
 import { Table } from "ui/Table";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { IUserModel } from "store/reducers/TableReducer/helpers";
 import { getTableData } from "./helpers";
+import { useState } from "react";
+import { deleteUser } from "store/reducers/TableReducer/actions";
 
 interface IDashboardMore {
     page: IDashboardPage;
@@ -18,7 +20,9 @@ interface IDashboardMore {
 }
 
 const DashboardMore: React.FC<IDashboardMore> = ({ page, users }) => {
-    const { id, title, exportUrl, tableConfig } = page;
+    const { id, title, exportUrl, tableConfig, isClickable } = page;
+    const [selectedRowIndex, setSelectedRowIndex] = useState<string | null>(null);
+    const dispatch = useDispatch();
     const tableData = getTableData(id);
 
     const navigate = useNavigate();
@@ -32,7 +36,13 @@ const DashboardMore: React.FC<IDashboardMore> = ({ page, users }) => {
     }
 
     const onRemoveMemberButtonHandler = () => {
-        // dispatch()
+        if (!selectedRowIndex || !tableData) {
+            return null;
+        }
+
+        const id = tableData[Number(selectedRowIndex)].id;
+        // @ts-ignore
+        dispatch(deleteUser(id));
     }
 
     return (
@@ -60,7 +70,13 @@ const DashboardMore: React.FC<IDashboardMore> = ({ page, users }) => {
                     </Row>
                 )}
             </Row>
-            <Table config={tableConfig} tableData={tableData}></Table>
+            <Table 
+                config={tableConfig} 
+                tableData={tableData} 
+                isClickable={isClickable}
+                selectedRowIndex={selectedRowIndex}
+                setSelectedRowIndex={setSelectedRowIndex}
+            />
         </Column>
     )
 }

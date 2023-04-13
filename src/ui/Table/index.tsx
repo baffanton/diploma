@@ -1,14 +1,24 @@
 import './style.scss';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useTable } from 'react-table';
 import { ITableColumn } from 'helpers/tableConfigTypes';
+import cx from 'classnames';
 
 interface ITable {
     config: ITableColumn[];
     tableData: any[] | null;
+    isClickable?: boolean;
+    selectedRowIndex?: string | null;
+    setSelectedRowIndex?: any;
 }
 
-const Table: React.FC<ITable> = ({ config, tableData }) => {
+const Table: React.FC<ITable> = ({ 
+    config, 
+    tableData, 
+    isClickable = false, 
+    selectedRowIndex, 
+    setSelectedRowIndex 
+}) => {
     const columns = useMemo(() => config, [config]);
     const data = useMemo(() => tableData, [tableData]);
 
@@ -22,6 +32,14 @@ const Table: React.FC<ITable> = ({ config, tableData }) => {
         columns,
         data
     })
+
+    const onChangeSelectedRow = (id: string) => {
+        if (!isClickable) {
+            return null;
+        }
+
+        setSelectedRowIndex(id);
+    }
 
     const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = tableInstance;
 
@@ -39,9 +57,17 @@ const Table: React.FC<ITable> = ({ config, tableData }) => {
             <tbody className='table__tbody' {...getTableBodyProps()}>
                 {rows.map(row => {
                     prepareRow(row);
+                    const checkIdentify = selectedRowIndex === row.id;
                     
                     return (
-                        <tr className='table__tbody_tr' {...row.getRowProps()}>
+                        <tr 
+                            className={cx(
+                                'table__tbody_tr', 
+                                isClickable && checkIdentify && 'table__tbody_tr_isSelected'
+                            )}
+                            {...row.getRowProps()} 
+                            onClick={() => onChangeSelectedRow(row.id)}
+                        >
                             {row.cells.map(cell => (
                                 <td className='table__tbody_td' {...cell.getCellProps()}>{cell.render('Cell')}</td>
                             ))}
