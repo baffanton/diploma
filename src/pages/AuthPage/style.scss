@@ -1,55 +1,55 @@
 .auth-page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     &__body {
-        width: 650px;
-        border-radius: 20px;
+        width:600px;
         background-color: #0693E3;
-        padding: 20px;
-    }
-
-    &__title {
-        font-size: 35px;
-        color: white;
-        padding: 15px 0;
-        margin: 0;
-    }
-
-    &__form {
-        width: 100%;
-        padding: 0 20px;
-        box-sizing: border-box;
+        border-radius: 20px;
+        padding: 16px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    &__form-input {
-        margin-bottom: 10px;
+    &__company-logo {
+        margin-bottom: 16px;
     }
 
-    &__onSubmit {
-        width: 200px;
-        height: 50px;
-        text-align: center;
-        background-color: white;
-        color: #002E45;
-        border-radius: 20px;
-        border: none;
+    &__form {
+        width: 100%;
     }
-}
 
-.manage-panel {
-    padding: 0 20px;
-    margin-bottom: 30px;
+    &__username-container {
+        margin-bottom: 16px;
+    }
 
-    &__title {
-        margin: 0;
+    &__password-container {
+        margin-bottom: 16px;
+    }
+
+    &__management {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 16px 0 8px;
+    }
+
+    &__forget {
         color: white;
-        font-size: 20px;
+        font-size: 25px;
+        cursor: pointer;
     }
 
-    &__forgot {
-        margin: 0;
-        color: white;
-        font-size: 20px;
+    &__submit-button-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__submit-button {
+        margin-top: 16px;
+        width: 190px;
     }
 }

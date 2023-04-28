@@ -1,0 +1,131 @@
+.input-text {
+    &__label {
+        padding: 0;
+
+        &_theme {
+            &_primary {
+                color: #002E45;
+            }
+
+            &_ordinary {
+                color: white;
+            }
+
+            &_white {
+                color: #002E45;
+            }
+        }
+
+        &_position {
+            &_left {
+                margin-right: 8px;
+            }
+        }
+
+        &_size {
+            &_little {
+                font-size: 20px;
+            }
+
+            &_medium {
+                font-size: 25px;
+            }
+
+            &_big {
+                font-size: 30px;
+            }
+        }
+    }
+
+    &__input {
+        border-radius: 20px;
+        padding: 0 16px;
+        width: 100%;
+        border: none;
+        outline: none;
+
+        &_theme {
+            &_primary {
+                color: #002E45;
+                background-color: #0693E3;
+            }
+
+            &_ordinary {
+                color: rgba(255, 255, 255, .8);
+                background-color: #002E45;
+            }
+
+            &_white {
+                color: #002E45;
+                background-color: white;
+            }
+        }
+
+        &_size {
+            &_little {
+                font-size: 20px;
+                height: 42px;
+                min-height: 42px;
+                max-height: 42px;
+            }
+
+            &_medium {
+                font-size: 25px;
+                height: 60px;
+                min-height: 60px;
+                max-height: 60px;
+            }
+
+            &_big {
+                font-size: 30px;
+                height: 72px;
+                min-height: 72px;
+                max-height: 72px;
+            }
+        }
+    }
+
+    &__container {
+        width: 100%;
+        display: flex;
+
+        &_label-position {
+            &_top {
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+
+            &_left {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+    }
+
+    &__manage {
+        padding: 0 16px;
+        margin-bottom: 4px;
+        display: flex;
+        justify-content: flex-start;
+
+        &_withError {
+            justify-content: space-between;
+        }
+    }
+
+    &__error {
+        width: auto;
+        display: flex;
+    }
+
+    &__error-icon {
+        height: 25px;
+        width: 25px;
+        margin-right: 8px;
+        color: #B00000;
+    }
+
+    &__error-message {
+        color: #B00000;
+    }
+}

@@ -1,22 +1,37 @@
 import cx from 'classnames';
 import './style.scss';
+import { SizeTypes } from 'enums/sizeTypes';
+import { ColorThemeType } from 'enums/colorThemeTypes';
 
 interface IButton {
     onClick?: any;
-    title: string;
-    id?: string;
+    type?: string;
     className?: string;
+    disabled?: boolean;
+    title?: string;
+    children?: React.ReactNode;
+    sizeType?: SizeTypes;
+    colorTheme?: ColorThemeType;
 }
 
 const Button: React.FC<IButton> = ({
     onClick,
-    id,
     className = '',
-    title
+    type,
+    children,
+    disabled,
+    sizeType = SizeTypes.medium,
+    colorTheme = ColorThemeType.primary
 }) => {
-    const classNames = cx('button', className)
+    const classNames = cx(
+        'button', 
+        `button_size_${sizeType}`,
+        `button_theme_${colorTheme}`,
+        className 
+    );
+
     return (
-        <button className={classNames} id={id} onClick={onClick}>{title}</button>
+        <button className={classNames} onClick={onClick} disabled={disabled}>{children}</button>
     )
 }
 

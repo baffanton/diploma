@@ -1,7 +1,6 @@
 import cx from 'classnames';
 import './style.scss';
-import { Row } from 'ui/Field';
-import { AlignItemsTypes } from 'enums/flexTypes';
+import { Layout } from 'widgets/Layout';
 
 interface IInputCheckbox {
     id: string;
@@ -14,6 +13,7 @@ interface IInputCheckbox {
     classNameContainer?: string;
     checked?: boolean;
     errors?: any;
+    register?: any;
 }
 
 const InputCheckbox: React.FC<IInputCheckbox> = ({
@@ -21,29 +21,33 @@ const InputCheckbox: React.FC<IInputCheckbox> = ({
     name = '',
     label,
     onChange,
+    onClick,
     classNameInput = '',
     classNameLabel = '',
     classNameContainer = '',
     checked,
     errors,
-    ...props
+    register,
 }) => {
     const inputClassNames = cx('input-checkbox', classNameInput);
     const labelClassNames = cx('input-checkbox__label', classNameLabel);
-    const containerClassNames = cx('input-checkbox__wrapper', classNameContainer);
+    const containerClassNames = cx('input-checkbox__container', classNameContainer);
     return (
-        <Row className={containerClassNames} ai={AlignItemsTypes.center} noFlex>
+        <Layout className={containerClassNames}>
             <input 
                 className={inputClassNames} 
-                id={id} 
-                name={name} 
+                id={id}
                 type="checkbox" 
                 checked={checked} 
                 onChange={onChange}
-                {...props}
+                onClick={onClick}
+                {...register}
             />
             <label className={labelClassNames} htmlFor={id}>{label}</label>
-        </Row>
+            {errors && (
+                <Layout className='input-checkbox__error'>{errors}</Layout>
+            )}
+        </Layout>
     )
 }
 

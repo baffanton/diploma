@@ -1,36 +1,22 @@
-import { Column, Row } from 'ui/Field';
 import './style.scss';
-import { AlignItemsTypes, JustifyContentTypes } from 'enums/flexTypes';
 import { HomeSvgSelector } from 'ui/HomeSvgSelector';
 import { ImageEnum } from 'enums/images';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { schema } from './validateScheme';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Input } from 'ui/Input';
-import { InputTypesEnum } from 'enums/inputTypes';
-import { Button } from 'ui/Button';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { connect, useDispatch } from 'react-redux';
 import { ILoginData } from 'store/reducers/UserReducer/helpers';
-import { fetchUser } from 'store/reducers/UserReducer/actions';
+import { Layout } from 'widgets/Layout';
+import { InputText } from 'ui/InputText';
+import { ColorThemeType } from 'enums/colorThemeTypes';
+import { SizeTypes } from 'enums/sizeTypes';
+import { InputCheckbox } from 'ui/InputCheckbox';
+import { Button } from 'ui/Button';
 
 interface IAuthPage {
-    auth: boolean;
+
 }
 
-const AuthPage: React.FC<IAuthPage> = ({ auth }) => {
-    const [rememberLogInData, setRememberLogInData] = useState<boolean>(false);
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        if (auth) {
-            navigate("/home");
-        }
-
-    }, [auth, navigate])
-
+const AuthPage: React.FC<IAuthPage> = () => {
     const {
         register,
         handleSubmit,
@@ -42,71 +28,75 @@ const AuthPage: React.FC<IAuthPage> = ({ auth }) => {
         resolver: yupResolver(schema)
     });
 
-    const onChangeHandler = () => {
-        setRememberLogInData(!rememberLogInData);
-    }
-
     const onSubmit: SubmitHandler<ILoginData> = data => {
-        // @ts-ignore
-        dispatch(fetchUser(data, rememberLogInData));
+        debugger;
+        console.log(data);
     }
 
     return (
-        <Column className="auth-page" fullHeight ai={AlignItemsTypes.center} jc={JustifyContentTypes.center}>
-            <Column className="auth-page__body" ai={AlignItemsTypes.center}>
-                <Row className="auth-page__company" noFlex>
+        <Layout className='auth-page'>
+            <Layout className='auth-page__body'>
+                <Layout className='auth-page__company-logo'>
                     <HomeSvgSelector icon={ImageEnum.logo} />
-                </Row>
-                <p className="auth-page__title">Авторизация</p>
-                <form className="auth-page__form" onSubmit={handleSubmit(onSubmit)}>
-                    <Column className="auth-page__fields">
-                        <Input 
-                            type={InputTypesEnum.text} 
-                            id="user-login"
+                </Layout>
+                <form className='auth-page__form' onSubmit={handleSubmit(onSubmit)}>
+                    <Layout className='auth-page__data'>
+                        <InputText 
+                            id='username' 
+                            colorTheme={ColorThemeType.ordinary}
+                            sizeType={SizeTypes.medium}
                             label="Логин"
-                            classNameInput='auth-page__form-input'
-                            classNameLabel='auth-page__form-label'
+                            classNameInput='auth-page__username_tag_input'
+                            classNameLabel='auth-page__username_tag_label'
+                            classNameContainer='auth-page__username-container'
                             placeholder='Введите логин'
+                            register={register('username')}
                             error={errors.username}
-                            register={register('username')}          
+                            autoComplete={false}
                         />
-                        <Input 
-                            type={InputTypesEnum.password} 
-                            id="user-password"
-                            name="password"
+                        <InputText 
+                            id='password' 
+                            colorTheme={ColorThemeType.ordinary}
+                            sizeType={SizeTypes.medium}
                             label="Пароль"
-                            classNameInput='auth-page__form-input'
-                            classNameLabel='auth-page__form-label'
+                            classNameInput='auth-page__password_tag_input'
+                            classNameLabel='auth-page__password_tag_label'
+                            classNameContainer='auth-page__password-container'
                             placeholder='Введите пароль'
+                            register={register('password')}
                             error={errors.password}
-                            register={register('password')}        
+                            isPassword
+                            autoComplete={false}
                         />
-                    </Column>
-                    <Row className="manage-panel" jc={JustifyContentTypes.spaceBetween} ai={AlignItemsTypes.center}>
-                        <Input 
-                            type={InputTypesEnum.checkbox} 
-                            id="user-leave" 
-                            label="Не выходить из системы"
-                            classNameContainer='manage-panel__leave'
-                            checked={rememberLogInData}
-                            onChange={onChangeHandler}
+                    </Layout>
+                    <Layout className='auth-page__management'>
+                        <InputCheckbox
+                            id="remember"
+                            label="Не выходить"
+                            colorTheme={ColorThemeType.ordinary}
+                            sizeType={SizeTypes.big}
+                            classNameInput='auth-page__remember_tag_input'
+                            classNameLabel='auth-page__remember_tag_label'
+                            classNameContainer='auth-page__remember-container'
+                            register={register('remember')}
+                            error={errors.remember}
                         />
-                        <p className="manage-panel__forgot">Забыли пароль?</p>
-                        
-                    </Row>
-                    <Button title="Войти" className="auth-page__onSubmit" />
+                        <Layout className='auth-page__forget'>Забыли пароль?</Layout>
+                    </Layout>
+                    <Layout className='auth-page__submit-button-container'>
+                        <Button 
+                            className='auth-page__submit-button'
+                            colorTheme={ColorThemeType.white}
+                            sizeType={SizeTypes.medium}
+                            type='submit'
+                        >
+                            Войти
+                        </Button>
+                    </Layout>
                 </form>
-            </Column>
-        </Column>
+            </Layout>
+        </Layout>
     )
 }
 
-const mapStateToProps = (state: any) => {
-    const { user } = state;
-
-    return {
-        auth: user.auth,
-    }
-}
-
-export default connect(mapStateToProps)(AuthPage);
+export default AuthPage;

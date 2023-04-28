@@ -1,3 +1,45 @@
 .button {
     cursor: pointer;
+    border-radius: 20px;
+    border: none;
+
+    &_size {
+        &_little {
+            height: 42px;
+            max-height: 42px;
+            min-height: 42px;
+            font-size: 20px;
+        }
+
+        &_medium {
+            height: 60px;
+            min-height: 60px;
+            max-height: 60px;
+            font-size: 30px;
+        }
+
+        &_big {
+            height: 72px;
+            min-height: 72px;
+            max-height: 72px;
+            font-size: 33px;
+        }
+    }
+
+    &_theme {
+        &_primary {
+            background-color: #0693E3;
+            color: white;
+        }
+
+        &_ordinary {
+            background-color: #002E45;
+            color: white;
+        }
+
+        &_white {
+            background-color: white;
+            color: #002E45;
+        }
+    }
 }
