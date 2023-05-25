@@ -1,4 +1,6 @@
 export enum RequestApiEnum {
+    authUser = '/auth',
+    logoutUser = '/logout',
     getLogin = '/login',
     usersExport = 'http://192.168.0.52:8080/export/users',
     getUsers = '/users',

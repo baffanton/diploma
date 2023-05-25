@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { Outlet, Route, Routes, useNavigate } from "react-router-dom";
 import { IModal } from "store/reducers/ModalReducer/helpers";
+import { checkAuth } from "store/reducers/UserReducer/actions";
 import { Column } from "ui/Field";
 import { Modal } from "ui/Modal";
 
@@ -34,8 +35,11 @@ const PageBuilder: React.FC<IPageBuilder> = ({ auth, isOpen, modal }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        tryAutoLogIn(dispatch);
-    }, [dispatch])
+        if (localStorage.getItem('accessToken')) {
+            // @ts-ignore
+            dispatch(checkAuth());
+        }
+    }, [])
 
     useEffect(() => {
         if (!auth) {

@@ -9,20 +9,12 @@ import { Link } from "react-router-dom";
 import { Row } from "ui/Field"
 import { HomeSvgSelector } from "ui/HomeSvgSelector";
 import './style.scss';
-import { unauthUser } from "store/reducers/UserReducer/actions";
 
 interface IHeader {
     role: UserRolesEnum;
 }
 
 const Header: React.FC<IHeader> = ({ role }) => {
-    const dispatch = useDispatch();
-
-    const onLogOutClick = () => {
-        // @ts-ignore
-        dispatch(unauthUser())
-    }
-
     return (
         <Row className="header" ai={AlignItemsTypes.center}>
             <Row className="header__links">
@@ -40,7 +32,6 @@ const Header: React.FC<IHeader> = ({ role }) => {
                 <FontAwesomeIcon 
                     className="header__log-out" 
                     icon={faArrowRightFromBracket} 
-                    onClick={() => onLogOutClick()}
                 />
                 {role === UserRolesEnum.admin && (
                     <Link to="/dashboard">

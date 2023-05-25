@@ -1,32 +1,33 @@
-import { UserRolesEnum } from "enums/userTypes";
+import { IUserModel } from "helpers/IUserTypes";
 
-export const USER_AUTH = "USER/AUTH";
-export const USER_UNAUTH = "USER/UNAUTH";
+export const USER_LOGOUT = "USER/LOGOUT";
 export const USER_FETCH = 'USER/GET';
-
-export interface IAuthUser {
-    type: typeof USER_AUTH;
-    auth: boolean;
-}
-
-export interface IUnauthUser {
-    type: typeof USER_UNAUTH;
-    auth: boolean;
-    role: UserRolesEnum | null;
-}
+export const USER_CHECK_AUTH = 'USER/CHECK_AUTH'
 
 export interface IFetchUser {
     type: typeof USER_FETCH;
-    role: UserRolesEnum;
+    user: IUserModel;
+    auth: boolean;
+}
+
+export interface ILogoutUser {
+    type: typeof USER_LOGOUT;
+    user: null;
+    auth: boolean;
+}
+
+export interface ICheckAuth {
+    type: typeof USER_CHECK_AUTH;
+    user: IUserModel | null;
     auth: boolean;
 }
 
 export interface IUserReducerModel {
     readonly auth: boolean;
-    readonly role: UserRolesEnum | null;
+    readonly user: IUserModel | null;
 }
 
 export type UserActionTypes = 
-    | IAuthUser
-    | IUnauthUser
-    | IFetchUser;
+    | IFetchUser
+    | ILogoutUser
+    | ICheckAuth;

@@ -1,33 +1,12 @@
-import { request } from "helpers/request";
-import { IAuthUser, IFetchUser, IUnauthUser, USER_AUTH, USER_FETCH, USER_UNAUTH } from "./types";
-import { UserRolesEnum } from "enums/userTypes";
+import { BASE_URL, request } from "helpers/request";
+import { ICheckAuth, IFetchUser, ILogoutUser, USER_CHECK_AUTH, USER_FETCH, USER_LOGOUT } from "./types";
 import { RequestTypesEnum } from "enums/requestTypes";
 import { RequestApiEnum } from "enums/requestApi";
 import { ILoginData } from "./helpers";
-import { deleteCookie, setCookie } from "helpers/cookie";
+import axios from "axios";
 
-export const authUser = () => (dispatch: (arg0: IAuthUser) => void) => {
-    dispatch({
-        type: USER_AUTH,
-        auth: true,
-    })
-}
-
-export const fetchUser = (data: ILoginData, rememberData?: boolean) => (dispatch: (arg0: IFetchUser) => void) => {
-    const { username, password } = data;
-
-    // localStorage.setItem("username", username);
-    // localStorage.setItem("password", password);
-
-    // dispatch({
-    //     type: USER_FETCH,
-    //     role: UserRolesEnum.admin,
-    //     auth: true,
-    // })
-
-    // return;
-
-    request(RequestTypesEnum.post, RequestApiEnum.getLogin, data)
+export const fetchUser = (data: ILoginData) => (dispatch: (arg0: IFetchUser) => void) => {
+    request(RequestTypesEnum.post, RequestApiEnum.authUser, data)
         .then(res => {
             const { data } = res;
 
@@ -35,34 +14,52 @@ export const fetchUser = (data: ILoginData, rememberData?: boolean) => (dispatch
                 return null;
             }
 
-            if (rememberData) {
-                localStorage.setItem("username", username);
-                localStorage.setItem("password", password);
-            }
-
-            if (!rememberData) {
-                setCookie("username", username);
-                setCookie("password", password);
-            }
+            const { accessToken, user } = data;
+            localStorage.setItem('token', accessToken);
 
             dispatch({
                 type: USER_FETCH,
-                role: UserRolesEnum[data as UserRolesEnum],
+                user: user,
                 auth: true,
             })
         })
 }
 
-export const unauthUser = () => (dispatch: (arg0: IUnauthUser) => void) => {
-    deleteCookie("username");
-    deleteCookie("password");
+export const userLogout = () => (dispatch: (arg0: ILogoutUser) => void) => {
+    request(RequestTypesEnum.get, RequestApiEnum.logoutUser, null)
+        .then(res => {
+            const { data } = res;
 
-    localStorage.removeItem("username");
-    localStorage.removeItem("password");
+            if (!data) {
+                return null;
+            }
 
-    dispatch({
-        type: USER_UNAUTH,
-        auth: false,
-        role: null
-    })
+            localStorage.deleteItem('token');
+
+            dispatch({
+                type: USER_LOGOUT,
+                user: null,
+                auth: false,
+            })
+        })
+}
+
+export const checkAuth = () => async (dispatch: (arg0: ICheckAuth) => void) => {
+    axios.get(`${BASE_URL}/refresh`, {withCredentials: true})
+        .then(res => {
+            const { data } = res;
+
+            if (!data) {
+                return null;
+            }
+
+            const { user, accessToken } = data;
+            localStorage.setItem('token', accessToken);
+
+            dispatch({
+                type: USER_CHECK_AUTH,
+                user: user,
+                auth: true,
+            })
+        })
 }

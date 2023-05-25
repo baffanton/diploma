@@ -1,17 +1,18 @@
-import { IUserReducerModel, USER_FETCH, UserActionTypes, USER_UNAUTH } from "./types";
+import { IUserReducerModel, USER_CHECK_AUTH, USER_FETCH, USER_LOGOUT, UserActionTypes } from "./types";
 
 export const initialState: IUserReducerModel = {
-    role: null,
+    user: null,
     auth: false
 }
 
 export function userRecuder(state = initialState, action: UserActionTypes): IUserReducerModel {
     switch (action.type) {
-        case USER_UNAUTH:
         case USER_FETCH:
+        case USER_LOGOUT:
+        case USER_CHECK_AUTH:
             return {
                 ...state,
-                role: action.role,
+                user: action.user,
                 auth: action.auth,
             };
         default:
