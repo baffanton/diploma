@@ -17,7 +17,6 @@ interface IButton {
 const Button: React.FC<IButton> = ({
     onClick,
     className = '',
-    type,
     children,
     disabled,
     sizeType = SizeTypes.medium,

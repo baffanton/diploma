@@ -7,7 +7,7 @@ export const getModal = (type: ModalTypes, closeModal: any, option: any): React.
         case ModalTypes.addUser:
             return <AddUserModal onClose={closeModal} option={option} />;
         case ModalTypes.editUser:
-            return <EditUserModal onClose={closeModal} option={option} />
+            return <EditUserModal onClose={closeModal} option={option} />;
         default:
             return null;
     }

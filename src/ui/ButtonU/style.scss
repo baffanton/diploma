@@ -1,0 +1,58 @@
+.button {
+    text-align: center;
+}
+
+.button_color_primary {
+    background-color: #0693E3;
+    color: white;
+}
+
+.button_color_ordinary {
+    background-color: #002E45;
+    color: white;
+}
+
+.button_color_white {
+    background-color: white;
+    color: #002E45;
+}
+
+.button_height_s {
+    height: 42px;
+    font-size: 20px;
+}
+
+.button_height_m {
+    height: 60px;
+    font-size: 30px;
+}
+
+.button_height_l {
+    height: 72px;
+    font-size: 33px;
+}
+
+.button_with-icon {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button__title {
+    text-align: center;
+}
+
+.button__icon {
+    height: 100%;
+}
+
+.button__icon_color_primary {
+    border-left: 2px solid #002E45;
+}
+
+.button__icon_color_ordinary {
+    border-left: 2px solid #0693E3;
+}
+
+.button__icon_color_white {
+    border-left: 2px solid #002E45;
+}

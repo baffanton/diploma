@@ -3,11 +3,12 @@ import React from 'react';
 interface ILayout {
     className?: string;
     children?: React.ReactNode;
+    onClick?: any;
 }
 
-const Layout: React.FC<ILayout> = ({ className, children }) => {
+const Layout: React.FC<ILayout> = ({ className, children, onClick }) => {
     return (
-        <div className={className}>{children}</div>
+        <div className={className} onClick={onClick}>{children}</div>
     )
 }
 

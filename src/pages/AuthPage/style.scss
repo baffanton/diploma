@@ -4,52 +4,60 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
 
-    &__body {
-        width:600px;
-        background-color: #0693E3;
-        border-radius: 20px;
-        padding: 16px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+.auth-page__form {
+    width: 100%;
+}
 
-    &__company-logo {
-        margin-bottom: 16px;
-    }
+.auth-page__username-container {
+    margin-bottom: 16px;
+}
 
-    &__form {
-        width: 100%;
-    }
+.auth-page__password-container {
+    margin-bottom: 16px;
+}
 
-    &__username-container {
-        margin-bottom: 16px;
-    }
+.auth-page__body {
+    width:600px;
+    background-color: #0693E3;
+    border-radius: 20px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    &__password-container {
-        margin-bottom: 16px;
-    }
+.auth-page__management {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px 0 8px;
+}
 
-    &__management {
-        display: flex;
-        justify-content: space-between;
-        padding: 0 16px 0 8px;
-    }
+.auth-page__submit-button {
+    width: 190px;
+}
 
-    &__forget {
-        color: white;
-        font-size: 25px;
-        cursor: pointer;
-    }
+.auth-page__forget {
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
 
-    &__submit-button-container {
-        display: flex;
-        justify-content: center;
-    }
+.auth-page__company-logo {
+    margin-bottom: 16px;
+}
 
-    &__submit-button {
-        margin-top: 16px;
-        width: 190px;
-    }
+.auth-page__submit-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.auth-page__username {
+    margin-bottom: 16px;
+}
+
+.auth-page__password {
+    margin-bottom: 16px;
 }

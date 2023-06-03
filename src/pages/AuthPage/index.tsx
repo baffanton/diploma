@@ -6,17 +6,22 @@ import { schema } from './validateScheme';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ILoginData } from 'store/reducers/UserReducer/helpers';
 import { Layout } from 'widgets/Layout';
-import { InputText } from 'ui/InputText';
 import { ColorThemeType } from 'enums/colorThemeTypes';
-import { SizeTypes } from 'enums/sizeTypes';
-import { InputCheckbox } from 'ui/InputCheckbox';
-import { Button } from 'ui/Button';
+import { TextBox } from 'ui/TextBox';
+import { useState } from 'react';
+import { InputTypesEnum } from 'enums/inputTypes';
+import { LabelPositionEnum } from 'enums/labelPositionTypes';
+import { HeightTypes } from 'enums/heightTypes';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { CheckBox } from 'ui/CheckBox';
+import { Button } from 'ui/ButtonU';
 
 interface IAuthPage {
 
 }
 
 const AuthPage: React.FC<IAuthPage> = () => {
+    const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
     const {
         register,
         handleSubmit,
@@ -29,8 +34,11 @@ const AuthPage: React.FC<IAuthPage> = () => {
     });
 
     const onSubmit: SubmitHandler<ILoginData> = data => {
-        debugger;
         console.log(data);
+    }
+
+    const onIconClick = () => {
+        setIsShowPassword(!isShowPassword);
     }
 
     return (
@@ -41,45 +49,40 @@ const AuthPage: React.FC<IAuthPage> = () => {
                 </Layout>
                 <form className='auth-page__form' onSubmit={handleSubmit(onSubmit)}>
                     <Layout className='auth-page__data'>
-                        <InputText 
-                            id='username' 
-                            colorTheme={ColorThemeType.ordinary}
-                            sizeType={SizeTypes.medium}
+                        <TextBox 
+                            id='username'
                             label="Логин"
-                            classNameInput='auth-page__username_tag_input'
-                            classNameLabel='auth-page__username_tag_label'
-                            classNameContainer='auth-page__username-container'
+                            labelPosition={LabelPositionEnum.top}
                             placeholder='Введите логин'
                             register={register('username')}
                             error={errors.username}
-                            autoComplete={false}
-                        />
-                        <InputText 
-                            id='password' 
                             colorTheme={ColorThemeType.ordinary}
-                            sizeType={SizeTypes.medium}
+                            heightType={HeightTypes.large}
+                            classNameContainer='auth-page__username'
+                        />
+                        <TextBox 
+                            id='password'
                             label="Пароль"
-                            classNameInput='auth-page__password_tag_input'
-                            classNameLabel='auth-page__password_tag_label'
-                            classNameContainer='auth-page__password-container'
+                            labelPosition={LabelPositionEnum.top}
                             placeholder='Введите пароль'
                             register={register('password')}
                             error={errors.password}
-                            isPassword
-                            autoComplete={false}
+                            colorTheme={ColorThemeType.ordinary}
+                            heightType={HeightTypes.large}
+                            classNameContainer='auth-page__password'
+                            icon={isShowPassword ? faEyeSlash : faEye}
+                            onIconClick={onIconClick}
+                            type={isShowPassword ? InputTypesEnum.text : InputTypesEnum.password}
                         />
                     </Layout>
                     <Layout className='auth-page__management'>
-                        <InputCheckbox
+                        <CheckBox 
                             id="remember"
                             label="Не выходить"
                             colorTheme={ColorThemeType.ordinary}
-                            sizeType={SizeTypes.big}
-                            classNameInput='auth-page__remember_tag_input'
-                            classNameLabel='auth-page__remember_tag_label'
-                            classNameContainer='auth-page__remember-container'
+                            heightType={HeightTypes.large}
                             register={register('remember')}
-                            error={errors.remember}
+                            errors={errors.remember}                      
                         />
                         <Layout className='auth-page__forget'>Забыли пароль?</Layout>
                     </Layout>
@@ -87,8 +90,7 @@ const AuthPage: React.FC<IAuthPage> = () => {
                         <Button 
                             className='auth-page__submit-button'
                             colorTheme={ColorThemeType.white}
-                            sizeType={SizeTypes.medium}
-                            type='submit'
+                            heightType={HeightTypes.medium}
                         >
                             Войти
                         </Button>
