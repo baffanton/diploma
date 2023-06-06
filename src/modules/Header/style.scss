@@ -2,36 +2,56 @@
     height: 120px;
     min-height: 120px;
     background-color: #0693E3;
-    padding: 0 120px;
+    padding: 0 80px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
 
-    &__link {
-        height: 50px;
-        cursor: pointer;
-        color: #002E45;
-        margin-right: 10px;
+.header__link {
+    height: 50px;
+    cursor: pointer;
+    color: #002E45;
+    margin-right: 10px;
+}
 
-        &:hover {
-            color: #FCB900;
-        }
-    }
+.header__link:hover {
+    color: #FCB900;
+}
 
-    &__settings {
-        cursor: pointer;
-        margin-left: 10px;
-        font-size: 50px;
-        color: #002E45;
-        &:hover {
-            color: #FCB900;
-        }
-    }
+.header__company {
+    position: absolute;
+    text-align: center;
+    left: calc(50% - 300px / 2);
+}
 
-    &__log-out {
-        height: 40px;
-        cursor: pointer;
-        color: #002E45;
+.header__profile-data {
+    display: flex;
+    align-items: center;
+}
 
-        &:hover {
-            color: #FCB900;
-        }
-    }
+.header__settings {
+    cursor: pointer;
+    height: 35px;
+    color: #002E45;
+}
+
+.header__settings:hover {
+    color: #FCB900;
+}
+
+.header__user-name {
+    color: white;
+    font-size: 25px;
+    margin-right: 16px;
+    cursor: default;
+}
+
+.header__user-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 16px;
+    cursor: pointer;
 }

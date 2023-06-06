@@ -1,21 +1,18 @@
-import { JustifyContentTypes } from "enums/flexTypes";
 import Header from "modules/Header";
-import { Row } from "ui/Field";
 import { HomeEvents } from "./components/HomeEvents";
-import { HomeHelp } from "./components/HomeHelp";
 import { HomeNews } from "./components/HomeNews";
 import './style.scss';
+import { Layout } from "widgets/Layout";
 
 const HomePage: React.FC<any> = () => {
     const withHeader = true;
     return (
         <>
             {withHeader && <Header />}
-            <Row className="home-page" jc={JustifyContentTypes.spaceAround} fullHeight>
-                {/* <HomeHelp /> */}
+            <Layout className="home-page">
                 <HomeNews />
                 <HomeEvents />
-            </Row>
+            </Layout>
         </>
         
     )

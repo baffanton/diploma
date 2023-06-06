@@ -1,65 +1,57 @@
-import { BASE_URL, request } from "helpers/request";
-import { ICheckAuth, IFetchUser, ILogoutUser, USER_CHECK_AUTH, USER_FETCH, USER_LOGOUT } from "./types";
+import { request } from "helpers/request";
+import { IFetchUser, ILogoutUser, USER_FETCH, USER_LOGOUT } from "./types";
 import { RequestTypesEnum } from "enums/requestTypes";
 import { RequestApiEnum } from "enums/requestApi";
 import { ILoginData } from "./helpers";
-import axios from "axios";
+import { UserRolesEnum } from "enums/userTypes";
 
 export const fetchUser = (data: ILoginData) => (dispatch: (arg0: IFetchUser) => void) => {
-    request(RequestTypesEnum.post, RequestApiEnum.authUser, data)
-        .then(res => {
-            const { data } = res;
+    dispatch({
+        type: USER_FETCH,
+        name: "Антон",
+        surname: "Баяндин",
+        patronymic: "Викторович",
+        picture: "https://kartinkin.net/uploads/posts/2022-03/1646391262_42-kartinkin-net-p-kartinki-yashcheritsi-53.jpg",
+        role: UserRolesEnum.admin, 
+        auth: true,
+    })
+    // request(RequestTypesEnum.post, RequestApiEnum.authUser, data)
+    //     .then(res => {
+    //         const { data } = res;
 
-            if (!data) {
-                return null;
-            }
+    //         if (!data) {
+    //             return null;
+    //         }
 
-            const { accessToken, user } = data;
-            localStorage.setItem('token', accessToken);
+    //         const { name, surname, patronymic, picture, role } = data;
 
-            dispatch({
-                type: USER_FETCH,
-                user: user,
-                auth: true,
-            })
-        })
+    //         dispatch({
+    //             type: USER_FETCH,
+    //             name,
+    //             surname,
+    //             patronymic,
+    //             picture,
+    //             role, 
+    //             auth: true,
+    //         })
+    //     })
 }
 
 export const userLogout = () => (dispatch: (arg0: ILogoutUser) => void) => {
-    request(RequestTypesEnum.get, RequestApiEnum.logoutUser, null)
-        .then(res => {
-            const { data } = res;
+    // request(RequestTypesEnum.get, RequestApiEnum.logoutUser, null)
+    //     .then(res => {
+    //         const { data } = res;
 
-            if (!data) {
-                return null;
-            }
+    //         if (!data) {
+    //             return null;
+    //         }
 
-            localStorage.deleteItem('token');
+    //         localStorage.deleteItem('token');
 
-            dispatch({
-                type: USER_LOGOUT,
-                user: null,
-                auth: false,
-            })
-        })
-}
-
-export const checkAuth = () => async (dispatch: (arg0: ICheckAuth) => void) => {
-    axios.get(`${BASE_URL}/refresh`, {withCredentials: true})
-        .then(res => {
-            const { data } = res;
-
-            if (!data) {
-                return null;
-            }
-
-            const { user, accessToken } = data;
-            localStorage.setItem('token', accessToken);
-
-            dispatch({
-                type: USER_CHECK_AUTH,
-                user: user,
-                auth: true,
-            })
-        })
+    //         dispatch({
+    //             type: USER_LOGOUT,
+    //             user: null,
+    //             auth: false,
+    //         })
+    //     })
 }

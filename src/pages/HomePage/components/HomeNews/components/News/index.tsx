@@ -1,28 +1,41 @@
-import { useState } from 'react';
 import './style.scss';
-import { Column, Row } from 'ui/Field';
-import cx from 'classnames';
-import { AlignItemsTypes, JustifyContentTypes } from 'enums/flexTypes';
+import { Layout } from 'widgets/Layout';
+import { Text } from "ui/Text";
+import { FontSizesEnum } from 'enums/fontSizeTypes';
+import { INewsModel } from '../../config';
+import { closeModal, openModal } from 'store/reducers/ModalReducer/actions';
+import { useDispatch } from 'react-redux';
+import { ModalTypes } from 'enums/modalTypes';
 
-const News: React.FC<any> = () => {
-    const [moreClicked, setMoreClicked] = useState<boolean>(false);
+interface INews {
+    item: INewsModel;
+}
+
+const News: React.FC<INews> = ({ item }) => {
+    const dispatch = useDispatch();
+    const { title, description, source, picture } = item;
+    const onClickMoreHandler = () => {
+        // @ts-ignore
+        dispatch(openModal(ModalTypes.news, onCloseModalHandler, { title, description, source, picture }))
+    }
+
+    const onCloseModalHandler = () => {
+        // @ts-ignore
+        dispatch(closeModal());
+    }
 
     return (
-        <Column className={cx("news", moreClicked && "news_isActive")}>
-            <Column className="news__body" fullHeight>
-                <p className="news__title">Новость №1</p>
-                <p className="news__description">Какое-то описание</p>
-                <Row jc={JustifyContentTypes.flexEnd} ai={AlignItemsTypes.flexEnd} fullHeight>
-                    <p 
-                        onClick={() => setMoreClicked(!moreClicked)} 
-                        className="news__button"
-                    >
-                        {moreClicked ? "Меньше" : "Подробнее"}
-                    </p> 
-                </Row>
-            </Column>
-            
-        </Column>
+        <Layout className="news">
+            <Layout className="news__body">
+                <img className='news__picture' src={picture} alt="" />
+                <Layout className='news__description'>
+                    <Text className="news__title" fontSize={FontSizesEnum.large}>{title}</Text>
+                    <Layout className='news__more-container'>
+                        <Text className='news__more' fontSize={FontSizesEnum.medium} onClick={onClickMoreHandler}>Подробнее</Text>
+                    </Layout>
+                </Layout>
+            </Layout>
+        </Layout>
     )
 }
 

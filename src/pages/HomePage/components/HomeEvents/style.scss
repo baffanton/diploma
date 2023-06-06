@@ -1,15 +1,15 @@
 .home-events {
-    padding: 15px 30px;
-    min-width: 600px;
-    width: 600px;
+    width: 424px;
+}
 
-    &__title {
-        font-weight: 700;
-        font-size: 40px;
-        width: 100%;
-        text-align: center;
-        margin-bottom: 0;
-        cursor: default;
-        margin-top: 0;
-    }
+.home-events__title {
+    font-weight: 700;
+    font-size: 40px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.home-events__container {
+    height: max-content;
 }

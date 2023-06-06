@@ -15,6 +15,9 @@ import { HeightTypes } from 'enums/heightTypes';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { CheckBox } from 'ui/CheckBox';
 import { Button } from 'ui/ButtonU';
+import { useDispatch } from 'react-redux';
+import { fetchUser } from 'store/reducers/UserReducer/actions';
+import { useNavigate } from 'react-router-dom';
 
 interface IAuthPage {
 
@@ -22,19 +25,38 @@ interface IAuthPage {
 
 const AuthPage: React.FC<IAuthPage> = () => {
     const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const {
         register,
+        resetField,
         handleSubmit,
         formState: {
             errors
         }
     } = useForm<ILoginData>({
         mode: 'onSubmit',
+        defaultValues: {
+            username: "",
+            password: "",
+        },
         resolver: yupResolver(schema)
     });
 
     const onSubmit: SubmitHandler<ILoginData> = data => {
         console.log(data);
+
+        const { username, password } = data;
+
+       
+        if (username !== "user" && password !== "password") {
+            resetField("username");
+            return resetField("password");
+        }
+
+        // @ts-ignore
+        dispatch(fetchUser(data));
+        navigate('/home')
     }
 
     const onIconClick = () => {

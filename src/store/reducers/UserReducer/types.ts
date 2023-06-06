@@ -1,3 +1,4 @@
+import { UserRolesEnum } from "enums/userTypes";
 import { IUserModel } from "helpers/IUserTypes";
 
 export const USER_LOGOUT = "USER/LOGOUT";
@@ -6,28 +7,33 @@ export const USER_CHECK_AUTH = 'USER/CHECK_AUTH'
 
 export interface IFetchUser {
     type: typeof USER_FETCH;
-    user: IUserModel;
+    name: string;
+    surname: string;
+    patronymic: string;
+    picture: string;
+    role: UserRolesEnum;
     auth: boolean;
 }
 
 export interface ILogoutUser {
     type: typeof USER_LOGOUT;
-    user: null;
-    auth: boolean;
-}
-
-export interface ICheckAuth {
-    type: typeof USER_CHECK_AUTH;
-    user: IUserModel | null;
+    name: string;
+    surname: string;
+    patronymic: string;
+    picture: string;
+    role: UserRolesEnum;
     auth: boolean;
 }
 
 export interface IUserReducerModel {
-    readonly auth: boolean;
-    readonly user: IUserModel | null;
+    readonly name: string | null;
+    readonly surname: string | null;
+    readonly patronymic: string | null;
+    readonly picture: string | null;
+    readonly role: UserRolesEnum | null;
+    readonly auth: boolean | null;
 }
 
 export type UserActionTypes = 
     | IFetchUser
-    | ILogoutUser
-    | ICheckAuth;
+    | ILogoutUser;

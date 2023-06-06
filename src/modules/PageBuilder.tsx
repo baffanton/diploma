@@ -1,4 +1,3 @@
-import { tryAutoLogIn } from "helpers/autoLogin";
 import AuthPage from "pages/AuthPage";
 import { DashboardPage } from "pages/DashboardPage";
 import { DashboardLayout } from "pages/DashboardPage/components/DashboardLayout";
@@ -9,7 +8,7 @@ import { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { Outlet, Route, Routes, useNavigate } from "react-router-dom";
 import { IModal } from "store/reducers/ModalReducer/helpers";
-import { checkAuth } from "store/reducers/UserReducer/actions";
+import { fetchUser } from "store/reducers/UserReducer/actions";
 import { Column } from "ui/Field";
 import { Modal } from "ui/Modal";
 
@@ -31,14 +30,12 @@ const getModal = (isOpen: boolean, modal: IModal | null) => {
 }
 
 const PageBuilder: React.FC<IPageBuilder> = ({ auth, isOpen, modal }) => {
-    const dispatch = useDispatch();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        if (localStorage.getItem('accessToken')) {
-            // @ts-ignore
-            dispatch(checkAuth());
-        }
+        // @ts-ignore
+        dispatch(fetchUser({username: "user", password: "password", remember: false}));
     }, [])
 
     useEffect(() => {

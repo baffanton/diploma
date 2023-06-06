@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { IEvent } from '../../config';
 import './style.scss';
-import { Column, Row } from 'ui/Field';
-import { AlignItemsTypes, JustifyContentTypes } from 'enums/flexTypes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTelegram, faVk } from '@fortawesome/free-brands-svg-icons';
+import { Layout } from 'widgets/Layout';
+import { Text } from 'ui/Text';
+import { FontSizesEnum } from 'enums/fontSizeTypes';
 
 interface IEventElememt {
     event: IEvent;
@@ -17,81 +18,58 @@ const Event: React.FC<IEventElememt> = ({ event }) => {
         return setMoreClicked(!moreClicked);
     }
 
-    const { 
-        shortTitle, 
-        title, 
-        date, 
-        place, 
-        description: {
-            main, 
-            add, 
-            time, 
-            contact }, 
-        post: { 
-            vk, 
-            telegram
-        } 
-    } = event;
+    const { shortTitle, title, date, place, description: {main, contact }, post: { vk, telegram } } = event;
 
     if (moreClicked) {
         return (
-            <Row className="event event_isActive">
-                <Column className="event__body" fullHeight>
-                    <Column className="event__info">
-                        <p className="event__title">{title}</p>
-                        <p className="event__date event__date_isActive">Дата: {date}</p>
-                        <p className="event__place event__place_isActive">Место: {place}</p>
-                        {time && <p className='event__description'><strong>{time}</strong></p>}
-                        <p className='event__description'>{main}</p>
-                        {add && <p className='event__description'>{add}</p>}
-                        {contact && <p className='event__description'>{contact}</p>}
-                    </Column>
-                    <Row fullHeight ai={AlignItemsTypes.flexEnd} jc={JustifyContentTypes.flexEnd}>
-                        {(vk || telegram) && (
-                            <Row ai={AlignItemsTypes.center}>
-                                <p className="event__source">Источник:</p>
-                                {vk && (
-                                    <a href={vk} target="_blank" rel="noreferrer">
-                                        <FontAwesomeIcon className="event__link event__link_isVk" icon={faVk} />
-                                    </a>
-                                )}
-                                {telegram && (
-                                    <a href={telegram} target="_blank" rel="noreferrer">
-                                        <FontAwesomeIcon className="event__link event__link_isTelegram" icon={faTelegram} />
-                                    </a>
-                                )}
-                            </Row>
+            <Layout className="event-active">
+                <Layout className='event-active__header'>
+                    <Text className="event-active__title" fontSize={FontSizesEnum.large}>{title}</Text>
+                </Layout>
+                <Layout className="event-active__body">
+                    <Layout className="event-active__info">
+                        <Text className='event-active__description'>{main}</Text>
+                        {contact && (
+                            <Layout className='event-active__contact'>
+                                <Layout className='event-active__contact-header'>
+                                    <Text className='event-active__contact-title' fontSize={FontSizesEnum.large}>Контакты</Text>
+                                </Layout>
+                                <Text className='event-active__description'>{contact}</Text>
+                            </Layout>
                         )}
-                        <p 
-                            className="event__button" 
-                            onClick={onClickHandler}
-                        >
-                            {moreClicked ? "Меньше" : "Подробнее"}
-                        </p> 
-                    </Row>
-                </Column>
-            </Row>
+                        <Text className="event-active__date">Дата: {date}</Text>
+                        <Text className="event-active__place">Место: {place}</Text>
+                    </Layout>
+                    <Layout className='event-active__navigate'>
+                        <Layout className='event-active__source-container'>
+                            <Text className="event-active__source">Источник:</Text>
+                            <a href={vk} target="_blank" rel="noreferrer">
+                                <FontAwesomeIcon className="event-active__link" icon={faVk} />
+                            </a>
+                            <a href={telegram} target="_blank" rel="noreferrer">
+                                <FontAwesomeIcon className="event-active__link" icon={faTelegram} />
+                            </a>
+                        </Layout>
+                        <Text className="event-active__button" onClick={onClickHandler}>Меньше</Text> 
+                    </Layout>
+                </Layout>
+            </Layout>
         )
     }
 
     return (
-        <Row className="event">
-            <Column className="event__body" fullHeight>
-                <Column className="event__info">
-                    <p className="event__title">{shortTitle || title}</p>
-                    <p className="event__date">Дата: {date}</p>
-                    <p className="event__place">Место: {place}</p>
-                </Column>
-                <Row fullHeight ai={AlignItemsTypes.flexEnd} jc={JustifyContentTypes.flexEnd}>
-                    <p 
-                        className="event__button" 
-                        onClick={onClickHandler}
-                    >
-                        {moreClicked ? "Меньше" : "Подробнее"}
-                    </p> 
-                </Row>
-            </Column>
-        </Row>
+        <Layout className="event">
+            <Layout className="event__body">
+                <Layout className="event__info">
+                    <Text className="event__title" fontSize={FontSizesEnum.large}>{shortTitle || title}</Text>
+                    <Text className="event__date" fontSize={FontSizesEnum.medium}>Дата: {date}</Text>
+                    <Text className="event__place" fontSize={FontSizesEnum.medium}>Место: {place}</Text>
+                </Layout>
+                <Layout className='event__more-container'>
+                    <Text className="event__more" onClick={onClickHandler} fontSize={FontSizesEnum.medium}>Подробнее</Text> 
+                </Layout>
+            </Layout>
+        </Layout>
     )
 }
 
