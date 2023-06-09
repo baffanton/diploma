@@ -8,32 +8,38 @@ import { ILoginData } from 'store/reducers/UserReducer/helpers';
 import { Layout } from 'widgets/Layout';
 import { ColorThemeType } from 'enums/colorThemeTypes';
 import { TextBox } from 'ui/TextBox';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { InputTypesEnum } from 'enums/inputTypes';
 import { LabelPositionEnum } from 'enums/labelPositionTypes';
 import { HeightTypes } from 'enums/heightTypes';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { CheckBox } from 'ui/CheckBox';
 import { Button } from 'ui/ButtonU';
-import { useDispatch } from 'react-redux';
-import { fetchUser } from 'store/reducers/UserReducer/actions';
+import { connect } from 'react-redux';
+import { fetchUser, getToken } from 'store/reducers/UserReducer/actions';
+import { Dispatch } from '@reduxjs/toolkit';
+import { IFetchUser } from 'store/reducers/UserReducer/types';
+import { ModalTypes } from 'enums/modalTypes';
+import { closeModal, openModal } from 'store/reducers/ModalReducer/actions';
+import { ICloseModal, IOpenModal } from 'store/reducers/ModalReducer/types';
 import { useNavigate } from 'react-router-dom';
 
 interface IAuthPage {
-
+    auth: boolean;
+    getToken: (username: string, password: string) => Promise<any>;
+    fetchUser: () => Dispatch<IFetchUser>;
+    closeModal: () => Dispatch<ICloseModal>;
+    openModal: (modalTypes: ModalTypes, onClose: () => void, option: any) => Dispatch<IOpenModal>;
 }
 
-const AuthPage: React.FC<IAuthPage> = () => {
-    const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
-    const dispatch = useDispatch();
+const AuthPage: React.FC<IAuthPage> = ({ auth, getToken, fetchUser, closeModal, openModal }) => {
     const navigate = useNavigate();
-    const {
-        register,
-        resetField,
-        handleSubmit,
-        formState: {
-            errors
-        }
+    const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
+    const { 
+        register, 
+        resetField, 
+        handleSubmit, 
+        formState: { errors } 
     } = useForm<ILoginData>({
         mode: 'onSubmit',
         defaultValues: {
@@ -43,20 +49,36 @@ const AuthPage: React.FC<IAuthPage> = () => {
         resolver: yupResolver(schema)
     });
 
-    const onSubmit: SubmitHandler<ILoginData> = data => {
-        console.log(data);
-
-        const { username, password } = data;
-
-       
-        if (username !== "user" && password !== "password") {
-            resetField("username");
-            return resetField("password");
+    useEffect(() => {
+        if (auth) {
+            navigate('/home')
         }
+    }, [auth, navigate])
 
-        // @ts-ignore
-        dispatch(fetchUser(data));
-        navigate('/home')
+    const onCloseModalHandler = () => {
+        closeModal();
+    }
+
+    const onSubmit: SubmitHandler<ILoginData> = formData => {
+        const { username, password } = formData;
+        getToken(username, password)
+            .then(res => {
+                const { data } = res;
+
+                localStorage.setItem('token', data);
+
+                fetchUser();
+            })
+            .catch(errors => {
+                console.log(errors);
+
+                openModal(ModalTypes.messageModal, onCloseModalHandler, { message: "Неверный логин или пароль" });
+
+                resetField("username");
+                resetField("password");
+            })
+        
+        
     }
 
     const onIconClick = () => {
@@ -123,4 +145,29 @@ const AuthPage: React.FC<IAuthPage> = () => {
     )
 }
 
-export default AuthPage;
+const mapStateToProps = (state: any) => {
+    const { user } = state;
+
+    return {
+        auth: user.auth,
+    }
+}
+
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        getToken(username: string, password: string) {
+            return dispatch(getToken(username, password));
+        },
+        fetchUser() {
+            return dispatch(fetchUser());
+        },
+        closeModal() {
+            return dispatch(closeModal());
+        },
+        openModal(modalTypes: ModalTypes, onClose: () => void, option: any) {
+            return dispatch(openModal(modalTypes, onClose, option));
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AuthPage);

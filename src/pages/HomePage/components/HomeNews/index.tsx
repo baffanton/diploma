@@ -1,17 +1,24 @@
 import './style.scss';
-import { News } from './components/News';
+import News from './components/News';
 import { Layout } from 'widgets/Layout';
-import { INewsModel, configNews } from './config';
+import { INewsModel } from 'types/INewsModel';
 
-const HomeNews: React.FC<any> = () => {
-    const config: INewsModel[] = configNews;
+interface IHomeNews {
+    news: INewsModel[];
+}
+
+const HomeNews: React.FC<IHomeNews> = ({ news }) => {
+    if (!news) {
+        return null;
+    }
+
     return (
         <Layout className="home-news">
             <p className="home-news__title">Последние новости</p>
             <Layout className='home-news__container'>
-                {config.map(news => {
+                {news.map(item => {
                     return (
-                        <News key={news.id} item={news} />
+                        <News key={item.id} item={item} />
                     )
                 })}
             </Layout>

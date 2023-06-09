@@ -1,5 +1,6 @@
 export enum ModalTypes {
     addUser = 'addUser',
     editUser = 'editUser',
-    news = 'news',
+    newsModal = 'newsModal',
+    messageModal= 'messageModal',
 }

@@ -42,13 +42,13 @@ export const ControlRows: IControlRow[] = [
             },
             {
                 id: "financialHelp",
-                title: "Награды пользователей",
+                title: "Материальная помощь",
                 icon: faRubleSign,
                 url: DashboardPagesUrlEnum.financialHelp
             },
             {
                 id: "legalHelp",
-                title: "Мероприятия пользователей",
+                title: "Юридическая помощь",
                 icon: faScaleBalanced,
                 url: DashboardPagesUrlEnum.legalHelp
             }
@@ -65,7 +65,7 @@ export const ControlRows: IControlRow[] = [
             },
             {
                 id: "education",
-                title: "Мероприятия",
+                title: "Обучение",
                 icon: faUserGraduate,
                 url: DashboardPagesUrlEnum.education
             }

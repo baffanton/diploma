@@ -1,20 +1,20 @@
-import { AlignItemsTypes } from 'enums/flexTypes';
-import { Column } from 'ui/Field';
+import { Layout } from 'widgets/Layout';
 import { DashboardRow } from './components/DashboardRow';
 import { ControlRows } from './config';
+import { Text } from 'ui/Text';
 import './style.scss';
 
 
 const DashboardLayout = () => {
     return (
-        <Column className="dashboard-layout" fullHeight ai={AlignItemsTypes.center}>
-            <p className="dashboard-layout__title">Панель управления</p>
-            <Column className="dashboard-layout__controls" noFlex ai={AlignItemsTypes.center} fullHeight>
+        <Layout className="dashboard-layout">
+            <Text className="dashboard-layout__title">Панель управления</Text>
+            <Layout className="dashboard-layout__controls">
                 {ControlRows.map(({id, panels}) => {
                     return <DashboardRow key={id} panels={panels} />
                 })}
-            </Column>
-        </Column>
+            </Layout>
+        </Layout>
     )
 }
 

@@ -1,23 +1,24 @@
 import { useNavigate } from 'react-router-dom';
 import './style.scss';
-import { Column } from 'ui/Field';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { AlignItemsTypes } from 'enums/flexTypes';
+import { Layout } from 'widgets/Layout';
+import { Text } from 'ui/Text';
+import { FontSizesEnum } from 'enums/fontSizeTypes';
 
 const ControlPanel: React.FC<any> = ({ panel }) => {
     const navigate = useNavigate();
 
-    const { id, title, icon, url } = panel;
+    const { title, icon, url } = panel;
 
     const clickHandler = () => {
         return navigate(url);
     }
 
     return (
-        <Column key={id} className="control-panel" ai={AlignItemsTypes.center} onClick={clickHandler}>
+        <Layout className="control-panel" onClick={clickHandler}>
             <FontAwesomeIcon className="control-panel__icon" icon={icon} />
-            <p className="control-panel__title">{title}</p>
-        </Column>
+            <Text className="control-panel__title" fontSize={FontSizesEnum.large}>{title}</Text>
+        </Layout>
     )
 }
 

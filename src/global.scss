@@ -10,7 +10,27 @@
     position: relative;
 }
 
-@function rem($pxValue) {
-    $remValue: ($pxValue / 16) + rem;
-    @return $remValue;
+@mixin base-font-sizes() {
+    &__size {
+        &_l {
+            font-size: 30px;
+        }
+        &_m {
+            font-size: 20px;
+        }
+        &_s {
+            font-size: 16px;
+        }
+    }
+}
+
+@mixin base-font-weight() {
+    &__weight {
+        &_bold {
+            font-weight: 700;
+        }
+        &_default {
+            font-weight: 400;
+        }
+    }
 }

@@ -1,9 +1,18 @@
 .dashboard-layout {
-    padding: 15px 120px 60px 120px;
+    padding: 32px 120px 60px 120px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
 
-    &__title {
-        font-size: 60px;
-        color: #002E45;
-        margin: 0;
-    }
+.dashboard-layout__title {
+    font-size: 60px;
+    color: #002E45;
+    margin: 0;
+}
+
+.dashboard-layout__controls {
+    display: flex;
+    flex-direction: column;
 }

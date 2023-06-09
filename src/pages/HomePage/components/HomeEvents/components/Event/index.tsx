@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { IEvent } from '../../config';
 import './style.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTelegram, faVk } from '@fortawesome/free-brands-svg-icons';
 import { Layout } from 'widgets/Layout';
 import { Text } from 'ui/Text';
 import { FontSizesEnum } from 'enums/fontSizeTypes';
+import { IEvent } from 'types/IEvent';
 
 interface IEventElememt {
     event: IEvent;
@@ -18,7 +18,7 @@ const Event: React.FC<IEventElememt> = ({ event }) => {
         return setMoreClicked(!moreClicked);
     }
 
-    const { shortTitle, title, date, place, description: {main, contact }, post: { vk, telegram } } = event;
+    const { shortTitle, title, date, place, description: { main, contact }, post: { vk, telegram } } = event;
 
     if (moreClicked) {
         return (

@@ -1,17 +1,10 @@
+@import "global.scss";
+
 .text {
+    @include base-font-sizes;
+    @include base-font-weight;
+
     cursor: default;
-}
-
-.text_size_s {
-    font-size: 16px;
-}
-
-.text_size_m {
-    font-size: 20px;
-}
-
-.text_size_l {
-    font-size: 30px;
 }
 
 .text_cursor_pointer {

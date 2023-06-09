@@ -1,8 +1,12 @@
 import { createStateSelector } from "../helpers";
 
 const user = {
-    userData: createStateSelector('user.data'),
-    userType: createStateSelector('user.type')
+    firstname: createStateSelector('user.firstname'),
+    lastname: createStateSelector('user.lastname'),
+    surname: createStateSelector('user.surname'),
+    imageUrl: createStateSelector('user.imagaUrl'),
+    auth: createStateSelector('user.auth'),
+    role: createStateSelector('user.role'),
 }
 
 export { user };

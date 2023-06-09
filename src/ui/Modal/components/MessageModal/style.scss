@@ -1,0 +1,46 @@
+.message-modal {
+    display: flex;
+    flex-direction: column;
+    width: 530px;
+    height: auto;
+    background-color: white;
+    border-radius: 20px;
+    color: #002E45;
+}
+
+.message-modal__header {
+    display: flex;
+    width: 100%;
+}
+
+.message-modal__title {
+    padding: 8px 0 8px 16px;
+    border-bottom: 3px solid #0693E3;
+    width: 100%;
+}
+
+.message-modal__close {
+    position: absolute;
+    right: 0;
+    height: 35px;
+    color: #002E45;
+    cursor: pointer;
+    margin: 10px 16px 0 0;
+}
+
+.message-modal__body {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.message-modal__button-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.message-modal__button-close {
+    width: 200px;
+}

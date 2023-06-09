@@ -2,7 +2,7 @@ import axios from 'axios';
 import { RequestApiEnum } from 'enums/requestApi';
 import { RequestTypesEnum } from 'enums/requestTypes';
 
-export const BASE_URL = 'http://192.168.0.52:8080';
+export const BASE_URL = 'http://192.168.0.52:8080/api/v1';
 
 const $api = axios.create({
     withCredentials: true,
@@ -10,6 +10,10 @@ const $api = axios.create({
 })
 
 $api.interceptors.request.use(config => {
+    if (!localStorage.getItem('token')) {
+        return config;
+    }
+
     config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
 
     return config;

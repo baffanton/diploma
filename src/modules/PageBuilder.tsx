@@ -3,7 +3,7 @@ import { DashboardPage } from "pages/DashboardPage";
 import { DashboardLayout } from "pages/DashboardPage/components/DashboardLayout";
 import DashboardMore from "pages/DashboardPage/components/DashboardMore";
 import { DashboardPagesConfig } from "pages/DashboardPage/config";
-import { HomePage } from "pages/HomePage";
+import HomePage from "pages/HomePage";
 import { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { Outlet, Route, Routes, useNavigate } from "react-router-dom";
@@ -33,10 +33,10 @@ const PageBuilder: React.FC<IPageBuilder> = ({ auth, isOpen, modal }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        // @ts-ignore
-        dispatch(fetchUser({username: "user", password: "password", remember: false}));
-    }, [])
+    // useEffect(() => {
+    //     // @ts-ignore
+    //     dispatch(fetchUser({username: "user", password: "password", remember: false}));
+    // }, [])
 
     useEffect(() => {
         if (!auth) {

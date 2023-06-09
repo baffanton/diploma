@@ -15,10 +15,10 @@ const Text: React.FC<IText> = ({
     fontSize = FontSizesEnum.medium,
     onClick,
 }) => {
-    const classNames = cx('text', `text_size_${fontSize}`, onClick && 'text_cursor_pointer', className);
+    const classNames = cx('text', `text__size_${fontSize}`, onClick && 'text_cursor_pointer', className);
     
     return (
-        <div className={classNames} onClick={onClick}>{children}</div>
+        <p className={classNames} onClick={onClick}>{children}</p>
     )
 }
 

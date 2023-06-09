@@ -1,4 +1,6 @@
 .dashboard-row {
-    padding: 10px 0;
+    margin: 10px 0;
     height: calc(100% / 3);
+    display: flex;
+    justify-content: center;
 }

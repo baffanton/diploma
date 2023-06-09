@@ -2,26 +2,28 @@ import './style.scss';
 import { Layout } from 'widgets/Layout';
 import { Text } from "ui/Text";
 import { FontSizesEnum } from 'enums/fontSizeTypes';
-import { INewsModel } from '../../config';
 import { closeModal, openModal } from 'store/reducers/ModalReducer/actions';
-import { useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { ModalTypes } from 'enums/modalTypes';
+import { INewsModel } from 'types/INewsModel';
+import { ICloseModal, IOpenModal } from 'store/reducers/ModalReducer/types';
+import { Dispatch } from 'react';
 
 interface INews {
     item: INewsModel;
+    openModal: (modalTypes: ModalTypes, onClose: () => void, option: any) => Dispatch<IOpenModal>;
+    closeModal: () => Dispatch<ICloseModal>;
 }
 
-const News: React.FC<INews> = ({ item }) => {
-    const dispatch = useDispatch();
+const News: React.FC<INews> = ({ item, openModal, closeModal }) => {
     const { title, description, source, picture } = item;
+    
     const onClickMoreHandler = () => {
-        // @ts-ignore
-        dispatch(openModal(ModalTypes.news, onCloseModalHandler, { title, description, source, picture }))
+        openModal(ModalTypes.newsModal, onCloseModalHandler, { title, description, source, picture })
     }
 
     const onCloseModalHandler = () => {
-        // @ts-ignore
-        dispatch(closeModal());
+        closeModal();
     }
 
     return (
@@ -39,4 +41,15 @@ const News: React.FC<INews> = ({ item }) => {
     )
 }
 
-export { News };
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        openModal(modalTypes: ModalTypes, onClose: () => void, option: any) {
+            return dispatch(openModal(modalTypes, onClose, option));
+        },
+        closeModal(){
+            return dispatch(closeModal());
+        },
+    }
+}
+
+export default connect(null, mapDispatchToProps)(News);

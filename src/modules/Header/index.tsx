@@ -14,14 +14,15 @@ import { FontSizesEnum } from "enums/fontSizeTypes";
 
 interface IHeader {
     role: UserRolesEnum;
-    name: string;
+    firstname: string;
+    lastname: string;
     surname: string;
-    patronymic: string;
-    picture: string;
+    imageUrl: string;
 }
 
-const Header: React.FC<IHeader> = ({ name, surname, patronymic, role, picture }) => {
-    const shortName = getShortName(name, surname, patronymic);
+const Header: React.FC<IHeader> = ({ firstname, lastname, surname, role, imageUrl }) => {
+    debugger;
+    const shortName = getShortName(firstname, lastname, surname);
 
     return (
         <Layout className="header">
@@ -38,7 +39,7 @@ const Header: React.FC<IHeader> = ({ name, surname, patronymic, role, picture })
             </Layout>
             <Layout className="header__profile-data">
                 <Text className="header__user-name" fontSize={FontSizesEnum.large}>{shortName}</Text>
-                <img className="header__user-icon" src={picture} alt="" />
+                <img className="header__user-icon" src={imageUrl} alt="" />
                 {role === UserRolesEnum.admin && (
                     <Link to="/dashboard">
                         <FontAwesomeIcon className="header__settings" icon={faGears} />
@@ -53,11 +54,11 @@ const mapStateToProps = (state: any) => {
     const { user } = state;
 
     return {
-        name: user.name,
-        surname: user.surname,
-        patronymic: user.patronymic,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        surname: user.patronymic,
         role: user.role,
-        picture: user.picture
+        imageUrl: user.imageUrl
     }
 }
 

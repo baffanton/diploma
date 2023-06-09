@@ -1,13 +1,4 @@
-export interface INewsModel {
-    id: string;
-    title: string;
-    description: string;
-    source: {
-        vk?: string;
-        telegram?: string;
-    },
-    picture: string;
-}
+import { INewsModel } from "types/INewsModel";
 
 export const configNews: INewsModel[] = [
     {
