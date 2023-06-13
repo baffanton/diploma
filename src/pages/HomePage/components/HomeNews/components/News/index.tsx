@@ -46,9 +46,7 @@ const mapDispatchToProps = (dispatch: any) => {
         openModal(modalTypes: ModalTypes, onClose: () => void, option: any) {
             return dispatch(openModal(modalTypes, onClose, option));
         },
-        closeModal(){
-            return dispatch(closeModal());
-        },
+        closeModal(){ return dispatch(closeModal()); },
     }
 }
 

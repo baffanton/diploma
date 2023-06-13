@@ -1,0 +1,52 @@
+@import "global.scss";
+
+.add-user-modal {
+    width: 550px;
+    background-color: $white;
+    border-radius: 20px;
+}
+
+.add-user-modal__header {
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+    background-color: $darkBlue;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    z-index: 1;
+}
+
+.add-user-modal__title {
+    color: $white;
+}
+
+.add-user-modal__close {
+    position: absolute;
+    right: 16px;
+    color: $white;
+}
+
+.add-user-modal__body {
+    padding: 0 32px;
+    display: flex;
+    flex-direction: column;
+}
+
+.add-user-modal__block-title {
+    padding: 16px 16px 8px 16px;
+    text-align: center;
+    color: $darkBlue;
+}
+
+.add-user-modal__lastname, .add-user-modal__name, .add-user-modal__username {
+    margin-bottom: 8px;
+}
+
+.add-user-modal__submit-button-container {
+    padding: 16px 0;
+}
+
+.add-user-modal__submit-button {
+    width: 100%;
+}
+

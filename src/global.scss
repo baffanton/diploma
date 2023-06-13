@@ -5,6 +5,9 @@ $darkBlue: #002E45;
 $yellow: #FCB900;
 $sky: rgba(6, 147, 227, .2);
 $white: #FFFFFF;
+$grey: #D9D9D9;
+$red: #E32636;
+$lightRed: #FFC0CB;
 
 @mixin base-font-weight() {
     &_weight {
@@ -13,6 +16,20 @@ $white: #FFFFFF;
         }
         &_default {
             font-weight: 400;
+        }
+    }
+}
+
+@mixin base-font-style() {
+    &_style {
+        &_default {
+            font-style: normal;
+        }
+        &_bold {
+            font-weight: 700;
+        }
+        &_italic {
+            font-style: italic;
         }
     }
 }

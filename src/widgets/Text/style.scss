@@ -2,7 +2,7 @@
 
 .text {
     @include base-font-weight;
-    cursor: default;
+    @include base-font-style;
 }
 
 .text_size_s {

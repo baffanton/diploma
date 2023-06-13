@@ -1,9 +1,12 @@
-.icon {
-    cursor: default;
-}
+@import "global.scss";
 
 .icon_pointer {
     cursor: pointer;
+}
+
+svg.icon_disabled {
+    cursor: default;
+    color: $grey;
 }
 
 .icon_heightType_s {

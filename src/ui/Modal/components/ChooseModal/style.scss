@@ -1,0 +1,51 @@
+@import "global.scss";
+
+.choose-modal {
+    display: flex;
+    flex-direction: column;
+    width: 530px;
+    height: auto;
+    background-color: $white;
+    border-radius: 20px;
+    color: $darkBlue;
+}
+
+.choose-modal__header {
+    display: flex;
+    width: 100%;
+}
+
+.choose-modal__title {
+    padding: 8px 0 8px 16px;
+    border-bottom: 3px solid $blue;
+    width: 100%;
+}
+
+.choose-modal__close {
+    position: absolute;
+    right: 0;
+    color: $darkBlue;
+    margin: 10px 16px 0 0;
+}
+
+.choose-modal__body {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.choose-modal__button-container {
+    margin-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 32px;
+}
+
+.choose-modal__button-accept {
+    width: 200px;
+}
+
+.choose-modal__button-close {
+    width: 200px;
+}

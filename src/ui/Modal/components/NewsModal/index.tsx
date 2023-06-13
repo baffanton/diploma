@@ -5,6 +5,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { faTelegram, faVk } from '@fortawesome/free-brands-svg-icons';
 import { SizeEnum } from 'enums/sizeTypes';
 import { Icon } from 'ui/Icon';
+import { Link } from 'widgets/Link';
 
 interface INewsModal {
     onClose: any;
@@ -12,13 +13,13 @@ interface INewsModal {
 }
 
 const NewsModal: React.FC<INewsModal> = ({ onClose, option }) => {
-    const { title, description, picture } = option;
+    const { title, description, source, picture } = option;
 
     return (
         <Layout className='news-modal'>
             <Layout className='news-modal__header'>
                 <Text className='news-modal__title' fontSize={SizeEnum.large}>{title}</Text>
-                <Icon className='news-modal__close' onClick={() => onClose()} fontAwesomeIcon={faXmark} />
+                <Icon className='news-modal__close' onClick={() => onClose()} fontAwesomeIcon={faXmark} pointer />
             </Layout>
             <Layout className='news-modal__content'>
                 <Layout className='news-modal__main'>
@@ -26,8 +27,12 @@ const NewsModal: React.FC<INewsModal> = ({ onClose, option }) => {
                     <Layout className='news-modal__source'>
                         <Text className='news-modal__source-title'>Источники: </Text>
                         <Layout className='news-modal__source-container'>
-                            <Icon className='news-modal__source-item' fontAwesomeIcon={faVk} />
-                            <Icon className='news-modal__source-item' fontAwesomeIcon={faTelegram} />
+                            <Link href={source.vk}>
+                                <Icon className='news-modal__source-item' fontAwesomeIcon={faVk} heightType={SizeEnum.medium} />
+                            </Link>
+                            <Link href={source.vk}>
+                                <Icon className='news-modal__source-item' fontAwesomeIcon={faTelegram} heightType={SizeEnum.medium} />
+                            </Link>
                         </Layout>
                     </Layout>
                 </Layout>

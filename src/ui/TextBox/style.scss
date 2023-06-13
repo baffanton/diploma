@@ -1,3 +1,5 @@
+@import "global.scss";
+
 .text-box__wrapper {
     display: flex;
     width: 100%;
@@ -54,21 +56,22 @@
 }
 
 .text-box__input_color_primary {
-    background-color: #0693E3;
-    color: #002E45;
+    background-color: $white;
+    border: 2px solid $blue;
+    color: $darkBlue;
 }
 
 .text-box__input_color_ordinary {
-    background-color: #002E45;
-    color: white;
+    background-color: $darkBlue;
+    color: $white;
 }
 
 .text-box__label_color_primary {
-    color: #002E45;
+    color: $darkBlue;
 }
 
 .text-box__label_color_ordinary {
-    color: white;
+    color: $white;
 }
 
 .text-box__label_height_s {
@@ -87,11 +90,18 @@
     position: absolute;
     right: 16px;
     top: 20%;
-    color: white;
+    color: $white;
     cursor: pointer;
 }
 
 .text-box__error {
     font-size: 16px;
-    color: #FFC0CB;
+}
+
+.text-box__error_theme_primary {
+    color: $red;
+}
+
+.text-box__error_theme_ordinary {
+    color: $lightRed;
 }

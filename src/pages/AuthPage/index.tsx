@@ -76,8 +76,6 @@ const AuthPage: React.FC<IAuthPage> = ({ auth, getToken, fetchUser, closeModal, 
                 resetField("username");
                 resetField("password");
             })
-        
-        
     }
 
     const onIconClick = () => {

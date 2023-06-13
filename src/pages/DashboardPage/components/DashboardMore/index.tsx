@@ -34,7 +34,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { Layout } from 'widgets/Layout';
 import { Table } from 'ui/Table';
-import { faArrowLeft, faDownload, faUserMinus, faUserPen, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faDownload, faUserMinus, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { Text } from "widgets/Text";
 import { DashboardPagesUrlEnum } from 'enums/dashboardPages';
 import { closeModal, openModal } from 'store/reducers/ModalReducer/actions';
@@ -62,7 +62,7 @@ interface IDashboardMore {
     fetchAwards: () => Dispatch<IFetchAwards>;
     fetchEducation: () => Dispatch<IFetchEducation>;
     closeModal: () => Dispatch<ICloseModal>;
-    openModal: (modalTypes: ModalTypes, onClose: any, options: any) => Dispatch<IOpenModal>;
+    openModal: (modalTypes: ModalTypes, onClose: () => any, options: any) => Dispatch<IOpenModal>;
     deleteUser: (id: string) => Promise<any>;
 }
 
@@ -83,6 +83,7 @@ const DashboardMore: React.FC<IDashboardMore> = ({
     fetchAwards,
     fetchEducation,
     closeModal,
+    openModal,
 }) => {
     const navigate = useNavigate();
     const { id, title, exportUrl, tableConfig, isClickable } = page;
@@ -111,10 +112,14 @@ const DashboardMore: React.FC<IDashboardMore> = ({
     }
 
     const onAddMemberButtonHandler = () => {
-        openModal(ModalTypes.addUser, closeModalHandler, null);
+        openModal(ModalTypes.addUser, closeModalHandler, { onAddUserHandler: onAddMemberHandler });
     }
 
-    const onRemoveMemberButtonHandler = () => {
+    const onAddMemberHandler = () => {
+        
+    }
+
+    const onAcceptModalHandler = () => {
         if (!selectedRowIndex || !tableData || id !== DashboardPagesUrlEnum.users) {
             return null;
         }
@@ -136,43 +141,51 @@ const DashboardMore: React.FC<IDashboardMore> = ({
             })
     }
 
-    const onChangeMemberButtonHandler = () => {
-        if (!tableData || !selectedRowIndex) {
+    const onRemoveMemberButtonHandler = () => {
+        if (!selectedRowIndex || !tableData || id !== DashboardPagesUrlEnum.users) {
             return null;
         }
-    
-        const choosenUser = tableData[Number(selectedRowIndex)];
-        // @ts-ignore
-        dispatch(openModal(ModalTypes.editUser, closeModalHandler, choosenUser));
+
+        openModal(ModalTypes.chooseModal, closeModalHandler, {
+            message: "Вы уверены, что хотите удалить пользователя?",
+            onAccept: onAcceptModalHandler,
+            onAcceptTitle: "Удалить",
+            onCancelTitle: "Отмена",
+            title: "Удаление пользователя",
+        })
     }
 
     return (
         <Layout className="dashboard-more">
             <Layout className="dashboard-more__work-elements">
-                <Icon className="dashboard-more__back" fontAwesomeIcon={faArrowLeft} onClick={onBackButtonHandler} />
+                <Icon
+                    className="dashboard-more__back"
+                    fontAwesomeIcon={faArrowLeft}
+                    onClick={onBackButtonHandler}
+                    pointer
+                    heightType={SizeEnum.medium}
+                />
                 <Title className="dashboard-more__title" fontSize={SizeEnum.large}>{title}</Title>
                 <Link className='dashboard-more__export' href={exportUrl}>
                     <Text className='dashboard-more__export-title' fontSize={SizeEnum.large}>Экспорт</Text>
                     <Layout className='dashboard-more__export-icon-container'>
-                        <Icon className='dashboard-more__export-icon' fontAwesomeIcon={faDownload}/>
+                        <Icon className='dashboard-more__export-icon' heightType={SizeEnum.medium} fontAwesomeIcon={faDownload}/>
                     </Layout>
                 </Link>
                 {id === DashboardPagesUrlEnum.users && (
                     <Layout className="dashboard-more__edit-panel">
                         <Icon
-                            className="dashboard-more__add-user" 
-                            fontAwesomeIcon={faUserPlus} 
-                            onClick={onAddMemberButtonHandler} 
+                            className="dashboard-more__add-user"
+                            fontAwesomeIcon={faUserPlus}
+                            onClick={onAddMemberButtonHandler}
+                            heightType={SizeEnum.medium}
                         />
                         <Icon 
-                            className="dashboard-more__delete-user" 
-                            fontAwesomeIcon={faUserMinus} 
-                            onClick={onRemoveMemberButtonHandler} 
-                        />
-                        <Icon 
-                            className="dashboard-more__edit-user"
-                            fontAwesomeIcon={faUserPen}
-                            onClick={onChangeMemberButtonHandler}
+                            className="dashboard-more__delete-user"
+                            fontAwesomeIcon={faUserMinus}
+                            onClick={onRemoveMemberButtonHandler}
+                            heightType={SizeEnum.medium}
+                            disabled={!selectedRowIndex || !tableData}
                         />
                     </Layout>
                 )}
@@ -212,7 +225,7 @@ const mapDispatchToProps = (dispatch: any) => {
         fetchAwards() { return dispatch(fetchAwards()); },
         fetchEducation() { return dispatch(fetchEducation()); },
         closeModal() { return dispatch(closeModal()); },
-        openModal(modalTypes: ModalTypes, onClose: any, options: any) { return dispatch(openModal(modalTypes, onClose, options)); },
+        openModal(modalTypes: ModalTypes, onClose: () => any, options: any) { return dispatch(openModal(modalTypes, onClose, options)); },
         deleteUser(id: string) { return dispatch(deleteUser(id)); }
     }
 }

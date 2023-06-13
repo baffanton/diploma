@@ -11,6 +11,7 @@ interface IIcon {
     heightType?: SizeEnum;
     fontAwesomeIcon?: IconDefinition;
     onClick?: any;
+    disabled?: boolean;
 }
 
 const Icon: React.FC<IIcon> = ({
@@ -20,11 +21,13 @@ const Icon: React.FC<IIcon> = ({
     heightType,
     fontAwesomeIcon,
     onClick,
+    disabled,
 }) => {
     const classNames = cx(
         'icon',
         (pointer || onClick) && 'icon_pointer',
         `icon_heightType_${heightType}`,
+        disabled && 'icon_disabled',
         className,
     );
 

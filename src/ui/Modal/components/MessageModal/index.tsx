@@ -9,15 +9,15 @@ import { Icon } from 'ui/Icon';
 
 interface IMessageModal {
     onClose: () => void;
-    option: { message: string };
+    option: { message: string, title?: string };
 }
 
 const MessageModal: React.FC<IMessageModal> = ({ onClose, option }) => {
-    const { message } = option;
+    const { message, title } = option;
     return (
         <Layout className='message-modal'>
             <Layout className='message-modal__header'>
-                <Text className='message-modal__title' fontSize={SizeEnum.large}>Сообщение</Text>
+                <Text className='message-modal__title' fontSize={SizeEnum.large}>{title || 'Сообщение'}</Text>
                 <Icon className='message-modal__close' onClick={() => onClose()} fontAwesomeIcon={faXmark} />
             </Layout>
             <Layout className='message-modal__body'>

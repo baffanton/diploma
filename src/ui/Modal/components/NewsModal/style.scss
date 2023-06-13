@@ -1,7 +1,9 @@
+@import "global.scss";
+
 .news-modal {
     width: 584px;
     height: 794px;
-    background-color: white;
+    background-color: $white;
     border-radius: 20px;
     padding: 16px;
     display: flex;
@@ -16,15 +18,14 @@
 .news-modal__title {
     width: 100%;
     text-align: center;
-    color: #002E45;
+    color: $darkBlue;
 }
 
 .news-modal__close {
     position: absolute;
     right: 0;
     height: 35px;
-    color: #002E45;
-    cursor: pointer;
+    color: $darkBlue;
 }
 
 .news-modal__content {
@@ -44,7 +45,7 @@
 }
 
 .news-modal__description {
-    color: #002E45;
+    color: $darkBlue;
     line-height: 30px;
     text-align: center;
 }
@@ -55,7 +56,7 @@
 }
 
 .news-modal__source-title {
-    color: #002E45;
+    color: $darkBlue;
 }
 
 .news-modal__source-container {
@@ -66,12 +67,12 @@
 }
 
 .news-modal__source-item {
-    height: 50px;
+    color: $darkBlue;
     padding: 0 4px;
 }
 
 .news-modal__source-item:hover {
-    color: #FCB900;
+    color: $yellow;
 }
 
 .news-modal__picture {
