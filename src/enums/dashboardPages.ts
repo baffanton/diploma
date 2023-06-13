@@ -1,5 +1,5 @@
 export enum DashboardPagesUrlEnum {
-    osha = 'osha',
+    security = 'security',
     sport = 'sport',
     users = 'users',
     financialHelp = 'financial-help',

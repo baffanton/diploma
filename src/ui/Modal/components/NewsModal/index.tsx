@@ -1,10 +1,10 @@
 import { Layout } from 'widgets/Layout';
-import { Text } from 'ui/Text';
+import { Text } from 'widgets/Text';
 import './style.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { FontSizesEnum } from 'enums/fontSizeTypes';
 import { faTelegram, faVk } from '@fortawesome/free-brands-svg-icons';
+import { SizeEnum } from 'enums/sizeTypes';
+import { Icon } from 'ui/Icon';
 
 interface INewsModal {
     onClose: any;
@@ -17,8 +17,8 @@ const NewsModal: React.FC<INewsModal> = ({ onClose, option }) => {
     return (
         <Layout className='news-modal'>
             <Layout className='news-modal__header'>
-                <Text className='news-modal__title' fontSize={FontSizesEnum.large}>{title}</Text>
-                <FontAwesomeIcon className='news-modal__close' onClick={() => onClose()} icon={faXmark} />
+                <Text className='news-modal__title' fontSize={SizeEnum.large}>{title}</Text>
+                <Icon className='news-modal__close' onClick={() => onClose()} fontAwesomeIcon={faXmark} />
             </Layout>
             <Layout className='news-modal__content'>
                 <Layout className='news-modal__main'>
@@ -26,12 +26,12 @@ const NewsModal: React.FC<INewsModal> = ({ onClose, option }) => {
                     <Layout className='news-modal__source'>
                         <Text className='news-modal__source-title'>Источники: </Text>
                         <Layout className='news-modal__source-container'>
-                            <FontAwesomeIcon className='news-modal__source-item' icon={faVk} />
-                            <FontAwesomeIcon className='news-modal__source-item' icon={faTelegram} />
+                            <Icon className='news-modal__source-item' fontAwesomeIcon={faVk} />
+                            <Icon className='news-modal__source-item' fontAwesomeIcon={faTelegram} />
                         </Layout>
                     </Layout>
                 </Layout>
-                <img className='news-modal__picture' src={picture} alt="" />
+                <Icon className='news-modal__picture' src={picture} />
             </Layout>
         </Layout>
     )

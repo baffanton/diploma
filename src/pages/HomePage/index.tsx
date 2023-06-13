@@ -7,13 +7,13 @@ import { fetchEvents, fetchNews } from "store/reducers/HomePageReducer/actions";
 import { connect } from "react-redux";
 import { Dispatch, useEffect } from "react";
 import { IFetchEvents, IFetchNews } from "store/reducers/HomePageReducer/types";
-import { IEvent } from "types/IEvent";
+import { IEventModel } from "types/IEventModel";
 import { INewsModel } from "types/INewsModel";
 
 interface IHomePage {
     fetchNews: () => Dispatch<IFetchNews>;
     fetchEvents: () => Dispatch<IFetchEvents>;
-    events: IEvent[];
+    events: IEventModel[];
     news: INewsModel[];
 }
 

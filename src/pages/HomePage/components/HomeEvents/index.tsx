@@ -1,11 +1,12 @@
 import { Event } from './components/Event';
 import './style.scss';
 import { Layout } from 'widgets/Layout';
-import { Text } from 'ui/Text';
-import { IEvent } from 'types/IEvent';
+import { IEventModel } from 'types/IEventModel';
+import { Title } from 'widgets/Title';
+import { WeightEnum } from 'enums/weightTypes';
 
 interface IHomeEvents {
-    events: IEvent[];
+    events: IEventModel[];
 }
 
 const HomeEvents: React.FC<IHomeEvents> = ({ events }) => {
@@ -15,7 +16,7 @@ const HomeEvents: React.FC<IHomeEvents> = ({ events }) => {
 
     return (
         <Layout className="home-events">
-            <Text className="home-events__title">Мероприятия</Text>
+            <Title className="home-events__title" fontWeight={WeightEnum.bold}>Мероприятия</Title>
             <Layout className='home-events__container'>
                 {events.map(event => {
                     return <Event key={event.id} event={event} />

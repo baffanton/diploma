@@ -1,10 +1,47 @@
-import { request } from "helpers/request"
-import { IAddUser, IDeleteUser, IGetUsers, TABLE_DELETE_USER, TABLE_GET_USERS, TABLE_ADD_USER, IEditUser, TABLE_EDIT_USER, IGetAwards, TABLE_GET_AWARDS, IGetEvents, TABLE_GET_EVENTS, IGetUserEvents, TABLE_GET_USER_EVENTS, IGetUserAwards, TABLE_GET_USER_AWARDS } from "./types"
-import { RequestTypesEnum } from "enums/requestTypes"
+import { request } from "helpers/request";
+import { IFetchAwards, IFetchEducation, IFetchFinancialHelp, IFetchLegalHelp, IFetchSecurity, IFetchSport, IFetchUsers, TABLE_GET_AWARDS, TABLE_GET_EDUCATION, TABLE_GET_FINANCIAL_HELP, TABLE_GET_LEGAL_HELP, TABLE_GET_SECURITY, TABLE_GET_SPORT, TABLE_GET_USERS } from "./types";
+import { RequestTypesEnum } from "enums/requestTypes";
 import { RequestApiEnum } from "enums/requestApi";
-import { IUserModel } from "./helpers";
 
-export const fetchUsers = () => (dispatch: (arg0: IGetUsers) => void) => {
+export const fetchSecurity = () => (dispatch: (arg0: (IFetchSecurity)) => void) => {
+    request(RequestTypesEnum.get, RequestApiEnum.getSecurity, null)
+        .then(res => {
+            const { data } = res;
+
+            if (!data) {
+                return null;
+            }
+
+            dispatch({
+                type: TABLE_GET_SECURITY,
+                security: data,
+            });
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
+export const fetchSport = () => (dispatch: (arg0: (IFetchSport)) => void) => {
+    request(RequestTypesEnum.get, RequestApiEnum.getSport, null)
+        .then(res => {
+            const { data } = res;
+
+            if (!data) {
+                return null;
+            }
+
+            dispatch({
+                type: TABLE_GET_SPORT,
+                sport: data,
+            });
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
+export const fetchUsers = () => (dispatch: (arg0: (IFetchUsers)) => void) => {
     request(RequestTypesEnum.get, RequestApiEnum.getUsers, null)
         .then(res => {
             const { data } = res;
@@ -16,11 +53,52 @@ export const fetchUsers = () => (dispatch: (arg0: IGetUsers) => void) => {
             dispatch({
                 type: TABLE_GET_USERS,
                 users: data,
-            })
+            });
+        })
+        .catch(error => {
+            console.log(error);
         })
 }
 
-export const fetchAwards = () => (dispatch: (arg0: IGetAwards) => void) => {
+export const fetchFinancialHelp = () => (dispatch: (arg0: (IFetchFinancialHelp)) => void) => {
+    request(RequestTypesEnum.get, RequestApiEnum.getFinancialHelp, null)
+        .then(res => {
+            const { data } = res;
+
+            if (!data) {
+                return null;
+            }
+
+            dispatch({
+                type: TABLE_GET_FINANCIAL_HELP,
+                financialHelp: data,
+            });
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
+export const fetchLegalHelp = () => (dispatch: (arg0: (IFetchLegalHelp)) => void) => {
+    request(RequestTypesEnum.get, RequestApiEnum.getLegalHelp, null)
+        .then(res => {
+            const { data } = res;
+
+            if (!data) {
+                return null;
+            }
+
+            dispatch({
+                type: TABLE_GET_LEGAL_HELP,
+                legalHelp: data,
+            });
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
+export const fetchAwards = () => (dispatch: (arg0: (IFetchAwards)) => void) => {
     request(RequestTypesEnum.get, RequestApiEnum.getAwards, null)
         .then(res => {
             const { data } = res;
@@ -32,12 +110,15 @@ export const fetchAwards = () => (dispatch: (arg0: IGetAwards) => void) => {
             dispatch({
                 type: TABLE_GET_AWARDS,
                 awards: data,
-            })
+            });
+        })
+        .catch(error => {
+            console.log(error);
         })
 }
 
-export const fetchEvents = () => (dispatch: (arg0: IGetEvents) => void) => {
-    request(RequestTypesEnum.get, RequestApiEnum.getEvents, null)
+export const fetchEducation = () => (dispatch: (arg0: (IFetchEducation)) => void) => {
+    request(RequestTypesEnum.get, RequestApiEnum.getEducation, null)
         .then(res => {
             const { data } = res;
 
@@ -46,128 +127,15 @@ export const fetchEvents = () => (dispatch: (arg0: IGetEvents) => void) => {
             }
 
             dispatch({
-                type: TABLE_GET_EVENTS,
-                events: data,
-            })
+                type: TABLE_GET_EDUCATION,
+                education: data,
+            });
+        })
+        .catch(error => {
+            console.log(error);
         })
 }
 
-export const fetchUserEvents = () => (dispatch: (arg0: IGetUserEvents) => void) => {
-    request(RequestTypesEnum.get, RequestApiEnum.getUserEvents, null)
-        .then(res => {
-            const { data } = res;
-
-            if (!data) {
-                return null;
-            }
-
-            dispatch({
-                type: TABLE_GET_USER_EVENTS,
-                userEvents: data,
-            })
-        })
-}
-
-export const fetchUserAwards = () => (dispatch: (arg0: IGetUserAwards) => void) => {
-    request(RequestTypesEnum.get, RequestApiEnum.getUserAwards, null)
-        .then(res => {
-            const { data } = res;
-
-            if (!data) {
-                return null;
-            }
-
-            dispatch({
-                type: TABLE_GET_USER_AWARDS,
-                userAwards: data,
-            })
-        })
-}
-
-export const deleteUser = (id: string) => (dispatch: (arg0: IDeleteUser) => void) => {
-    request(RequestTypesEnum.post, `${RequestApiEnum.deleteUser}/${id}`, null)
-        .then(res => {
-            const { status } = res;
-
-            if (status !== 200) {
-                return null;
-            }
-
-            request(RequestTypesEnum.get, RequestApiEnum.getUsers, null)
-                .then(res => {
-                    const { data } = res;
-
-                    if (!data) {
-                        return null;
-                    }
-
-                    dispatch({
-                        type: TABLE_DELETE_USER,
-                        users: data,
-                    })
-                })
-        })
-}
-
-export const addUser = (model: IUserModel) => (dispatch: (arg0: IAddUser) => void) => {
-    const { username } = model;
-
-    request(RequestTypesEnum.get, `${RequestApiEnum.userIsExist}/${username}`, null)
-        .then(res => {
-            const { data } = res;
-
-            if (data) {
-                return null;
-            }
-
-            request(RequestTypesEnum.post, RequestApiEnum.addUser, model)
-                .then(res => {
-                    const { status } = res;
-
-                    if (status !== 201) {
-                        return null;
-                    }
-
-                    request(RequestTypesEnum.get, RequestApiEnum.getUsers, null)
-                        .then(res => {
-                            const { data } = res;
-
-                            if (!data) {
-                                return null;
-                            }
-
-                            dispatch({
-                                type: TABLE_ADD_USER,
-                                users: data,
-                            })
-                        })
-                })
-        })
-    
-}
-
-export const editUser = (model: IUserModel) => (dispatch: (arg0: IEditUser) => void) => {
-    request(RequestTypesEnum.post, RequestApiEnum.editUser, model)
-        .then(res => {
-            const { status } = res;
-
-            if (status !== 201) {
-                return null;
-            }
-
-            request(RequestTypesEnum.get, RequestApiEnum.getUsers, null)
-                .then(res => {
-                    const { data } = res;
-
-                    if (!data) {
-                        return null;
-                    }
-
-                    dispatch({
-                        type: TABLE_EDIT_USER,
-                        users: data,
-                    })
-                })
-        })
-    
+export const deleteUser = async (id: string) => {
+    return await request(RequestTypesEnum.delete, RequestApiEnum.deleteUser, id);
 }

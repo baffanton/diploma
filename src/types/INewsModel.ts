@@ -5,6 +5,6 @@ export interface INewsModel {
     source: {
         vk?: string;
         telegram?: string;
-    },
+    } | null,
     picture: string;
 }

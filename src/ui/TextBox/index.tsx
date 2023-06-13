@@ -4,9 +4,9 @@ import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { Layout } from 'widgets/Layout';
 import { LabelPositionEnum } from 'enums/labelPositionTypes';
 import { InputTypesEnum } from 'enums/inputTypes';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { HeightTypes } from 'enums/heightTypes';
 import { ColorThemeType } from 'enums/colorThemeTypes';
+import { Icon } from 'ui/Icon';
+import { SizeEnum } from 'enums/sizeTypes';
 
 interface ITextBox {
     id: string;
@@ -25,7 +25,7 @@ interface ITextBox {
     onIconClick?: any;
     labelPosition?: LabelPositionEnum;
     type?: InputTypesEnum;
-    heightType?: HeightTypes;
+    heightType?: SizeEnum;
     colorTheme?: ColorThemeType;
     disabled?: boolean;
 }
@@ -46,7 +46,7 @@ const TextBox: React.FC<ITextBox> = ({
     onIconClick,
     labelPosition,
     type = InputTypesEnum.text,
-    heightType = HeightTypes.medium,
+    heightType = SizeEnum.medium,
     colorTheme = ColorThemeType.primary,
     disabled
 }) => {
@@ -84,7 +84,12 @@ const TextBox: React.FC<ITextBox> = ({
                         disabled={disabled}
                         {...register}
                     />
-                    <FontAwesomeIcon className="text-box__icon" onClick={onIconClick} icon={icon} />
+                    <Icon
+                        className="text-box__icon"
+                        onClick={onIconClick}
+                        fontAwesomeIcon={icon}
+                        heightType={SizeEnum.short}
+                    />
                 </Layout>
             )
         }

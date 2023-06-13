@@ -1,6 +1,5 @@
-export interface IEvent {
+export interface IEventModel {
     id: string;
-    shortTitle?: string;
     title: string;
     date: string;
     place: string;
@@ -8,8 +7,9 @@ export interface IEvent {
         main: string;
         contact?: string;
     };
-    post: {
+    source: {
         vk?: string;
         telegram?: string;
     };
 }
+

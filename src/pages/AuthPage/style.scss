@@ -1,3 +1,5 @@
+@import 'global.scss';
+
 .auth-page {
     width: 100%;
     height: 100%;
@@ -20,7 +22,7 @@
 
 .auth-page__body {
     width:600px;
-    background-color: #0693E3;
+    background-color: $blue;
     border-radius: 20px;
     padding: 16px;
     display: flex;
@@ -38,8 +40,8 @@
     width: 190px;
 }
 
-.auth-page__forget {
-    color: white;
+.auth-page__management .auth-page__forget {
+    color: $white;
     font-size: 25px;
     cursor: pointer;
 }

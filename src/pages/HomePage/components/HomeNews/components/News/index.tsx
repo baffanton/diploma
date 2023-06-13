@@ -1,13 +1,13 @@
 import './style.scss';
 import { Layout } from 'widgets/Layout';
-import { Text } from "ui/Text";
-import { FontSizesEnum } from 'enums/fontSizeTypes';
+import { Text } from "widgets/Text";
 import { closeModal, openModal } from 'store/reducers/ModalReducer/actions';
 import { connect } from 'react-redux';
 import { ModalTypes } from 'enums/modalTypes';
 import { INewsModel } from 'types/INewsModel';
 import { ICloseModal, IOpenModal } from 'store/reducers/ModalReducer/types';
 import { Dispatch } from 'react';
+import { SizeEnum } from 'enums/sizeTypes';
 
 interface INews {
     item: INewsModel;
@@ -31,9 +31,9 @@ const News: React.FC<INews> = ({ item, openModal, closeModal }) => {
             <Layout className="news__body">
                 <img className='news__picture' src={picture} alt="" />
                 <Layout className='news__description'>
-                    <Text className="news__title" fontSize={FontSizesEnum.large}>{title}</Text>
+                    <Text className="news__title" fontSize={SizeEnum.large}>{title}</Text>
                     <Layout className='news__more-container'>
-                        <Text className='news__more' fontSize={FontSizesEnum.medium} onClick={onClickMoreHandler}>Подробнее</Text>
+                        <Text className='news__more' fontSize={SizeEnum.medium} onClick={onClickMoreHandler}>Подробнее</Text>
                     </Layout>
                 </Layout>
             </Layout>

@@ -1,34 +1,34 @@
-export interface IUserModel {
+export interface ISecurityModel {
     id: string;
-    username: string;
-    role: string;
-    gender: string;
-    age: string;
+    name: string;
+}
+
+export interface ISportModel {
+    id: string;
+    name: string;
+}
+
+export interface IUsersModel {
+    id: string;
+    name: string;
+}
+
+export interface IFinancialHelpModel {
+    id: string;
+    name: string;
+}
+
+export interface ILegalHelpModel {
+    id: string;
+    name: string;
 }
 
 export interface IAwardsModel {
+    id: string;
     name: string;
-    description: string;
-    type: string;
-    points: number;
 }
 
-export interface IEventsModel {
+export interface IEducationModel {
+    id: string;
     name: string;
-    description: string;
-    address: string;
-    date: string;
-    type: string;
-}
-
-export interface IUserEventsModel {
-    user: string;
-    events: string;
-    type: string;
-}
-
-export interface IUserAwardsModel {
-    user: string;
-    awards: string;
-    date: string;
 }

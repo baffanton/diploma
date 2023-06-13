@@ -1,45 +1,62 @@
+@import 'global.scss';
+
 .button {
-    cursor: pointer;
-    border-radius: 20px;
+    text-align: center;
     border: none;
+    border-radius: 20px;
+}
 
-    &_size {
-        &_little {
-            height: 42px;
-            max-height: 42px;
-            min-height: 42px;
-            font-size: 20px;
-        }
+.button_theme_primary {
+    background-color: $blue;
+    color: $white;
+}
 
-        &_medium {
-            height: 60px;
-            min-height: 60px;
-            max-height: 60px;
-            font-size: 30px;
-        }
+.button_theme_ordinary {
+    background-color: $darkBlue;
+    color: $white;
+}
 
-        &_big {
-            height: 72px;
-            min-height: 72px;
-            max-height: 72px;
-            font-size: 33px;
-        }
-    }
+.button_theme_white {
+    background-color: $white;
+    color: $darkBlue;
+}
 
-    &_theme {
-        &_primary {
-            background-color: #0693E3;
-            color: white;
-        }
+.button_height_s {
+    height: 42px;
+    font-size: 20px;
+}
 
-        &_ordinary {
-            background-color: #002E45;
-            color: white;
-        }
+.button_height_m {
+    height: 60px;
+    font-size: 30px;
+}
 
-        &_white {
-            background-color: white;
-            color: #002E45;
-        }
-    }
+.button_height_l {
+    height: 72px;
+    font-size: 33px;
+}
+
+.button_with-icon {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button__title {
+    text-align: center;
+}
+
+.button__icon {
+    height: 100%;
+}
+
+.button__icon_color_primary {
+    border-left: 2px solid $darkBlue;
+}
+
+.button__icon_color_ordinary {
+    border-left: 2px solid $blue;
+}
+
+.button__icon_color_white {
+    border-left: 2px solid $darkBlue;
 }

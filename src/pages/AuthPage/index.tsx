@@ -11,10 +11,9 @@ import { TextBox } from 'ui/TextBox';
 import { useEffect, useState } from 'react';
 import { InputTypesEnum } from 'enums/inputTypes';
 import { LabelPositionEnum } from 'enums/labelPositionTypes';
-import { HeightTypes } from 'enums/heightTypes';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { CheckBox } from 'ui/CheckBox';
-import { Button } from 'ui/ButtonU';
+import { Button } from 'ui/Button';
 import { connect } from 'react-redux';
 import { fetchUser, getToken } from 'store/reducers/UserReducer/actions';
 import { Dispatch } from '@reduxjs/toolkit';
@@ -23,6 +22,8 @@ import { ModalTypes } from 'enums/modalTypes';
 import { closeModal, openModal } from 'store/reducers/ModalReducer/actions';
 import { ICloseModal, IOpenModal } from 'store/reducers/ModalReducer/types';
 import { useNavigate } from 'react-router-dom';
+import { SizeEnum } from 'enums/sizeTypes';
+import { Text } from 'widgets/Text';
 
 interface IAuthPage {
     auth: boolean;
@@ -70,8 +71,6 @@ const AuthPage: React.FC<IAuthPage> = ({ auth, getToken, fetchUser, closeModal, 
                 fetchUser();
             })
             .catch(errors => {
-                console.log(errors);
-
                 openModal(ModalTypes.messageModal, onCloseModalHandler, { message: "Неверный логин или пароль" });
 
                 resetField("username");
@@ -101,7 +100,7 @@ const AuthPage: React.FC<IAuthPage> = ({ auth, getToken, fetchUser, closeModal, 
                             register={register('username')}
                             error={errors.username}
                             colorTheme={ColorThemeType.ordinary}
-                            heightType={HeightTypes.large}
+                            heightType={SizeEnum.large}
                             classNameContainer='auth-page__username'
                         />
                         <TextBox 
@@ -112,7 +111,7 @@ const AuthPage: React.FC<IAuthPage> = ({ auth, getToken, fetchUser, closeModal, 
                             register={register('password')}
                             error={errors.password}
                             colorTheme={ColorThemeType.ordinary}
-                            heightType={HeightTypes.large}
+                            heightType={SizeEnum.large}
                             classNameContainer='auth-page__password'
                             icon={isShowPassword ? faEyeSlash : faEye}
                             onIconClick={onIconClick}
@@ -124,17 +123,17 @@ const AuthPage: React.FC<IAuthPage> = ({ auth, getToken, fetchUser, closeModal, 
                             id="remember"
                             label="Не выходить"
                             colorTheme={ColorThemeType.ordinary}
-                            heightType={HeightTypes.large}
+                            heightType={SizeEnum.large}
                             register={register('remember')}
                             errors={errors.remember}                      
                         />
-                        <Layout className='auth-page__forget'>Забыли пароль?</Layout>
+                        <Text className='auth-page__forget'>Забыли пароль?</Text>
                     </Layout>
                     <Layout className='auth-page__submit-button-container'>
                         <Button 
                             className='auth-page__submit-button'
                             colorTheme={ColorThemeType.white}
-                            heightType={HeightTypes.medium}
+                            heightType={SizeEnum.medium}
                         >
                             Войти
                         </Button>
@@ -154,16 +153,10 @@ const mapStateToProps = (state: any) => {
 }
 
 const mapDispatchToProps = (dispatch: any) => {
-    return {
-        getToken(username: string, password: string) {
-            return dispatch(getToken(username, password));
-        },
-        fetchUser() {
-            return dispatch(fetchUser());
-        },
-        closeModal() {
-            return dispatch(closeModal());
-        },
+    return { 
+        getToken(username: string, password: string) { return dispatch(getToken(username, password)); },
+        fetchUser() { return dispatch(fetchUser()); },
+        closeModal() { return dispatch(closeModal()); },
         openModal(modalTypes: ModalTypes, onClose: () => void, option: any) {
             return dispatch(openModal(modalTypes, onClose, option));
         }

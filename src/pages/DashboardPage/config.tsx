@@ -22,31 +22,31 @@ export const DashboardPagesConfig: IDashboardPage[] = [
         title: "Награждения",
         tableConfig: awardsConfig,
         url: DashboardPagesUrlEnum.awards,
-        exportUrl: RequestApiEnum.awardsExport,
+        exportUrl: RequestApiEnum.getAwards,
         isClickable: false
     },
     {
         id: DashboardPagesUrlEnum.education,
-        title: "Мероприятия",
+        title: "Образование",
         tableConfig: eventsConfig,
         url: DashboardPagesUrlEnum.education,
-        exportUrl: RequestApiEnum.eventsExport,
+        exportUrl: RequestApiEnum.getEducation,
         isClickable: false
     },
     {
         id: DashboardPagesUrlEnum.financialHelp,
-        title: "Награды пользователей",
+        title: "Материальная помощь",
         tableConfig: userAwardsConfig,
         url: DashboardPagesUrlEnum.financialHelp,
-        exportUrl: RequestApiEnum.userAwardsExport,
+        exportUrl: RequestApiEnum.getFinancialHelp,
         isClickable: false
     },
     {
         id: DashboardPagesUrlEnum.legalHelp,
-        title: "Мероприятия пользователей",
+        title: "Юридическая помощь",
         tableConfig: userEventsConfig,
         url: DashboardPagesUrlEnum.legalHelp,
-        exportUrl: RequestApiEnum.userEventsExport,
+        exportUrl: RequestApiEnum.getLegalHelp,
         isClickable: false
     },
     {
@@ -54,15 +54,15 @@ export const DashboardPagesConfig: IDashboardPage[] = [
         title: "Участники",
         tableConfig: usersConfig,
         url: DashboardPagesUrlEnum.users,
-        exportUrl: RequestApiEnum.usersExport,
+        exportUrl: RequestApiEnum.getUsers,
         isClickable: true
     },
     {
-        id: DashboardPagesUrlEnum.osha,
+        id: DashboardPagesUrlEnum.security,
         title: "Охрана труда",
         tableConfig: usersConfig,
-        url: DashboardPagesUrlEnum.osha,
-        exportUrl: RequestApiEnum.usersExport,
+        url: DashboardPagesUrlEnum.security,
+        exportUrl: RequestApiEnum.getSecurity,
         isClickable: false
     },
     {
@@ -70,7 +70,7 @@ export const DashboardPagesConfig: IDashboardPage[] = [
         title: "Спортивная жизнь",
         tableConfig: usersConfig,
         url: DashboardPagesUrlEnum.sport,
-        exportUrl: RequestApiEnum.usersExport,
+        exportUrl: RequestApiEnum.getSport,
         isClickable: false
     },
 ]

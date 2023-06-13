@@ -1,33 +1,32 @@
+@import "global.scss";
+
 .table {
     padding: 15px;
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
+}
 
-    &__thead {
-        color: white;
-        height: 70px;
-        background-color: #0693E3;
-    }
+.table__thead {
+    color: white;
+    height: 70px;
+    background-color: $blue;
+}
 
-    &__tbody {
-        &_tr {
-            height: 60px;
-            border-bottom: 3px solid #0693E3;
+.table__tbody_tr {
+    height: 60px;
+    border-bottom: 3px solid $blue;
+}
 
-            &_isSelected {
-                background-color: #002E45;
-                color: white;
-            }
-        }
+.table__tbody_tr_isSelected {
+    background-color: $darkBlue;
+    color: $white;
+}
 
-        &_td {
-            padding: 0 10px;
+.table__tbody_td {
+    padding: 0 10px;
+}
 
-            &:not(:last-child) {
-                border-right: 3px solid #0693E3;
-            }
-        }
-        
-    }
+.table__tbody_td:not(:last-child) {
+    border-right: 3px solid $blue;
 }

@@ -1,21 +1,21 @@
 import cx from 'classnames';
-import { FontSizesEnum } from 'enums/fontSizeTypes';
 import './style.scss';
+import { SizeEnum } from 'enums/sizeTypes';
 
 interface IText {
     className?: string;
     children?: React.ReactNode;
-    fontSize?: FontSizesEnum;
+    fontSize?: SizeEnum;
     onClick?: any;
 }
 
 const Text: React.FC<IText> = ({ 
     className, 
     children,
-    fontSize = FontSizesEnum.medium,
+    fontSize = SizeEnum.medium,
     onClick,
 }) => {
-    const classNames = cx('text', `text__size_${fontSize}`, onClick && 'text_cursor_pointer', className);
+    const classNames = cx('text', `text_size_${fontSize}`, onClick && 'text_cursor_pointer', className);
     
     return (
         <p className={classNames} onClick={onClick}>{children}</p>

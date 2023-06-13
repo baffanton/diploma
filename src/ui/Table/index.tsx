@@ -1,5 +1,5 @@
 import './style.scss';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { useTable } from 'react-table';
 import { ITableColumn } from 'helpers/tableConfigTypes';
 import cx from 'classnames';

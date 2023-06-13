@@ -9,8 +9,9 @@ import { connect, useDispatch } from "react-redux";
 import { Outlet, Route, Routes, useNavigate } from "react-router-dom";
 import { IModal } from "store/reducers/ModalReducer/helpers";
 import { fetchUser } from "store/reducers/UserReducer/actions";
-import { Column } from "ui/Field";
 import { Modal } from "ui/Modal";
+import { Layout } from "widgets/Layout";
+import './style.scss';
 
 
 interface IPageBuilder {
@@ -38,14 +39,14 @@ const PageBuilder: React.FC<IPageBuilder> = ({ auth, isOpen, modal }) => {
     //     dispatch(fetchUser({username: "user", password: "password", remember: false}));
     // }, [])
 
-    useEffect(() => {
-        if (!auth) {
-            navigate('/');
-        }
-    }, [auth, navigate])
+    // useEffect(() => {
+    //     if (!auth) {
+    //         navigate('/');
+    //     }
+    // }, [auth, navigate])
 
     return (
-        <Column className="page" fullHeight>
+        <Layout className="page">
             <Routes>
                 <Route path="/" element={<AuthPage />} />
                 <Route path="/home" element={<HomePage />} />
@@ -57,7 +58,7 @@ const PageBuilder: React.FC<IPageBuilder> = ({ auth, isOpen, modal }) => {
                 </Route>
             </Routes>
             {getModal(isOpen, modal)}
-        </Column>
+        </Layout>
     )
 }
 

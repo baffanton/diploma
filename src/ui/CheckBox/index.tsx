@@ -2,7 +2,7 @@ import cx from 'classnames';
 import './style.scss';
 import { Layout } from 'widgets/Layout';
 import { ColorThemeType } from 'enums/colorThemeTypes';
-import { HeightTypes } from 'enums/heightTypes';
+import { SizeEnum } from 'enums/sizeTypes';
 
 interface ICheckBox {
     id: string;
@@ -16,7 +16,7 @@ interface ICheckBox {
     errors?: any;
     register?: any;
     colorTheme?: ColorThemeType;
-    heightType?: HeightTypes;
+    heightType?: SizeEnum;
     disabled?: boolean;
 }
 
@@ -32,7 +32,7 @@ const CheckBox: React.FC<ICheckBox> = ({
     errors,
     register,
     colorTheme = ColorThemeType.primary,
-    heightType = HeightTypes.medium,
+    heightType = SizeEnum.medium,
     disabled
 }) => {
     const inputClassNames = cx(

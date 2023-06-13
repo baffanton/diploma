@@ -1,71 +1,117 @@
-import { IDashboardPage } from "pages/DashboardPage/config";
+import { IDashboardPage } from 'pages/DashboardPage/config';
 import './style.scss';
-import { Column, Row } from "ui/Field";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faUserMinus, faUserPen, faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import { AlignItemsTypes, JustifyContentTypes } from "enums/flexTypes";
-import { useNavigate } from "react-router-dom";
-import { DashboardPagesUrlEnum } from "enums/dashboardPages";
-import { ExportButton } from "ui/ExportButton";
-import { Table } from "ui/Table";
-import { connect, useDispatch } from "react-redux";
-import { IAwardsModel, IEventsModel, IUserAwardsModel, IUserEventsModel, IUserModel } from "store/reducers/TableReducer/helpers";
-import { getTableData } from "./helpers";
-import { useEffect, useState } from "react";
-import { deleteUser, fetchAwards, fetchEvents, fetchUserAwards, fetchUserEvents, fetchUsers } from "store/reducers/TableReducer/actions";
-import { closeModal, openModal } from "store/reducers/ModalReducer/actions";
-import { ModalTypes } from "enums/modalTypes";
-import { DashboardPage } from "pages/DashboardPage";
+import {
+    IAwardsModel,
+    IEducationModel,
+    IFinancialHelpModel,
+    ILegalHelpModel,
+    ISecurityModel,
+    ISportModel,
+    IUsersModel
+} from 'store/reducers/TableReducer/helpers';
+import { Dispatch, useEffect, useState } from 'react';
+import { fetchDataByPageId, getTableDataByPageId } from './helpers';
+import { connect } from 'react-redux';
+import {
+    deleteUser,
+    fetchAwards,
+    fetchEducation,
+    fetchFinancialHelp,
+    fetchLegalHelp,
+    fetchSecurity,
+    fetchSport,
+    fetchUsers
+} from 'store/reducers/TableReducer/actions';
+import {
+    IFetchAwards,
+    IFetchEducation,
+    IFetchFinancialHelp,
+    IFetchLegalHelp,
+    IFetchSecurity,
+    IFetchSport,
+    IFetchUsers
+} from 'store/reducers/TableReducer/types';
+import { useNavigate } from 'react-router-dom';
+import { Layout } from 'widgets/Layout';
+import { Table } from 'ui/Table';
+import { faArrowLeft, faDownload, faUserMinus, faUserPen, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { Text } from "widgets/Text";
+import { DashboardPagesUrlEnum } from 'enums/dashboardPages';
+import { closeModal, openModal } from 'store/reducers/ModalReducer/actions';
+import { ICloseModal, IOpenModal } from 'store/reducers/ModalReducer/types';
+import { ModalTypes } from 'enums/modalTypes';
+import { Title } from 'widgets/Title';
+import { SizeEnum } from 'enums/sizeTypes';
+import { Link } from 'widgets/Link';
+import { Icon } from 'ui/Icon';
 
 interface IDashboardMore {
     page: IDashboardPage;
-    users: IUserModel[] | null;
-    awards: IAwardsModel[] | null;
-    events: IEventsModel[] | null;
-    userAwards: IUserAwardsModel[] | null;
-    userEvents: IUserEventsModel[] | null;
+    security: ISecurityModel[];
+    sport: ISportModel[];
+    users: IUsersModel[];
+    financialHelp: IFinancialHelpModel[];
+    legalHelp: ILegalHelpModel[];
+    awards: IAwardsModel[];
+    education: IEducationModel[];
+    fetchSecurity: () => Dispatch<IFetchSecurity>;
+    fetchSport: () => Dispatch<IFetchSport>;
+    fetchUsers: () => Dispatch<IFetchUsers>;
+    fetchFinancialHelp: () => Dispatch<IFetchFinancialHelp>;
+    fetchLegalHelp: () => Dispatch<IFetchLegalHelp>;
+    fetchAwards: () => Dispatch<IFetchAwards>;
+    fetchEducation: () => Dispatch<IFetchEducation>;
+    closeModal: () => Dispatch<ICloseModal>;
+    openModal: (modalTypes: ModalTypes, onClose: any, options: any) => Dispatch<IOpenModal>;
+    deleteUser: (id: string) => Promise<any>;
 }
 
 const DashboardMore: React.FC<IDashboardMore> = ({ 
     page, 
+    security, 
+    sport, 
     users, 
-    awards, 
-    events, 
-    userAwards, 
-    userEvents 
+    financialHelp, 
+    legalHelp,
+    awards,
+    education,
+    fetchSecurity,
+    fetchSport,
+    fetchUsers,
+    fetchFinancialHelp,
+    fetchLegalHelp,
+    fetchAwards,
+    fetchEducation,
+    closeModal,
 }) => {
+    const navigate = useNavigate();
     const { id, title, exportUrl, tableConfig, isClickable } = page;
     const [selectedRowIndex, setSelectedRowIndex] = useState<string | null>(null);
-    const dispatch = useDispatch();
-    const tableData = getTableData(id, users, awards, events, userAwards, userEvents);
+    const tableData = getTableDataByPageId(id, security, sport, users, financialHelp, legalHelp, awards, education);
 
     useEffect(() => {
-        // @ts-ignore
-        dispatch(fetchUsers())
-        // @ts-ignore
-        dispatch(fetchAwards())
-        // @ts-ignore
-        dispatch(fetchEvents())
-        // @ts-ignore
-        dispatch(fetchUserAwards())
-        // @ts-ignore
-        dispatch(fetchUserEvents())
-    }, [dispatch])
-
-    const navigate = useNavigate();
+        fetchDataByPageId(
+            id,
+            fetchSecurity,
+            fetchSport,
+            fetchUsers,
+            fetchFinancialHelp,
+            fetchLegalHelp,
+            fetchAwards,
+            fetchEducation
+        );
+    }, [fetchAwards, fetchEducation, fetchFinancialHelp, fetchLegalHelp, fetchSecurity, fetchSport, fetchUsers, id, page]);
 
     const onBackButtonHandler = () => {
         return navigate('/dashboard');
     }
 
     const closeModalHandler = () => {
-        // @ts-ignore
-        dispatch(closeModal());
+        closeModal();
     }
 
     const onAddMemberButtonHandler = () => {
-        // @ts-ignore
-        dispatch(openModal(ModalTypes.addUser, closeModalHandler, null));
+        openModal(ModalTypes.addUser, closeModalHandler, null);
     }
 
     const onRemoveMemberButtonHandler = () => {
@@ -73,10 +119,21 @@ const DashboardMore: React.FC<IDashboardMore> = ({
             return null;
         }
 
-        // @ts-ignore
         const ids = tableData[Number(selectedRowIndex)].id;
-        // @ts-ignore
-        dispatch(deleteUser(ids));
+
+        deleteUser(ids)
+            .then(res => {
+                const { data } = res;
+                
+                if (!data) {
+                    return null;
+                }
+
+                fetchUsers();
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     const onChangeMemberButtonHandler = () => {
@@ -90,35 +147,36 @@ const DashboardMore: React.FC<IDashboardMore> = ({
     }
 
     return (
-        <Column className="dashboard-more">
-            <Row className="dashboard-more__work-elements" ai={AlignItemsTypes.center}>
-                <FontAwesomeIcon className="dashboard-more__back" icon={faArrowLeft} onClick={onBackButtonHandler} />
-                <p className="dashboard-more__title">{title}</p>
-                <ExportButton url={exportUrl} />
+        <Layout className="dashboard-more">
+            <Layout className="dashboard-more__work-elements">
+                <Icon className="dashboard-more__back" fontAwesomeIcon={faArrowLeft} onClick={onBackButtonHandler} />
+                <Title className="dashboard-more__title" fontSize={SizeEnum.large}>{title}</Title>
+                <Link className='dashboard-more__export' href={exportUrl}>
+                    <Text className='dashboard-more__export-title' fontSize={SizeEnum.large}>Экспорт</Text>
+                    <Layout className='dashboard-more__export-icon-container'>
+                        <Icon className='dashboard-more__export-icon' fontAwesomeIcon={faDownload}/>
+                    </Layout>
+                </Link>
                 {id === DashboardPagesUrlEnum.users && (
-                    <Row 
-                        className="dashboard-more__user-edit" 
-                        ai={AlignItemsTypes.center} 
-                        jc={JustifyContentTypes.spaceBetween}
-                    >
-                        <FontAwesomeIcon 
-                            className="dashboard-more__button-user-plus" 
-                            icon={faUserPlus} 
+                    <Layout className="dashboard-more__edit-panel">
+                        <Icon
+                            className="dashboard-more__add-user" 
+                            fontAwesomeIcon={faUserPlus} 
                             onClick={onAddMemberButtonHandler} 
                         />
-                        <FontAwesomeIcon 
-                            className="dashboard-more__button-user-minus" 
-                            icon={faUserMinus} 
+                        <Icon 
+                            className="dashboard-more__delete-user" 
+                            fontAwesomeIcon={faUserMinus} 
                             onClick={onRemoveMemberButtonHandler} 
                         />
-                        <FontAwesomeIcon 
-                            className="dashboard-more__button-user-edit"
-                            icon={faUserPen}
+                        <Icon 
+                            className="dashboard-more__edit-user"
+                            fontAwesomeIcon={faUserPen}
                             onClick={onChangeMemberButtonHandler}
                         />
-                    </Row>
+                    </Layout>
                 )}
-            </Row>
+            </Layout>
             <Table 
                 config={tableConfig} 
                 tableData={tableData} 
@@ -126,7 +184,7 @@ const DashboardMore: React.FC<IDashboardMore> = ({
                 selectedRowIndex={selectedRowIndex}
                 setSelectedRowIndex={setSelectedRowIndex}
             />
-        </Column>
+        </Layout>
     )
 }
 
@@ -134,12 +192,29 @@ const mapStateToProps = (state: any) => {
     const { table } = state;
 
     return {
+        security: table.security,
+        sport: table.sport,
         users: table.users,
+        financialHelp: table.financialHelp,
+        legalHelp: table.legalHelp,
         awards: table.awards,
-        events: table.events,
-        userAwards: table.userAwards,
-        userEvents: table.userEvents
+        education: table.education
     }
 }
 
-export default connect(mapStateToProps)(DashboardMore);
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        fetchSecurity() { return dispatch(fetchSecurity()); },
+        fetchSport() { return dispatch(fetchSport()); },
+        fetchUsers() { return dispatch(fetchUsers()); },
+        fetchFinancialHelp() { return dispatch(fetchFinancialHelp()); },
+        fetchLegalHelp() { return dispatch(fetchLegalHelp()); },
+        fetchAwards() { return dispatch(fetchAwards()); },
+        fetchEducation() { return dispatch(fetchEducation()); },
+        closeModal() { return dispatch(closeModal()); },
+        openModal(modalTypes: ModalTypes, onClose: any, options: any) { return dispatch(openModal(modalTypes, onClose, options)); },
+        deleteUser(id: string) { return dispatch(deleteUser(id)); }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardMore);

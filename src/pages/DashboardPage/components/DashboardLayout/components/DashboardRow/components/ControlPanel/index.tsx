@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import './style.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Layout } from 'widgets/Layout';
-import { Text } from 'ui/Text';
-import { FontSizesEnum } from 'enums/fontSizeTypes';
+import { Text } from 'widgets/Text';
+import { SizeEnum } from 'enums/sizeTypes';
+import { Icon } from 'ui/Icon';
 
 const ControlPanel: React.FC<any> = ({ panel }) => {
     const navigate = useNavigate();
@@ -16,8 +16,8 @@ const ControlPanel: React.FC<any> = ({ panel }) => {
 
     return (
         <Layout className="control-panel" onClick={clickHandler}>
-            <FontAwesomeIcon className="control-panel__icon" icon={icon} />
-            <Text className="control-panel__title" fontSize={FontSizesEnum.large}>{title}</Text>
+            <Icon className="control-panel__icon" fontAwesomeIcon={icon} />
+            <Text className="control-panel__title" fontSize={SizeEnum.large}>{title}</Text>
         </Layout>
     )
 }

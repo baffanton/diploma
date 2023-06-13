@@ -1,9 +1,8 @@
-import { IEvent } from "types/IEvent";
+import { IEventModel } from "types/IEventModel";
 
-export const configEvents: IEvent[] = [
+export const configEvents: IEventModel[] = [
     {
         id: "1",
-        shortTitle: "День города Перми",
         title: "Празднование дня города Перми",
         date: "12.06.2023",
         place: "г. Пермь",
@@ -17,7 +16,7 @@ export const configEvents: IEvent[] = [
                 `По вопросам участия в поездке просьба обращаться к председателям Цеховых комитетов. 
                 Количество мест ограничено`
         },
-        post: {
+        source: {
             vk: "https://vk.com/eurochem_prof?w=wall-153821699_2419"
         }
     },
@@ -32,13 +31,12 @@ export const configEvents: IEvent[] = [
                 `Для участия в МК необходимо направить заявку заместителю председателя Гашевой Татьяне на адрес 
                 электронной почты или Вайбер, Ватсапп в срок до 7 апреля 2023 года`
         },
-        post: {
+        source: {
             vk: "https://vk.com/eurochem_prof?w=wall-153821699_2417"
         }
     },
     {
         id: "3",
-        shortTitle: "Пермский марафон",
         title: "Пермский международный марафон",
         date: "31.07.2023",
         place: "г. Пермь",
@@ -50,7 +48,7 @@ export const configEvents: IEvent[] = [
                 `По всем организационным вопросам обращаться к заместителю председателю Гашевой Татьяне 
                 по телефону 89124857399`
         },
-        post: {
+        source: {
             vk: "https://vk.com/eurochem_prof?w=wall-153821699_2399"
         }
     },
@@ -66,7 +64,7 @@ export const configEvents: IEvent[] = [
                 После прохождения испытаний каждый участник получит подарок.`,
             contact: `Предварительная запись на участие в ГТО осуществляет Сергей Миков`
         },
-        post: {
+        source: {
             vk: "https://vk.com/eurochem_prof?w=wall-153821699_2360"
         }
     },
@@ -87,7 +85,7 @@ export const configEvents: IEvent[] = [
                 `Заявки принимаются председателями Цеховых комитетов до 15 февраля 2023 года
                 Количество мест ограничено. Поторопись!`
         },
-        post: {
+        source: {
             vk: "https://vk.com/eurochem_prof?w=wall-153821699_2350"
         }
     },

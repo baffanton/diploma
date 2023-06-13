@@ -1,4 +1,13 @@
-import { faAward, faBasketball, faPeopleGroup, faRubleSign, faScaleBalanced, faUserGraduate, faUserShield, IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import {
+    faAward,
+    faBasketball,
+    faPeopleGroup,
+    faRubleSign,
+    faScaleBalanced,
+    faUserGraduate,
+    faUserShield,
+    IconDefinition
+} from "@fortawesome/free-solid-svg-icons";
 import { DashboardPagesUrlEnum } from "enums/dashboardPages";
 
 export interface IControlPanel {
@@ -18,10 +27,10 @@ export const ControlRows: IControlRow[] = [
         id: "firstRow",
         panels: [
             {
-                id: "osha",
+                id: "security",
                 title: "Охрана труда",
                 icon: faUserShield,
-                url: DashboardPagesUrlEnum.osha
+                url: DashboardPagesUrlEnum.security
             },
             {
                 id: "sport",

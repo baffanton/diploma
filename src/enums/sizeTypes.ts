@@ -1,5 +1,5 @@
-export enum SizeTypes {
-    little = 'little',
-    medium = 'medium',
-    big = 'big'
+export enum SizeEnum {
+    short = 's',
+    medium = 'm',
+    large = 'l'
 }

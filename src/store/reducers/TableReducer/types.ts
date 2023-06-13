@@ -1,68 +1,63 @@
-import { IAwardsModel, IEventsModel, IUserAwardsModel, IUserEventsModel, IUserModel } from "./helpers";
+import { IAwardsModel, IEducationModel, IFinancialHelpModel, ILegalHelpModel, ISecurityModel, ISportModel, IUsersModel } from "./helpers";
 
+export const TABLE_GET_SECURITY = "TABLE/GET_SECURITY";
+export const TABLE_GET_SPORT = "TABLE/GET_SPORT";
 export const TABLE_GET_USERS = "TABLE/GET_USERS";
+export const TABLE_GET_FINANCIAL_HELP = "TABLE/GET_FINANCIAL_HELP";
+export const TABLE_GET_LEGAL_HELP = "TABLE/GET_LEGAL_HELP";
 export const TABLE_GET_AWARDS = "TABLE/GET_AWARDS";
-export const TABLE_GET_EVENTS = "TABLE/GET_EVENTS";
-export const TABLE_DELETE_USER = "TABLE/DELETE_USER";
-export const TABLE_ADD_USER = "TABLE/ADD_USER";
-export const TABLE_EDIT_USER = "TABLE/EDIT_USER";
-export const TABLE_GET_USER_EVENTS = "TABLE/GET_USER_EVENTS";
-export const TABLE_GET_USER_AWARDS = "TABLE/GET_USER_AWARDS";
+export const TABLE_GET_EDUCATION = "TABLE/GET_EDUCATION";
 
-export interface IGetUsers {
+export interface IFetchSecurity {
+    type: typeof TABLE_GET_SECURITY;
+    security: ISecurityModel;
+}
+
+export interface IFetchSport {
+    type: typeof TABLE_GET_SPORT;
+    sport: ISportModel;
+}
+
+export interface IFetchUsers {
     type: typeof TABLE_GET_USERS;
-    users: IUserModel[];
+    users: IUsersModel;
 }
 
-export interface IDeleteUser {
-    type: typeof TABLE_DELETE_USER;
-    users: IUserModel[];
+export interface IFetchFinancialHelp {
+    type: typeof TABLE_GET_FINANCIAL_HELP;
+    financialHelp: IFinancialHelpModel;
 }
 
-export interface IAddUser {
-    type: typeof TABLE_ADD_USER;
-    users: IUserModel[];
+export interface IFetchLegalHelp {
+    type: typeof TABLE_GET_LEGAL_HELP;
+    legalHelp: ILegalHelpModel;
 }
 
-export interface IEditUser {
-    type: typeof TABLE_EDIT_USER;
-    users: IUserModel[];
-}
-
-export interface IGetAwards {
+export interface IFetchAwards {
     type: typeof TABLE_GET_AWARDS;
-    awards: IAwardsModel[];
+    awards: IAwardsModel;
 }
 
-export interface IGetEvents {
-    type: typeof TABLE_GET_EVENTS;
-    events: IEventsModel[];
-}
-
-export interface IGetUserEvents {
-    type: typeof TABLE_GET_USER_EVENTS;
-    userEvents: IUserEventsModel[];
-}
-
-export interface IGetUserAwards {
-    type: typeof TABLE_GET_USER_AWARDS;
-    userAwards: IUserAwardsModel[];
+export interface IFetchEducation {
+    type: typeof TABLE_GET_EDUCATION;
+    education: IEducationModel;
 }
 
 export interface ITableReducerModel {
-    readonly users: IUserModel[] | null;
-    readonly awards: IAwardsModel[] | null;
-    readonly events: IEventsModel[] | null;
-    readonly userEvents: IUserEventsModel[] | null;
-    readonly userAwards: IUserAwardsModel[] | null;
+    readonly security: ISecurityModel | null;
+    readonly sport: ISportModel | null;
+    readonly users: IUsersModel | null;
+    readonly financialHelp: IFinancialHelpModel | null;
+    readonly legalHelp: ILegalHelpModel | null;
+    readonly awards: IAwardsModel | null;
+    readonly education: IEducationModel | null;
 }
 
-export type TableActionTypes = 
-    | IGetUsers
-    | IDeleteUser
-    | IAddUser
-    | IEditUser
-    | IGetAwards
-    | IGetEvents
-    | IGetUserEvents
-    | IGetUserAwards;
+export type TableActionTypes =
+    | IFetchSecurity
+    | IFetchSport
+    | IFetchUsers
+    | IFetchFinancialHelp
+    | IFetchLegalHelp
+    | IFetchAwards
+    | IFetchEducation;

@@ -4,8 +4,3 @@ export enum InputTypesEnum {
     radio = 'radio',
     password = 'password'
 }
-
-export enum InputPositionEnum {
-    input = 'input',
-    label = 'label'
-}

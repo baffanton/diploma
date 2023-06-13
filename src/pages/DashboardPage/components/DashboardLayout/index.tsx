@@ -1,7 +1,7 @@
 import { Layout } from 'widgets/Layout';
 import { DashboardRow } from './components/DashboardRow';
 import { ControlRows } from './config';
-import { Text } from 'ui/Text';
+import { Text } from 'widgets/Text';
 import './style.scss';
 
 
