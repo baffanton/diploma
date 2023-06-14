@@ -13,18 +13,18 @@
 }
 
 .auth-page__username-container {
-    margin-bottom: 16px;
+    margin-bottom: 0.8rem;
 }
 
 .auth-page__password-container {
-    margin-bottom: 16px;
+    margin-bottom: 0.8rem;
 }
 
 .auth-page__body {
-    width:600px;
+    width:30rem;
     background-color: $blue;
-    border-radius: 20px;
-    padding: 16px;
+    border-radius: 1rem;
+    padding: 0.8rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,33 +33,33 @@
 .auth-page__management {
     display: flex;
     justify-content: space-between;
-    padding: 0 16px 0 8px;
+    padding: 0 0.8rem 0 0.4rem;
 }
 
 .auth-page__submit-button {
-    width: 190px;
+    width: 9.5rem;
 }
 
 .auth-page__management .auth-page__forget {
     color: $white;
-    font-size: 25px;
+    font-size: 1.25rem;
     cursor: pointer;
 }
 
 .auth-page__company-logo {
-    margin-bottom: 16px;
+    margin-bottom: 0.8rem;
 }
 
 .auth-page__submit-button-container {
     display: flex;
     justify-content: center;
-    margin-top: 16px;
+    margin-top: 0.8rem;
 }
 
 .auth-page__username {
-    margin-bottom: 16px;
+    margin-bottom: 0.8rem;
 }
 
 .auth-page__password {
-    margin-bottom: 16px;
+    margin-bottom: 0.8rem;
 }

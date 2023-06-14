@@ -1,20 +1,22 @@
+@import "global.scss";
+
 .event {
     width: 100%;
-    height: 148px;
-    color: #002E45;
+    height: 7.4rem;
+    color: $darkBlue;
 }
 
 .event:not(:last-child) {
-    margin-bottom: 8px;
+    margin-bottom: 0.4rem;
 }
 
 .event__body {
-    padding: 8px 16px;
-    border-radius: 20px;
-    border: 2px solid #0693E3;
-    background-color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 1rem;
+    border: 0.1rem solid $blue;
+    background-color: $white;
     height: 100%;
-    color: #002E45;
+    color: $darkBlue;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -27,59 +29,59 @@
 
 .event__more {
     cursor: pointer;
-    color: #0693E3;
+    color: $blue;
 }
 
 .event__link {
-    height: 50px;
+    height: 2.5rem;
     cursor: pointer;
-    color: #002E45;
+    color: $darkBlue;
 }
 
 .event__link:hover {
-    color: #FCB900;
+    color: $yellow;
 }
 
 .event__description {
-    font-size: 20px;
-    margin: 5px 0;
+    font-size: 1rem;
+    margin: 0.25rem 0;
 }
 
 .event__source {
-    color: #002E45;
-    font-size: 20px;
-    margin-right: 10px;
+    color: $darkBlue;
+    font-size: 1rem;
+    margin-right: 0.5rem;
     cursor: default;
 }
 
 .event-active {
     position: absolute;
     z-index: 1;
-    background-color: white;
-    border-radius: 20px;
-    height: 774px;
+    background-color: $white;
+    border-radius: 1rem;
+    height: 38.7rem;
     display: flex;
     flex-direction: column;
-    color: #002E45;
+    color: $darkBlue;
     top: 0;
 }
 
 .event-active__header {
-    background-color: #002E45;
-    color: white;
-    padding: 16px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    background-color: $darkBlue;
+    color: $white;
+    padding: 0.8rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
     text-align: center;
 }
 
 .event-active__body {
-    border: 2px solid #0693E3;
+    border: 0.1rem solid $blue;
     border-top: none;
     height: 100%;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    padding: 16px;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding: 0.8rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -87,24 +89,24 @@
 
 .event-active__description {
     text-align: center;
-    line-height: 25px;
+    line-height: 1.25rem;
 }
 
 .event-active__contact {
-    margin-top: 16px;
+    margin-top: 0.8rem;
 }
 
 .event-active__contact-header {
     text-align: center;
-    margin-bottom: 8px;
+    margin-bottom: 0.4rem;
 }
 
 .event-active__date {
-    margin-top: 12px;
+    margin-top: 0.6rem;
 }
 
 .event-active__date, .event-active__place {
-    font-size: 25px;
+    font-size: 1.25rem;
 }
 
 .event-active__navigate {
@@ -119,19 +121,19 @@
 }
 
 .event-active__source {
-    margin-right: 12px;
+    margin-right: 0.6rem;
 }
 
 .event-active__link {
-    color: #002E45;
-    margin: 0 4px;
-    height: 50px;
+    color: $darkBlue;
+    margin: 0 0.2rem;
+    height: 2.5rem;
 }
 
 .event-active__link:hover {
-    color: #FCB900;
+    color: $yellow;
 }
 
 .event-active__button {
-    color: #0693E3;
+    color: $blue;
 }

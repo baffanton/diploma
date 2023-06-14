@@ -1,3 +1,5 @@
+@import "global.scss";
+
 .check-box__input {
     cursor: pointer;
     opacity: 0;
@@ -6,60 +8,60 @@
 
 .check-box__input:checked + .check-box__label::before {
     content: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d='M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z' fill='white' /></svg>");
-    color: white;
+    color: $white;
 }
 
 .check-box__label {
     display: flex;
     align-items: center;
-    margin-left: 10px;
-    color: white;
+    margin-left: 0.5rem;
+    color: $white;
     cursor: pointer;
 }
 
 .check-box__label::before {
     content: '';
     box-sizing: border-box;
-    padding: 3px;
+    padding: 0.15rem;
     margin-right: 0.5em;
 }
 
 .check-box__label_color_primary::before {
-    background-color: #0693E3;
+    background-color: $blue;
 }
 
 .check-box__label_color_ordinary::before {
-    background-color: #002E45;
+    background-color: $darkBlue;
 }
 
 .check-box__label_height_s {
-    font-size: 18px;
+    font-size: 0.9rem;
 }
 
-.check-bpx__label_height_s::before {
-    height: 20px;
-    width: 20px;
+.check-box__label_height_s::before {
+    height: 1rem;
+    width: 1rem;
 }
 
 .check-box__label_height_m {
-    font-size: 20px;
+    font-size: 1rem;
 }
 
-.check-bpx__label_height_m::before {
-    height: 25px;
-    width: 25px;
+.check-box__label_height_m::before {
+    height: 1.25rem;
+    width: 1.25rem;
 }
 
 .check-box__label_height_l {
-    font-size: 25px;
+    font-size: 1.25rem;
 }
 
 .check-box__label_height_l::before {
-    height: 30px;
-    width: 30px;
+    height: 1.5rem;
+    width: 1.5rem;
 }
 
 .check-box__error {
-    font-size: 16px;
-    color: #FFC0CB;
+    font-size: 0.8rem;
+    color: $lightRed;
 }

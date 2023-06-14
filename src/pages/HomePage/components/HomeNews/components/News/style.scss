@@ -1,9 +1,11 @@
+@import "global.scss";
+
 .news {
-    width: 416px;
-    height: 380px;
-    margin-right: 12px;
-    margin-bottom: 12px;
-    color: white;
+    width: 20.8rem;
+    height: 19rem;
+    margin-right: 0.6rem;
+    margin-bottom: 0.6rem;
+    color: $white;
 }
 
 .news:nth-child(3n) {
@@ -15,31 +17,31 @@
 }
 
 .news__body {
-    padding: 16px;
-    background-color: #002E45;
-    border-radius: 20px;
+    padding: 0.8rem;
+    background-color: $darkBlue;
+    border-radius: 1rem;
     height: 100%;
 }
 
 .news__picture {
-    width: 384px;
-    border-radius: 20px;
+    width: 19.2rem;
+    border-radius: 1rem;
     display: block;
-    height: 216px;
+    height: 10.8rem;
 }
 
 .news__description {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-top: 8px;
+    margin-top: 0.4rem;
     height: 100%;
-    max-height: 124px;
+    max-height: 6.2rem;
 }
 
 .news__title {
-    margin-bottom: 8px;
-    margin-top: 16px;
+    margin-bottom: 0.4rem;
+    margin-top: 0.8rem;
     text-align: center;
 }
 
@@ -49,10 +51,10 @@
 }
 
 .news__more {
-    color: #0693E3;
+    color: $blue;
     cursor: pointer;
 }
 
 .news__more:hover {
-    color: #FCB900;
+    color: $yellow;
 }

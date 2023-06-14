@@ -1,11 +1,13 @@
+@import "global.scss";
+
 .message-modal {
     display: flex;
     flex-direction: column;
-    width: 530px;
+    width: 26.5rem;
     height: auto;
-    background-color: white;
-    border-radius: 20px;
-    color: #002E45;
+    background-color: $white;
+    border-radius: 1rem;
+    color: $darkBlue;
 }
 
 .message-modal__header {
@@ -14,33 +16,33 @@
 }
 
 .message-modal__title {
-    padding: 8px 0 8px 16px;
-    border-bottom: 3px solid #0693E3;
+    padding: 0.4rem 0 0.4rem 0.8rem;
+    border-bottom: 0.15rem solid $blue;
     width: 100%;
 }
 
 .message-modal__close {
     position: absolute;
     right: 0;
-    height: 35px;
-    color: #002E45;
+    height: 1.75rem;
+    color: $darkBlue;
     cursor: pointer;
-    margin: 10px 16px 0 0;
+    margin: 0.5rem 0.8rem 0 0;
 }
 
 .message-modal__body {
-    padding: 16px;
+    padding: 0.8rem;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
 }
 
 .message-modal__button-container {
-    margin-top: 30px;
+    margin-top: 1.5rem;
     display: flex;
     justify-content: center;
 }
 
 .message-modal__button-close {
-    width: 200px;
+    width: 10rem;
 }

@@ -3,7 +3,7 @@ export enum RequestApiEnum {
     authUser = 'auth/login',
     getUser = '/user',
     getNews = '/news',
-    getEvents = '/events',
+    getEvents = '/event',
 
     // Новые (не проверенные)
     getSecurity = '/security',

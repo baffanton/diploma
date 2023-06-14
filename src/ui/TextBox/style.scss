@@ -20,11 +20,11 @@
 }
 
 .text-box__label-container_position_top {
-    padding: 0 16px 5px 16px;
+    padding: 0 0.8rem 0.25rem 0.8rem;
 }
 
 .text-box__label-container_position_left {
-    padding-right: 8px;
+    padding-right: 0.4rem;
 }
 
 .text-box__input-container {
@@ -33,31 +33,31 @@
 }
 
 .text-box__input {
-    padding: 0 16px;
-    border-radius: 20px;
+    padding: 0 0.8rem;
+    border-radius: 1rem;
     border: none;
     outline: none;
     width: 100%;
 }
 
 .text-box__input_height_s {
-    height: 40px;
-    font-size: 20px;
+    height: 2rem;
+    font-size: 1rem;
 }
 
 .text-box__input_height_m {
-    height: 50px;
-    font-size: 23px;
+    height: 2.5rem;
+    font-size: 1.15rem;
 }
 
 .text-box__input_height_l {
-    height: 60px;
-    font-size: 25px;
+    height: 3rem;
+    font-size: 1.25rem;
 }
 
 .text-box__input_color_primary {
     background-color: $white;
-    border: 2px solid $blue;
+    border: 0.1rem solid $blue;
     color: $darkBlue;
 }
 
@@ -75,27 +75,27 @@
 }
 
 .text-box__label_height_s {
-    font-size: 20px;
+    font-size: 1rem;
 }
 
 .text-box__label_height_m {
-    font-size: 23px;
+    font-size: 1.15rem;
 }
 
 .text-box__label_height_l {
-    font-size: 25px;
+    font-size: 1.25rem;
 }
 
 .text-box__icon {
     position: absolute;
-    right: 16px;
+    right: 0.8rem;
     top: 20%;
     color: $white;
     cursor: pointer;
 }
 
 .text-box__error {
-    font-size: 16px;
+    font-size: 0.8rem;
 }
 
 .text-box__error_theme_primary {
