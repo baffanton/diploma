@@ -4,9 +4,9 @@ import { DashboardLayout } from "pages/DashboardPage/components/DashboardLayout"
 import DashboardMore from "pages/DashboardPage/components/DashboardMore";
 import { DashboardPagesConfig } from "pages/DashboardPage/config";
 import HomePage from "pages/HomePage";
-import { Dispatch } from "react";
+import { Dispatch, useEffect } from "react";
 import { connect } from "react-redux";
-import { Outlet, Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes, redirect } from "react-router-dom";
 import { IModal } from "store/reducers/PageReducer/helpers";
 import { fetchUser } from "store/reducers/UserReducer/actions";
 import { Modal } from "ui/Modal";
@@ -35,6 +35,14 @@ const getModal = (isOpenModal: boolean, modal: IModal | null) => {
 }
 
 const PageBuilder: React.FC<IPageBuilder> = ({ auth, isOpenModal, modal, fetchUser, loaderPoints }) => {
+    // useEffect(() => {
+    //     const token = localStorage.getItem('token');
+
+    //     if (token) {
+    //         fetchUser();
+    //     }
+    // }, []);
+
     return (
         <Layout className="page">
             {loaderPoints > 0 && (

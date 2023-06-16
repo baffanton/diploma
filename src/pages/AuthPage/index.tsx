@@ -8,7 +8,7 @@ import { ILoginData } from 'store/reducers/UserReducer/helpers';
 import { Layout } from 'widgets/Layout';
 import { ColorThemeType } from 'enums/colorThemeTypes';
 import { TextBox } from 'ui/TextBox';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { InputTypesEnum } from 'enums/inputTypes';
 import { LabelPositionEnum } from 'enums/labelPositionTypes';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
@@ -51,35 +51,28 @@ const AuthPage: React.FC<IAuthPage> = ({ auth, fetchUser, closeModal, openModal,
         resolver: yupResolver(schema)
     });
 
-    useEffect(() => {
-        if (auth) {
-            navigate('/home')
-        }
-    }, [auth, navigate])
-
     const onCloseModalHandler = () => {
         closeModal();
     }
 
     const onSubmit: SubmitHandler<ILoginData> = formData => {
         const { username, password } = formData;
-        debugger;
+
         showLoader();
         getToken(username, password)
             .then(res => {
                 const { data } = res;
-
                 localStorage.setItem('token', data);
-                fetchUser();
+                navigate('/home');
             })
-            .catch(errors => {
+            .catch(() => {
                 openModal(ModalTypes.messageModal, onCloseModalHandler, { message: "Неверный логин или пароль" });
-
                 resetField("password");
             })
             .finally(() => {
                 hideLoader();
             })
+        hideLoader();
     }
 
     const onIconClick = () => {

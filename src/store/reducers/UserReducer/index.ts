@@ -15,7 +15,7 @@ export function userRecuder(state = initialState, action: UserActionTypes): IUse
             return {
                 ...state,
                 firstname: action.firstname,
-                lastname: action.surname,
+                lastname: action.lastname,
                 surname: action.surname,
                 imageUrl: action.imageUrl,
                 role: action.role,

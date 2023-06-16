@@ -2,7 +2,7 @@ import axios from 'axios';
 import { RequestApiEnum } from 'enums/requestApi';
 import { RequestTypesEnum } from 'enums/requestTypes';
 
-export const BASE_URL = 'http://192.168.0.52:8080/api/v1';
+export const BASE_URL = 'http://localhost:8080/api/v1';
 
 const $api = axios.create({
     withCredentials: true,
@@ -25,11 +25,17 @@ $api.interceptors.response.use(config => {
     const originalRequest = error.config;
 
     if (error.response.status === 403 && error.config && !error.config._isRetry) {
-        const response = await axios.get(`${BASE_URL}/auth/refresh`, { withCredentials: true });
-        localStorage.setItem('token', response.data);
         originalRequest._isRetry = true;
 
-        return $api.request(originalRequest);
+        try {
+            const response = await axios.get(`${BASE_URL}/auth/refresh`, { withCredentials: true });
+            localStorage.setItem('token', response.data);
+
+            return $api.request(originalRequest);
+        }
+        catch (error) {
+            console.log('AUTH_ERROR');
+        }
     }
     throw error;
 })
