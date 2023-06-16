@@ -1,24 +1,18 @@
-import { request } from "helpers/request";
-import { IFetchUser, IGetToken, USER_FETCH } from "./types";
+import { BASE_URL, request } from "helpers/request";
+import { IFetchUser, USER_FETCH } from "./types";
 import { RequestTypesEnum } from "enums/requestTypes";
 import { RequestApiEnum } from "enums/requestApi";
-import { UserRolesEnum } from "enums/userTypes";
+import axios, { AxiosResponse } from "axios";
+import { hideLoader, showLoader } from "../PageReducer/actions";
 
-export const getToken = (username: string, password: string) => async (dispatch: (arg0: (IGetToken)) => void) => {
-    return await request(RequestTypesEnum.post, RequestApiEnum.authUser, { username, password });
-}
+export const getToken = async (username: string, password: string): Promise<AxiosResponse<string>> => {
+    return await axios.post(`${BASE_URL}/auth/login`, { username, password }, { withCredentials: true });
+};
 
 export const fetchUser = () => (dispatch: (arg0: IFetchUser) => void) => {
-    dispatch({
-        type: USER_FETCH,
-        firstname: "Антон",
-        lastname: "Баяндин",
-        surname: "Викторович",
-        role: UserRolesEnum.admin,
-        imageUrl: "https://kartinkin.net/pics/uploads/posts/2022-07/1658423332_24-kartinkin-net-p-yashcheritsa-kavkazskaya-zhivotnie-krasivo-28.jpg",
-        auth: true,
-    })
-    return;
+    // @ts-ignore
+    dispatch(showLoader());
+
     request(RequestTypesEnum.get, RequestApiEnum.getUser, null)
         .then(res => {
             const { data } = res;
@@ -41,5 +35,9 @@ export const fetchUser = () => (dispatch: (arg0: IFetchUser) => void) => {
         })
         .catch(errors => {
             console.log(errors);
-        });
-}
+        })
+        .finally(() => {
+            // // @ts-ignore
+            // dispatch(hideLoader());
+        })
+};

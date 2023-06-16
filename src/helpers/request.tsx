@@ -23,11 +23,11 @@ $api.interceptors.response.use(config => {
     return config;
 }, async error => {
     const originalRequest = error.config;
-    originalRequest._isRetry = true;
 
-    if (error.response.status === 401 && error.config && !error.config._isRetry) {
-        const response = await axios.get(`${BASE_URL}/refresh`, {withCredentials: true});
-        localStorage.setItem('token', response.data.accessToken);
+    if (error.response.status === 403 && error.config && !error.config._isRetry) {
+        const response = await axios.get(`${BASE_URL}/auth/refresh`, { withCredentials: true });
+        localStorage.setItem('token', response.data);
+        originalRequest._isRetry = true;
 
         return $api.request(originalRequest);
     }

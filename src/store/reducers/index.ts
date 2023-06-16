@@ -1,13 +1,13 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import { userRecuder } from "./UserReducer";
 import { tableReducer } from "./TableReducer";
-import { modalRecuder } from "./ModalReducer";
 import { homePageReducer } from "./HomePageReducer";
+import { pageReducer } from "./PageReducer";
 
 const reducer = combineReducers({
     user: userRecuder,
     table: tableReducer,
-    modal: modalRecuder,
+    page: pageReducer,
     homePage: homePageReducer,
 })
 

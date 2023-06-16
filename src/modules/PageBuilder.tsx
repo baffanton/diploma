@@ -4,24 +4,28 @@ import { DashboardLayout } from "pages/DashboardPage/components/DashboardLayout"
 import DashboardMore from "pages/DashboardPage/components/DashboardMore";
 import { DashboardPagesConfig } from "pages/DashboardPage/config";
 import HomePage from "pages/HomePage";
-import { useEffect } from "react";
-import { connect, useDispatch } from "react-redux";
-import { Outlet, Route, Routes, useNavigate } from "react-router-dom";
-import { IModal } from "store/reducers/ModalReducer/helpers";
+import { Dispatch } from "react";
+import { connect } from "react-redux";
+import { Outlet, Route, Routes } from "react-router-dom";
+import { IModal } from "store/reducers/PageReducer/helpers";
 import { fetchUser } from "store/reducers/UserReducer/actions";
 import { Modal } from "ui/Modal";
 import { Layout } from "widgets/Layout";
 import './style.scss';
+import { IFetchUser } from "store/reducers/UserReducer/types";
+import { Loader } from "widgets/Loader";
 
 
 interface IPageBuilder {
     auth: boolean;
-    isOpen: boolean;
+    isOpenModal: boolean;
     modal: IModal | null;
+    fetchUser: () => Dispatch<IFetchUser>;
+    loaderPoints: number;
 }
 
-const getModal = (isOpen: boolean, modal: IModal | null) => {
-    if (!isOpen || !modal) {
+const getModal = (isOpenModal: boolean, modal: IModal | null) => {
+    if (!isOpenModal || !modal) {
         return null;
     }
 
@@ -30,23 +34,12 @@ const getModal = (isOpen: boolean, modal: IModal | null) => {
     return <Modal type={type} closeModal={onClose} option={option} />
 }
 
-const PageBuilder: React.FC<IPageBuilder> = ({ auth, isOpen, modal }) => {
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-
-    // useEffect(() => {
-    //     // @ts-ignore
-    //     dispatch(fetchUser({username: "user", password: "password", remember: false}));
-    // }, [])
-
-    // useEffect(() => {
-    //     if (!auth) {
-    //         navigate('/');
-    //     }
-    // }, [auth, navigate])
-
+const PageBuilder: React.FC<IPageBuilder> = ({ auth, isOpenModal, modal, fetchUser, loaderPoints }) => {
     return (
         <Layout className="page">
+            {loaderPoints > 0 && (
+                <Loader />
+            )}
             <Routes>
                 <Route path="/" element={<AuthPage />} />
                 <Route path="/home" element={<HomePage />} />
@@ -57,19 +50,26 @@ const PageBuilder: React.FC<IPageBuilder> = ({ auth, isOpen, modal }) => {
                     })}
                 </Route>
             </Routes>
-            {getModal(isOpen, modal)}
+            {getModal(isOpenModal, modal)}
         </Layout>
     )
 }
 
 const mapStateToProps = (state: any) => {
-    const { user, modal } = state;
+    const { user, page } = state;
 
     return {
         auth: user.auth,
-        isOpen: modal.isOpen,
-        modal: modal.modal
+        isOpenModal: page.isOpenModal,
+        modal: page.modal,
+        loaderPoints: page.loaderPoints,
     }
 }
 
-export default connect(mapStateToProps)(PageBuilder);
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        fetchUser() { return dispatch(fetchUser()); }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PageBuilder);

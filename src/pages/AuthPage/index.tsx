@@ -19,21 +19,22 @@ import { fetchUser, getToken } from 'store/reducers/UserReducer/actions';
 import { Dispatch } from '@reduxjs/toolkit';
 import { IFetchUser } from 'store/reducers/UserReducer/types';
 import { ModalTypes } from 'enums/modalTypes';
-import { closeModal, openModal } from 'store/reducers/ModalReducer/actions';
-import { ICloseModal, IOpenModal } from 'store/reducers/ModalReducer/types';
+import { closeModal, hideLoader, openModal, showLoader } from 'store/reducers/PageReducer/actions';
+import { ICloseModal, IHideLoader, IOpenModal, IShowLoader } from 'store/reducers/PageReducer/types';
 import { useNavigate } from 'react-router-dom';
 import { SizeEnum } from 'enums/sizeTypes';
 import { Text } from 'widgets/Text';
 
 interface IAuthPage {
     auth: boolean;
-    getToken: (username: string, password: string) => Promise<any>;
     fetchUser: () => Dispatch<IFetchUser>;
     closeModal: () => Dispatch<ICloseModal>;
     openModal: (modalTypes: ModalTypes, onClose: () => void, option: any) => Dispatch<IOpenModal>;
+    showLoader: () => Dispatch<IShowLoader>;
+    hideLoader: () => Dispatch<IHideLoader>;
 }
 
-const AuthPage: React.FC<IAuthPage> = ({ auth, getToken, fetchUser, closeModal, openModal }) => {
+const AuthPage: React.FC<IAuthPage> = ({ auth, fetchUser, closeModal, openModal, showLoader, hideLoader }) => {
     const navigate = useNavigate();
     const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
     const { 
@@ -62,19 +63,22 @@ const AuthPage: React.FC<IAuthPage> = ({ auth, getToken, fetchUser, closeModal, 
 
     const onSubmit: SubmitHandler<ILoginData> = formData => {
         const { username, password } = formData;
+        debugger;
+        showLoader();
         getToken(username, password)
             .then(res => {
                 const { data } = res;
 
                 localStorage.setItem('token', data);
-
                 fetchUser();
             })
             .catch(errors => {
                 openModal(ModalTypes.messageModal, onCloseModalHandler, { message: "Неверный логин или пароль" });
 
-                resetField("username");
                 resetField("password");
+            })
+            .finally(() => {
+                hideLoader();
             })
     }
 
@@ -152,12 +156,14 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return { 
-        getToken(username: string, password: string) { return dispatch(getToken(username, password)); },
+        // getToken(username: string, password: string) { return dispatch(getToken(username, password)); },
         fetchUser() { return dispatch(fetchUser()); },
         closeModal() { return dispatch(closeModal()); },
         openModal(modalTypes: ModalTypes, onClose: () => void, option: any) {
             return dispatch(openModal(modalTypes, onClose, option));
-        }
+        },
+        showLoader() { return dispatch(showLoader()); },
+        hideLoader() { return dispatch(hideLoader()); }
     }
 }
 

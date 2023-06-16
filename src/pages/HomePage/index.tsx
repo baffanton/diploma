@@ -21,7 +21,7 @@ const HomePage: React.FC<IHomePage> = ({ news, events, fetchNews, fetchEvents })
     useEffect(() => {
         fetchNews();
         fetchEvents();
-    }, [fetchEvents, fetchNews])
+    }, [fetchEvents, fetchNews]);
 
     return (
         <>

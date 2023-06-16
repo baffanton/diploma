@@ -1,12 +1,6 @@
 import { UserRolesEnum } from "enums/userTypes";
 
-export const USER_GET_TOKEN = 'USER/GET_TOKEN';
 export const USER_FETCH = 'USER/GET';
-
-export interface IGetToken {
-    type: typeof USER_GET_TOKEN;
-    auth: boolean;
-}
 
 export interface IFetchUser {
     type: typeof USER_FETCH;
@@ -28,5 +22,4 @@ export interface IUserReducerModel {
 }
 
 export type UserActionTypes = 
-    | IGetToken
     | IFetchUser;
