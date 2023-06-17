@@ -5,6 +5,10 @@ export enum RequestApiEnum {
     getNews = '/news',
     getEvents = '/event',
 
+    tableUsers = '/user/all',
+    deleteUser = '/user/',
+    addUser = '/user',
+
     // Новые (не проверенные)
     getSecurity = '/security',
     getSport = '/sport',
@@ -13,5 +17,4 @@ export enum RequestApiEnum {
     getLegalHelp = '/legal-help',
     getAwards = '/awards',
     getEducation = '/education',
-    deleteUser = '/delete'
 }

@@ -26,29 +26,32 @@ const Header: React.FC<IHeader> = ({ firstname, lastname, surname, role, imageUr
 
     return (
         <Layout className="header">
-            <Layout className="header__links">
-                <Link href="https://vk.com/eurochem_prof">
-                    <Icon className="header__link" fontAwesomeIcon={faVk} />
-                </Link>
-                <Link href="/">
-                    <Icon className="header__link" fontAwesomeIcon={faTelegram} />
-                </Link>
-                
-            </Layout>
-            <Layout className="header__company">
-                <LinkRouter to="/home">
-                    <HomeSvgSelector icon={ImageEnum.logo} />
-                </LinkRouter>
-            </Layout>
-            <Layout className="header__profile-data">
-                <Text className="header__user-name" fontSize={SizeEnum.large}>{shortName}</Text>
-                <img className="header__user-icon" src={imageUrl} alt="" />
-                {role === UserRolesEnum.admin && (
-                    <LinkRouter to="/dashboard">
-                        <Icon className="header__settings" fontAwesomeIcon={faGears} />
+            <Layout className="header__container">
+                <Layout className="header__links">
+                    <Link href="https://vk.com/eurochem_prof">
+                        <Icon className="header__link" fontAwesomeIcon={faVk} heightType={SizeEnum.medium} />
+                    </Link>
+                    <Link href="/">
+                        <Icon className="header__link" fontAwesomeIcon={faTelegram} heightType={SizeEnum.medium} />
+                    </Link>
+                </Layout>
+                <Layout className="header__company">
+                    <LinkRouter to="/home">
+                        <HomeSvgSelector icon={ImageEnum.logo} />
                     </LinkRouter>
-                )}
+                </Layout>
+                <Layout className="header__profile-data">
+                    <Text className="header__user-name" fontSize={SizeEnum.medium}>{shortName}</Text>
+                    <img className="header__user-icon" src={imageUrl} alt="" />
+                    {role === UserRolesEnum.admin && (
+                        <LinkRouter to="/dashboard">
+                            <Icon className="header__settings" fontAwesomeIcon={faGears} heightType={SizeEnum.medium} />
+                        </LinkRouter>
+                    )}
+                </Layout>
             </Layout>
+            
+            
         </Layout>
     )
 }

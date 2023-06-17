@@ -61,3 +61,20 @@
 .button__icon_color_white {
     border-left: 0.1rem solid $darkBlue;
 }
+
+@media only screen and (max-width: 1399px) {
+    .button_height_s {
+        height: 30px;
+        font-size: 16px;
+    }
+    
+    .button_height_m {
+        height: 42px;
+        font-size: 20px;
+    }
+    
+    .button_height_l {
+        height: 60px;
+        font-size: 30px;
+    }
+}

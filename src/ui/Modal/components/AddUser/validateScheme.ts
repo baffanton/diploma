@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 export const schema = yup.object({
-    name: yup
+    firstname: yup
         .string()
         .required('Поле не может быть пустым*'),
     lastname: yup

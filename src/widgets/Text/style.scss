@@ -20,3 +20,17 @@
 .text_cursor_pointer {
     cursor: pointer;
 }
+
+@media only screen and (max-width: 1399px) {
+    .text_size_s {
+        font-size: 14px;
+    }
+    
+    .text_size_m {
+        font-size: 16px;
+    }
+    
+    .text_size_l {
+        font-size: 20px;
+    }
+}

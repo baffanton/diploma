@@ -13,6 +13,7 @@ import { Dispatch, useEffect, useState } from 'react';
 import { fetchDataByPageId, getTableDataByPageId } from './helpers';
 import { connect } from 'react-redux';
 import {
+    addUser,
     deleteUser,
     fetchAwards,
     fetchEducation,
@@ -37,15 +38,17 @@ import { Table } from 'ui/Table';
 import { faArrowLeft, faDownload, faUserMinus, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { Text } from "widgets/Text";
 import { DashboardPagesUrlEnum } from 'enums/dashboardPages';
-import { closeModal, openModal } from 'store/reducers/PageReducer/actions';
-import { ICloseModal, IOpenModal } from 'store/reducers/PageReducer/types';
+import { closeModal, hideLoader, openModal, showLoader } from 'store/reducers/PageReducer/actions';
+import { ICloseModal, IHideLoader, IOpenModal, IShowLoader } from 'store/reducers/PageReducer/types';
 import { ModalTypes } from 'enums/modalTypes';
 import { Title } from 'widgets/Title';
 import { SizeEnum } from 'enums/sizeTypes';
 import { Link } from 'widgets/Link';
 import { Icon } from 'ui/Icon';
+import { IAddUserDataModel } from './types';
 
 interface IDashboardMore {
+    auth: boolean;
     page: IDashboardPage;
     security: ISecurityModel[];
     sport: ISportModel[];
@@ -63,7 +66,8 @@ interface IDashboardMore {
     fetchEducation: () => Dispatch<IFetchEducation>;
     closeModal: () => Dispatch<ICloseModal>;
     openModal: (modalTypes: ModalTypes, onClose: () => any, options: any) => Dispatch<IOpenModal>;
-    deleteUser: (id: string) => Promise<any>;
+    showLoader: () => Dispatch<IShowLoader>;
+    hideLoader: () => Dispatch<IHideLoader>;
 }
 
 const DashboardMore: React.FC<IDashboardMore> = ({ 
@@ -84,24 +88,32 @@ const DashboardMore: React.FC<IDashboardMore> = ({
     fetchEducation,
     closeModal,
     openModal,
+    auth,
 }) => {
     const navigate = useNavigate();
     const { id, title, exportUrl, tableConfig, isClickable } = page;
     const [selectedRowIndex, setSelectedRowIndex] = useState<string | null>(null);
-    const tableData = getTableDataByPageId(id, security, sport, users, financialHelp, legalHelp, awards, education);
+    const [tableData, setTableData] = useState<any[]>([]);
 
     useEffect(() => {
-        fetchDataByPageId(
-            id,
-            fetchSecurity,
-            fetchSport,
-            fetchUsers,
-            fetchFinancialHelp,
-            fetchLegalHelp,
-            fetchAwards,
-            fetchEducation
-        );
-    }, [fetchAwards, fetchEducation, fetchFinancialHelp, fetchLegalHelp, fetchSecurity, fetchSport, fetchUsers, id, page]);
+        if (auth) {
+            fetchDataByPageId(
+                id,
+                fetchSecurity,
+                fetchSport,
+                fetchUsers,
+                fetchFinancialHelp,
+                fetchLegalHelp,
+                fetchAwards,
+                fetchEducation
+            );
+        }
+    }, [id, page, auth]);
+
+    useEffect(() => {
+        const newData = getTableDataByPageId(id, security, sport, users, financialHelp, legalHelp, awards, education);
+        setTableData(newData || []);
+    }, [sport, security, users, awards, education, legalHelp, financialHelp]);
 
     const onBackButtonHandler = () => {
         return navigate('/dashboard');
@@ -115,8 +127,17 @@ const DashboardMore: React.FC<IDashboardMore> = ({
         openModal(ModalTypes.addUser, closeModalHandler, { onAddUserHandler: onAddMemberHandler });
     }
 
-    const onAddMemberHandler = () => {
-        
+    const onAddMemberHandler = (data: IAddUserDataModel) => {
+        showLoader();
+        addUser(data)
+            .then(() => {
+                fetchUsers();
+                setSelectedRowIndex(null);
+            })
+            .finally(() => {
+                closeModal();
+                hideLoader();
+            });
     }
 
     const onAcceptModalHandler = () => {
@@ -124,20 +145,17 @@ const DashboardMore: React.FC<IDashboardMore> = ({
             return null;
         }
 
-        const ids = tableData[Number(selectedRowIndex)].id;
+        const { userId } = tableData[Number(selectedRowIndex)];
 
-        deleteUser(ids)
-            .then(res => {
-                const { data } = res;
-                
-                if (!data) {
-                    return null;
-                }
-
+        showLoader();
+        deleteUser(userId)
+            .then(() => {
                 fetchUsers();
+                setSelectedRowIndex(null);
             })
-            .catch(error => {
-                console.log(error);
+            .finally(() => {
+                closeModal();
+                hideLoader();
             })
     }
 
@@ -202,7 +220,7 @@ const DashboardMore: React.FC<IDashboardMore> = ({
 }
 
 const mapStateToProps = (state: any) => {
-    const { table } = state;
+    const { table, user } = state;
 
     return {
         security: table.security,
@@ -211,7 +229,8 @@ const mapStateToProps = (state: any) => {
         financialHelp: table.financialHelp,
         legalHelp: table.legalHelp,
         awards: table.awards,
-        education: table.education
+        education: table.education,
+        auth: user.auth,
     }
 }
 
@@ -226,7 +245,8 @@ const mapDispatchToProps = (dispatch: any) => {
         fetchEducation() { return dispatch(fetchEducation()); },
         closeModal() { return dispatch(closeModal()); },
         openModal(modalTypes: ModalTypes, onClose: () => any, options: any) { return dispatch(openModal(modalTypes, onClose, options)); },
-        deleteUser(id: string) { return dispatch(deleteUser(id)); }
+        showLoader() { return dispatch(showLoader()); },
+        hideLoader() { return dispatch(hideLoader()); }
     }
 }
 

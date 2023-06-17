@@ -7,6 +7,7 @@ import { IEventModel } from 'types/IEventModel';
 import { SizeEnum } from 'enums/sizeTypes';
 import { Link } from 'widgets/Link';
 import { Icon } from 'ui/Icon';
+import { WeightEnum } from 'enums/weightTypes';
 
 interface IEventElememt {
     event: IEventModel;
@@ -29,13 +30,13 @@ const Event: React.FC<IEventElememt> = ({ event }) => {
                 </Layout>
                 <Layout className="event-active__body">
                     <Layout className="event-active__info">
-                        <Text className='event-active__description'>{main}</Text>
+                        <Text className='event-active__description' fontSize={SizeEnum.short}>{main}</Text>
                         {contact && (
                             <Layout className='event-active__contact'>
                                 <Layout className='event-active__contact-header'>
                                     <Text className='event-active__contact-title' fontSize={SizeEnum.large}>Контакты</Text>
                                 </Layout>
-                                <Text className='event-active__description'>{contact}</Text>
+                                <Text className='event-active__description' fontSize={SizeEnum.short}>{contact}</Text>
                             </Layout>
                         )}
                         <Text className="event-active__date">Дата: {date}</Text>
@@ -43,15 +44,15 @@ const Event: React.FC<IEventElememt> = ({ event }) => {
                     </Layout>
                     <Layout className='event-active__navigate'>
                         <Layout className='event-active__source-container'>
-                            <Text className="event-active__source">Источник:</Text>
+                            <Text className="event-active__source" fontSize={SizeEnum.short}>Источник:</Text>
                             <Link href={vk || ''}>
-                                <Icon className="event-active__link" fontAwesomeIcon={faVk} />
+                                <Icon className="event-active__link" fontAwesomeIcon={faVk} heightType={SizeEnum.medium} />
                             </Link>
                             <Link href={telegram || ''}>
-                                <Icon className="event-active__link" fontAwesomeIcon={faTelegram} />
+                                <Icon className="event-active__link" fontAwesomeIcon={faTelegram} heightType={SizeEnum.medium} />
                             </Link>
                         </Layout>
-                        <Text className="event-active__button" onClick={onClickHandler}>Меньше</Text> 
+                        <Text className="event-active__button" onClick={onClickHandler} fontSize={SizeEnum.short}>Меньше</Text> 
                     </Layout>
                 </Layout>
             </Layout>
@@ -62,11 +63,17 @@ const Event: React.FC<IEventElememt> = ({ event }) => {
         <Layout className="event">
             <Layout className="event__body">
                 <Layout className="event__info">
-                    <Text className="event__title" fontSize={SizeEnum.large}>{title}</Text>
-                    <Text className="event__date" fontSize={SizeEnum.medium}>Дата: {date}</Text>
+                    <Text
+                        className="event__title"
+                        fontSize={SizeEnum.medium}
+                        fontWeight={WeightEnum.bold}
+                    >
+                        {title}
+                    </Text>
+                    <Text className="event__date" fontSize={SizeEnum.short}>Дата: {date}</Text>
                 </Layout>
                 <Layout className='event__more-container'>
-                    <Text className="event__more" onClick={onClickHandler} fontSize={SizeEnum.medium}>Подробнее</Text> 
+                    <Text className="event__more" onClick={onClickHandler} fontSize={SizeEnum.short}>Подробнее</Text> 
                 </Layout>
             </Layout>
         </Layout>

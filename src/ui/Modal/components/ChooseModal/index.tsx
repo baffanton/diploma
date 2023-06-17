@@ -25,7 +25,12 @@ const ChooseModal: React.FC<IChooseModal> = ({ onClose, option }) => {
         <Layout className='choose-modal'>
             <Layout className='choose-modal__header'>
                 <Text className='choose-modal__title' fontSize={SizeEnum.large}>{title}</Text>
-                <Icon className='choose-modal__close' onClick={() => onClose()} fontAwesomeIcon={faXmark} />
+                <Icon
+                    className='choose-modal__close'
+                    onClick={() => onClose()}
+                    fontAwesomeIcon={faXmark}
+                    heightType={SizeEnum.short}
+                />
             </Layout>
             <Layout className='choose-modal__body'>
                 <Text className='choose-modal__message'>{message}</Text>

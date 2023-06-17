@@ -8,7 +8,7 @@ import { ILoginData } from 'store/reducers/UserReducer/helpers';
 import { Layout } from 'widgets/Layout';
 import { ColorThemeType } from 'enums/colorThemeTypes';
 import { TextBox } from 'ui/TextBox';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { InputTypesEnum } from 'enums/inputTypes';
 import { LabelPositionEnum } from 'enums/labelPositionTypes';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
@@ -36,7 +36,15 @@ interface IAuthPage {
 
 const AuthPage: React.FC<IAuthPage> = ({ auth, fetchUser, closeModal, openModal, showLoader, hideLoader }) => {
     const navigate = useNavigate();
+
     const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (auth) {
+            navigate('/home');
+        }
+    }, [auth]);
+
     const { 
         register, 
         resetField, 
@@ -63,6 +71,7 @@ const AuthPage: React.FC<IAuthPage> = ({ auth, fetchUser, closeModal, openModal,
             .then(res => {
                 const { data } = res;
                 localStorage.setItem('token', data);
+                fetchUser();
                 navigate('/home');
             })
             .catch(() => {
@@ -118,7 +127,7 @@ const AuthPage: React.FC<IAuthPage> = ({ auth, fetchUser, closeModal, openModal,
                             id="remember"
                             label="Не выходить"
                             colorTheme={ColorThemeType.ordinary}
-                            heightType={SizeEnum.large}
+                            heightType={SizeEnum.medium}
                             register={register('remember')}
                             errors={errors.remember}                      
                         />

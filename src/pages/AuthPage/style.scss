@@ -21,10 +21,9 @@
 }
 
 .auth-page__body {
-    width:30rem;
     background-color: $blue;
-    border-radius: 1rem;
-    padding: 0.8rem;
+    border-radius: 20px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,17 +36,12 @@
 }
 
 .auth-page__submit-button {
-    width: 9.5rem;
+    width: 185px;
 }
 
 .auth-page__management .auth-page__forget {
     color: $white;
-    font-size: 1.25rem;
     cursor: pointer;
-}
-
-.auth-page__company-logo {
-    margin-bottom: 0.8rem;
 }
 
 .auth-page__submit-button-container {
@@ -62,4 +56,20 @@
 
 .auth-page__password {
     margin-bottom: 0.8rem;
+}
+
+@media only screen and (max-width: 1399px) {
+    .auth-page__body {
+        width: 500px;
+    }
+
+    .auth-page__company-logo svg {
+        width: 250px;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .auth-page__body {
+        width: 600px;
+    }
 }

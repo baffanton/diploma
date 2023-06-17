@@ -8,6 +8,7 @@ import { INewsModel } from 'types/INewsModel';
 import { ICloseModal, IOpenModal } from 'store/reducers/PageReducer/types';
 import { Dispatch } from 'react';
 import { SizeEnum } from 'enums/sizeTypes';
+import { Title } from 'widgets/Title';
 
 interface INews {
     item: INewsModel;
@@ -31,9 +32,16 @@ const News: React.FC<INews> = ({ item, openModal, closeModal }) => {
             <Layout className="news__body">
                 <img className='news__picture' src={picture} alt="" />
                 <Layout className='news__description'>
-                    <Text className="news__title" fontSize={SizeEnum.large}>{title}</Text>
+                    <Title className="news__title" fontSize={SizeEnum.short}>{title}</Title>
                     <Layout className='news__more-container'>
-                        <Text className='news__more' fontSize={SizeEnum.medium} onClick={onClickMoreHandler}>Подробнее</Text>
+                        <Text
+                            className='news__more'
+                            fontSize={SizeEnum.medium}
+                            onClick={onClickMoreHandler}
+                            pointer
+                        >
+                            Подробнее
+                        </Text>
                     </Layout>
                 </Layout>
             </Layout>

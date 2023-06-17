@@ -105,3 +105,32 @@
 .text-box__error_theme_ordinary {
     color: $lightRed;
 }
+
+@media only screen and (max-width: 1399px) {
+    .text-box__label_height_s {
+        font-size: 14px;
+    }
+    
+    .text-box__label_height_m {
+        font-size: 16px;
+    }
+    
+    .text-box__label_height_l {
+        font-size: 20px;
+    }
+
+    .text-box__input_height_s {
+        height: 30px;
+        font-size: 16px;
+    }
+    
+    .text-box__input_height_m {
+        height: 40px;
+        font-size: 20px;
+    }
+    
+    .text-box__input_height_l {
+        height: 50px;
+        font-size: 23px;
+    }
+}

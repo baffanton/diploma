@@ -2,24 +2,27 @@ import { ITableColumn } from "helpers/tableConfigTypes";
 
 export const usersConfig: ITableColumn[] = [
     {
-        Header: "Логин",
-        accessor: "username",
-    },
-    {
         Header: "Фамилия",
         accessor: "lastname",
     },
     {
         Header: "Имя",
-        accessor: "name",
+        accessor: "firstname",
     },
     {
         Header: "Отчество",
         accessor: "surname",
     },
     {
-        Header: "Роль",
-        accessor: "role",
+        Header: "Место работы",
+        accessor: "placement",
     },
-    
+    {
+        Header: "Должность",
+        accessor: "position",
+    },
+    {
+        Header: "Номер телефона",
+        accessor: "phone",
+    }
 ]

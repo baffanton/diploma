@@ -1,19 +1,31 @@
 .home-news {
-    width: 63.65rem;
     display: flex;
     flex-direction: column;
 }
 
 .home-news__title {
-    font-weight: 700;
-    font-size: 2rem;
     width: 100%;
     text-align: center;
     cursor: default;
-    margin-bottom: 0.4rem;
+    margin-bottom: 8px;
 }
 
 .home-news__container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: 1399px) {
+    .home-news {
+        width: 852px;
+        min-width: 852px;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .home-news {
+        width: 992px;
+        min-width: 992px;
+    }
 }

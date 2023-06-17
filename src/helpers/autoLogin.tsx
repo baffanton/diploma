@@ -1,32 +1,15 @@
-import { getCookie } from "helpers/cookie";
-import { fetchUser } from "store/reducers/UserReducer/actions";
+import { Dispatch } from "react";
+import { IFetchUser } from "store/reducers/UserReducer/types";
 
-export const tryAutoLogIn = (dispatch: any) => {
-    const loginFromLocalStorage = localStorage.getItem("username");
-    const passwordFromLocalStorage = localStorage.getItem("password");
+export const tryLogIn = (
+    navigate: any, 
+    fetchUser: () => Dispatch<IFetchUser>,
+) => {
+    const token = localStorage.getItem('token');
 
-    if (loginFromLocalStorage && passwordFromLocalStorage) {
-        const data = {
-            username: loginFromLocalStorage,
-            password: passwordFromLocalStorage
-        }
-
-        // @ts-ignore
-        return dispatch(fetchUser(data));
+    if (!token) {
+        return navigate('/');
     }
 
-    const loginFromCookie = getCookie("username");
-    const passwordFromCookie = getCookie("password");
-
-    if (loginFromCookie && passwordFromCookie) {
-        const data = {
-            username: loginFromCookie,
-            password: passwordFromCookie
-        }
-
-        // @ts-ignore
-        return dispatch(fetchUser(data));
-    }
-
-    return null;
+    fetchUser();
 }

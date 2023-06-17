@@ -6,13 +6,27 @@
 }
 
 .title_size_s {
-    font-size: 1.5rem;
+    font-size: 25px;
 }
 
 .title_size_m {
-    font-size: 2rem;
+    font-size: 40px;
 }
 
 .title_size_l {
-    font-size: 3rem;
+    font-size: 60px;
+}
+
+@media only screen and (max-width: 1399px) {
+    .title_size_s {
+        font-size: 20px;
+    }
+    
+    .title_size_m {
+        font-size: 30px;
+    }
+    
+    .title_size_l {
+        font-size: 40px;
+    }
 }

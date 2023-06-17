@@ -2,6 +2,8 @@ import { request } from "helpers/request";
 import { IFetchAwards, IFetchEducation, IFetchFinancialHelp, IFetchLegalHelp, IFetchSecurity, IFetchSport, IFetchUsers, TABLE_GET_AWARDS, TABLE_GET_EDUCATION, TABLE_GET_FINANCIAL_HELP, TABLE_GET_LEGAL_HELP, TABLE_GET_SECURITY, TABLE_GET_SPORT, TABLE_GET_USERS } from "./types";
 import { RequestTypesEnum } from "enums/requestTypes";
 import { RequestApiEnum } from "enums/requestApi";
+import { IAddUserDataModel } from "pages/DashboardPage/components/DashboardMore/types";
+import { AxiosResponse } from "axios";
 
 export const fetchSecurity = () => (dispatch: (arg0: (IFetchSecurity)) => void) => {
     request(RequestTypesEnum.get, RequestApiEnum.getSecurity, null)
@@ -42,7 +44,7 @@ export const fetchSport = () => (dispatch: (arg0: (IFetchSport)) => void) => {
 }
 
 export const fetchUsers = () => (dispatch: (arg0: (IFetchUsers)) => void) => {
-    request(RequestTypesEnum.get, RequestApiEnum.getUsers, null)
+    request(RequestTypesEnum.get, RequestApiEnum.tableUsers, null)
         .then(res => {
             const { data } = res;
 
@@ -136,6 +138,10 @@ export const fetchEducation = () => (dispatch: (arg0: (IFetchEducation)) => void
         })
 }
 
-export const deleteUser = async (id: string) => {
-    return await request(RequestTypesEnum.delete, RequestApiEnum.deleteUser, id);
+export const deleteUser = async (id: string): Promise<AxiosResponse<void>> => {
+    return await request(RequestTypesEnum.delete, `${RequestApiEnum.deleteUser}${id}`, null);
+}
+
+export const addUser = async (data: IAddUserDataModel): Promise<AxiosResponse<void>> => {
+    return await request(RequestTypesEnum.post, RequestApiEnum.addUser, data);
 }

@@ -28,7 +28,7 @@ const getTableDataByPageId = (
     legalHelp: ILegalHelpModel[],
     awards: IAwardsModel[],
     education: IEducationModel[],
-) => {
+): any[] => {
     switch (id) {
         case DashboardPagesUrlEnum.security:
             return security;
@@ -45,7 +45,7 @@ const getTableDataByPageId = (
         case DashboardPagesUrlEnum.education:
             return education;
         default:
-            return null;
+            return [];
     }
 }
 

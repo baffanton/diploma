@@ -9,10 +9,11 @@ import { Dispatch, useEffect } from "react";
 import { IFetchEvents, IFetchNews } from "store/reducers/HomePageReducer/types";
 import { IEventModel } from "types/IEventModel";
 import { INewsModel } from "types/INewsModel";
-import { useNavigate } from "react-router-dom";
 import { fetchUser } from "store/reducers/UserReducer/actions";
 import { hideLoader, showLoader } from "store/reducers/PageReducer/actions";
-import { USER_FETCH } from "store/reducers/UserReducer/types";
+import { tryLogIn } from "helpers/autoLogin";
+import { IHideLoader, IShowLoader } from "store/reducers/PageReducer/types";
+import { useNavigate } from "react-router-dom";
 
 interface IHomePage {
     fetchNews: () => Dispatch<IFetchNews>;
@@ -21,41 +22,17 @@ interface IHomePage {
     news: INewsModel[];
     auth: boolean;
     fetchUser: () => any;
+    showLoader: () => Dispatch<IShowLoader>;
+    hideLoader: () => Dispatch<IHideLoader>;
 }
 
-const HomePage: React.FC<IHomePage> = ({ news, events, fetchNews, fetchEvents, auth, fetchUser }) => {
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-
+const HomePage: React.FC<IHomePage> = ({ news, events, fetchNews, fetchEvents, auth, fetchUser, showLoader, hideLoader }) => {
     useEffect(() => {
-        showLoader();
-        fetchUser()
-            .then((res: any) => {
-                const { data } = res;
-
-                if (!data) {
-                    throw Error();
-                }
-
-                const { firstname, lastname, surname, imageUrl, role } = data;
-
-                dispatch({
-                    type: USER_FETCH,
-                    firstname,
-                    lastname,
-                    surname,
-                    imageUrl,
-                    role,
-                });
-
-                fetchNews();
-                fetchEvents();
-            })
-            .catch(() => {
-                navigate('/');
-            })
-        hideLoader();
-    }, [])
+        if (auth) {
+            fetchNews();
+            fetchEvents();
+        }
+    }, [auth]);
 
     return (
         <>
@@ -81,7 +58,9 @@ const mapDispatchToProps = (dispatch: any) => {
     return {
         fetchNews() { return dispatch(fetchNews()); },
         fetchEvents(){ return dispatch(fetchEvents()); },
-        fetchUser() { return dispatch(fetchUser()); }
+        fetchUser() { return dispatch(fetchUser()); },
+        showLoader() { return dispatch(showLoader()); },
+        hideLoader() { return dispatch(hideLoader()); },
     }
 }
 

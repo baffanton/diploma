@@ -19,7 +19,13 @@ const NewsModal: React.FC<INewsModal> = ({ onClose, option }) => {
         <Layout className='news-modal'>
             <Layout className='news-modal__header'>
                 <Text className='news-modal__title' fontSize={SizeEnum.large}>{title}</Text>
-                <Icon className='news-modal__close' onClick={() => onClose()} fontAwesomeIcon={faXmark} pointer />
+                <Icon
+                    className='news-modal__close'
+                    onClick={() => onClose()}
+                    fontAwesomeIcon={faXmark}
+                    pointer
+                    heightType={SizeEnum.medium}
+                />
             </Layout>
             <Layout className='news-modal__content'>
                 <Layout className='news-modal__main'>

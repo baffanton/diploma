@@ -1,15 +1,35 @@
 .home-events {
-    width: 21.2rem;
+    height: 100%;
 }
 
 .home-events__title {
-    font-weight: 700;
-    font-size: 2rem;
     width: 100%;
     text-align: center;
-    margin-bottom: 0.4rem;
+    margin-bottom: 8px;
 }
 
 .home-events__container {
-    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: 1399px) {
+    .home-events {
+        width: 300px;
+    }
+
+    .home-events__container {
+        height: calc(100% - 43px);
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .home-events {
+        width: 400px;
+    }
+
+    .home-events__container {
+        height: calc(100% - 63px);
+    }
 }

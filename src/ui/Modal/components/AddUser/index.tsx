@@ -12,20 +12,13 @@ import { SizeEnum } from 'enums/sizeTypes';
 import { TextBox } from 'ui/TextBox';
 import { Button } from 'ui/Button';
 import { WeightEnum } from 'enums/weightTypes';
+import { IAddUserDataModel } from 'pages/DashboardPage/components/DashboardMore/types';
 
 interface IAddUserModal {
     onClose: () => any;
     option: {
-        onAddUserHandler: () => void;
+        onAddUserHandler: (data: IAddUserDataModel) => void;
     }
-}
-
-interface IAddUserForm {
-    name: string;
-    lastname: string;
-    surname: string;
-    username: string;
-    password: string;
 }
 
 const AddUserModal: React.FC<IAddUserModal> = ({ onClose, option }) => {
@@ -33,15 +26,15 @@ const AddUserModal: React.FC<IAddUserModal> = ({ onClose, option }) => {
         register,
         handleSubmit,
         formState: { errors }
-    } = useForm<IAddUserForm>({
+    } = useForm<IAddUserDataModel>({
         mode: 'onSubmit',
         resolver: yupResolver(schema)
     });
 
     const { onAddUserHandler } = option;
 
-    const onSubmit: SubmitHandler<IAddUserForm> = formData => {
-        onAddUserHandler();
+    const onSubmit: SubmitHandler<IAddUserDataModel> = formData => {
+        onAddUserHandler(formData);
     }
 
     return (
@@ -80,8 +73,8 @@ const AddUserModal: React.FC<IAddUserModal> = ({ onClose, option }) => {
                             label="Имя"
                             labelPosition={LabelPositionEnum.top}
                             placeholder='Введите имя'
-                            register={register('name')}
-                            error={errors.name}
+                            register={register('firstname')}
+                            error={errors.firstname}
                             colorTheme={ColorThemeType.primary}
                             heightType={SizeEnum.short}
                             classNameContainer='add-user-modal__name'

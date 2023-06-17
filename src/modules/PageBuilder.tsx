@@ -4,24 +4,25 @@ import { DashboardLayout } from "pages/DashboardPage/components/DashboardLayout"
 import DashboardMore from "pages/DashboardPage/components/DashboardMore";
 import { DashboardPagesConfig } from "pages/DashboardPage/config";
 import HomePage from "pages/HomePage";
-import { Dispatch, useEffect } from "react";
 import { connect } from "react-redux";
-import { Outlet, Route, Routes, redirect } from "react-router-dom";
+import { Outlet, Route, Routes, useNavigate } from "react-router-dom";
 import { IModal } from "store/reducers/PageReducer/helpers";
 import { fetchUser } from "store/reducers/UserReducer/actions";
 import { Modal } from "ui/Modal";
 import { Layout } from "widgets/Layout";
 import './style.scss';
-import { IFetchUser } from "store/reducers/UserReducer/types";
 import { Loader } from "widgets/Loader";
+import { tryLogIn } from "helpers/autoLogin";
+import { Dispatch, useEffect } from "react";
+import { IFetchUser } from "store/reducers/UserReducer/types";
 
 
 interface IPageBuilder {
     auth: boolean;
     isOpenModal: boolean;
     modal: IModal | null;
-    fetchUser: () => Dispatch<IFetchUser>;
     loaderPoints: number;
+    fetchUser: () => Dispatch<IFetchUser>;
 }
 
 const getModal = (isOpenModal: boolean, modal: IModal | null) => {
@@ -34,14 +35,17 @@ const getModal = (isOpenModal: boolean, modal: IModal | null) => {
     return <Modal type={type} closeModal={onClose} option={option} />
 }
 
-const PageBuilder: React.FC<IPageBuilder> = ({ auth, isOpenModal, modal, fetchUser, loaderPoints }) => {
-    // useEffect(() => {
-    //     const token = localStorage.getItem('token');
+const PageBuilder: React.FC<IPageBuilder> = ({
+    isOpenModal,
+    modal,
+    loaderPoints,
+    fetchUser,
+}) => {
+    const navigate = useNavigate();
 
-    //     if (token) {
-    //         fetchUser();
-    //     }
-    // }, []);
+    useEffect(() => {
+        tryLogIn(navigate, fetchUser);
+    }, [])
 
     return (
         <Layout className="page">
@@ -76,7 +80,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        fetchUser() { return dispatch(fetchUser()); }
+        fetchUser() { return dispatch(fetchUser()); },
     }
 }
 
