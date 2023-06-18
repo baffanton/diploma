@@ -6,6 +6,9 @@ export enum RequestApiEnum {
     getEvents = '/event',
 
     tableUsers = '/user/all',
+    tableSport = '/sport',
+    tableAwards = '/awards',
+    tableEducation = '/education',
     deleteUser = '/user/',
     addUser = '/user',
 

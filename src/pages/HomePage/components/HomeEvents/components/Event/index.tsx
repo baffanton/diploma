@@ -44,7 +44,7 @@ const Event: React.FC<IEventElememt> = ({ event }) => {
                     </Layout>
                     <Layout className='event-active__navigate'>
                         <Layout className='event-active__source-container'>
-                            <Text className="event-active__source" fontSize={SizeEnum.short}>Источник:</Text>
+                            <Text className="event-active__source" fontSize={SizeEnum.medium}>Источник:</Text>
                             <Link href={vk || ''}>
                                 <Icon className="event-active__link" fontAwesomeIcon={faVk} heightType={SizeEnum.medium} />
                             </Link>
@@ -52,7 +52,7 @@ const Event: React.FC<IEventElememt> = ({ event }) => {
                                 <Icon className="event-active__link" fontAwesomeIcon={faTelegram} heightType={SizeEnum.medium} />
                             </Link>
                         </Layout>
-                        <Text className="event-active__button" onClick={onClickHandler} fontSize={SizeEnum.short}>Меньше</Text> 
+                        <Text className="event-active__button" onClick={onClickHandler} fontSize={SizeEnum.medium}>Меньше</Text> 
                     </Layout>
                 </Layout>
             </Layout>
@@ -61,21 +61,14 @@ const Event: React.FC<IEventElememt> = ({ event }) => {
 
     return (
         <Layout className="event">
-            <Layout className="event__body">
-                <Layout className="event__info">
-                    <Text
-                        className="event__title"
-                        fontSize={SizeEnum.medium}
-                        fontWeight={WeightEnum.bold}
-                    >
-                        {title}
-                    </Text>
-                    <Text className="event__date" fontSize={SizeEnum.short}>Дата: {date}</Text>
+            <Layout className="event__container">
+                <Layout className="event__body">
+                    <Text className="event__title">{title}</Text>
+                    <Layout className='event__more-container'>
+                        <Text className="event__more" onClick={onClickHandler} fontSize={SizeEnum.short}>Подробнее</Text> 
+                    </Layout>
                 </Layout>
-                <Layout className='event__more-container'>
-                    <Text className="event__more" onClick={onClickHandler} fontSize={SizeEnum.short}>Подробнее</Text> 
-                </Layout>
-            </Layout>
+            </Layout>        
         </Layout>
     )
 }

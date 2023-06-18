@@ -12,7 +12,6 @@ import { useEffect, useState } from 'react';
 import { InputTypesEnum } from 'enums/inputTypes';
 import { LabelPositionEnum } from 'enums/labelPositionTypes';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { CheckBox } from 'ui/CheckBox';
 import { Button } from 'ui/Button';
 import { connect } from 'react-redux';
 import { fetchUser, getToken } from 'store/reducers/UserReducer/actions';
@@ -104,7 +103,7 @@ const AuthPage: React.FC<IAuthPage> = ({ auth, fetchUser, closeModal, openModal,
                             register={register('username')}
                             error={errors.username}
                             colorTheme={ColorThemeType.ordinary}
-                            heightType={SizeEnum.large}
+                            heightType={SizeEnum.medium}
                             classNameContainer='auth-page__username'
                         />
                         <TextBox 
@@ -115,7 +114,7 @@ const AuthPage: React.FC<IAuthPage> = ({ auth, fetchUser, closeModal, openModal,
                             register={register('password')}
                             error={errors.password}
                             colorTheme={ColorThemeType.ordinary}
-                            heightType={SizeEnum.large}
+                            heightType={SizeEnum.medium}
                             classNameContainer='auth-page__password'
                             icon={isShowPassword ? faEyeSlash : faEye}
                             onIconClick={onIconClick}
@@ -123,15 +122,7 @@ const AuthPage: React.FC<IAuthPage> = ({ auth, fetchUser, closeModal, openModal,
                         />
                     </Layout>
                     <Layout className='auth-page__management'>
-                        <CheckBox 
-                            id="remember"
-                            label="Не выходить"
-                            colorTheme={ColorThemeType.ordinary}
-                            heightType={SizeEnum.medium}
-                            register={register('remember')}
-                            errors={errors.remember}                      
-                        />
-                        <Text className='auth-page__forget'>Забыли пароль?</Text>
+                        <Text className='auth-page__forget' fontSize={SizeEnum.medium}>Забыли пароль?</Text>
                     </Layout>
                     <Layout className='auth-page__submit-button-container'>
                         <Button 
@@ -158,7 +149,6 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return { 
-        // getToken(username: string, password: string) { return dispatch(getToken(username, password)); },
         fetchUser() { return dispatch(fetchUser()); },
         closeModal() { return dispatch(closeModal()); },
         openModal(modalTypes: ModalTypes, onClose: () => void, option: any) {

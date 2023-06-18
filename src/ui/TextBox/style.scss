@@ -40,21 +40,6 @@
     width: 100%;
 }
 
-.text-box__input_height_s {
-    height: 2rem;
-    font-size: 1rem;
-}
-
-.text-box__input_height_m {
-    height: 2.5rem;
-    font-size: 1.15rem;
-}
-
-.text-box__input_height_l {
-    height: 3rem;
-    font-size: 1.25rem;
-}
-
 .text-box__input_color_primary {
     background-color: $white;
     border: 0.1rem solid $blue;
@@ -72,18 +57,6 @@
 
 .text-box__label_color_ordinary {
     color: $white;
-}
-
-.text-box__label_height_s {
-    font-size: 1rem;
-}
-
-.text-box__label_height_m {
-    font-size: 1.15rem;
-}
-
-.text-box__label_height_l {
-    font-size: 1.25rem;
 }
 
 .text-box__icon {
@@ -106,31 +79,89 @@
     color: $lightRed;
 }
 
-@media only screen and (max-width: 1399px) {
+@media only screen and (max-width: 1366px) {
+    .text-box__input_height_s {
+        height: 40px;
+        font-size: 20px;
+    }
+    
+    .text-box__input_height_m {
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .text-box__input_height_l {
+        height: 60px;
+        font-size: 20px;
+    }
+
     .text-box__label_height_s {
-        font-size: 14px;
+        font-size: 20px;
     }
     
     .text-box__label_height_m {
-        font-size: 16px;
+        font-size: 20px;
     }
     
     .text-box__label_height_l {
         font-size: 20px;
     }
+}
 
+@media only screen and (min-width: 1367px) and (max-width: 1919px) {
     .text-box__input_height_s {
-        height: 30px;
-        font-size: 16px;
-    }
-    
-    .text-box__input_height_m {
         height: 40px;
         font-size: 20px;
     }
     
-    .text-box__input_height_l {
+    .text-box__input_height_m {
         height: 50px;
         font-size: 23px;
+    }
+    
+    .text-box__input_height_l {
+        height: 60px;
+        font-size: 23px;
+    }
+
+    .text-box__label_height_s {
+        font-size: 20px;
+    }
+    
+    .text-box__label_height_m {
+        font-size: 23px;
+    }
+    
+    .text-box__label_height_l {
+        font-size: 23px;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+    .text-box__input_height_s {
+        height: 50px;
+        font-size: 23px;
+    }
+    
+    .text-box__input_height_m {
+        height: 60px;
+        font-size: 25px;
+    }
+    
+    .text-box__input_height_l {
+        height: 70px;
+        font-size: 25px;
+    }
+
+    .text-box__label_height_s {
+        font-size: 23px;
+    }
+    
+    .text-box__label_height_m {
+        font-size: 25px;
+    }
+    
+    .text-box__label_height_l {
+        font-size: 25px;
     }
 }

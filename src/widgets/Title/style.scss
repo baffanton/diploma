@@ -5,21 +5,9 @@
     cursor: default;
 }
 
-.title_size_s {
-    font-size: 25px;
-}
-
-.title_size_m {
-    font-size: 40px;
-}
-
-.title_size_l {
-    font-size: 60px;
-}
-
-@media only screen and (max-width: 1399px) {
+@media only screen and (max-width: 1366px) {
     .title_size_s {
-        font-size: 20px;
+        font-size: 25px;
     }
     
     .title_size_m {
@@ -27,6 +15,34 @@
     }
     
     .title_size_l {
+        font-size: 45px;
+    }
+}
+
+@media only screen and (min-width: 1367px) and (max-width: 1919px) {
+    .title_size_s {
+        font-size: 30px;
+    }
+    
+    .title_size_m {
         font-size: 40px;
+    }
+    
+    .title_size_l {
+        font-size: 50px;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+    .title_size_s {
+        font-size: 30px;
+    }
+    
+    .title_size_m {
+        font-size: 40px;
+    }
+    
+    .title_size_l {
+        font-size: 60px;
     }
 }

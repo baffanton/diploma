@@ -2,14 +2,24 @@
 
 .event {
     width: 100%;
-    height: 7.4rem;
+    height: calc(100% / 5);
     color: $darkBlue;
+    max-height: 130px;
+}
+
+.event:last-child > .event__container {
+    padding: 10px;
+}
+
+.event__container {
+    height: 100%;
+    padding: 10px 10px 5px 10px;
 }
 
 .event__body {
-    padding: 10px 16px;
-    border-radius: 1rem;
-    border: 0.1rem solid $blue;
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid $blue;
     background-color: $white;
     height: 100%;
     color: $darkBlue;
@@ -32,27 +42,23 @@
     color: $yellow;
 }
 
-.event__description {
-    font-size: 1rem;
-    margin: 0.25rem 0;
-}
-
 .event-active {
     position: absolute;
     z-index: 1;
     background-color: $white;
-    border-radius: 1rem;
+    border-radius: 20px;
     height: 100%;
     display: flex;
     flex-direction: column;
     color: $darkBlue;
     top: 0;
+    padding: 10px;
 }
 
 .event-active__header {
     background-color: $darkBlue;
     color: $white;
-    padding: 8px;
+    padding: 10px;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     text-align: center;
@@ -64,7 +70,7 @@
     height: 100%;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
-    padding: 8px;
+    padding: 5px 10px 10px 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -75,23 +81,22 @@
 }
 
 .event-active__contact {
-    margin-top: 0.8rem;
+    margin: 10px 0;
 }
 
 .event-active__contact-header {
     text-align: center;
-    margin-bottom: 0.4rem;
+    margin-bottom: 10px;
 }
 
-.event-active__date {
-    margin-top: 0.6rem;
+.event-active__date, .event-active__place {
+    text-align: center;
 }
 
 .event-active__navigate {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-right: 8px;
 }
 
 .event-active__source-container {
@@ -116,14 +121,5 @@
     color: $yellow;
 }
 
-@media only screen and (max-width: 1399px) {
-    .event {
-        height: 90px;
-    }
-}
-
-@media only screen and (min-width: 1400px) {
-    .event {
-        height: 110px;
-    }
+@media only screen and (max-width: 1366px) {
 }

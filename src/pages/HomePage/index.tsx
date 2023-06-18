@@ -4,16 +4,14 @@ import { HomeNews } from "./components/HomeNews";
 import './style.scss';
 import { Layout } from "widgets/Layout";
 import { fetchEvents, fetchNews } from "store/reducers/HomePageReducer/actions";
-import { connect, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import { Dispatch, useEffect } from "react";
 import { IFetchEvents, IFetchNews } from "store/reducers/HomePageReducer/types";
 import { IEventModel } from "types/IEventModel";
 import { INewsModel } from "types/INewsModel";
 import { fetchUser } from "store/reducers/UserReducer/actions";
 import { hideLoader, showLoader } from "store/reducers/PageReducer/actions";
-import { tryLogIn } from "helpers/autoLogin";
 import { IHideLoader, IShowLoader } from "store/reducers/PageReducer/types";
-import { useNavigate } from "react-router-dom";
 
 interface IHomePage {
     fetchNews: () => Dispatch<IFetchNews>;

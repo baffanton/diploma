@@ -31,7 +31,7 @@
 
 .auth-page__management {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding: 0 0.8rem 0 0.4rem;
 }
 
@@ -47,18 +47,14 @@
 .auth-page__submit-button-container {
     display: flex;
     justify-content: center;
-    margin-top: 0.8rem;
+    margin-top: 8px;
 }
 
-.auth-page__username {
-    margin-bottom: 0.8rem;
+.auth-page__username, .auth-page__password {
+    margin-bottom: 15px;
 }
 
-.auth-page__password {
-    margin-bottom: 0.8rem;
-}
-
-@media only screen and (max-width: 1399px) {
+@media only screen and (max-width: 1366px) {
     .auth-page__body {
         width: 500px;
     }
@@ -68,7 +64,13 @@
     }
 }
 
-@media only screen and (min-width: 1400px) {
+@media only screen and (min-width: 1367px) and (max-width: 1919px) {
+    .auth-page__body {
+        width: 550px;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
     .auth-page__body {
         width: 600px;
     }

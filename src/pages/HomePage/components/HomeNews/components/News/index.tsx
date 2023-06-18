@@ -1,6 +1,5 @@
 import './style.scss';
 import { Layout } from 'widgets/Layout';
-import { Text } from "widgets/Text";
 import { closeModal, openModal } from 'store/reducers/PageReducer/actions';
 import { connect } from 'react-redux';
 import { ModalTypes } from 'enums/modalTypes';
@@ -8,7 +7,7 @@ import { INewsModel } from 'types/INewsModel';
 import { ICloseModal, IOpenModal } from 'store/reducers/PageReducer/types';
 import { Dispatch } from 'react';
 import { SizeEnum } from 'enums/sizeTypes';
-import { Title } from 'widgets/Title';
+import { Text } from 'widgets/Text';
 
 interface INews {
     item: INewsModel;
@@ -29,19 +28,21 @@ const News: React.FC<INews> = ({ item, openModal, closeModal }) => {
 
     return (
         <Layout className="news">
-            <Layout className="news__body">
-                <img className='news__picture' src={picture} alt="" />
-                <Layout className='news__description'>
-                    <Title className="news__title" fontSize={SizeEnum.short}>{title}</Title>
-                    <Layout className='news__more-container'>
-                        <Text
-                            className='news__more'
-                            fontSize={SizeEnum.medium}
-                            onClick={onClickMoreHandler}
-                            pointer
-                        >
-                            Подробнее
-                        </Text>
+            <Layout className='news__container'>
+                <Layout className="news__body">
+                    <img className='news__picture' src={picture} alt="" />
+                    <Layout className='news__description'>
+                        <Text className="news__title" fontSize={SizeEnum.medium}>{title}</Text>
+                        <Layout className='news__more-container'>
+                            <Text
+                                className='news__more'
+                                fontSize={SizeEnum.medium}
+                                onClick={onClickMoreHandler}
+                                pointer
+                            >
+                                Подробнее
+                            </Text>
+                        </Layout>
                     </Layout>
                 </Layout>
             </Layout>

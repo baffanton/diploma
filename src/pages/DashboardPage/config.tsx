@@ -6,6 +6,7 @@ import { awardsConfig } from "./tableConfigs/awards";
 import { eventsConfig } from "./tableConfigs/events";
 import { userAwardsConfig } from "./tableConfigs/userAwards";
 import { userEventsConfig } from "./tableConfigs/userEvents";
+import { sportConfig } from "./tableConfigs/sport";
 
 export interface IDashboardPage {
     id: DashboardPagesUrlEnum;
@@ -68,7 +69,7 @@ export const DashboardPagesConfig: IDashboardPage[] = [
     {
         id: DashboardPagesUrlEnum.sport,
         title: "Спортивная жизнь",
-        tableConfig: usersConfig,
+        tableConfig: sportConfig,
         url: DashboardPagesUrlEnum.sport,
         exportUrl: RequestApiEnum.getSport,
         isClickable: false

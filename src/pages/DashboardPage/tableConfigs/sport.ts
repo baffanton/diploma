@@ -1,9 +1,13 @@
 import { ITableColumn } from "helpers/tableConfigTypes";
 
-export const awardsConfig: ITableColumn[] = [
+export const sportConfig: ITableColumn[] = [
     {
-        Header: "Мероприятие",
+        Header: "Событие",
         accessor: "title",
+    },
+    {
+        Header: "Вид спорта",
+        accessor: "sportType",
     },
     {
         Header: "Дата",
@@ -11,6 +15,6 @@ export const awardsConfig: ITableColumn[] = [
     },
     {
         Header: "Место",
-        accessor: "place",
+        accessor: "placement",
     }
 ]

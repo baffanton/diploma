@@ -25,7 +25,7 @@ export const fetchSecurity = () => (dispatch: (arg0: (IFetchSecurity)) => void) 
 }
 
 export const fetchSport = () => (dispatch: (arg0: (IFetchSport)) => void) => {
-    request(RequestTypesEnum.get, RequestApiEnum.getSport, null)
+    request(RequestTypesEnum.get, RequestApiEnum.tableSport, null)
         .then(res => {
             const { data } = res;
 
@@ -101,7 +101,7 @@ export const fetchLegalHelp = () => (dispatch: (arg0: (IFetchLegalHelp)) => void
 }
 
 export const fetchAwards = () => (dispatch: (arg0: (IFetchAwards)) => void) => {
-    request(RequestTypesEnum.get, RequestApiEnum.getAwards, null)
+    request(RequestTypesEnum.get, RequestApiEnum.tableAwards, null)
         .then(res => {
             const { data } = res;
 

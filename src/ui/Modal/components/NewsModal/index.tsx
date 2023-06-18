@@ -29,7 +29,7 @@ const NewsModal: React.FC<INewsModal> = ({ onClose, option }) => {
             </Layout>
             <Layout className='news-modal__content'>
                 <Layout className='news-modal__main'>
-                    <Text className='news-modal__description'>{description}</Text>
+                    <Text className='news-modal__description' fontSize={SizeEnum.short}>{description}</Text>
                     <Layout className='news-modal__source'>
                         <Text className='news-modal__source-title'>Источники: </Text>
                         <Layout className='news-modal__source-container'>
@@ -42,7 +42,9 @@ const NewsModal: React.FC<INewsModal> = ({ onClose, option }) => {
                         </Layout>
                     </Layout>
                 </Layout>
-                <Icon className='news-modal__picture' src={picture} />
+                <Layout className='news-modal__picture-container'>
+                    <Icon className='news-modal__picture' src={picture} />
+                </Layout>
             </Layout>
         </Layout>
     )
