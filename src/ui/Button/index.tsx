@@ -8,14 +8,14 @@ import { Icon } from 'ui/Icon';
 import { SizeEnum } from 'enums/sizeTypes';
 
 interface IButton {
-    onClick?: any;
-    className?: string;
-    disabled?: boolean;
-    children?: React.ReactNode;
-    heightType?: SizeEnum;
-    colorTheme?: ColorThemeType;
-    icon?: IconDefinition;
-    title?: string;
+    onClick?: any;// Функция нажатия
+    className?: string;// Классы для стилей
+    disabled?: boolean;// Флаг доступа
+    children?: React.ReactNode;// Дочерние элементы
+    heightType?: SizeEnum;// Высота кнопки
+    colorTheme?: ColorThemeType;// Цветовая тема кнопки
+    icon?: IconDefinition;// Флаг того, что кнопка будет с иконкой
+    title?: string;// Текст для кнопки с иконкой
 }
 
 const Button: React.FC<IButton> = ({
