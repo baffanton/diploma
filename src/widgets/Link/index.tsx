@@ -21,7 +21,7 @@ const Link: React.FC<ILink> = ({ children, href, className = '', onClick }) => {
         >
             {children}
         </a>
-    )
-}
+    );
+};
 
 export { Link };

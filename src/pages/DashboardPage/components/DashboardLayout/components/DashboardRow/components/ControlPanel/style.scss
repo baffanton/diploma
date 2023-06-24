@@ -1,4 +1,4 @@
-@import "global.scss";
+@import 'global.scss';
 
 .control-panel {
     border-radius: 1rem;
@@ -13,7 +13,7 @@
 }
 
 .control-panel:hover {
-    background-color: rgba(205, 233, 249, .4);
+    background-color: rgba(205, 233, 249, 0.4);
 }
 
 .control-panel__icon {

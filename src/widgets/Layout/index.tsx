@@ -8,8 +8,10 @@ interface ILayout {
 
 const Layout: React.FC<ILayout> = ({ className, children, onClick }) => {
     return (
-        <div className={className} onClick={onClick}>{children}</div>
-    )
-}
+        <div className={className} onClick={onClick}>
+            {children}
+        </div>
+    );
+};
 
 export { Layout };

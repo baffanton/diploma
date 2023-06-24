@@ -1,4 +1,4 @@
-@import "global.scss";
+@import 'global.scss';
 
 .icon_pointer {
     cursor: pointer;
@@ -19,18 +19,4 @@ svg.icon_disabled {
 
 .icon_heightType_l {
     height: 5rem;
-}
-
-@media only screen and (max-width: 1399px) {
-    .icon_heightType_s {
-        height: 30px;
-    }
-    
-    .icon_heightType_m {
-        height: 35px;
-    }
-    
-    .icon_heightType_l {
-        height: 50px;
-    }
 }

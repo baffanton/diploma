@@ -14,8 +14,8 @@ interface IText {
     fontStyle?: StyleEnum;
 }
 
-const Text: React.FC<IText> = ({ 
-    className, 
+const Text: React.FC<IText> = ({
+    className,
     children,
     fontSize = SizeEnum.medium,
     fontWeight = WeightEnum.default,
@@ -29,14 +29,14 @@ const Text: React.FC<IText> = ({
         `text_style_${fontStyle}`,
         `text_weight_${fontWeight}`,
         (onClick || pointer) && 'text_cursor_pointer',
-        className
-        );
-    
+        className,
+    );
+
     return (
-        <p className={classNames} onClick={onClick}>{children}</p>
-    )
-}
+        <p className={classNames} onClick={onClick}>
+            {children}
+        </p>
+    );
+};
 
 export { Text };
-
-

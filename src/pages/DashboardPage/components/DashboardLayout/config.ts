@@ -6,9 +6,9 @@ import {
     faScaleBalanced,
     faUserGraduate,
     faUserShield,
-    IconDefinition
-} from "@fortawesome/free-solid-svg-icons";
-import { DashboardPagesUrlEnum } from "enums/dashboardPages";
+    IconDefinition,
+} from '@fortawesome/free-solid-svg-icons';
+import { DashboardPagesUrlEnum } from 'enums/dashboardPages';
 
 export interface IControlPanel {
     id: string;
@@ -24,60 +24,60 @@ export interface IControlRow {
 
 export const ControlRows: IControlRow[] = [
     {
-        id: "firstRow",
+        id: 'firstRow',
         panels: [
             {
-                id: "security",
-                title: "Охрана труда",
+                id: 'security',
+                title: 'Охрана труда',
                 icon: faUserShield,
-                url: DashboardPagesUrlEnum.security
+                url: DashboardPagesUrlEnum.security,
             },
             {
-                id: "sport",
-                title: "Спортивная жизнь",
+                id: 'sport',
+                title: 'Спортивная жизнь',
                 icon: faBasketball,
-                url: DashboardPagesUrlEnum.sport
-            }
-        ]
+                url: DashboardPagesUrlEnum.sport,
+            },
+        ],
     },
     {
-        id: "secondRow",
+        id: 'secondRow',
         panels: [
             {
-                id: "members",
-                title: "Участники",
+                id: 'members',
+                title: 'Участники',
                 icon: faPeopleGroup,
                 url: DashboardPagesUrlEnum.users,
             },
             {
-                id: "financialHelp",
-                title: "Материальная помощь",
+                id: 'financialHelp',
+                title: 'Материальная помощь',
                 icon: faRubleSign,
-                url: DashboardPagesUrlEnum.financialHelp
+                url: DashboardPagesUrlEnum.financialHelp,
             },
             {
-                id: "legalHelp",
-                title: "Юридическая помощь",
+                id: 'legalHelp',
+                title: 'Юридическая помощь',
                 icon: faScaleBalanced,
-                url: DashboardPagesUrlEnum.legalHelp
-            }
-        ]
+                url: DashboardPagesUrlEnum.legalHelp,
+            },
+        ],
     },
     {
-        id: "thirdRow",
+        id: 'thirdRow',
         panels: [
             {
-                id: "awards",
-                title: "Награждения",
+                id: 'awards',
+                title: 'Награждения',
                 icon: faAward,
-                url: DashboardPagesUrlEnum.awards
+                url: DashboardPagesUrlEnum.awards,
             },
             {
-                id: "education",
-                title: "Обучение",
+                id: 'education',
+                title: 'Обучение',
                 icon: faUserGraduate,
-                url: DashboardPagesUrlEnum.education
-            }
-        ]
-    }
-]
+                url: DashboardPagesUrlEnum.education,
+            },
+        ],
+    },
+];

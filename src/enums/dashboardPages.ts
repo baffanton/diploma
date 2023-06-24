@@ -5,5 +5,5 @@ export enum DashboardPagesUrlEnum {
     financialHelp = 'financial-help',
     legalHelp = 'legal-help',
     awards = 'awards',
-    education = 'education'
+    education = 'education',
 }

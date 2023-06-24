@@ -39,57 +39,19 @@
     border-left: 0.1rem solid $darkBlue;
 }
 
-.button__icon_color_ordinary, .button__icon_color_white {
+.button__icon_color_ordinary,
+.button__icon_color_white {
     border-left: 0.1rem solid $blue;
 }
 
-@media only screen and (max-width: 1366px) {
-    .button_height_s {
-        height: 30px;
-        font-size: 16px;
-    }
-    
-    .button_height_m {
-        height: 42px;
-        font-size: 20px;
-    }
-    
-    .button_height_l {
-        height: 60px;
-        font-size: 25px;
-    }
+.button_height_s {
+    height: 42px;
 }
 
-@media only screen and (min-width: 1367px) and (max-width: 1919px) {
-    .button_height_s {
-        height: 42px;
-        font-size: 20px;
-    }
-    
-    .button_height_m {
-        height: 50px;
-        font-size: 23px;
-    }
-    
-    .button_height_l {
-        height: 60px;
-        font-size: 25px;
-    }
+.button_height_m {
+    height: 60px;
 }
 
-@media only screen and (min-width: 1920px) {
-    .button_height_s {
-        height: 42px;
-        font-size: 20px;
-    }
-    
-    .button_height_m {
-        height: 50px;
-        font-size: 25px;
-    }
-    
-    .button_height_l {
-        height: 60px;
-        font-size: 30px;
-    }
+.button_height_l {
+    height: 72px;
 }

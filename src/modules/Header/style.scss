@@ -1,8 +1,9 @@
-@import "global.scss";
+@import 'global.scss';
 
 .header {
     background-color: $blue;
     width: 100%;
+    height: 80px;
 }
 
 .header__container {
@@ -11,7 +12,8 @@
     justify-content: space-between;
     margin: 0 auto;
     height: 100%;
-    padding: 0 20px;
+    padding: 0 10px;
+    width: 1720px;
 }
 
 .header__link {
@@ -29,14 +31,18 @@
     left: calc(50% - 15rem / 2);
 }
 
+.header__company svg {
+    height: 60px;
+}
+
 .header__profile-data {
     display: flex;
     align-items: center;
 }
 
 .header__settings {
-    cursor: pointer;
     color: $darkBlue;
+    margin-right: 15px;
 }
 
 .header__settings:hover {
@@ -45,72 +51,20 @@
 
 .header__user-name {
     color: $white;
-    margin-right: 0.8rem;
-    cursor: default;
+    margin-right: 15px;
 }
 
 .header__user-icon {
     border-radius: 50%;
+    width: 50px;
+    height: 50px;
     margin-right: 15px;
-    cursor: pointer;
 }
 
-@media only screen and (max-width: 1366px) {
-    .header {
-        height: 60px;
-        min-height: 60px;
-    }
-
-    .header__container {
-        width: 1100px;
-    }
-
-    .header__company svg {
-        height: 45px;
-    }
-
-    .header__user-icon {
-        width: 35px;
-        height: 35px;
-    }
+.header__exit {
+    color: $darkBlue;
 }
 
-@media only screen and (min-width: 1367px) and (max-width: 1919px) {
-    .header {
-        height: 70px;
-        min-height: 70px;
-    }
-
-    .header__container {
-        width: 1200px;
-    }
-
-    .header__company svg {
-        height: 55px;
-    }
-
-    .header__user-icon {
-        width: 50px;
-        height: 50px;
-    }
-}
-
-@media only screen and (min-width: 1800px) {
-    .header {
-        height: 80px;
-        min-height: 80px;
-    }
-
-    .header__container {
-        width: 1800px;
-    }
-
-    .header__company svg {
-        height: 65px;
-    }
-
-    .header__user-icon {
-        width: 50px;
-        height: 50px;
-    }
+.header__exit:hover {
+    color: $yellow;
 }

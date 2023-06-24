@@ -1,4 +1,4 @@
-@import "global.scss";
+@import 'global.scss';
 
 .table {
     width: 100%;
@@ -34,7 +34,7 @@
 }
 
 .table__container {
-    height: 620px;
+    height: 670px;
     overflow-x: auto;
 }
 
@@ -61,12 +61,16 @@
     border-right: 0.15rem solid $blue;
 }
 
+.table__tbody_td {
+    border-bottom: 0.15rem solid $blue;
+}
+
 ::-webkit-scrollbar {
-	width: 8px;
-} 
+    width: 8px;
+}
 ::-webkit-scrollbar-track {
-	box-shadow: inset 0 0 6px #002E45; 
-} 
+    box-shadow: inset 0 0 6px #002e45;
+}
 ::-webkit-scrollbar-thumb {
-	box-shadow: inset 0 0 6px #002E45; 
+    box-shadow: inset 0 0 6px #002e45;
 }

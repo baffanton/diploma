@@ -1,38 +1,58 @@
-import { faTelegram, faVk } from "@fortawesome/free-brands-svg-icons";
-import { faGears } from "@fortawesome/free-solid-svg-icons";
-import { ImageEnum } from "enums/images";
-import { UserRolesEnum } from "enums/userTypes";
-import { connect } from "react-redux";
-import { Link as LinkRouter } from "react-router-dom";
-import { HomeSvgSelector } from "ui/HomeSvgSelector";
+import { faTelegram, faVk } from '@fortawesome/free-brands-svg-icons';
+import {
+    faArrowRightFromBracket,
+    faGears,
+} from '@fortawesome/free-solid-svg-icons';
+import { ImageEnum } from 'enums/images';
+import { UserRolesEnum } from 'enums/userTypes';
+import { connect } from 'react-redux';
+import { Link as LinkRouter, useNavigate } from 'react-router-dom';
+import { HomeSvgSelector } from 'ui/HomeSvgSelector';
 import './style.scss';
-import { getShortName } from "./helpers";
-import { Layout } from "widgets/Layout";
-import { Text } from "widgets/Text";
-import { SizeEnum } from "enums/sizeTypes";
-import { Icon } from "ui/Icon";
+import { getShortName } from './helpers';
+import { Layout } from 'widgets/Layout';
+import { Text } from 'widgets/Text';
+import { SizeEnum } from 'enums/sizeTypes';
+import { Icon } from 'ui/Icon';
 import { Link } from 'widgets/Link';
+import { IHeader } from './types';
 
-interface IHeader {
-    role: UserRolesEnum;
-    firstname: string;
-    lastname: string;
-    surname: string;
-    imageUrl: string;
-}
-
-const Header: React.FC<IHeader> = ({ firstname, lastname, surname, role, imageUrl }) => {
+const Header: React.FC<IHeader> = ({
+    firstname,
+    lastname,
+    surname,
+    role,
+    imageUrl,
+}) => {
+    const navigate = useNavigate();
     const shortName = getShortName(firstname, lastname, surname);
+
+    const onExitClickHandler = () => {
+        localStorage.removeItem('token');
+        navigate('/');
+    };
+
+    const onDashboardIconClickHandler = () => {
+        navigate('/dashboard');
+    };
 
     return (
         <Layout className="header">
             <Layout className="header__container">
                 <Layout className="header__links">
                     <Link href="https://vk.com/eurochem_prof">
-                        <Icon className="header__link" fontAwesomeIcon={faVk} heightType={SizeEnum.medium} />
+                        <Icon
+                            className="header__link"
+                            fontAwesomeIcon={faVk}
+                            heightType={SizeEnum.medium}
+                        />
                     </Link>
                     <Link href="/">
-                        <Icon className="header__link" fontAwesomeIcon={faTelegram} heightType={SizeEnum.medium} />
+                        <Icon
+                            className="header__link"
+                            fontAwesomeIcon={faTelegram}
+                            heightType={SizeEnum.medium}
+                        />
                     </Link>
                 </Layout>
                 <Layout className="header__company">
@@ -41,20 +61,34 @@ const Header: React.FC<IHeader> = ({ firstname, lastname, surname, role, imageUr
                     </LinkRouter>
                 </Layout>
                 <Layout className="header__profile-data">
-                    <Text className="header__user-name" fontSize={SizeEnum.medium}>{shortName}</Text>
-                    <img className="header__user-icon" src={imageUrl} alt="" />
                     {role === UserRolesEnum.admin && (
                         <LinkRouter to="/dashboard">
-                            <Icon className="header__settings" fontAwesomeIcon={faGears} heightType={SizeEnum.medium} />
+                            <Icon
+                                className="header__settings"
+                                fontAwesomeIcon={faGears}
+                                onClick={onDashboardIconClickHandler}
+                                heightType={SizeEnum.short}
+                            />
                         </LinkRouter>
                     )}
+                    <Text
+                        className="header__user-name"
+                        fontSize={SizeEnum.medium}
+                    >
+                        {shortName}
+                    </Text>
+                    <Icon className="header__user-icon" src={imageUrl}></Icon>
+                    <Icon
+                        className="header__exit"
+                        fontAwesomeIcon={faArrowRightFromBracket}
+                        onClick={onExitClickHandler}
+                        heightType={SizeEnum.short}
+                    />
                 </Layout>
             </Layout>
-            
-            
         </Layout>
-    )
-}
+    );
+};
 
 const mapStateToProps = (state: any) => {
     const { user } = state;
@@ -64,8 +98,8 @@ const mapStateToProps = (state: any) => {
         lastname: user.lastname,
         surname: user.surname,
         role: user.role,
-        imageUrl: user.imageUrl
-    }
-}
+        imageUrl: user.imageUrl,
+    };
+};
 
 export default connect(mapStateToProps)(Header);

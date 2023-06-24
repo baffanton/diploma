@@ -4,6 +4,6 @@ const getShortName = (firstname: string, lastname: string, surname: string) => {
     }
 
     return `${lastname} ${firstname[0]}.${surname[0]}.`;
-}
+};
 
 export { getShortName };

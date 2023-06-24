@@ -1,4 +1,4 @@
-@import "global.scss";
+@import 'global.scss';
 
 .check-box__input {
     cursor: pointer;
@@ -64,33 +64,4 @@
 .check-box__error {
     font-size: 0.8rem;
     color: $lightRed;
-}
-
-@media only screen and (max-width: 1399px) {
-    .check-box__label_height_s {
-        font-size: 16px;
-    }
-    
-    .check-box__label_height_s::before {
-        height: 16px;
-        width: 16px;
-    }
-    
-    .check-box__label_height_m {
-        font-size: 16px;
-    }
-    
-    .check-box__label_height_m::before {
-        height: 20px;
-        width: 20px;
-    }
-    
-    .check-box__label_height_l {
-        font-size: 20px;
-    }
-    
-    .check-box__label_height_l::before {
-        height: 25px;
-        width: 25px;
-    }
 }

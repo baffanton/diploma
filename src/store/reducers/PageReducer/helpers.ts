@@ -1,4 +1,4 @@
-import { ModalTypes } from "enums/modalTypes";
+import { ModalTypes } from 'enums/modalTypes';
 
 export interface IModal {
     type: ModalTypes;

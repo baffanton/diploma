@@ -1,17 +1,15 @@
-@import "global.scss";
+@import 'global.scss';
 
 .news-modal {
     background-color: $white;
     border-radius: 20px;
-    padding: 10px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    height: 70%;
+    height: max-content;
     width: 35%;
-}
-
-.news-modal__header {
-    height: 10%;
+    justify-content: space-between;
+    height: 830px;
 }
 
 .news-modal__title {
@@ -27,6 +25,10 @@
     top: -10px;
 }
 
+.news-modal__info {
+    height: 100%;
+}
+
 .news-modal__content {
     display: flex;
     flex-direction: column;
@@ -35,21 +37,23 @@
 }
 
 .news-modal__main {
-    height: 100%;
+    height: calc(100% - 37px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 10px 0;
 }
 
 .news-modal__description {
     color: $darkBlue;
     text-align: center;
+    line-height: 1.5;
 }
 
 .news-modal__source {
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 40px;
 }
 
 .news-modal__source-title {

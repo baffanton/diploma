@@ -1,23 +1,19 @@
 export enum RequestApiEnum {
-    // Новые (проверенные)
-    authUser = 'auth/login',
-    getUser = '/user',
-    getNews = '/news',
-    getEvents = '/event',
-
+    // Отчеты
     tableUsers = '/user/all',
     tableSport = '/sport',
     tableAwards = '/awards',
     tableEducation = '/education',
-    deleteUser = '/user/',
-    addUser = '/user',
+    tableFinancialHelp = '/financial-help',
+    tableLegalHelp = '/legal-help',
+    tableSecurity = '/security',
 
-    // Новые (не проверенные)
-    getSecurity = '/security',
-    getSport = '/sport',
-    getUsers = '/users',
-    getFinancialHelp = '/financial-help',
-    getLegalHelp = '/legal-help',
-    getAwards = '/awards',
-    getEducation = '/education',
+    // Домашняя страница
+    getUser = '/user',
+    getNews = '/news',
+    getEvents = '/event',
+
+    // Изменение участников
+    deleteUser = '/users/delete',
+    addUser = '/users/add',
 }

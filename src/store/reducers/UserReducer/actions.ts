@@ -1,20 +1,33 @@
-import { BASE_URL, request } from "helpers/request";
-import { IFetchUser, USER_FETCH } from "./types";
-import { RequestTypesEnum } from "enums/requestTypes";
-import { RequestApiEnum } from "enums/requestApi";
-import axios, { AxiosResponse } from "axios";
-import { hideLoader, showLoader } from "../PageReducer/actions";
+import { BASE_URL, request } from 'helpers/request';
+import { IFetchUser, USER_FETCH } from './types';
+import { RequestTypesEnum } from 'enums/requestTypes';
+import { RequestApiEnum } from 'enums/requestApi';
+import axios, { AxiosResponse } from 'axios';
+import { hideLoader, showLoader } from '../PageReducer/actions';
 
-export const getToken = async (username: string, password: string): Promise<AxiosResponse<string>> => {
-    return await axios.post(`${BASE_URL}/auth/login`, { username, password }, { withCredentials: true });
+export const getToken = async (
+    username: string,
+    password: string,
+): Promise<AxiosResponse<string>> => {
+    return await axios.post(
+        `${BASE_URL}/auth/login`,
+        { username, password },
+        { withCredentials: true },
+    );
 };
 
-export const fetchUser = () => (dispatch: (arg0: (IFetchUser)) => void) => {
+export const refreshToken = async (): Promise<AxiosResponse<any>> => {
+    return await axios.get(`${BASE_URL}/auth/refresh`, {
+        withCredentials: true,
+    });
+};
+
+export const fetchUser = () => (dispatch: (arg0: IFetchUser) => void) => {
     // @ts-ignore
     dispatch(showLoader());
 
     request(RequestTypesEnum.get, RequestApiEnum.getUser, null)
-        .then(response => {
+        .then((response) => {
             const { data } = response;
 
             if (!data) {
@@ -30,11 +43,11 @@ export const fetchUser = () => (dispatch: (arg0: (IFetchUser)) => void) => {
                 surname,
                 imageUrl,
                 role,
-                auth: true
-            })
+                auth: true,
+            });
         })
         .finally(() => {
             // @ts-ignore
             dispatch(hideLoader());
-        })
+        });
 };

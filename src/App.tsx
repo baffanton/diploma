@@ -1,10 +1,8 @@
-import PageBuilder from 'modules/PageBuilder';
+import PageBuilder from 'modules/PageBuilder/PageBuilder';
 import './App.scss';
 
 function App() {
-    return (
-        <PageBuilder />
-    );
+    return <PageBuilder />;
 }
 
 export default App;

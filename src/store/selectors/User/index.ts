@@ -1,4 +1,4 @@
-import { createStateSelector } from "../helpers";
+import { createStateSelector } from '../helpers';
 
 const user = {
     firstname: createStateSelector('user.firstname'),
@@ -7,6 +7,6 @@ const user = {
     imageUrl: createStateSelector('user.imagaUrl'),
     auth: createStateSelector('user.auth'),
     role: createStateSelector('user.role'),
-}
+};
 
 export { user };

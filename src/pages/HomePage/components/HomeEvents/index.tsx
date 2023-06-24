@@ -20,17 +20,17 @@ const HomeEvents: React.FC<IHomeEvents> = ({ events }) => {
             <Title
                 className="home-events__title"
                 fontWeight={WeightEnum.bold}
-                fontSize={SizeEnum.short}
+                fontSize={SizeEnum.medium}
             >
                 Мероприятия
             </Title>
-            <Layout className='home-events__container'>
-                {events.map(event => {
-                    return <Event key={event.id} event={event} />
+            <Layout className="home-events__container">
+                {events.map((event) => {
+                    return <Event key={event.id} event={event} />;
                 })}
             </Layout>
         </Layout>
-    )
-}
+    );
+};
 
 export { HomeEvents };

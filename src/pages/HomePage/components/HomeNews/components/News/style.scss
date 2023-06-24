@@ -1,4 +1,4 @@
-@import "global.scss";
+@import 'global.scss';
 
 .news {
     padding: 10px;
@@ -32,7 +32,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-top: 8px;
+    margin-top: 15px;
     height: 100%;
 }
 
@@ -52,11 +52,4 @@
 
 .news__more:hover {
     color: $yellow;
-}
-
-@media only screen and (max-width: 1366px) {
-    .news__picture {
-        height: 118px;
-        min-height: 118px;
-    }
 }

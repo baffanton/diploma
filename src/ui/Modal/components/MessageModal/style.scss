@@ -1,13 +1,14 @@
-@import "global.scss";
+@import 'global.scss';
 
 .message-modal {
     display: flex;
     flex-direction: column;
-    width: 26.5rem;
+    width: 530px;
     height: auto;
     background-color: $white;
-    border-radius: 1rem;
+    border-radius: 20px;
     color: $darkBlue;
+    top: -10%;
 }
 
 .message-modal__header {

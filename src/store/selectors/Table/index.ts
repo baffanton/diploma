@@ -1,4 +1,4 @@
-import { createStateSelector } from "../helpers";
+import { createStateSelector } from '../helpers';
 
 const table = {
     security: createStateSelector('table.security'),
@@ -8,6 +8,6 @@ const table = {
     legalHelp: createStateSelector('table.legalHelp'),
     awards: createStateSelector('table.awards'),
     education: createStateSelector('table.education'),
-}
+};
 
 export { table };

@@ -17,16 +17,20 @@ const HomeNews: React.FC<IHomeNews> = ({ news }) => {
 
     return (
         <Layout className="home-news">
-            <Title className="home-news__title" fontWeight={WeightEnum.bold} fontSize={SizeEnum.short}>Последние новости</Title>
-            <Layout className='home-news__container'>
-                {news.map(item => {
-                    return (
-                        <News key={item.id} item={item} />
-                    )
+            <Title
+                className="home-news__title"
+                fontWeight={WeightEnum.bold}
+                fontSize={SizeEnum.medium}
+            >
+                Последние новости
+            </Title>
+            <Layout className="home-news__container">
+                {news.map((item) => {
+                    return <News key={item.id} item={item} />;
                 })}
             </Layout>
         </Layout>
-    )
-}
+    );
+};
 
 export { HomeNews };

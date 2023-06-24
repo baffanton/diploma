@@ -1,26 +1,16 @@
 @import 'global.scss';
 
 .auth-page {
-    width: 100%;
-    height: 100%;
+    width: 1720px;
+    height: 900px;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.auth-page__form {
-    width: 100%;
-}
-
-.auth-page__username-container {
-    margin-bottom: 0.8rem;
-}
-
-.auth-page__password-container {
-    margin-bottom: 0.8rem;
+    margin: 0 auto;
 }
 
 .auth-page__body {
+    width: 600px;
     background-color: $blue;
     border-radius: 20px;
     padding: 16px;
@@ -29,49 +19,37 @@
     align-items: center;
 }
 
+.auth-page__form {
+    width: 100%;
+}
+
+.auth-page__username-container,
+.auth-page__password-container {
+    margin-bottom: 20px;
+}
+
 .auth-page__management {
     display: flex;
     justify-content: flex-end;
-    padding: 0 0.8rem 0 0.4rem;
+    padding: 0 16px 0 8px;
+    margin-top: 10px;
 }
 
 .auth-page__submit-button {
     width: 185px;
 }
 
-.auth-page__management .auth-page__forget {
+.auth-page__forget {
     color: $white;
-    cursor: pointer;
 }
 
 .auth-page__submit-button-container {
     display: flex;
     justify-content: center;
-    margin-top: 8px;
+    margin-top: 15px;
 }
 
-.auth-page__username, .auth-page__password {
+.auth-page__username,
+.auth-page__password {
     margin-bottom: 15px;
-}
-
-@media only screen and (max-width: 1366px) {
-    .auth-page__body {
-        width: 500px;
-    }
-
-    .auth-page__company-logo svg {
-        width: 250px;
-    }
-}
-
-@media only screen and (min-width: 1367px) and (max-width: 1919px) {
-    .auth-page__body {
-        width: 550px;
-    }
-}
-
-@media only screen and (min-width: 1920px) {
-    .auth-page__body {
-        width: 600px;
-    }
 }

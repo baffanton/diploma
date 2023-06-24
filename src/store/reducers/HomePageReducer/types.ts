@@ -1,5 +1,5 @@
-export const HOME_FETCH_NEWS = "HOME/FETCH_NEWS";
-export const HOME_FETCH_EVENTS = "HOME/FETCH_EVENTS";
+export const HOME_FETCH_NEWS = 'HOME/FETCH_NEWS';
+export const HOME_FETCH_EVENTS = 'HOME/FETCH_EVENTS';
 
 export interface IFetchNews {
     type: typeof HOME_FETCH_NEWS;
@@ -16,6 +16,4 @@ export interface IHomePageReducerModel {
     readonly events: any;
 }
 
-export type HomeActionTypes = 
-    | IFetchEvents
-    | IFetchNews;
+export type HomeActionTypes = IFetchEvents | IFetchNews;

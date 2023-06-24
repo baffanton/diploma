@@ -1,9 +1,9 @@
-import { IModal } from "./helpers";
+import { IModal } from './helpers';
 
-export const MODAL_OPEN = "PAGE/OPEN_MODAL";
-export const MODAL_CLOSE = "PAGE/CLOSE_MODAL";
-export const LOADER_SHOW = "PAGE/SHOW_LOADER";
-export const LOADER_HIDE = "PAGE/HIDE_LOADER";
+export const MODAL_OPEN = 'PAGE/OPEN_MODAL';
+export const MODAL_CLOSE = 'PAGE/CLOSE_MODAL';
+export const LOADER_SHOW = 'PAGE/SHOW_LOADER';
+export const LOADER_HIDE = 'PAGE/HIDE_LOADER';
 
 export interface IOpenModal {
     type: typeof MODAL_OPEN;
@@ -31,7 +31,7 @@ export interface IPageReducerModel {
     loaderPoints: number;
 }
 
-export type PageActionTypes = 
+export type PageActionTypes =
     | IOpenModal
     | ICloseModal
     | IShowLoader

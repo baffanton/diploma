@@ -4,131 +4,140 @@ import { ImageEnum } from 'enums/images';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { schema } from './validateScheme';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { ILoginData } from 'store/reducers/UserReducer/helpers';
 import { Layout } from 'widgets/Layout';
 import { ColorThemeType } from 'enums/colorThemeTypes';
 import { TextBox } from 'ui/TextBox';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { InputTypesEnum } from 'enums/inputTypes';
 import { LabelPositionEnum } from 'enums/labelPositionTypes';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { Button } from 'ui/Button';
 import { connect } from 'react-redux';
 import { fetchUser, getToken } from 'store/reducers/UserReducer/actions';
-import { Dispatch } from '@reduxjs/toolkit';
-import { IFetchUser } from 'store/reducers/UserReducer/types';
 import { ModalTypes } from 'enums/modalTypes';
-import { closeModal, hideLoader, openModal, showLoader } from 'store/reducers/PageReducer/actions';
-import { ICloseModal, IHideLoader, IOpenModal, IShowLoader } from 'store/reducers/PageReducer/types';
+import {
+    closeModal,
+    hideLoader,
+    openModal,
+    showLoader,
+} from 'store/reducers/PageReducer/actions';
 import { useNavigate } from 'react-router-dom';
 import { SizeEnum } from 'enums/sizeTypes';
 import { Text } from 'widgets/Text';
+import { IAuthData, IAuthPage } from './types';
+import { IMessageModalOptions } from 'ui/Modal/components/MessageModal/types';
 
-interface IAuthPage {
-    auth: boolean;
-    fetchUser: () => Dispatch<IFetchUser>;
-    closeModal: () => Dispatch<ICloseModal>;
-    openModal: (modalTypes: ModalTypes, onClose: () => void, option: any) => Dispatch<IOpenModal>;
-    showLoader: () => Dispatch<IShowLoader>;
-    hideLoader: () => Dispatch<IHideLoader>;
-}
-
-const AuthPage: React.FC<IAuthPage> = ({ auth, fetchUser, closeModal, openModal, showLoader, hideLoader }) => {
+const AuthPage: React.FC<IAuthPage> = ({
+    closeModal,
+    openModal,
+    showLoader,
+    hideLoader,
+    fetchUser,
+}) => {
     const navigate = useNavigate();
-
     const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
 
-    useEffect(() => {
-        if (auth) {
-            navigate('/home');
-        }
-    }, [auth]);
-
-    const { 
-        register, 
-        resetField, 
-        handleSubmit, 
-        formState: { errors } 
-    } = useForm<ILoginData>({
+    const {
+        register,
+        resetField,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<IAuthData>({
         mode: 'onSubmit',
         defaultValues: {
-            username: "",
-            password: "",
+            username: '',
+            password: '',
         },
-        resolver: yupResolver(schema)
+        resolver: yupResolver(schema),
     });
 
     const onCloseModalHandler = () => {
         closeModal();
-    }
+    };
 
-    const onSubmit: SubmitHandler<ILoginData> = formData => {
+    const onSubmit: SubmitHandler<IAuthData> = async (formData) => {
         const { username, password } = formData;
 
         showLoader();
-        getToken(username, password)
-            .then(res => {
-                const { data } = res;
+        await getToken(username, password)
+            .then((result) => {
+                const { data } = result;
+
                 localStorage.setItem('token', data);
                 fetchUser();
                 navigate('/home');
             })
             .catch(() => {
-                openModal(ModalTypes.messageModal, onCloseModalHandler, { message: "Неверный логин или пароль" });
-                resetField("password");
+                openModal(ModalTypes.messageModal, onCloseModalHandler, {
+                    message: 'Неверный логин или пароль',
+                });
+                resetField('password');
             })
             .finally(() => {
                 hideLoader();
-            })
-        hideLoader();
-    }
+            });
+    };
 
     const onIconClick = () => {
         setIsShowPassword(!isShowPassword);
-    }
+    };
 
     return (
-        <Layout className='auth-page'>
-            <Layout className='auth-page__body'>
-                <Layout className='auth-page__company-logo'>
+        <Layout className="auth-page">
+            <Layout className="auth-page__body">
+                <Layout className="auth-page__company-logo">
                     <HomeSvgSelector icon={ImageEnum.logo} />
                 </Layout>
-                <form className='auth-page__form' onSubmit={handleSubmit(onSubmit)}>
-                    <Layout className='auth-page__data'>
-                        <TextBox 
-                            id='username'
+                <form
+                    className="auth-page__form"
+                    onSubmit={handleSubmit(onSubmit)}
+                >
+                    <Layout className="auth-page__data">
+                        <TextBox
+                            id="username"
                             label="Логин"
                             labelPosition={LabelPositionEnum.top}
-                            placeholder='Введите логин'
+                            placeholder="Введите логин"
                             register={register('username')}
                             error={errors.username}
                             colorTheme={ColorThemeType.ordinary}
                             heightType={SizeEnum.medium}
-                            classNameContainer='auth-page__username'
+                            classNameContainer="auth-page__username"
                         />
-                        <TextBox 
-                            id='password'
+                        <TextBox
+                            id="password"
                             label="Пароль"
                             labelPosition={LabelPositionEnum.top}
-                            placeholder='Введите пароль'
+                            placeholder="Введите пароль"
                             register={register('password')}
                             error={errors.password}
                             colorTheme={ColorThemeType.ordinary}
                             heightType={SizeEnum.medium}
-                            classNameContainer='auth-page__password'
+                            classNameContainer="auth-page__password"
                             icon={isShowPassword ? faEyeSlash : faEye}
                             onIconClick={onIconClick}
-                            type={isShowPassword ? InputTypesEnum.text : InputTypesEnum.password}
+                            type={
+                                isShowPassword
+                                    ? InputTypesEnum.text
+                                    : InputTypesEnum.password
+                            }
                         />
                     </Layout>
-                    <Layout className='auth-page__management'>
-                        <Text className='auth-page__forget' fontSize={SizeEnum.medium}>Забыли пароль?</Text>
+                    <Layout className="auth-page__management">
+                        <Text
+                            className="auth-page__forget"
+                            fontSize={SizeEnum.medium}
+                            pointer
+                        >
+                            Забыли пароль?
+                        </Text>
                     </Layout>
-                    <Layout className='auth-page__submit-button-container'>
-                        <Button 
-                            className='auth-page__submit-button'
+                    <Layout className="auth-page__submit-button-container">
+                        <Button
+                            className="auth-page__submit-button"
                             colorTheme={ColorThemeType.white}
                             heightType={SizeEnum.medium}
+                            onClick={() => {}}
                         >
                             Войти
                         </Button>
@@ -136,27 +145,31 @@ const AuthPage: React.FC<IAuthPage> = ({ auth, fetchUser, closeModal, openModal,
                 </form>
             </Layout>
         </Layout>
-    )
-}
-
-const mapStateToProps = (state: any) => {
-    const { user } = state;
-
-    return {
-        auth: user.auth,
-    }
-}
+    );
+};
 
 const mapDispatchToProps = (dispatch: any) => {
-    return { 
-        fetchUser() { return dispatch(fetchUser()); },
-        closeModal() { return dispatch(closeModal()); },
-        openModal(modalTypes: ModalTypes, onClose: () => void, option: any) {
+    return {
+        fetchUser() {
+            return dispatch(fetchUser());
+        },
+        closeModal() {
+            return dispatch(closeModal());
+        },
+        openModal(
+            modalTypes: ModalTypes,
+            onClose: () => void,
+            option: IMessageModalOptions,
+        ) {
             return dispatch(openModal(modalTypes, onClose, option));
         },
-        showLoader() { return dispatch(showLoader()); },
-        hideLoader() { return dispatch(hideLoader()); }
-    }
-}
+        showLoader() {
+            return dispatch(showLoader());
+        },
+        hideLoader() {
+            return dispatch(hideLoader());
+        },
+    };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthPage);
+export default connect(null, mapDispatchToProps)(AuthPage);

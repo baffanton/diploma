@@ -1,77 +1,78 @@
-import { DashboardPagesUrlEnum } from "enums/dashboardPages";
-import { RequestApiEnum } from "enums/requestApi";
+import { DashboardPagesUrlEnum } from 'enums/dashboardPages';
 import { usersConfig } from './tableConfigs/users';
-import { ITableColumn } from "helpers/tableConfigTypes";
-import { awardsConfig } from "./tableConfigs/awards";
-import { eventsConfig } from "./tableConfigs/events";
-import { userAwardsConfig } from "./tableConfigs/userAwards";
-import { userEventsConfig } from "./tableConfigs/userEvents";
-import { sportConfig } from "./tableConfigs/sport";
+import { awardsConfig } from './tableConfigs/awards';
+import { eventsConfig } from './tableConfigs/events';
+import { userAwardsConfig } from './tableConfigs/userAwards';
+import { userEventsConfig } from './tableConfigs/userEvents';
+import { sportConfig } from './tableConfigs/sport';
+import { ExportUrls } from 'enums/exportUrls';
+import { BASE_URL } from 'helpers/request';
+import { ITableColumn } from './components/DashboardMore/types';
 
 export interface IDashboardPage {
     id: DashboardPagesUrlEnum;
     title: string;
     tableConfig: ITableColumn[];
     url: DashboardPagesUrlEnum;
-    exportUrl: RequestApiEnum;
+    exportUrl: string;
     isClickable: boolean;
 }
 
 export const DashboardPagesConfig: IDashboardPage[] = [
     {
         id: DashboardPagesUrlEnum.awards,
-        title: "Награждения",
+        title: 'Награждения',
         tableConfig: awardsConfig,
         url: DashboardPagesUrlEnum.awards,
-        exportUrl: RequestApiEnum.getAwards,
-        isClickable: false
+        exportUrl: `${BASE_URL}${ExportUrls.exportAwards}`,
+        isClickable: false,
     },
     {
         id: DashboardPagesUrlEnum.education,
-        title: "Образование",
+        title: 'Образование',
         tableConfig: eventsConfig,
         url: DashboardPagesUrlEnum.education,
-        exportUrl: RequestApiEnum.getEducation,
-        isClickable: false
+        exportUrl: `${BASE_URL}${ExportUrls.exportEducation}`,
+        isClickable: false,
     },
     {
         id: DashboardPagesUrlEnum.financialHelp,
-        title: "Материальная помощь",
+        title: 'Материальная помощь',
         tableConfig: userAwardsConfig,
         url: DashboardPagesUrlEnum.financialHelp,
-        exportUrl: RequestApiEnum.getFinancialHelp,
-        isClickable: false
+        exportUrl: `${BASE_URL}${ExportUrls.exportFinancialHelp}`,
+        isClickable: false,
     },
     {
         id: DashboardPagesUrlEnum.legalHelp,
-        title: "Юридическая помощь",
+        title: 'Юридическая помощь',
         tableConfig: userEventsConfig,
         url: DashboardPagesUrlEnum.legalHelp,
-        exportUrl: RequestApiEnum.getLegalHelp,
-        isClickable: false
+        exportUrl: `${BASE_URL}${ExportUrls.exportLegalHelp}`,
+        isClickable: false,
     },
     {
         id: DashboardPagesUrlEnum.users,
-        title: "Участники",
+        title: 'Участники',
         tableConfig: usersConfig,
         url: DashboardPagesUrlEnum.users,
-        exportUrl: RequestApiEnum.getUsers,
-        isClickable: true
+        exportUrl: `${BASE_URL}${ExportUrls.exportUsers}`,
+        isClickable: true,
     },
     {
         id: DashboardPagesUrlEnum.security,
-        title: "Охрана труда",
+        title: 'Охрана труда',
         tableConfig: usersConfig,
         url: DashboardPagesUrlEnum.security,
-        exportUrl: RequestApiEnum.getSecurity,
-        isClickable: false
+        exportUrl: `${BASE_URL}${ExportUrls.exportSeciruty}`,
+        isClickable: false,
     },
     {
         id: DashboardPagesUrlEnum.sport,
-        title: "Спортивная жизнь",
+        title: 'Спортивная жизнь',
         tableConfig: sportConfig,
         url: DashboardPagesUrlEnum.sport,
-        exportUrl: RequestApiEnum.getSport,
-        isClickable: false
+        exportUrl: `${BASE_URL}${ExportUrls.exportSport}`,
+        isClickable: false,
     },
-]
+];

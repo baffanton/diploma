@@ -1,19 +1,14 @@
-@import "global.scss";
+@import 'global.scss';
 
 .event {
     width: 100%;
     height: calc(100% / 5);
     color: $darkBlue;
-    max-height: 130px;
-}
-
-.event:last-child > .event__container {
-    padding: 10px;
 }
 
 .event__container {
     height: 100%;
-    padding: 10px 10px 5px 10px;
+    padding: 10px 0 5px 0;
 }
 
 .event__body {
@@ -52,7 +47,7 @@
     flex-direction: column;
     color: $darkBlue;
     top: 0;
-    padding: 10px;
+    padding: 10px 0 5px 0;
 }
 
 .event-active__header {
@@ -89,7 +84,8 @@
     margin-bottom: 10px;
 }
 
-.event-active__date, .event-active__place {
+.event-active__date,
+.event-active__place {
     text-align: center;
 }
 

@@ -1,4 +1,4 @@
-@import "global.scss";
+@import 'global.scss';
 
 .add-user-modal {
     width: 27.5rem;
@@ -38,7 +38,9 @@
     color: $darkBlue;
 }
 
-.add-user-modal__lastname, .add-user-modal__name, .add-user-modal__username {
+.add-user-modal__lastname,
+.add-user-modal__name,
+.add-user-modal__username {
     margin-bottom: 0.4rem;
 }
 
@@ -49,4 +51,3 @@
 .add-user-modal__submit-button {
     width: 100%;
 }
-

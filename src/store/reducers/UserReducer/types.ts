@@ -1,4 +1,4 @@
-import { UserRolesEnum } from "enums/userTypes";
+import { UserRolesEnum } from 'enums/userTypes';
 
 export const USER_FETCH = 'USER/GET';
 
@@ -21,5 +21,4 @@ export interface IUserReducerModel {
     readonly auth: boolean;
 }
 
-export type UserActionTypes = 
-    | IFetchUser;
+export type UserActionTypes = IFetchUser;

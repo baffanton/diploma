@@ -22,10 +22,14 @@ const Title: React.FC<ITitle> = ({
         'title',
         `title_size_${fontSize}`,
         `title_weight_${fontWeight}`,
-        className
+        className,
     );
 
-    return <p className={classNames} onClick={onClick}>{children}</p>
-}
+    return (
+        <p className={classNames} onClick={onClick}>
+            {children}
+        </p>
+    );
+};
 
 export { Title };

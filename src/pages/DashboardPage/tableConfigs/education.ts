@@ -1,20 +1,20 @@
-import { ITableColumn } from "helpers/tableConfigTypes";
+import { ITableColumn } from '../components/DashboardMore/types';
 
 export const educationConfig: ITableColumn[] = [
     {
-        Header: "Событие",
-        accessor: "title",
+        Header: 'Событие',
+        accessor: 'title',
     },
     {
-        Header: "Вид спорта",
-        accessor: "sportType",
+        Header: 'Вид спорта',
+        accessor: 'sportType',
     },
     {
-        Header: "Дата",
-        accessor: "month",
+        Header: 'Дата',
+        accessor: 'month',
     },
     {
-        Header: "Место",
-        accessor: "placement",
-    }
-]
+        Header: 'Место',
+        accessor: 'placement',
+    },
+];

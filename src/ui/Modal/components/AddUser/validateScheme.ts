@@ -1,18 +1,10 @@
 import * as yup from 'yup';
 
 export const schema = yup.object({
-    firstname: yup
-        .string()
-        .required('Поле не может быть пустым*'),
-    lastname: yup
-        .string()
-        .required('Поле не может быть пустым*'),
-    surname: yup
-        .string()
-        .required('Поле не может быть пустым*'),
-    username: yup
-        .string()
-        .required('Поле не может быть пустым*'),
+    firstname: yup.string().required('Поле не может быть пустым*'),
+    lastname: yup.string().required('Поле не может быть пустым*'),
+    surname: yup.string().required('Поле не может быть пустым*'),
+    username: yup.string().required('Поле не может быть пустым*'),
     password: yup
         .string()
         .required('Поле не может быть пустым*')

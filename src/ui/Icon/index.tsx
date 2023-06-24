@@ -1,18 +1,7 @@
-import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import './style.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import cx from 'classnames';
-import { SizeEnum } from 'enums/sizeTypes';
-
-interface IIcon {
-    src?: string;
-    className?: string;
-    pointer?: boolean;
-    heightType?: SizeEnum;
-    fontAwesomeIcon?: IconDefinition;
-    onClick?: any;
-    disabled?: boolean;
-}
+import { IIcon } from './types';
 
 const Icon: React.FC<IIcon> = ({
     src,
@@ -33,15 +22,15 @@ const Icon: React.FC<IIcon> = ({
 
     if (fontAwesomeIcon) {
         return (
-            <FontAwesomeIcon className={classNames} onClick={onClick} icon={fontAwesomeIcon} />
-        )
+            <FontAwesomeIcon
+                className={classNames}
+                onClick={onClick}
+                icon={fontAwesomeIcon}
+            />
+        );
     }
 
-    return (
-        <img className={classNames} onClick={onClick} src={src} alt="" />
-    )
-
-    
-}
+    return <img className={classNames} onClick={onClick} src={src} alt="" />;
+};
 
 export { Icon };

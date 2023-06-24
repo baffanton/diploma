@@ -3,8 +3,8 @@ export interface INewsModel {
     title: string;
     description: string;
     source: {
-        vk?: string;
-        telegram?: string;
-    } | null,
+        vk: string;
+        tg: string;
+    };
     picture: string;
 }

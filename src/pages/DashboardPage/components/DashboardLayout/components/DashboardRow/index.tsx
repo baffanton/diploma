@@ -10,9 +10,11 @@ interface IDashboardRow {
 const DashboardRow: React.FC<IDashboardRow> = ({ panels }) => {
     return (
         <Layout className="dashboard-row">
-            {panels.map((controlPanel: IControlPanel) => <ControlPanel key={controlPanel.id} panel={controlPanel} />)}
+            {panels.map((controlPanel: IControlPanel) => (
+                <ControlPanel key={controlPanel.id} panel={controlPanel} />
+            ))}
         </Layout>
-    )
-}
+    );
+};
 
 export { DashboardRow };

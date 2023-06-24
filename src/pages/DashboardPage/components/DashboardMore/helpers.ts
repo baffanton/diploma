@@ -1,5 +1,5 @@
-import { DashboardPagesUrlEnum } from "enums/dashboardPages";
-import { Dispatch } from "react";
+import { DashboardPagesUrlEnum } from 'enums/dashboardPages';
+import { Dispatch } from 'react';
 import {
     IAwardsModel,
     IEducationModel,
@@ -7,8 +7,8 @@ import {
     ILegalHelpModel,
     ISecurityModel,
     ISportModel,
-    IUsersModel
-} from "store/reducers/TableReducer/helpers";
+    IUsersModel,
+} from 'store/reducers/TableReducer/helpers';
 import {
     IFetchAwards,
     IFetchEducation,
@@ -16,11 +16,11 @@ import {
     IFetchLegalHelp,
     IFetchSecurity,
     IFetchSport,
-    IFetchUsers
-} from "store/reducers/TableReducer/types";
+    IFetchUsers,
+} from 'store/reducers/TableReducer/types';
 
 const getTableDataByPageId = (
-    id: DashboardPagesUrlEnum, 
+    id: DashboardPagesUrlEnum,
     security: ISecurityModel[],
     sport: ISportModel[],
     users: IUsersModel[],
@@ -28,7 +28,14 @@ const getTableDataByPageId = (
     legalHelp: ILegalHelpModel[],
     awards: IAwardsModel[],
     education: IEducationModel[],
-): any[] => {
+):
+    | ISecurityModel[]
+    | ISportModel[]
+    | IUsersModel[]
+    | IFinancialHelpModel[]
+    | ILegalHelpModel[]
+    | IAwardsModel[]
+    | IEducationModel[] => {
     switch (id) {
         case DashboardPagesUrlEnum.security:
             return security;
@@ -47,7 +54,7 @@ const getTableDataByPageId = (
         default:
             return [];
     }
-}
+};
 
 const fetchDataByPageId = (
     id: DashboardPagesUrlEnum,
@@ -77,6 +84,6 @@ const fetchDataByPageId = (
         default:
             return null;
     }
-}
+};
 
-export { getTableDataByPageId, fetchDataByPageId }
+export { getTableDataByPageId, fetchDataByPageId };

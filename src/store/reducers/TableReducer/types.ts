@@ -1,12 +1,20 @@
-import { IAwardsModel, IEducationModel, IFinancialHelpModel, ILegalHelpModel, ISecurityModel, ISportModel, IUsersModel } from "./helpers";
+import {
+    IAwardsModel,
+    IEducationModel,
+    IFinancialHelpModel,
+    ILegalHelpModel,
+    ISecurityModel,
+    ISportModel,
+    IUsersModel,
+} from './helpers';
 
-export const TABLE_GET_SECURITY = "TABLE/GET_SECURITY";
-export const TABLE_GET_SPORT = "TABLE/GET_SPORT";
-export const TABLE_GET_USERS = "TABLE/GET_USERS";
-export const TABLE_GET_FINANCIAL_HELP = "TABLE/GET_FINANCIAL_HELP";
-export const TABLE_GET_LEGAL_HELP = "TABLE/GET_LEGAL_HELP";
-export const TABLE_GET_AWARDS = "TABLE/GET_AWARDS";
-export const TABLE_GET_EDUCATION = "TABLE/GET_EDUCATION";
+export const TABLE_GET_SECURITY = 'TABLE/GET_SECURITY';
+export const TABLE_GET_SPORT = 'TABLE/GET_SPORT';
+export const TABLE_GET_USERS = 'TABLE/GET_USERS';
+export const TABLE_GET_FINANCIAL_HELP = 'TABLE/GET_FINANCIAL_HELP';
+export const TABLE_GET_LEGAL_HELP = 'TABLE/GET_LEGAL_HELP';
+export const TABLE_GET_AWARDS = 'TABLE/GET_AWARDS';
+export const TABLE_GET_EDUCATION = 'TABLE/GET_EDUCATION';
 
 export interface IFetchSecurity {
     type: typeof TABLE_GET_SECURITY;
@@ -20,7 +28,7 @@ export interface IFetchSport {
 
 export interface IFetchUsers {
     type: typeof TABLE_GET_USERS;
-    users: IUsersModel;
+    users: IUsersModel[];
 }
 
 export interface IFetchFinancialHelp {
@@ -46,7 +54,7 @@ export interface IFetchEducation {
 export interface ITableReducerModel {
     readonly security: ISecurityModel | null;
     readonly sport: ISportModel | null;
-    readonly users: IUsersModel | null;
+    readonly users: IUsersModel[] | null;
     readonly financialHelp: IFinancialHelpModel | null;
     readonly legalHelp: ILegalHelpModel | null;
     readonly awards: IAwardsModel | null;

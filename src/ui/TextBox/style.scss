@@ -1,4 +1,4 @@
-@import "global.scss";
+@import 'global.scss';
 
 .text-box__wrapper {
     display: flex;
@@ -20,11 +20,11 @@
 }
 
 .text-box__label-container_position_top {
-    padding: 0 0.8rem 0.25rem 0.8rem;
+    padding: 0 16px 5px 16px;
 }
 
 .text-box__label-container_position_left {
-    padding-right: 0.4rem;
+    padding-right: 8px;
 }
 
 .text-box__input-container {
@@ -33,8 +33,8 @@
 }
 
 .text-box__input {
-    padding: 0 0.8rem;
-    border-radius: 1rem;
+    padding: 0 16px;
+    border-radius: 20px;
     border: none;
     outline: none;
     width: 100%;
@@ -42,7 +42,7 @@
 
 .text-box__input_color_primary {
     background-color: $white;
-    border: 0.1rem solid $blue;
+    border: 2px solid $blue;
     color: $darkBlue;
 }
 
@@ -61,14 +61,14 @@
 
 .text-box__icon {
     position: absolute;
-    right: 0.8rem;
+    right: 16px;
     top: 20%;
     color: $white;
     cursor: pointer;
 }
 
 .text-box__error {
-    font-size: 0.8rem;
+    font-size: 16px;
 }
 
 .text-box__error_theme_primary {
@@ -79,89 +79,14 @@
     color: $lightRed;
 }
 
-@media only screen and (max-width: 1366px) {
-    .text-box__input_height_s {
-        height: 40px;
-        font-size: 20px;
-    }
-    
-    .text-box__input_height_m {
-        height: 50px;
-        font-size: 20px;
-    }
-    
-    .text-box__input_height_l {
-        height: 60px;
-        font-size: 20px;
-    }
-
-    .text-box__label_height_s {
-        font-size: 20px;
-    }
-    
-    .text-box__label_height_m {
-        font-size: 20px;
-    }
-    
-    .text-box__label_height_l {
-        font-size: 20px;
-    }
+.text-box__input_height_s {
+    height: 52px;
 }
 
-@media only screen and (min-width: 1367px) and (max-width: 1919px) {
-    .text-box__input_height_s {
-        height: 40px;
-        font-size: 20px;
-    }
-    
-    .text-box__input_height_m {
-        height: 50px;
-        font-size: 23px;
-    }
-    
-    .text-box__input_height_l {
-        height: 60px;
-        font-size: 23px;
-    }
-
-    .text-box__label_height_s {
-        font-size: 20px;
-    }
-    
-    .text-box__label_height_m {
-        font-size: 23px;
-    }
-    
-    .text-box__label_height_l {
-        font-size: 23px;
-    }
+.text-box__input_height_m {
+    height: 60px;
 }
 
-@media only screen and (min-width: 1920px) {
-    .text-box__input_height_s {
-        height: 50px;
-        font-size: 23px;
-    }
-    
-    .text-box__input_height_m {
-        height: 60px;
-        font-size: 25px;
-    }
-    
-    .text-box__input_height_l {
-        height: 70px;
-        font-size: 25px;
-    }
-
-    .text-box__label_height_s {
-        font-size: 23px;
-    }
-    
-    .text-box__label_height_m {
-        font-size: 25px;
-    }
-    
-    .text-box__label_height_l {
-        font-size: 25px;
-    }
+.text-box__input_height_l {
+    height: 70px;
 }

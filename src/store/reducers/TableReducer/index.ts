@@ -7,8 +7,8 @@ import {
     TABLE_GET_SECURITY,
     TABLE_GET_SPORT,
     TABLE_GET_USERS,
-    TableActionTypes
-} from "./types";
+    TableActionTypes,
+} from './types';
 
 export const initialState: ITableReducerModel = {
     security: null,
@@ -18,9 +18,12 @@ export const initialState: ITableReducerModel = {
     legalHelp: null,
     awards: null,
     education: null,
-}
+};
 
-export function tableReducer(state = initialState, action: TableActionTypes): ITableReducerModel {
+export function tableReducer(
+    state = initialState,
+    action: TableActionTypes,
+): ITableReducerModel {
     switch (action.type) {
         case TABLE_GET_SECURITY:
             return {
