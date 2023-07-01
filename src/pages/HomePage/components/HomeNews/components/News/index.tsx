@@ -32,19 +32,11 @@ const News: React.FC<INews> = ({ item, openModal, closeModal }) => {
                 <Layout className="news__body">
                     <Icon className="news__picture" src={picture} />
                     <Layout className="news__description">
-                        <Title
-                            className="news__title"
-                            fontSize={SizeEnum.short}
-                        >
+                        <Title className="news__title" fontSize={SizeEnum.short}>
                             {title}
                         </Title>
                         <Layout className="news__more-container">
-                            <Text
-                                className="news__more"
-                                fontSize={SizeEnum.short}
-                                onClick={onClickMoreHandler}
-                                pointer
-                            >
+                            <Text className="news__more" fontSize={SizeEnum.short} onClick={onClickMoreHandler} pointer>
                                 Подробнее
                             </Text>
                         </Layout>
@@ -57,11 +49,7 @@ const News: React.FC<INews> = ({ item, openModal, closeModal }) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        openModal(
-            modalTypes: ModalTypes,
-            onClose: () => void,
-            option: INewsModalOptions,
-        ) {
+        openModal(modalTypes: ModalTypes, onClose: () => void, option: INewsModalOptions) {
             return dispatch(openModal(modalTypes, onClose, option));
         },
         closeModal() {

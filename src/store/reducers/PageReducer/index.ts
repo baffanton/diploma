@@ -1,11 +1,4 @@
-import {
-    IPageReducerModel,
-    LOADER_HIDE,
-    LOADER_SHOW,
-    MODAL_CLOSE,
-    MODAL_OPEN,
-    PageActionTypes,
-} from './types';
+import { IPageReducerModel, LOADER_HIDE, LOADER_SHOW, MODAL_CLOSE, MODAL_OPEN, PageActionTypes } from './types';
 
 export const initialState: IPageReducerModel = {
     modal: null,
@@ -13,10 +6,7 @@ export const initialState: IPageReducerModel = {
     loaderPoints: 0,
 };
 
-export function pageReducer(
-    state = initialState,
-    action: PageActionTypes,
-): IPageReducerModel {
+export function pageReducer(state = initialState, action: PageActionTypes): IPageReducerModel {
     switch (action.type) {
         case MODAL_OPEN:
         case MODAL_CLOSE:

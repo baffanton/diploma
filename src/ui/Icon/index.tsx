@@ -3,15 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import cx from 'classnames';
 import { IIcon } from './types';
 
-const Icon: React.FC<IIcon> = ({
-    src,
-    className = '',
-    pointer,
-    heightType,
-    fontAwesomeIcon,
-    onClick,
-    disabled,
-}) => {
+const Icon: React.FC<IIcon> = ({ src, className = '', pointer, heightType, fontAwesomeIcon, onClick, disabled }) => {
     const classNames = cx(
         'icon',
         (pointer || onClick) && 'icon_pointer',
@@ -20,17 +12,21 @@ const Icon: React.FC<IIcon> = ({
         className,
     );
 
+    const onClickHandler = () => {
+        if (disabled) {
+            return null;
+        }
+
+        if (onClick) {
+            return onClick();
+        }
+    };
+
     if (fontAwesomeIcon) {
-        return (
-            <FontAwesomeIcon
-                className={classNames}
-                onClick={onClick}
-                icon={fontAwesomeIcon}
-            />
-        );
+        return <FontAwesomeIcon className={classNames} onClick={() => onClickHandler()} icon={fontAwesomeIcon} />;
     }
 
-    return <img className={classNames} onClick={onClick} src={src} alt="" />;
+    return <img className={classNames} onClick={() => onClickHandler()} src={src} alt="" />;
 };
 
 export { Icon };

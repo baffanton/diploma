@@ -17,12 +17,7 @@ const Button: React.FC<IButton> = ({
     icon,
     title = '',
 }) => {
-    const classNames = cx(
-        'button',
-        `button_height_${heightType}`,
-        `button_theme_${colorTheme}`,
-        className,
-    );
+    const classNames = cx('button', `button_height_${heightType}`, `button_theme_${colorTheme}`, className);
 
     const onClickHandler = () => {
         if (!disabled) {
@@ -31,22 +26,12 @@ const Button: React.FC<IButton> = ({
     };
 
     if (icon) {
-        const iconClassNames = cx(
-            'button__icon',
-            `button__icon_theme_${colorTheme}`,
-        );
+        const iconClassNames = cx('button__icon', `button__icon_theme_${colorTheme}`);
 
         return (
-            <Layout
-                className={cx('button_with-icon', classNames)}
-                onClick={onClickHandler}
-            >
+            <Layout className={cx('button_with-icon', classNames)} onClick={onClickHandler}>
                 <Text className="button__title">{title}</Text>
-                <Icon
-                    className={iconClassNames}
-                    fontAwesomeIcon={icon}
-                    heightType={SizeEnum.short}
-                />
+                <Icon className={iconClassNames} fontAwesomeIcon={icon} heightType={SizeEnum.short} />
             </Layout>
         );
     }

@@ -4,11 +4,7 @@ import { MessageModal } from './components/MessageModal';
 import { ChooseModal } from './components/ChooseModal';
 import { AddUserModal } from './components/AddUser';
 
-export const getModal = (
-    type: ModalTypes,
-    closeModal: any,
-    option: any,
-): React.ReactElement | null => {
+export const getModal = (type: ModalTypes, closeModal: any, option: any): React.ReactElement | null => {
     switch (type) {
         case ModalTypes.newsModal:
             return <NewsModal onClose={closeModal} option={option} />;

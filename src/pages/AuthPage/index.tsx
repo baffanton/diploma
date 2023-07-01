@@ -15,25 +15,14 @@ import { Button } from 'ui/Button';
 import { connect } from 'react-redux';
 import { fetchUser, getToken } from 'store/reducers/UserReducer/actions';
 import { ModalTypes } from 'enums/modalTypes';
-import {
-    closeModal,
-    hideLoader,
-    openModal,
-    showLoader,
-} from 'store/reducers/PageReducer/actions';
-import { useNavigate } from 'react-router-dom';
+import { closeModal, hideLoader, openModal, showLoader } from 'store/reducers/PageReducer/actions';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { SizeEnum } from 'enums/sizeTypes';
 import { Text } from 'widgets/Text';
 import { IAuthData, IAuthPage } from './types';
 import { IMessageModalOptions } from 'ui/Modal/components/MessageModal/types';
 
-const AuthPage: React.FC<IAuthPage> = ({
-    closeModal,
-    openModal,
-    showLoader,
-    hideLoader,
-    fetchUser,
-}) => {
+const AuthPage: React.FC<IAuthPage> = ({ closeModal, openModal, showLoader, hideLoader, fetchUser }) => {
     const navigate = useNavigate();
     const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
 
@@ -64,7 +53,7 @@ const AuthPage: React.FC<IAuthPage> = ({
                 const { data } = result;
 
                 localStorage.setItem('token', data);
-                fetchUser();
+                fetchUser(navigate);
                 navigate('/home');
             })
             .catch(() => {
@@ -88,10 +77,7 @@ const AuthPage: React.FC<IAuthPage> = ({
                 <Layout className="auth-page__company-logo">
                     <HomeSvgSelector icon={ImageEnum.logo} />
                 </Layout>
-                <form
-                    className="auth-page__form"
-                    onSubmit={handleSubmit(onSubmit)}
-                >
+                <form className="auth-page__form" onSubmit={handleSubmit(onSubmit)}>
                     <Layout className="auth-page__data">
                         <TextBox
                             id="username"
@@ -116,19 +102,11 @@ const AuthPage: React.FC<IAuthPage> = ({
                             classNameContainer="auth-page__password"
                             icon={isShowPassword ? faEyeSlash : faEye}
                             onIconClick={onIconClick}
-                            type={
-                                isShowPassword
-                                    ? InputTypesEnum.text
-                                    : InputTypesEnum.password
-                            }
+                            type={isShowPassword ? InputTypesEnum.text : InputTypesEnum.password}
                         />
                     </Layout>
                     <Layout className="auth-page__management">
-                        <Text
-                            className="auth-page__forget"
-                            fontSize={SizeEnum.medium}
-                            pointer
-                        >
+                        <Text className="auth-page__forget" fontSize={SizeEnum.medium} pointer>
                             Забыли пароль?
                         </Text>
                     </Layout>
@@ -150,17 +128,10 @@ const AuthPage: React.FC<IAuthPage> = ({
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        fetchUser() {
-            return dispatch(fetchUser());
-        },
         closeModal() {
             return dispatch(closeModal());
         },
-        openModal(
-            modalTypes: ModalTypes,
-            onClose: () => void,
-            option: IMessageModalOptions,
-        ) {
+        openModal(modalTypes: ModalTypes, onClose: () => void, option: IMessageModalOptions) {
             return dispatch(openModal(modalTypes, onClose, option));
         },
         showLoader() {
@@ -168,6 +139,9 @@ const mapDispatchToProps = (dispatch: any) => {
         },
         hideLoader() {
             return dispatch(hideLoader());
+        },
+        fetchUser(navigate: NavigateFunction) {
+            return dispatch(fetchUser(navigate));
         },
     };
 };

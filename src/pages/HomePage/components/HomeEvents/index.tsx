@@ -1,14 +1,10 @@
 import { Event } from './components/Event';
 import './style.scss';
 import { Layout } from 'widgets/Layout';
-import { IEventModel } from 'types/IEventModel';
 import { Title } from 'widgets/Title';
 import { WeightEnum } from 'enums/weightTypes';
 import { SizeEnum } from 'enums/sizeTypes';
-
-interface IHomeEvents {
-    events: IEventModel[];
-}
+import { IHomeEvents } from './types';
 
 const HomeEvents: React.FC<IHomeEvents> = ({ events }) => {
     if (!events) {
@@ -17,11 +13,7 @@ const HomeEvents: React.FC<IHomeEvents> = ({ events }) => {
 
     return (
         <Layout className="home-events">
-            <Title
-                className="home-events__title"
-                fontWeight={WeightEnum.bold}
-                fontSize={SizeEnum.medium}
-            >
+            <Title className="home-events__title" fontWeight={WeightEnum.bold} fontSize={SizeEnum.medium}>
                 Мероприятия
             </Title>
             <Layout className="home-events__container">

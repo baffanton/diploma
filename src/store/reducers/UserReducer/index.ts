@@ -9,10 +9,7 @@ export const initialState: IUserReducerModel = {
     auth: false,
 };
 
-export function userRecuder(
-    state = initialState,
-    action: UserActionTypes,
-): IUserReducerModel {
+export function userRecuder(state = initialState, action: UserActionTypes): IUserReducerModel {
     switch (action.type) {
         case USER_FETCH:
             return {

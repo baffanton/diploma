@@ -7,39 +7,34 @@ import { fetchEvents, fetchNews } from 'store/reducers/HomePageReducer/actions';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
 import { IHomePage } from './types';
-import HomeHelp from './components/HomeHelp';
+import { hideLoader, showLoader } from 'store/reducers/PageReducer/actions';
 
-const HomePage: React.FC<IHomePage> = ({
-    news,
-    events,
-    fetchNews,
-    fetchEvents,
-}) => {
+const HomePage: React.FC<IHomePage> = ({ news, events, fetchNews, fetchEvents, auth }) => {
     useEffect(() => {
-        fetchNews();
-        fetchEvents();
-    }, []);
+        if (auth) {
+            fetchNews();
+            fetchEvents();
+        }
+    }, [auth]);
 
     return (
         <>
             <Header />
             <Layout className="home-page">
                 <HomeNews news={news} />
-                <Layout className="home-page__events-help">
-                    <HomeEvents events={events} />
-                    <HomeHelp />
-                </Layout>
+                <HomeEvents events={events} />
             </Layout>
         </>
     );
 };
 
 const mapStateToProps = (state: any) => {
-    const { homePage } = state;
+    const { homePage, user } = state;
 
     return {
         news: homePage.news,
         events: homePage.events,
+        auth: user.auth,
     };
 };
 const mapDispatchToProps = (dispatch: any) => {
@@ -49,6 +44,12 @@ const mapDispatchToProps = (dispatch: any) => {
         },
         fetchEvents() {
             return dispatch(fetchEvents());
+        },
+        showLoader() {
+            return dispatch(showLoader());
+        },
+        hideLoader() {
+            return dispatch(hideLoader());
         },
     };
 };

@@ -3,4 +3,5 @@ export enum ModalTypes {
     messageModal = 'messageModal',
     addUser = 'addUser',
     chooseModal = 'chooseModal',
+    editModal = 'editModal',
 }

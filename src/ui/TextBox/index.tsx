@@ -98,14 +98,7 @@ const TextBox: React.FC<ITextBox> = ({
                     </label>
                 )}
                 {error && (
-                    <p
-                        className={cx(
-                            'text-box__error',
-                            `text-box__error_theme_${colorTheme}`,
-                        )}
-                    >
-                        {error.message}
-                    </p>
+                    <p className={cx('text-box__error', `text-box__error_theme_${colorTheme}`)}>{error.message}</p>
                 )}
             </Layout>
             {inputRow()}

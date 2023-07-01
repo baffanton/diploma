@@ -26,11 +26,7 @@ $api.interceptors.response.use(
     async (error) => {
         const originalRequest = error.config;
 
-        if (
-            error.response.status === 401 &&
-            error.config &&
-            !error.config._isRetry
-        ) {
+        if (error.response.status === 403 && error.config && !error.config._isRetry) {
             originalRequest._isRetry = true;
 
             try {
@@ -58,11 +54,7 @@ const METHODS = {
     default: $api.get,
 };
 
-export function request(
-    method: RequestTypesEnum,
-    api: RequestApiEnum | string,
-    params: any,
-) {
+export function request(method: RequestTypesEnum, api: RequestApiEnum | string, params: any) {
     return METHODS[method](api, params);
 }
 

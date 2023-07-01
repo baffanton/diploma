@@ -2,10 +2,7 @@ import './style.scss';
 import { IControlPanel } from '../../config';
 import { ControlPanel } from './components/ControlPanel';
 import { Layout } from 'widgets/Layout';
-
-interface IDashboardRow {
-    panels: IControlPanel[];
-}
+import { IDashboardRow } from './types';
 
 const DashboardRow: React.FC<IDashboardRow> = ({ panels }) => {
     return (

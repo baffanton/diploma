@@ -25,16 +25,11 @@ const NewsModal: React.FC<INewsModal> = ({ onClose, option }) => {
                     heightType={SizeEnum.short}
                 />
                 <Layout className="news-modal__main">
-                    <Text
-                        className="news-modal__description"
-                        fontSize={SizeEnum.short}
-                    >
+                    <Text className="news-modal__description" fontSize={SizeEnum.short}>
                         {description}
                     </Text>
                     <Layout className="news-modal__source">
-                        <Text className="news-modal__source-title">
-                            Источники:{' '}
-                        </Text>
+                        <Text className="news-modal__source-title">Источники: </Text>
                         <Layout className="news-modal__source-container">
                             <Link href={source.vk}>
                                 <Icon

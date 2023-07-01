@@ -1,10 +1,5 @@
 import { RequestTypesEnum } from 'enums/requestTypes';
-import {
-    HOME_FETCH_EVENTS,
-    HOME_FETCH_NEWS,
-    IFetchEvents,
-    IFetchNews,
-} from './types';
+import { HOME_FETCH_EVENTS, HOME_FETCH_NEWS, IFetchEvents, IFetchNews } from './types';
 import { RequestApiEnum } from 'enums/requestApi';
 import { request } from 'helpers/request';
 import { hideLoader, showLoader } from '../PageReducer/actions';

@@ -16,4 +16,5 @@ export enum RequestApiEnum {
     // Изменение участников
     deleteUser = '/users/delete',
     addUser = '/users/add',
+    editUser = '/users/edit',
 }

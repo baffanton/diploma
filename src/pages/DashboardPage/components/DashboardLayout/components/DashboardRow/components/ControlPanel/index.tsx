@@ -16,16 +16,8 @@ const ControlPanel: React.FC<any> = ({ panel }) => {
 
     return (
         <Layout className="control-panel" onClick={clickHandler}>
-            <Icon
-                className="control-panel__icon"
-                pointer
-                fontAwesomeIcon={icon}
-            />
-            <Text
-                className="control-panel__title"
-                pointer
-                fontSize={SizeEnum.large}
-            >
+            <Icon className="control-panel__icon" pointer fontAwesomeIcon={icon} />
+            <Text className="control-panel__title" pointer fontSize={SizeEnum.large}>
                 {title}
             </Text>
         </Layout>

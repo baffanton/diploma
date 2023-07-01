@@ -7,9 +7,5 @@ import { INewsModalOptions } from './components/NewsModal/types';
 export interface IModalProps {
     type: ModalTypes;
     closeModal: any;
-    option:
-        | IAddUserModalOptions
-        | IChooseModalOptions
-        | IMessageModalOptions
-        | INewsModalOptions;
+    option: IAddUserModalOptions | IChooseModalOptions | IMessageModalOptions | INewsModalOptions;
 }

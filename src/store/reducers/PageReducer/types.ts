@@ -31,8 +31,4 @@ export interface IPageReducerModel {
     loaderPoints: number;
 }
 
-export type PageActionTypes =
-    | IOpenModal
-    | ICloseModal
-    | IShowLoader
-    | IHideLoader;
+export type PageActionTypes = IOpenModal | ICloseModal | IShowLoader | IHideLoader;

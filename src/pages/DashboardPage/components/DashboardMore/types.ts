@@ -1,12 +1,8 @@
 import { ModalTypes } from 'enums/modalTypes';
+import { UserRolesEnum } from 'enums/userTypes';
 import { IDashboardPage } from 'pages/DashboardPage/config';
 import { Dispatch } from 'react';
-import {
-    ICloseModal,
-    IOpenModal,
-    IShowLoader,
-    IHideLoader,
-} from 'store/reducers/PageReducer/types';
+import { ICloseModal, IOpenModal, IShowLoader, IHideLoader } from 'store/reducers/PageReducer/types';
 import {
     ISecurityModel,
     ISportModel,
@@ -25,6 +21,9 @@ import {
     IFetchAwards,
     IFetchEducation,
 } from 'store/reducers/TableReducer/types';
+import { IAddUserModalOptions } from 'ui/Modal/components/AddUser/types';
+import { IChooseModalOptions } from 'ui/Modal/components/ChooseModal/types';
+import { IEditUserModalOptions } from 'ui/Modal/components/EditUser/types';
 
 export interface IDashboardMore {
     page: IDashboardPage;
@@ -46,10 +45,12 @@ export interface IDashboardMore {
     openModal: (
         modalTypes: ModalTypes,
         onClose: () => any,
-        options: any,
+        options: IAddUserModalOptions | IEditUserModalOptions | IChooseModalOptions,
     ) => Dispatch<IOpenModal>;
     showLoader: () => Dispatch<IShowLoader>;
     hideLoader: () => Dispatch<IHideLoader>;
+    auth: boolean;
+    role: UserRolesEnum;
 }
 
 export interface ITableColumn {

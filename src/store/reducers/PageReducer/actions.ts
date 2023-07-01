@@ -11,8 +11,7 @@ import {
 } from './types';
 
 export const openModal =
-    (modalType: ModalTypes, onClose: any, option: any) =>
-    (dispatch: (arg0: IOpenModal) => void) => {
+    (modalType: ModalTypes, onClose: any, option: any) => (dispatch: (arg0: IOpenModal) => void) => {
         const modal = {
             type: modalType,
             onClose,

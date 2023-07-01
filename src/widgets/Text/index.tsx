@@ -3,16 +3,7 @@ import './style.scss';
 import { SizeEnum } from 'enums/sizeTypes';
 import { WeightEnum } from 'enums/weightTypes';
 import { StyleEnum } from 'enums/styleTypes';
-
-interface IText {
-    className?: string;
-    children?: React.ReactNode;
-    fontSize?: SizeEnum;
-    onClick?: any;
-    pointer?: boolean;
-    fontWeight?: WeightEnum;
-    fontStyle?: StyleEnum;
-}
+import { IText } from './types';
 
 const Text: React.FC<IText> = ({
     className,

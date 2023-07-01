@@ -2,12 +2,12 @@ import { DashboardPagesUrlEnum } from 'enums/dashboardPages';
 import { usersConfig } from './tableConfigs/users';
 import { awardsConfig } from './tableConfigs/awards';
 import { eventsConfig } from './tableConfigs/events';
-import { userAwardsConfig } from './tableConfigs/userAwards';
-import { userEventsConfig } from './tableConfigs/userEvents';
 import { sportConfig } from './tableConfigs/sport';
 import { ExportUrls } from 'enums/exportUrls';
 import { BASE_URL } from 'helpers/request';
 import { ITableColumn } from './components/DashboardMore/types';
+import { financialHelpConfig } from './tableConfigs/financialHelp';
+import { legalHelpConfig } from './tableConfigs/legalHelp';
 
 export interface IDashboardPage {
     id: DashboardPagesUrlEnum;
@@ -38,7 +38,7 @@ export const DashboardPagesConfig: IDashboardPage[] = [
     {
         id: DashboardPagesUrlEnum.financialHelp,
         title: 'Материальная помощь',
-        tableConfig: userAwardsConfig,
+        tableConfig: financialHelpConfig,
         url: DashboardPagesUrlEnum.financialHelp,
         exportUrl: `${BASE_URL}${ExportUrls.exportFinancialHelp}`,
         isClickable: false,
@@ -46,7 +46,7 @@ export const DashboardPagesConfig: IDashboardPage[] = [
     {
         id: DashboardPagesUrlEnum.legalHelp,
         title: 'Юридическая помощь',
-        tableConfig: userEventsConfig,
+        tableConfig: legalHelpConfig,
         url: DashboardPagesUrlEnum.legalHelp,
         exportUrl: `${BASE_URL}${ExportUrls.exportLegalHelp}`,
         isClickable: false,

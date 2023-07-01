@@ -20,10 +20,7 @@ export const initialState: ITableReducerModel = {
     education: null,
 };
 
-export function tableReducer(
-    state = initialState,
-    action: TableActionTypes,
-): ITableReducerModel {
+export function tableReducer(state = initialState, action: TableActionTypes): ITableReducerModel {
     switch (action.type) {
         case TABLE_GET_SECURITY:
             return {

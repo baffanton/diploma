@@ -13,26 +13,15 @@ const MessageModal: React.FC<IMessageModal> = ({ onClose, option }) => {
     return (
         <Layout className="message-modal">
             <Layout className="message-modal__header">
-                <Text
-                    className="message-modal__title"
-                    fontSize={SizeEnum.large}
-                >
+                <Text className="message-modal__title" fontSize={SizeEnum.large}>
                     {title || 'Сообщение'}
                 </Text>
-                <Icon
-                    className="message-modal__close"
-                    onClick={() => onClose()}
-                    fontAwesomeIcon={faXmark}
-                />
+                <Icon className="message-modal__close" onClick={() => onClose()} fontAwesomeIcon={faXmark} />
             </Layout>
             <Layout className="message-modal__body">
                 <Text className="message-modal__message">{message}</Text>
                 <Layout className="message-modal__button-container">
-                    <Button
-                        className="message-modal__button-close"
-                        heightType={SizeEnum.short}
-                        onClick={onClose}
-                    >
+                    <Button className="message-modal__button-close" heightType={SizeEnum.short} onClick={onClose}>
                         Закрыть
                     </Button>
                 </Layout>

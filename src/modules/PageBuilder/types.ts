@@ -1,4 +1,5 @@
 import { Dispatch } from 'react';
+import { NavigateFunction } from 'react-router-dom';
 import { IModal } from 'store/reducers/PageReducer/helpers';
 import { IFetchUser } from 'store/reducers/UserReducer/types';
 
@@ -6,5 +7,5 @@ export interface IPageBuilder {
     isOpenModal: boolean;
     modal: IModal | null;
     loaderPoints: number;
-    fetchUser: () => Dispatch<IFetchUser>;
+    fetchUser: (navigate: NavigateFunction) => Dispatch<IFetchUser>;
 }

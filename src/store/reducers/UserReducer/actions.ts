@@ -1,19 +1,13 @@
 import { BASE_URL, request } from 'helpers/request';
-import { IFetchUser, USER_FETCH } from './types';
 import { RequestTypesEnum } from 'enums/requestTypes';
 import { RequestApiEnum } from 'enums/requestApi';
 import axios, { AxiosResponse } from 'axios';
+import { IFetchUser, USER_FETCH } from './types';
+import { NavigateFunction } from 'react-router-dom';
 import { hideLoader, showLoader } from '../PageReducer/actions';
 
-export const getToken = async (
-    username: string,
-    password: string,
-): Promise<AxiosResponse<string>> => {
-    return await axios.post(
-        `${BASE_URL}/auth/login`,
-        { username, password },
-        { withCredentials: true },
-    );
+export const getToken = async (username: string, password: string): Promise<AxiosResponse<string>> => {
+    return await axios.post(`${BASE_URL}/auth/login`, { username, password }, { withCredentials: true });
 };
 
 export const refreshToken = async (): Promise<AxiosResponse<any>> => {
@@ -22,13 +16,12 @@ export const refreshToken = async (): Promise<AxiosResponse<any>> => {
     });
 };
 
-export const fetchUser = () => (dispatch: (arg0: IFetchUser) => void) => {
+export const fetchUser = (navigate: NavigateFunction) => (dispatch: (arg0: IFetchUser) => void) => {
     // @ts-ignore
     dispatch(showLoader());
-
     request(RequestTypesEnum.get, RequestApiEnum.getUser, null)
-        .then((response) => {
-            const { data } = response;
+        .then((res) => {
+            const { data } = res;
 
             if (!data) {
                 return null;
@@ -45,6 +38,9 @@ export const fetchUser = () => (dispatch: (arg0: IFetchUser) => void) => {
                 role,
                 auth: true,
             });
+        })
+        .catch(() => {
+            navigate('/');
         })
         .finally(() => {
             // @ts-ignore

@@ -19,26 +19,26 @@ import { RequestTypesEnum } from 'enums/requestTypes';
 import { RequestApiEnum } from 'enums/requestApi';
 import { AxiosResponse } from 'axios';
 import { IAddUserDataModel } from 'ui/Modal/components/AddUser/types';
+import { IEditUserDataModel } from 'ui/Modal/components/EditUser/types';
 
-export const fetchSecurity =
-    () => (dispatch: (arg0: IFetchSecurity) => void) => {
-        request(RequestTypesEnum.get, RequestApiEnum.tableSecurity, null)
-            .then((res) => {
-                const { data } = res;
+export const fetchSecurity = () => (dispatch: (arg0: IFetchSecurity) => void) => {
+    request(RequestTypesEnum.get, RequestApiEnum.tableSecurity, null)
+        .then((res) => {
+            const { data } = res;
 
-                if (!data) {
-                    return null;
-                }
+            if (!data) {
+                return null;
+            }
 
-                dispatch({
-                    type: TABLE_GET_SECURITY,
-                    security: data,
-                });
-            })
-            .catch((error) => {
-                console.log(error);
+            dispatch({
+                type: TABLE_GET_SECURITY,
+                security: data,
             });
-    };
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+};
 
 export const fetchSport = () => (dispatch: (arg0: IFetchSport) => void) => {
     request(RequestTypesEnum.get, RequestApiEnum.tableSport, null)
@@ -78,45 +78,43 @@ export const fetchUsers = () => (dispatch: (arg0: IFetchUsers) => void) => {
         });
 };
 
-export const fetchFinancialHelp =
-    () => (dispatch: (arg0: IFetchFinancialHelp) => void) => {
-        request(RequestTypesEnum.get, RequestApiEnum.tableFinancialHelp, null)
-            .then((res) => {
-                const { data } = res;
+export const fetchFinancialHelp = () => (dispatch: (arg0: IFetchFinancialHelp) => void) => {
+    request(RequestTypesEnum.get, RequestApiEnum.tableFinancialHelp, null)
+        .then((res) => {
+            const { data } = res;
 
-                if (!data) {
-                    return null;
-                }
+            if (!data) {
+                return null;
+            }
 
-                dispatch({
-                    type: TABLE_GET_FINANCIAL_HELP,
-                    financialHelp: data,
-                });
-            })
-            .catch((error) => {
-                console.log(error);
+            dispatch({
+                type: TABLE_GET_FINANCIAL_HELP,
+                financialHelp: data,
             });
-    };
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+};
 
-export const fetchLegalHelp =
-    () => (dispatch: (arg0: IFetchLegalHelp) => void) => {
-        request(RequestTypesEnum.get, RequestApiEnum.tableLegalHelp, null)
-            .then((res) => {
-                const { data } = res;
+export const fetchLegalHelp = () => (dispatch: (arg0: IFetchLegalHelp) => void) => {
+    request(RequestTypesEnum.get, RequestApiEnum.tableLegalHelp, null)
+        .then((res) => {
+            const { data } = res;
 
-                if (!data) {
-                    return null;
-                }
+            if (!data) {
+                return null;
+            }
 
-                dispatch({
-                    type: TABLE_GET_LEGAL_HELP,
-                    legalHelp: data,
-                });
-            })
-            .catch((error) => {
-                console.log(error);
+            dispatch({
+                type: TABLE_GET_LEGAL_HELP,
+                legalHelp: data,
             });
-    };
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+};
 
 export const fetchAwards = () => (dispatch: (arg0: IFetchAwards) => void) => {
     request(RequestTypesEnum.get, RequestApiEnum.tableAwards, null)
@@ -137,36 +135,33 @@ export const fetchAwards = () => (dispatch: (arg0: IFetchAwards) => void) => {
         });
 };
 
-export const fetchEducation =
-    () => (dispatch: (arg0: IFetchEducation) => void) => {
-        request(RequestTypesEnum.get, RequestApiEnum.tableEducation, null)
-            .then((res) => {
-                const { data } = res;
+export const fetchEducation = () => (dispatch: (arg0: IFetchEducation) => void) => {
+    request(RequestTypesEnum.get, RequestApiEnum.tableEducation, null)
+        .then((res) => {
+            const { data } = res;
 
-                if (!data) {
-                    return null;
-                }
+            if (!data) {
+                return null;
+            }
 
-                dispatch({
-                    type: TABLE_GET_EDUCATION,
-                    education: data,
-                });
-            })
-            .catch((error) => {
-                console.log(error);
+            dispatch({
+                type: TABLE_GET_EDUCATION,
+                education: data,
             });
-    };
-
-export const deleteUser = async (id: string): Promise<AxiosResponse<void>> => {
-    return await request(
-        RequestTypesEnum.delete,
-        `${RequestApiEnum.deleteUser}${id}`,
-        null,
-    );
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 };
 
-export const addUser = async (
-    data: IAddUserDataModel,
-): Promise<AxiosResponse<void>> => {
+export const deleteUser = async (id: string): Promise<AxiosResponse<void>> => {
+    return await request(RequestTypesEnum.delete, `${RequestApiEnum.deleteUser}${id}`, null);
+};
+
+export const addUser = async (data: IAddUserDataModel): Promise<AxiosResponse<void>> => {
     return await request(RequestTypesEnum.post, RequestApiEnum.addUser, data);
+};
+
+export const editUser = async (data: IEditUserDataModel): Promise<AxiosResponse<void>> => {
+    return await request(RequestTypesEnum.post, RequestApiEnum.editUser, data);
 };

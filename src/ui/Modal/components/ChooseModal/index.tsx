@@ -27,18 +27,10 @@ const ChooseModal: React.FC<IChooseModal> = ({ onClose, option }) => {
             <Layout className="choose-modal__body">
                 <Text className="choose-modal__message">{message}</Text>
                 <Layout className="choose-modal__button-container">
-                    <Button
-                        className="choose-modal__button-accept"
-                        heightType={SizeEnum.short}
-                        onClick={onAccept}
-                    >
+                    <Button className="choose-modal__button-accept" heightType={SizeEnum.short} onClick={onAccept}>
                         {onAcceptTitle}
                     </Button>
-                    <Button
-                        className="choose-modal__button-close"
-                        heightType={SizeEnum.short}
-                        onClick={onClose}
-                    >
+                    <Button className="choose-modal__button-close" heightType={SizeEnum.short} onClick={onClose}>
                         {onCancelTitle}
                     </Button>
                 </Layout>

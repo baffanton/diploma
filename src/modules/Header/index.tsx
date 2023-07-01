@@ -1,8 +1,5 @@
 import { faTelegram, faVk } from '@fortawesome/free-brands-svg-icons';
-import {
-    faArrowRightFromBracket,
-    faGears,
-} from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightFromBracket, faGears } from '@fortawesome/free-solid-svg-icons';
 import { ImageEnum } from 'enums/images';
 import { UserRolesEnum } from 'enums/userTypes';
 import { connect } from 'react-redux';
@@ -17,13 +14,7 @@ import { Icon } from 'ui/Icon';
 import { Link } from 'widgets/Link';
 import { IHeader } from './types';
 
-const Header: React.FC<IHeader> = ({
-    firstname,
-    lastname,
-    surname,
-    role,
-    imageUrl,
-}) => {
+const Header: React.FC<IHeader> = ({ firstname, lastname, surname, role, imageUrl }) => {
     const navigate = useNavigate();
     const shortName = getShortName(firstname, lastname, surname);
 
@@ -41,18 +32,10 @@ const Header: React.FC<IHeader> = ({
             <Layout className="header__container">
                 <Layout className="header__links">
                     <Link href="https://vk.com/eurochem_prof">
-                        <Icon
-                            className="header__link"
-                            fontAwesomeIcon={faVk}
-                            heightType={SizeEnum.medium}
-                        />
+                        <Icon className="header__link" fontAwesomeIcon={faVk} heightType={SizeEnum.medium} />
                     </Link>
                     <Link href="/">
-                        <Icon
-                            className="header__link"
-                            fontAwesomeIcon={faTelegram}
-                            heightType={SizeEnum.medium}
-                        />
+                        <Icon className="header__link" fontAwesomeIcon={faTelegram} heightType={SizeEnum.medium} />
                     </Link>
                 </Layout>
                 <Layout className="header__company">
@@ -71,10 +54,7 @@ const Header: React.FC<IHeader> = ({
                             />
                         </LinkRouter>
                     )}
-                    <Text
-                        className="header__user-name"
-                        fontSize={SizeEnum.medium}
-                    >
+                    <Text className="header__user-name" fontSize={SizeEnum.medium}>
                         {shortName}
                     </Text>
                     <Icon className="header__user-icon" src={imageUrl}></Icon>

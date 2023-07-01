@@ -1,19 +1,11 @@
-import {
-    HOME_FETCH_EVENTS,
-    HOME_FETCH_NEWS,
-    HomeActionTypes,
-    IHomePageReducerModel,
-} from './types';
+import { HOME_FETCH_EVENTS, HOME_FETCH_NEWS, HomeActionTypes, IHomePageReducerModel } from './types';
 
 export const initialState: IHomePageReducerModel = {
     news: null,
     events: null,
 };
 
-export function homePageReducer(
-    state = initialState,
-    action: HomeActionTypes,
-): IHomePageReducerModel {
+export function homePageReducer(state = initialState, action: HomeActionTypes): IHomePageReducerModel {
     switch (action.type) {
         case HOME_FETCH_NEWS:
             return {

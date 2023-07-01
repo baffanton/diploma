@@ -33,10 +33,7 @@ const AddUserModal: React.FC<IAddUserModal> = ({ onClose, option }) => {
     return (
         <Layout className="add-user-modal">
             <Layout className="add-user-modal__header">
-                <Text
-                    className="add-user-modal__title"
-                    fontSize={SizeEnum.large}
-                >
+                <Text className="add-user-modal__title" fontSize={SizeEnum.large}>
                     Новый пользователь
                 </Text>
                 <Icon
@@ -47,15 +44,9 @@ const AddUserModal: React.FC<IAddUserModal> = ({ onClose, option }) => {
                 />
             </Layout>
             <Layout className="add-user-modal__body">
-                <form
-                    className="add-user-modal__form"
-                    onSubmit={handleSubmit(onSubmit)}
-                >
+                <form className="add-user-modal__form" onSubmit={handleSubmit(onSubmit)}>
                     <Layout className="add-user-modal__personal-data">
-                        <Text
-                            className="add-user-modal__block-title"
-                            fontWeight={WeightEnum.bold}
-                        >
+                        <Text className="add-user-modal__block-title" fontWeight={WeightEnum.bold}>
                             Личные данные
                         </Text>
                         <TextBox
@@ -93,10 +84,7 @@ const AddUserModal: React.FC<IAddUserModal> = ({ onClose, option }) => {
                         />
                     </Layout>
                     <Layout className="add-user-modal__login-details">
-                        <Text
-                            className="add-user-modal__block-title"
-                            fontWeight={WeightEnum.bold}
-                        >
+                        <Text className="add-user-modal__block-title" fontWeight={WeightEnum.bold}>
                             Данные для входа
                         </Text>
                         <TextBox
