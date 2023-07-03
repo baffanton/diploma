@@ -11,10 +11,10 @@ export const sportConfig: ITableColumn[] = [
     },
     {
         Header: 'Дата',
-        accessor: 'month',
+        accessor: 'date',
     },
     {
         Header: 'Место',
-        accessor: 'placement',
+        accessor: 'place',
     },
 ];

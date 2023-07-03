@@ -1,4 +1,4 @@
-import { IEventModel } from 'types/IEventModel';
+import { IEventModel } from './components/Event/types';
 
 export interface IHomeEvents {
     events: IEventModel[];

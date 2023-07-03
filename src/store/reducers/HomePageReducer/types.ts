@@ -1,19 +1,22 @@
+import { IEventModel } from 'pages/HomePage/components/HomeEvents/components/Event/types';
+import { INewsModel } from 'pages/HomePage/components/HomeNews/components/News/types';
+
 export const HOME_FETCH_NEWS = 'HOME/FETCH_NEWS';
 export const HOME_FETCH_EVENTS = 'HOME/FETCH_EVENTS';
 
 export interface IFetchNews {
     type: typeof HOME_FETCH_NEWS;
-    news: any;
+    news: INewsModel[];
 }
 
 export interface IFetchEvents {
     type: typeof HOME_FETCH_EVENTS;
-    events: any;
+    events: IEventModel[];
 }
 
 export interface IHomePageReducerModel {
-    readonly news: any;
-    readonly events: any;
+    readonly news: INewsModel[] | null;
+    readonly events: IEventModel[] | null;
 }
 
 export type HomeActionTypes = IFetchEvents | IFetchNews;

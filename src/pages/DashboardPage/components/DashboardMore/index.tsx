@@ -15,22 +15,22 @@ import {
     fetchUsers,
 } from 'store/reducers/TableReducer/actions';
 import { useNavigate } from 'react-router-dom';
-import { Layout } from 'widgets/Layout';
-import { Table } from 'ui/Table';
 import { faArrowLeft, faDownload, faUserMinus, faUserPen, faUserPlus } from '@fortawesome/free-solid-svg-icons';
-import { Text } from 'widgets/Text';
 import { DashboardPagesUrlEnum } from 'enums/dashboardPages';
 import { closeModal, hideLoader, openModal, showLoader } from 'store/reducers/PageReducer/actions';
 import { ModalTypes } from 'enums/modalTypes';
-import { Title } from 'widgets/Title';
 import { SizeEnum } from 'enums/sizeTypes';
-import { Link } from 'widgets/Link';
-import { Icon } from 'ui/Icon';
-import { IDashboardMore } from './types';
-import { IAddUserDataModel, IAddUserModalOptions } from 'ui/Modal/components/AddUser/types';
-import { IChooseModalOptions } from 'ui/Modal/components/ChooseModal/types';
+import { IDashboardMore, TableDataTypes } from './types';
 import { UserRolesEnum } from 'enums/userTypes';
-import { IEditUserDataModel, IEditUserModalOptions } from 'ui/Modal/components/EditUser/types';
+import { Icon } from 'components/ui/Icon';
+import { IAddUserDataModel, IAddUserModalOptions } from 'components/ui/Modal/components/AddUser/types';
+import { IChooseModalOptions } from 'components/ui/Modal/components/ChooseModal/types';
+import { IEditUserDataModel, IEditUserModalOptions } from 'components/ui/Modal/components/EditUser/types';
+import { Table } from 'components/ui/Table';
+import { Layout } from 'components/widgets/Layout';
+import { Link } from 'components/widgets/Link';
+import { Text } from 'components/widgets/Text';
+import { Title } from 'components/widgets/Title';
 
 const DashboardMore: React.FC<IDashboardMore> = ({
     page,
@@ -55,7 +55,7 @@ const DashboardMore: React.FC<IDashboardMore> = ({
 }) => {
     const navigate = useNavigate();
     const [selectedRowIndex, setSelectedRowIndex] = useState<string | null>(null);
-    const [tableData, setTableData] = useState<any[]>([]);
+    const [tableData, setTableData] = useState<TableDataTypes | []>([]);
 
     const { id, title, exportUrl, tableConfig, isClickable } = page;
 
@@ -272,7 +272,7 @@ const mapDispatchToProps = (dispatch: any) => {
         },
         openModal(
             modalTypes: ModalTypes,
-            onClose: () => any,
+            onClose: () => void,
             options: IChooseModalOptions | IAddUserModalOptions | IEditUserModalOptions,
         ) {
             return dispatch(openModal(modalTypes, onClose, options));

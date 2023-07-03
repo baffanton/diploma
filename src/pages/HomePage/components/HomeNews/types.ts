@@ -1,4 +1,4 @@
-import { INewsModel } from 'pages/HomePage/types';
+import { INewsModel } from './components/News/types';
 
 export interface IHomeNews {
     news: INewsModel[];

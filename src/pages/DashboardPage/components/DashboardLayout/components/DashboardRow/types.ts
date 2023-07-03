@@ -1,5 +1,5 @@
-import { IControlPanel } from '../../config';
+import { IControlPanelItem } from './components/ControlPanel/types';
 
 export interface IDashboardRow {
-    panels: IControlPanel[];
+    panels: IControlPanelItem[];
 }

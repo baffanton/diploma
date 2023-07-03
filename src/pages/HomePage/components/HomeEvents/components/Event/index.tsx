@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import './style.scss';
 import { faTelegram, faVk } from '@fortawesome/free-brands-svg-icons';
-import { Layout } from 'widgets/Layout';
-import { Text } from 'widgets/Text';
 import { SizeEnum } from 'enums/sizeTypes';
-import { Link } from 'widgets/Link';
-import { Icon } from 'ui/Icon';
 import { IEventElememt } from './types';
+import { Icon } from 'components/ui/Icon';
+import { Layout } from 'components/widgets/Layout';
+import { Link } from 'components/widgets/Link';
+import { Text } from 'components/widgets/Text';
 
 const Event: React.FC<IEventElememt> = ({ event }) => {
     const [moreClicked, setMoreClicked] = useState<boolean>(false);
@@ -56,14 +56,14 @@ const Event: React.FC<IEventElememt> = ({ event }) => {
                             <Text className="event-active__source" fontSize={SizeEnum.medium}>
                                 Источник:
                             </Text>
-                            <Link href={vk || ''}>
+                            <Link href={vk ?? ''}>
                                 <Icon
                                     className="event-active__link"
                                     fontAwesomeIcon={faVk}
                                     heightType={SizeEnum.medium}
                                 />
                             </Link>
-                            <Link href={telegram || ''}>
+                            <Link href={telegram ?? ''}>
                                 <Icon
                                     className="event-active__link"
                                     fontAwesomeIcon={faTelegram}

@@ -1,11 +1,10 @@
 @import url('./global.scss');
+@import-normalize;
 
 * {
     font-weight: 400;
     font-size: 1.25rem;
-    font-family: 'Roboto';
     margin-block-start: 0;
     margin-block-end: 0;
-    box-sizing: border-box;
     position: relative;
 }

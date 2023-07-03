@@ -1,0 +1,29 @@
+@import 'global.scss';
+
+.icon {
+    box-sizing: border-box;
+}
+
+.icon_pointer {
+    cursor: pointer;
+}
+
+.icon_disabled {
+    cursor: default;
+}
+
+.icon_disabled > * {
+    fill: $grey;
+}
+
+.icon_heightType_s {
+    height: 1.75rem;
+}
+
+.icon_heightType_m {
+    height: 2.5rem;
+}
+
+.icon_heightType_l {
+    height: 5rem;
+}

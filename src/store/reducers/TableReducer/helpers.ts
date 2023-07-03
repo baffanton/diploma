@@ -1,11 +1,17 @@
 export interface ISecurityModel {
     userId: string;
     name: string;
+    place: string;
+    date: string;
+    result: string;
 }
 
 export interface ISportModel {
     userId: string;
-    name: string;
+    title: string;
+    sportType: string;
+    date: string;
+    place: string;
 }
 
 export interface IUsersModel {
@@ -21,19 +27,28 @@ export interface IUsersModel {
 export interface IFinancialHelpModel {
     userId: string;
     name: string;
+    date: string;
+    result: string;
 }
 
 export interface ILegalHelpModel {
     userId: string;
     name: string;
+    date: string;
+    result: string;
 }
 
 export interface IAwardsModel {
     userId: string;
-    name: string;
+    title: string;
+    date: string;
+    place: string;
 }
 
 export interface IEducationModel {
     userId: string;
     name: string;
+    place: string;
+    startDate: string;
+    endDate: string;
 }

@@ -1,6 +1,9 @@
+import { IAddUserModalOptions } from 'components/ui/Modal/components/AddUser/types';
+import { IChooseModalOptions } from 'components/ui/Modal/components/ChooseModal/types';
+import { IEditUserModalOptions } from 'components/ui/Modal/components/EditUser/types';
 import { ModalTypes } from 'enums/modalTypes';
 import { UserRolesEnum } from 'enums/userTypes';
-import { IDashboardPage } from 'pages/DashboardPage/config';
+import { IDashboardPage } from 'pages/DashboardPage/types';
 import { Dispatch } from 'react';
 import { ICloseModal, IOpenModal, IShowLoader, IHideLoader } from 'store/reducers/PageReducer/types';
 import {
@@ -21,9 +24,6 @@ import {
     IFetchAwards,
     IFetchEducation,
 } from 'store/reducers/TableReducer/types';
-import { IAddUserModalOptions } from 'ui/Modal/components/AddUser/types';
-import { IChooseModalOptions } from 'ui/Modal/components/ChooseModal/types';
-import { IEditUserModalOptions } from 'ui/Modal/components/EditUser/types';
 
 export interface IDashboardMore {
     page: IDashboardPage;
@@ -44,7 +44,7 @@ export interface IDashboardMore {
     closeModal: () => Dispatch<ICloseModal>;
     openModal: (
         modalTypes: ModalTypes,
-        onClose: () => any,
+        onClose: () => void,
         options: IAddUserModalOptions | IEditUserModalOptions | IChooseModalOptions,
     ) => Dispatch<IOpenModal>;
     showLoader: () => Dispatch<IShowLoader>;
@@ -57,3 +57,12 @@ export interface ITableColumn {
     Header: string;
     accessor: string;
 }
+
+export type TableDataTypes =
+    | ISecurityModel[]
+    | ISportModel[]
+    | IUsersModel[]
+    | IFinancialHelpModel[]
+    | ILegalHelpModel[]
+    | IAwardsModel[]
+    | IEducationModel[];

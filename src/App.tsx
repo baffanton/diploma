@@ -1,4 +1,4 @@
-import PageBuilder from 'modules/PageBuilder/PageBuilder';
+import PageBuilder from 'modules/PageBuilder';
 import './App.scss';
 
 function App() {

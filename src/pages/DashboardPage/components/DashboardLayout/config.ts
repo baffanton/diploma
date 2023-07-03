@@ -6,21 +6,9 @@ import {
     faScaleBalanced,
     faUserGraduate,
     faUserShield,
-    IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 import { DashboardPagesUrlEnum } from 'enums/dashboardPages';
-
-export interface IControlPanel {
-    id: string;
-    title: string;
-    icon: IconDefinition;
-    url: DashboardPagesUrlEnum;
-}
-
-export interface IControlRow {
-    id: string;
-    panels: IControlPanel[];
-}
+import { IControlRow } from './types';
 
 export const ControlRows: IControlRow[] = [
     {

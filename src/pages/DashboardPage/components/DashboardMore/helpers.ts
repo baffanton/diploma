@@ -18,6 +18,7 @@ import {
     IFetchSport,
     IFetchUsers,
 } from 'store/reducers/TableReducer/types';
+import { TableDataTypes } from './types';
 
 const getTableDataByPageId = (
     id: DashboardPagesUrlEnum,
@@ -28,14 +29,7 @@ const getTableDataByPageId = (
     legalHelp: ILegalHelpModel[],
     awards: IAwardsModel[],
     education: IEducationModel[],
-):
-    | ISecurityModel[]
-    | ISportModel[]
-    | IUsersModel[]
-    | IFinancialHelpModel[]
-    | ILegalHelpModel[]
-    | IAwardsModel[]
-    | IEducationModel[] => {
+): TableDataTypes => {
     switch (id) {
         case DashboardPagesUrlEnum.security:
             return security;

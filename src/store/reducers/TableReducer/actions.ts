@@ -18,8 +18,8 @@ import {
 import { RequestTypesEnum } from 'enums/requestTypes';
 import { RequestApiEnum } from 'enums/requestApi';
 import { AxiosResponse } from 'axios';
-import { IAddUserDataModel } from 'ui/Modal/components/AddUser/types';
-import { IEditUserDataModel } from 'ui/Modal/components/EditUser/types';
+import { IAddUserDataModel } from 'components/ui/Modal/components/AddUser/types';
+import { IEditUserDataModel } from 'components/ui/Modal/components/EditUser/types';
 
 export const fetchSecurity = () => (dispatch: (arg0: IFetchSecurity) => void) => {
     request(RequestTypesEnum.get, RequestApiEnum.tableSecurity, null)

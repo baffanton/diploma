@@ -1,14 +1,14 @@
 import './style.scss';
-import { Layout } from 'widgets/Layout';
 import { closeModal, openModal } from 'store/reducers/PageReducer/actions';
 import { connect } from 'react-redux';
 import { ModalTypes } from 'enums/modalTypes';
 import { SizeEnum } from 'enums/sizeTypes';
-import { Text } from 'widgets/Text';
-import { Title } from 'widgets/Title';
-import { INewsModalOptions } from 'ui/Modal/components/NewsModal/types';
 import { INews } from './types';
-import { Icon } from 'ui/Icon';
+import { Icon } from 'components/ui/Icon';
+import { INewsModalOptions } from 'components/ui/Modal/components/NewsModal/types';
+import { Layout } from 'components/widgets/Layout';
+import { Text } from 'components/widgets/Text';
+import { Title } from 'components/widgets/Title';
 
 const News: React.FC<INews> = ({ item, openModal, closeModal }) => {
     const { title, description, source, picture } = item;

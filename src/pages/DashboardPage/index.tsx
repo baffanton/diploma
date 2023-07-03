@@ -1,8 +1,7 @@
 import Header from 'modules/Header';
 
 const DashboardPage = () => {
-    const withHeader = true;
-    return <>{withHeader && <Header />}</>;
+    return <>{<Header />}</>;
 };
 
 export { DashboardPage };

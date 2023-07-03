@@ -1,4 +1,4 @@
-import { IModal } from './helpers';
+import { IModalProps } from 'components/ui/Modal/types';
 
 export const MODAL_OPEN = 'PAGE/OPEN_MODAL';
 export const MODAL_CLOSE = 'PAGE/CLOSE_MODAL';
@@ -7,13 +7,13 @@ export const LOADER_HIDE = 'PAGE/HIDE_LOADER';
 
 export interface IOpenModal {
     type: typeof MODAL_OPEN;
-    modal: IModal;
+    modal: IModalProps;
     isOpenModal: boolean;
 }
 
 export interface ICloseModal {
     type: typeof MODAL_CLOSE;
-    modal: IModal | null;
+    modal: IModalProps | null;
     isOpenModal: boolean;
 }
 
@@ -26,7 +26,7 @@ export interface IHideLoader {
 }
 
 export interface IPageReducerModel {
-    readonly modal: IModal | null;
+    readonly modal: IModalProps | null;
     readonly isOpenModal: boolean;
     loaderPoints: number;
 }

@@ -1,11 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import './style.scss';
-import { Layout } from 'widgets/Layout';
-import { Text } from 'widgets/Text';
 import { SizeEnum } from 'enums/sizeTypes';
-import { Icon } from 'ui/Icon';
+import { IControlPanel } from './types';
+import { Icon } from 'components/ui/Icon';
+import { Layout } from 'components/widgets/Layout';
+import { Text } from 'components/widgets/Text';
 
-const ControlPanel: React.FC<any> = ({ panel }) => {
+const ControlPanel: React.FC<IControlPanel> = ({ panel }) => {
     const navigate = useNavigate();
 
     const { title, icon, url } = panel;

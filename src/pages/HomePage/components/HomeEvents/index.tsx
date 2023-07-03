@@ -1,10 +1,10 @@
 import { Event } from './components/Event';
 import './style.scss';
-import { Layout } from 'widgets/Layout';
-import { Title } from 'widgets/Title';
 import { WeightEnum } from 'enums/weightTypes';
 import { SizeEnum } from 'enums/sizeTypes';
 import { IHomeEvents } from './types';
+import { Layout } from 'components/widgets/Layout';
+import { Title } from 'components/widgets/Title';
 
 const HomeEvents: React.FC<IHomeEvents> = ({ events }) => {
     if (!events) {

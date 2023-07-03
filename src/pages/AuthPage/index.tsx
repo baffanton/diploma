@@ -1,26 +1,25 @@
 import './style.scss';
-import { HomeSvgSelector } from 'ui/HomeSvgSelector';
-import { ImageEnum } from 'enums/images';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { schema } from './validateScheme';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Layout } from 'widgets/Layout';
 import { ColorThemeType } from 'enums/colorThemeTypes';
-import { TextBox } from 'ui/TextBox';
 import { useState } from 'react';
 import { InputTypesEnum } from 'enums/inputTypes';
 import { LabelPositionEnum } from 'enums/labelPositionTypes';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { Button } from 'ui/Button';
 import { connect } from 'react-redux';
 import { fetchUser, getToken } from 'store/reducers/UserReducer/actions';
 import { ModalTypes } from 'enums/modalTypes';
 import { closeModal, hideLoader, openModal, showLoader } from 'store/reducers/PageReducer/actions';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { SizeEnum } from 'enums/sizeTypes';
-import { Text } from 'widgets/Text';
 import { IAuthData, IAuthPage } from './types';
-import { IMessageModalOptions } from 'ui/Modal/components/MessageModal/types';
+import { getCompanyLogo } from 'helpers/companyLogo';
+import { Button } from 'components/ui/Button';
+import { IMessageModalOptions } from 'components/ui/Modal/components/MessageModal/types';
+import { TextBox } from 'components/ui/TextBox';
+import { Layout } from 'components/widgets/Layout';
+import { Text } from 'components/widgets/Text';
 
 const AuthPage: React.FC<IAuthPage> = ({ closeModal, openModal, showLoader, hideLoader, fetchUser }) => {
     const navigate = useNavigate();
@@ -74,9 +73,7 @@ const AuthPage: React.FC<IAuthPage> = ({ closeModal, openModal, showLoader, hide
     return (
         <Layout className="auth-page">
             <Layout className="auth-page__body">
-                <Layout className="auth-page__company-logo">
-                    <HomeSvgSelector icon={ImageEnum.logo} />
-                </Layout>
+                <Layout className="auth-page__company-logo">{getCompanyLogo()}</Layout>
                 <form className="auth-page__form" onSubmit={handleSubmit(onSubmit)}>
                     <Layout className="auth-page__data">
                         <TextBox

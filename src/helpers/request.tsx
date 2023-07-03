@@ -57,10 +57,3 @@ const METHODS = {
 export function request(method: RequestTypesEnum, api: RequestApiEnum | string, params: any) {
     return METHODS[method](api, params);
 }
-
-export const getParseResponse = (res: any, method = 'get') => {
-    if (method === 'get') {
-        return res;
-    }
-    return JSON.stringify(res);
-};

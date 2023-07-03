@@ -2,12 +2,12 @@ import Header from 'modules/Header';
 import { HomeEvents } from './components/HomeEvents';
 import { HomeNews } from './components/HomeNews';
 import './style.scss';
-import { Layout } from 'widgets/Layout';
 import { fetchEvents, fetchNews } from 'store/reducers/HomePageReducer/actions';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
 import { IHomePage } from './types';
 import { hideLoader, showLoader } from 'store/reducers/PageReducer/actions';
+import { Layout } from 'components/widgets/Layout';
 
 const HomePage: React.FC<IHomePage> = ({ news, events, fetchNews, fetchEvents, auth }) => {
     useEffect(() => {

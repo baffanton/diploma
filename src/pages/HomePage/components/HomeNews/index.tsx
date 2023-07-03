@@ -1,10 +1,10 @@
 import './style.scss';
 import News from './components/News';
-import { Layout } from 'widgets/Layout';
-import { Title } from 'widgets/Title';
 import { WeightEnum } from 'enums/weightTypes';
 import { SizeEnum } from 'enums/sizeTypes';
 import { IHomeNews } from './types';
+import { Layout } from 'components/widgets/Layout';
+import { Title } from 'components/widgets/Title';
 
 const HomeNews: React.FC<IHomeNews> = ({ news }) => {
     if (!news) {

@@ -1,22 +1,14 @@
 import { DashboardPagesUrlEnum } from 'enums/dashboardPages';
 import { usersConfig } from './tableConfigs/users';
 import { awardsConfig } from './tableConfigs/awards';
-import { eventsConfig } from './tableConfigs/events';
 import { sportConfig } from './tableConfigs/sport';
 import { ExportUrls } from 'enums/exportUrls';
 import { BASE_URL } from 'helpers/request';
-import { ITableColumn } from './components/DashboardMore/types';
 import { financialHelpConfig } from './tableConfigs/financialHelp';
 import { legalHelpConfig } from './tableConfigs/legalHelp';
-
-export interface IDashboardPage {
-    id: DashboardPagesUrlEnum;
-    title: string;
-    tableConfig: ITableColumn[];
-    url: DashboardPagesUrlEnum;
-    exportUrl: string;
-    isClickable: boolean;
-}
+import { IDashboardPage } from './types';
+import { educationConfig } from './tableConfigs/education';
+import { securityConfig } from './tableConfigs/security';
 
 export const DashboardPagesConfig: IDashboardPage[] = [
     {
@@ -30,7 +22,7 @@ export const DashboardPagesConfig: IDashboardPage[] = [
     {
         id: DashboardPagesUrlEnum.education,
         title: 'Образование',
-        tableConfig: eventsConfig,
+        tableConfig: educationConfig,
         url: DashboardPagesUrlEnum.education,
         exportUrl: `${BASE_URL}${ExportUrls.exportEducation}`,
         isClickable: false,
@@ -62,7 +54,7 @@ export const DashboardPagesConfig: IDashboardPage[] = [
     {
         id: DashboardPagesUrlEnum.security,
         title: 'Охрана труда',
-        tableConfig: usersConfig,
+        tableConfig: securityConfig,
         url: DashboardPagesUrlEnum.security,
         exportUrl: `${BASE_URL}${ExportUrls.exportSeciruty}`,
         isClickable: false,

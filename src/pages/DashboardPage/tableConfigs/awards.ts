@@ -7,7 +7,7 @@ export const awardsConfig: ITableColumn[] = [
     },
     {
         Header: 'Дата',
-        accessor: 'month',
+        accessor: 'date',
     },
     {
         Header: 'Место',

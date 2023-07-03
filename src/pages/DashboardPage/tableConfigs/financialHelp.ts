@@ -3,7 +3,7 @@ import { ITableColumn } from '../components/DashboardMore/types';
 export const financialHelpConfig: ITableColumn[] = [
     {
         Header: 'Пользователь',
-        accessor: 'user',
+        accessor: 'name',
     },
     {
         Header: 'Дата обращения',

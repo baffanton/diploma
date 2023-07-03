@@ -9,12 +9,27 @@ import {
     MODAL_CLOSE,
     MODAL_OPEN,
 } from './types';
+import { IAddUserModalOptions } from 'components/ui/Modal/components/AddUser/types';
+import { IChooseModalOptions } from 'components/ui/Modal/components/ChooseModal/types';
+import { IEditUserModalOptions } from 'components/ui/Modal/components/EditUser/types';
+import { IMessageModalOptions } from 'components/ui/Modal/components/MessageModal/types';
+import { INewsModalOptions } from 'components/ui/Modal/components/NewsModal/types';
 
 export const openModal =
-    (modalType: ModalTypes, onClose: any, option: any) => (dispatch: (arg0: IOpenModal) => void) => {
+    (
+        modalType: ModalTypes,
+        closeModal: () => void,
+        option:
+            | IAddUserModalOptions
+            | IChooseModalOptions
+            | IMessageModalOptions
+            | INewsModalOptions
+            | IEditUserModalOptions,
+    ) =>
+    (dispatch: (arg0: IOpenModal) => void) => {
         const modal = {
             type: modalType,
-            onClose,
+            closeModal,
             option,
         };
         dispatch({

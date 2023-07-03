@@ -1,6 +1,7 @@
 import { Dispatch } from 'react';
 import { IFetchEvents, IFetchNews } from 'store/reducers/HomePageReducer/types';
-import { IEventModel } from 'types/IEventModel';
+import { INewsModel } from './components/HomeNews/components/News/types';
+import { IEventModel } from './components/HomeEvents/components/Event/types';
 
 export interface IHomePage {
     fetchNews: () => Dispatch<IFetchNews>;
@@ -8,15 +9,4 @@ export interface IHomePage {
     events: IEventModel[];
     news: INewsModel[];
     auth: boolean;
-}
-
-export interface INewsModel {
-    id: string;
-    title: string;
-    description: string;
-    source: {
-        vk: string;
-        tg: string;
-    };
-    picture: string;
 }

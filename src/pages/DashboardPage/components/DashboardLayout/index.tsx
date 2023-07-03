@@ -1,13 +1,13 @@
-import { Layout } from 'widgets/Layout';
 import { DashboardRow } from './components/DashboardRow';
 import { ControlRows } from './config';
-import { Text } from 'widgets/Text';
 import './style.scss';
 import { IDashboardLayout } from './types';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
 import { UserRolesEnum } from 'enums/userTypes';
 import { useNavigate } from 'react-router-dom';
+import { Text } from 'components/widgets/Text';
+import { Layout } from 'components/widgets/Layout';
 
 const DashboardLayout: React.FC<IDashboardLayout> = ({ auth, role }) => {
     const navigate = useNavigate();
