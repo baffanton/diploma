@@ -1,11 +1,15 @@
-import cx from 'classnames';
-import './style.scss';
-import { ColorThemeType } from 'enums/colorThemeTypes';
-import { SizeEnum } from 'enums/sizeTypes';
-import { IButton } from './types';
-import { Icon } from '../Icon';
+import React from 'react';
+
+import { Icon } from 'components/ui/Icon';
 import { Layout } from 'components/widgets/Layout';
 import { Text } from 'components/widgets/Text';
+
+import { IButton } from './types';
+import cx from 'classnames';
+import { ColorThemeType } from 'enums/colorThemeTypes';
+import { SizeEnum } from 'enums/sizeTypes';
+
+import './style.scss';
 
 const Button: React.FC<IButton> = ({
     onClick,

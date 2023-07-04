@@ -1,4 +1,6 @@
-import { request } from 'helpers/request';
+import { IAddUserDataModel } from 'components/ui/Modal/components/AddUser/types';
+import { IEditUserDataModel } from 'components/ui/Modal/components/EditUser/types';
+
 import {
     IFetchAwards,
     IFetchEducation,
@@ -15,11 +17,10 @@ import {
     TABLE_GET_SPORT,
     TABLE_GET_USERS,
 } from './types';
-import { RequestTypesEnum } from 'enums/requestTypes';
-import { RequestApiEnum } from 'enums/requestApi';
 import { AxiosResponse } from 'axios';
-import { IAddUserDataModel } from 'components/ui/Modal/components/AddUser/types';
-import { IEditUserDataModel } from 'components/ui/Modal/components/EditUser/types';
+import { RequestApiEnum } from 'enums/requestApi';
+import { RequestTypesEnum } from 'enums/requestTypes';
+import { request } from 'helpers/request';
 
 export const fetchSecurity = () => (dispatch: (arg0: IFetchSecurity) => void) => {
     request(RequestTypesEnum.get, RequestApiEnum.tableSecurity, null)

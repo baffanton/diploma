@@ -1,12 +1,15 @@
-import './style.scss';
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { useTable } from 'react-table';
+
+import { Layout } from 'components/widgets/Layout';
+import { Title } from 'components/widgets/Title';
+
+import { ITable } from './types';
 import cx from 'classnames';
 import { SizeEnum } from 'enums/sizeTypes';
 import { WeightEnum } from 'enums/weightTypes';
-import { ITable } from './types';
-import { Layout } from 'components/widgets/Layout';
-import { Title } from 'components/widgets/Title';
+
+import './style.scss';
 
 const Table: React.FC<ITable> = ({ config, tableData, isClickable = false, selectedRowIndex, setSelectedRowIndex }) => {
     const columns = useMemo(() => config, [config]);

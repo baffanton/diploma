@@ -1,18 +1,22 @@
+import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import './style.scss';
-import { IEditUserDataModel, IEditUserModel } from './types';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { schema } from './validateScheme';
-import { SizeEnum } from 'enums/sizeTypes';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { WeightEnum } from 'enums/weightTypes';
-import { ColorThemeType } from 'enums/colorThemeTypes';
-import { LabelPositionEnum } from 'enums/labelPositionTypes';
+
 import { Button } from 'components/ui/Button';
 import { Icon } from 'components/ui/Icon';
 import { TextBox } from 'components/ui/TextBox';
 import { Layout } from 'components/widgets/Layout';
 import { Text } from 'components/widgets/Text';
+
+import { IEditUserDataModel, IEditUserModel } from './types';
+import { schema } from './validateScheme';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { ColorThemeType } from 'enums/colorThemeTypes';
+import { LabelPositionEnum } from 'enums/labelPositionTypes';
+import { SizeEnum } from 'enums/sizeTypes';
+import { WeightEnum } from 'enums/weightTypes';
+
+import './style.scss';
 
 const EditUserModal: React.FC<IEditUserModel> = ({ option, onClose }) => {
     const { user, onEditUserHandler } = option;
@@ -122,7 +126,7 @@ const EditUserModal: React.FC<IEditUserModel> = ({ option, onClose }) => {
                             className="edit-user-modal__submit-button"
                             colorTheme={ColorThemeType.primary}
                             heightType={SizeEnum.medium}
-                            onClick={() => {}}
+                            onClick={() => null}
                         >
                             Изменить данные
                         </Button>

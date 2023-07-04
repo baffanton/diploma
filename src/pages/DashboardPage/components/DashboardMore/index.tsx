@@ -1,7 +1,25 @@
-import './style.scss';
-import { useEffect, useState } from 'react';
-import { fetchDataByPageId, getTableDataByPageId } from './helpers';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
+import { Icon } from 'components/ui/Icon';
+import { IAddUserDataModel, IAddUserModalOptions } from 'components/ui/Modal/components/AddUser/types';
+import { IChooseModalOptions } from 'components/ui/Modal/components/ChooseModal/types';
+import { IEditUserDataModel, IEditUserModalOptions } from 'components/ui/Modal/components/EditUser/types';
+import { Table } from 'components/ui/Table';
+import { Layout } from 'components/widgets/Layout';
+import { Link } from 'components/widgets/Link';
+import { Text } from 'components/widgets/Text';
+import { Title } from 'components/widgets/Title';
+
+import { fetchDataByPageId, getTableDataByPageId } from './helpers';
+import { IDashboardMore, TableDataTypes } from './types';
+import { faArrowLeft, faDownload, faUserMinus, faUserPen, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { DashboardPagesUrlEnum } from 'enums/dashboardPages';
+import { ModalTypes } from 'enums/modalTypes';
+import { SizeEnum } from 'enums/sizeTypes';
+import { UserRolesEnum } from 'enums/userTypes';
+import { closeModal, hideLoader, openModal, showLoader } from 'store/reducers/PageReducer/actions';
 import {
     addUser,
     deleteUser,
@@ -14,23 +32,8 @@ import {
     fetchSport,
     fetchUsers,
 } from 'store/reducers/TableReducer/actions';
-import { useNavigate } from 'react-router-dom';
-import { faArrowLeft, faDownload, faUserMinus, faUserPen, faUserPlus } from '@fortawesome/free-solid-svg-icons';
-import { DashboardPagesUrlEnum } from 'enums/dashboardPages';
-import { closeModal, hideLoader, openModal, showLoader } from 'store/reducers/PageReducer/actions';
-import { ModalTypes } from 'enums/modalTypes';
-import { SizeEnum } from 'enums/sizeTypes';
-import { IDashboardMore, TableDataTypes } from './types';
-import { UserRolesEnum } from 'enums/userTypes';
-import { Icon } from 'components/ui/Icon';
-import { IAddUserDataModel, IAddUserModalOptions } from 'components/ui/Modal/components/AddUser/types';
-import { IChooseModalOptions } from 'components/ui/Modal/components/ChooseModal/types';
-import { IEditUserDataModel, IEditUserModalOptions } from 'components/ui/Modal/components/EditUser/types';
-import { Table } from 'components/ui/Table';
-import { Layout } from 'components/widgets/Layout';
-import { Link } from 'components/widgets/Link';
-import { Text } from 'components/widgets/Text';
-import { Title } from 'components/widgets/Title';
+
+import './style.scss';
 
 const DashboardMore: React.FC<IDashboardMore> = ({
     page,

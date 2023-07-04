@@ -1,9 +1,13 @@
+import React from 'react';
+
+import { Layout } from 'components/widgets/Layout';
+
+import { ICheckBox } from './types';
 import cx from 'classnames';
-import './style.scss';
 import { ColorThemeType } from 'enums/colorThemeTypes';
 import { SizeEnum } from 'enums/sizeTypes';
-import { ICheckBox } from './types';
-import { Layout } from 'components/widgets/Layout';
+
+import './style.scss';
 
 const CheckBox: React.FC<ICheckBox> = ({
     id,

@@ -1,8 +1,10 @@
-import { ModalTypes } from 'enums/modalTypes';
-import { NewsModal } from './components/NewsModal';
-import { MessageModal } from './components/MessageModal';
-import { ChooseModal } from './components/ChooseModal';
+import React from 'react';
+
 import { AddUserModal } from './components/AddUser';
+import { ChooseModal } from './components/ChooseModal';
+import { MessageModal } from './components/MessageModal';
+import { NewsModal } from './components/NewsModal';
+import { ModalTypes } from 'enums/modalTypes';
 
 export const getModal = (type: ModalTypes, closeModal: () => void, option: any): React.ReactElement | null => {
     switch (type) {

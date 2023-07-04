@@ -1,12 +1,15 @@
-import { useState } from 'react';
-import './style.scss';
-import { faTelegram, faVk } from '@fortawesome/free-brands-svg-icons';
-import { SizeEnum } from 'enums/sizeTypes';
-import { IEventElememt } from './types';
+import React, { useState } from 'react';
+
 import { Icon } from 'components/ui/Icon';
 import { Layout } from 'components/widgets/Layout';
 import { Link } from 'components/widgets/Link';
 import { Text } from 'components/widgets/Text';
+
+import { IEventElememt } from './types';
+import { faTelegram, faVk } from '@fortawesome/free-brands-svg-icons';
+import { SizeEnum } from 'enums/sizeTypes';
+
+import './style.scss';
 
 const Event: React.FC<IEventElememt> = ({ event }) => {
     const [moreClicked, setMoreClicked] = useState<boolean>(false);

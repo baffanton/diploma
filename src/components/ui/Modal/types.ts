@@ -1,9 +1,9 @@
-import { ModalTypes } from 'enums/modalTypes';
 import { IAddUserModalOptions } from './components/AddUser/types';
 import { IChooseModalOptions } from './components/ChooseModal/types';
+import { IEditUserModalOptions } from './components/EditUser/types';
 import { IMessageModalOptions } from './components/MessageModal/types';
 import { INewsModalOptions } from './components/NewsModal/types';
-import { IEditUserModalOptions } from './components/EditUser/types';
+import { ModalTypes } from 'enums/modalTypes';
 
 export interface IModalProps {
     type: ModalTypes;

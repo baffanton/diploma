@@ -1,13 +1,16 @@
-import Header from 'modules/Header';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+
+import { Layout } from 'components/widgets/Layout';
+
 import { HomeEvents } from './components/HomeEvents';
 import { HomeNews } from './components/HomeNews';
-import './style.scss';
-import { fetchEvents, fetchNews } from 'store/reducers/HomePageReducer/actions';
-import { connect } from 'react-redux';
-import { useEffect } from 'react';
 import { IHomePage } from './types';
+import Header from 'modules/Header';
+import { fetchEvents, fetchNews } from 'store/reducers/HomePageReducer/actions';
 import { hideLoader, showLoader } from 'store/reducers/PageReducer/actions';
-import { Layout } from 'components/widgets/Layout';
+
+import './style.scss';
 
 const HomePage: React.FC<IHomePage> = ({ news, events, fetchNews, fetchEvents, auth }) => {
     useEffect(() => {

@@ -1,8 +1,8 @@
-import { RequestTypesEnum } from 'enums/requestTypes';
+import { hideLoader, showLoader } from '../PageReducer/actions';
 import { HOME_FETCH_EVENTS, HOME_FETCH_NEWS, IFetchEvents, IFetchNews } from './types';
 import { RequestApiEnum } from 'enums/requestApi';
+import { RequestTypesEnum } from 'enums/requestTypes';
 import { request } from 'helpers/request';
-import { hideLoader, showLoader } from '../PageReducer/actions';
 
 export const fetchNews = () => (dispatch: (arg0: IFetchNews) => void) => {
     // @ts-ignore

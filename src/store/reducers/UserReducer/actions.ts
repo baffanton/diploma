@@ -1,10 +1,11 @@
-import { BASE_URL, request } from 'helpers/request';
-import { RequestTypesEnum } from 'enums/requestTypes';
-import { RequestApiEnum } from 'enums/requestApi';
-import axios, { AxiosResponse } from 'axios';
-import { IFetchUser, USER_FETCH } from './types';
 import { NavigateFunction } from 'react-router-dom';
+
 import { hideLoader, showLoader } from '../PageReducer/actions';
+import { IFetchUser, USER_FETCH } from './types';
+import axios, { AxiosResponse } from 'axios';
+import { RequestApiEnum } from 'enums/requestApi';
+import { RequestTypesEnum } from 'enums/requestTypes';
+import { BASE_URL, request } from 'helpers/request';
 
 export const getToken = async (username: string, password: string): Promise<AxiosResponse<string>> => {
     return await axios.post(`${BASE_URL}/auth/login`, { username, password }, { withCredentials: true });

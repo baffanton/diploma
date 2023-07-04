@@ -1,8 +1,12 @@
-import './style.scss';
-import { ControlPanel } from './components/ControlPanel';
-import { IDashboardRow } from './types';
-import { IControlPanelItem } from './components/ControlPanel/types';
+import React from 'react';
+
 import { Layout } from 'components/widgets/Layout';
+
+import { ControlPanel } from './components/ControlPanel';
+import { IControlPanelItem } from './components/ControlPanel/types';
+import { IDashboardRow } from './types';
+
+import './style.scss';
 
 const DashboardRow: React.FC<IDashboardRow> = ({ panels }) => {
     return (

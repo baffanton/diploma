@@ -1,28 +1,30 @@
+import { Dispatch } from 'react';
+
 import { IAddUserModalOptions } from 'components/ui/Modal/components/AddUser/types';
 import { IChooseModalOptions } from 'components/ui/Modal/components/ChooseModal/types';
 import { IEditUserModalOptions } from 'components/ui/Modal/components/EditUser/types';
+
 import { ModalTypes } from 'enums/modalTypes';
 import { UserRolesEnum } from 'enums/userTypes';
 import { IDashboardPage } from 'pages/DashboardPage/types';
-import { Dispatch } from 'react';
-import { ICloseModal, IOpenModal, IShowLoader, IHideLoader } from 'store/reducers/PageReducer/types';
+import { ICloseModal, IHideLoader, IOpenModal, IShowLoader } from 'store/reducers/PageReducer/types';
 import {
+    IAwardsModel,
+    IEducationModel,
+    IFinancialHelpModel,
+    ILegalHelpModel,
     ISecurityModel,
     ISportModel,
     IUsersModel,
-    IFinancialHelpModel,
-    ILegalHelpModel,
-    IAwardsModel,
-    IEducationModel,
 } from 'store/reducers/TableReducer/helpers';
 import {
+    IFetchAwards,
+    IFetchEducation,
+    IFetchFinancialHelp,
+    IFetchLegalHelp,
     IFetchSecurity,
     IFetchSport,
     IFetchUsers,
-    IFetchFinancialHelp,
-    IFetchLegalHelp,
-    IFetchAwards,
-    IFetchEducation,
 } from 'store/reducers/TableReducer/types';
 
 export interface IDashboardMore {

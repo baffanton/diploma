@@ -1,12 +1,16 @@
-import './style.scss';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { faTelegram, faVk } from '@fortawesome/free-brands-svg-icons';
-import { SizeEnum } from 'enums/sizeTypes';
-import { INewsModal } from './types';
+import React from 'react';
+
 import { Icon } from 'components/ui/Icon';
 import { Layout } from 'components/widgets/Layout';
-import { Text } from 'components/widgets/Text';
 import { Link } from 'components/widgets/Link';
+import { Text } from 'components/widgets/Text';
+
+import { INewsModal } from './types';
+import { faTelegram, faVk } from '@fortawesome/free-brands-svg-icons';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { SizeEnum } from 'enums/sizeTypes';
+
+import './style.scss';
 
 const NewsModal: React.FC<INewsModal> = ({ onClose, option }) => {
     const { title, description, source, picture } = option;

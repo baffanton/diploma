@@ -1,11 +1,15 @@
-import cx from 'classnames';
-import './style.scss';
-import { InputTypesEnum } from 'enums/inputTypes';
-import { ColorThemeType } from 'enums/colorThemeTypes';
-import { SizeEnum } from 'enums/sizeTypes';
-import { ITextBox } from './types';
-import { Icon } from '../Icon';
+import React from 'react';
+
 import { Layout } from 'components/widgets/Layout';
+
+import { Icon } from '../Icon';
+import { ITextBox } from './types';
+import cx from 'classnames';
+import { ColorThemeType } from 'enums/colorThemeTypes';
+import { InputTypesEnum } from 'enums/inputTypes';
+import { SizeEnum } from 'enums/sizeTypes';
+
+import './style.scss';
 
 const TextBox: React.FC<ITextBox> = ({
     id,

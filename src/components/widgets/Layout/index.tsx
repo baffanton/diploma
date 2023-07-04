@@ -1,7 +1,9 @@
 import React from 'react';
+
 import { ILayout } from './types';
-import './style.scss';
 import cx from 'classnames';
+
+import './style.scss';
 
 const Layout: React.FC<ILayout> = ({ className, children, onClick }) => {
     return (

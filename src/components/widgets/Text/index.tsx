@@ -4,6 +4,7 @@ import { SizeEnum } from 'enums/sizeTypes';
 import { WeightEnum } from 'enums/weightTypes';
 import { StyleEnum } from 'enums/styleTypes';
 import { IText } from './types';
+import React from 'react';
 
 const Text: React.FC<IText> = ({
     className,

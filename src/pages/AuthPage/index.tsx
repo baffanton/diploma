@@ -1,25 +1,28 @@
-import './style.scss';
+import React, { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { schema } from './validateScheme';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { ColorThemeType } from 'enums/colorThemeTypes';
-import { useState } from 'react';
-import { InputTypesEnum } from 'enums/inputTypes';
-import { LabelPositionEnum } from 'enums/labelPositionTypes';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux';
-import { fetchUser, getToken } from 'store/reducers/UserReducer/actions';
-import { ModalTypes } from 'enums/modalTypes';
-import { closeModal, hideLoader, openModal, showLoader } from 'store/reducers/PageReducer/actions';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { SizeEnum } from 'enums/sizeTypes';
-import { IAuthData, IAuthPage } from './types';
-import { getCompanyLogo } from 'helpers/companyLogo';
+
 import { Button } from 'components/ui/Button';
 import { IMessageModalOptions } from 'components/ui/Modal/components/MessageModal/types';
 import { TextBox } from 'components/ui/TextBox';
 import { Layout } from 'components/widgets/Layout';
 import { Text } from 'components/widgets/Text';
+
+import { IAuthData, IAuthPage } from './types';
+import { schema } from './validateScheme';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { ColorThemeType } from 'enums/colorThemeTypes';
+import { InputTypesEnum } from 'enums/inputTypes';
+import { LabelPositionEnum } from 'enums/labelPositionTypes';
+import { ModalTypes } from 'enums/modalTypes';
+import { SizeEnum } from 'enums/sizeTypes';
+import { getCompanyLogo } from 'helpers/companyLogo';
+import { closeModal, hideLoader, openModal, showLoader } from 'store/reducers/PageReducer/actions';
+import { fetchUser, getToken } from 'store/reducers/UserReducer/actions';
+
+import './style.scss';
 
 const AuthPage: React.FC<IAuthPage> = ({ closeModal, openModal, showLoader, hideLoader, fetchUser }) => {
     const navigate = useNavigate();
@@ -112,7 +115,7 @@ const AuthPage: React.FC<IAuthPage> = ({ closeModal, openModal, showLoader, hide
                             className="auth-page__submit-button"
                             colorTheme={ColorThemeType.white}
                             heightType={SizeEnum.medium}
-                            onClick={() => {}}
+                            onClick={() => null}
                         >
                             Войти
                         </Button>

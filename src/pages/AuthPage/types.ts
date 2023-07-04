@@ -1,8 +1,10 @@
-import { IMessageModalOptions } from 'components/ui/Modal/components/MessageModal/types';
-import { ModalTypes } from 'enums/modalTypes';
 import { Dispatch } from 'react';
 import { NavigateFunction } from 'react-router-dom';
-import { ICloseModal, IOpenModal, IShowLoader, IHideLoader } from 'store/reducers/PageReducer/types';
+
+import { IMessageModalOptions } from 'components/ui/Modal/components/MessageModal/types';
+
+import { ModalTypes } from 'enums/modalTypes';
+import { ICloseModal, IHideLoader, IOpenModal, IShowLoader } from 'store/reducers/PageReducer/types';
 import { IFetchUser } from 'store/reducers/UserReducer/types';
 
 export interface IAuthPage {

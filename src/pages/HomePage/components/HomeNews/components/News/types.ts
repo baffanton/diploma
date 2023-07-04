@@ -1,7 +1,9 @@
-import { INewsModalOptions } from 'components/ui/Modal/components/NewsModal/types';
-import { ModalTypes } from 'enums/modalTypes';
 import { Dispatch } from 'react';
-import { IOpenModal, ICloseModal } from 'store/reducers/PageReducer/types';
+
+import { INewsModalOptions } from 'components/ui/Modal/components/NewsModal/types';
+
+import { ModalTypes } from 'enums/modalTypes';
+import { ICloseModal, IOpenModal } from 'store/reducers/PageReducer/types';
 
 export interface INews {
     item: INewsModel;

@@ -1,4 +1,7 @@
+import React from 'react';
+
 import PageBuilder from 'modules/PageBuilder';
+
 import './App.scss';
 
 function App() {

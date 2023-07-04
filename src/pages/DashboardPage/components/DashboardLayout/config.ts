@@ -1,3 +1,4 @@
+import { IControlRow } from './types';
 import {
     faAward,
     faBasketball,
@@ -8,7 +9,6 @@ import {
     faUserShield,
 } from '@fortawesome/free-solid-svg-icons';
 import { DashboardPagesUrlEnum } from 'enums/dashboardPages';
-import { IControlRow } from './types';
 
 export const ControlRows: IControlRow[] = [
     {

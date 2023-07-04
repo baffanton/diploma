@@ -1,6 +1,8 @@
-import { IModalProps } from 'components/ui/Modal/types';
 import { Dispatch } from 'react';
 import { NavigateFunction } from 'react-router-dom';
+
+import { IModalProps } from 'components/ui/Modal/types';
+
 import { IFetchUser } from 'store/reducers/UserReducer/types';
 
 export interface IPageBuilder {

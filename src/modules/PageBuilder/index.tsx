@@ -1,18 +1,21 @@
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { NavigateFunction, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
+
+import { Layout } from 'components/widgets/Layout';
+import { Loader } from 'components/widgets/Loader';
+
+import { getModal } from './helpers';
+import { IPageBuilder } from './types';
 import AuthPage from 'pages/AuthPage';
 import { DashboardPage } from 'pages/DashboardPage';
 import DashboardLayout from 'pages/DashboardPage/components/DashboardLayout';
 import DashboardMore from 'pages/DashboardPage/components/DashboardMore';
 import { DashboardPagesConfig } from 'pages/DashboardPage/config';
 import HomePage from 'pages/HomePage';
-import { connect } from 'react-redux';
-import { NavigateFunction, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
-import './style.scss';
-import { IPageBuilder } from './types';
-import { useEffect } from 'react';
 import { fetchUser } from 'store/reducers/UserReducer/actions';
-import { getModal } from './helpers';
-import { Layout } from 'components/widgets/Layout';
-import { Loader } from 'components/widgets/Loader';
+
+import './style.scss';
 
 const PageBuilder: React.FC<IPageBuilder> = ({ isOpenModal, modal, loaderPoints, fetchUser }) => {
     const navigate = useNavigate();

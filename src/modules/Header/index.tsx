@@ -1,17 +1,21 @@
-import { faTelegram, faVk } from '@fortawesome/free-brands-svg-icons';
-import { faArrowRightFromBracket, faGears } from '@fortawesome/free-solid-svg-icons';
-import { UserRolesEnum } from 'enums/userTypes';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link as LinkRouter, useNavigate } from 'react-router-dom';
-import './style.scss';
-import { getShortName } from './helpers';
-import { SizeEnum } from 'enums/sizeTypes';
-import { IHeader } from './types';
-import { getCompanyLogo } from '../../helpers/companyLogo';
+
 import { Icon } from 'components/ui/Icon';
 import { Layout } from 'components/widgets/Layout';
 import { Link } from 'components/widgets/Link';
 import { Text } from 'components/widgets/Text';
+
+import { getCompanyLogo } from '../../helpers/companyLogo';
+import { getShortName } from './helpers';
+import { IHeader } from './types';
+import { faTelegram, faVk } from '@fortawesome/free-brands-svg-icons';
+import { faArrowRightFromBracket, faGears } from '@fortawesome/free-solid-svg-icons';
+import { SizeEnum } from 'enums/sizeTypes';
+import { UserRolesEnum } from 'enums/userTypes';
+
+import './style.scss';
 
 const Header: React.FC<IHeader> = ({ firstname, lastname, surname, role, imageUrl }) => {
     const navigate = useNavigate();

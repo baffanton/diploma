@@ -1,10 +1,14 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './style.scss';
-import { SizeEnum } from 'enums/sizeTypes';
-import { IControlPanel } from './types';
+
 import { Icon } from 'components/ui/Icon';
 import { Layout } from 'components/widgets/Layout';
 import { Text } from 'components/widgets/Text';
+
+import { IControlPanel } from './types';
+import { SizeEnum } from 'enums/sizeTypes';
+
+import './style.scss';
 
 const ControlPanel: React.FC<IControlPanel> = ({ panel }) => {
     const navigate = useNavigate();

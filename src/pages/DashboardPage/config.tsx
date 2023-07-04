@@ -1,14 +1,14 @@
-import { DashboardPagesUrlEnum } from 'enums/dashboardPages';
-import { usersConfig } from './tableConfigs/users';
 import { awardsConfig } from './tableConfigs/awards';
-import { sportConfig } from './tableConfigs/sport';
-import { ExportUrls } from 'enums/exportUrls';
-import { BASE_URL } from 'helpers/request';
+import { educationConfig } from './tableConfigs/education';
 import { financialHelpConfig } from './tableConfigs/financialHelp';
 import { legalHelpConfig } from './tableConfigs/legalHelp';
-import { IDashboardPage } from './types';
-import { educationConfig } from './tableConfigs/education';
 import { securityConfig } from './tableConfigs/security';
+import { sportConfig } from './tableConfigs/sport';
+import { usersConfig } from './tableConfigs/users';
+import { IDashboardPage } from './types';
+import { DashboardPagesUrlEnum } from 'enums/dashboardPages';
+import { ExportUrls } from 'enums/exportUrls';
+import { BASE_URL } from 'helpers/request';
 
 export const DashboardPagesConfig: IDashboardPage[] = [
     {

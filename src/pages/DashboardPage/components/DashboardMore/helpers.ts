@@ -1,5 +1,7 @@
-import { DashboardPagesUrlEnum } from 'enums/dashboardPages';
 import { Dispatch } from 'react';
+
+import { TableDataTypes } from './types';
+import { DashboardPagesUrlEnum } from 'enums/dashboardPages';
 import {
     IAwardsModel,
     IEducationModel,
@@ -18,7 +20,6 @@ import {
     IFetchSport,
     IFetchUsers,
 } from 'store/reducers/TableReducer/types';
-import { TableDataTypes } from './types';
 
 const getTableDataByPageId = (
     id: DashboardPagesUrlEnum,

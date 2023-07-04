@@ -1,4 +1,9 @@
-import { ModalTypes } from 'enums/modalTypes';
+import { IAddUserModalOptions } from 'components/ui/Modal/components/AddUser/types';
+import { IChooseModalOptions } from 'components/ui/Modal/components/ChooseModal/types';
+import { IEditUserModalOptions } from 'components/ui/Modal/components/EditUser/types';
+import { IMessageModalOptions } from 'components/ui/Modal/components/MessageModal/types';
+import { INewsModalOptions } from 'components/ui/Modal/components/NewsModal/types';
+
 import {
     ICloseModal,
     IHideLoader,
@@ -9,11 +14,7 @@ import {
     MODAL_CLOSE,
     MODAL_OPEN,
 } from './types';
-import { IAddUserModalOptions } from 'components/ui/Modal/components/AddUser/types';
-import { IChooseModalOptions } from 'components/ui/Modal/components/ChooseModal/types';
-import { IEditUserModalOptions } from 'components/ui/Modal/components/EditUser/types';
-import { IMessageModalOptions } from 'components/ui/Modal/components/MessageModal/types';
-import { INewsModalOptions } from 'components/ui/Modal/components/NewsModal/types';
+import { ModalTypes } from 'enums/modalTypes';
 
 export const openModal =
     (

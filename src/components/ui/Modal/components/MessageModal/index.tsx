@@ -1,12 +1,15 @@
 import React from 'react';
-import './style.scss';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { SizeEnum } from 'enums/sizeTypes';
-import { IMessageModal } from './types';
+
 import { Button } from 'components/ui/Button';
 import { Icon } from 'components/ui/Icon';
 import { Layout } from 'components/widgets/Layout';
 import { Text } from 'components/widgets/Text';
+
+import { IMessageModal } from './types';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { SizeEnum } from 'enums/sizeTypes';
+
+import './style.scss';
 
 const MessageModal: React.FC<IMessageModal> = ({ onClose, option }) => {
     const { message, title } = option;

@@ -1,12 +1,15 @@
 import React from 'react';
-import './style.scss';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { SizeEnum } from 'enums/sizeTypes';
-import { IChooseModal } from './types';
+
 import { Button } from 'components/ui/Button';
 import { Icon } from 'components/ui/Icon';
 import { Layout } from 'components/widgets/Layout';
 import { Text } from 'components/widgets/Text';
+
+import { IChooseModal } from './types';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { SizeEnum } from 'enums/sizeTypes';
+
+import './style.scss';
 
 const ChooseModal: React.FC<IChooseModal> = ({ onClose, option }) => {
     const { message, onAccept, onAcceptTitle, onCancelTitle, title } = option;
