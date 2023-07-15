@@ -11,7 +11,7 @@ export const getToken = async (username: string, password: string): Promise<Axio
     return await axios.post(`${BASE_URL}/auth/login`, { username, password }, { withCredentials: true });
 };
 
-export const refreshToken = async (): Promise<AxiosResponse<any>> => {
+export const refreshToken = async (): Promise<AxiosResponse<string>> => {
     return await axios.get(`${BASE_URL}/auth/refresh`, {
         withCredentials: true,
     });

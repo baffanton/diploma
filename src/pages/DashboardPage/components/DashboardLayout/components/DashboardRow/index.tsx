@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Layout } from 'components/widgets/Layout';
+import { Layout } from 'components/core/Layout';
 
 import { ControlPanel } from './components/ControlPanel';
 import { IControlPanelItem } from './components/ControlPanel/types';

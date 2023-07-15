@@ -1,8 +1,8 @@
 import { Dispatch } from 'react';
 
-import { IAddUserModalOptions } from 'components/ui/Modal/components/AddUser/types';
-import { IChooseModalOptions } from 'components/ui/Modal/components/ChooseModal/types';
-import { IEditUserModalOptions } from 'components/ui/Modal/components/EditUser/types';
+import { IAddUserModalOptions } from 'components/core/Modal/components/AddUser/types';
+import { IChooseModalOptions } from 'components/core/Modal/components/ChooseModal/types';
+import { IEditUserModalOptions } from 'components/core/Modal/components/EditUser/types';
 
 import { ModalTypes } from 'enums/modalTypes';
 import { UserRolesEnum } from 'enums/userTypes';

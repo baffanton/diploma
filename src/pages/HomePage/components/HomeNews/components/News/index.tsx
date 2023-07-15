@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { Icon } from 'components/ui/Icon';
-import { INewsModalOptions } from 'components/ui/Modal/components/NewsModal/types';
-import { Layout } from 'components/widgets/Layout';
-import { Text } from 'components/widgets/Text';
-import { Title } from 'components/widgets/Title';
+import { Icon } from 'components/core/Icon';
+import { Layout } from 'components/core/Layout';
+import { INewsModalOptions } from 'components/core/Modal/components/NewsModal/types';
+import { Text } from 'components/core/Text';
+import { Title } from 'components/core/Title';
 
 import { INews } from './types';
 import { ModalTypes } from 'enums/modalTypes';

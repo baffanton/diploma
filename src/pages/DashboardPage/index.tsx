@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from 'modules/Header';
+import Header from 'components/shared/Header';
 
 const DashboardPage = () => {
     return <>{<Header />}</>;

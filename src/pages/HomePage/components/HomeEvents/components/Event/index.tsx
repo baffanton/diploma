@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import { Icon } from 'components/ui/Icon';
-import { Layout } from 'components/widgets/Layout';
-import { Link } from 'components/widgets/Link';
-import { Text } from 'components/widgets/Text';
+import { Icon } from 'components/core/Icon';
+import { Layout } from 'components/core/Layout';
+import { Link } from 'components/core/Link';
+import { Text } from 'components/core/Text';
 
 import { IEventElememt } from './types';
 import { faTelegram, faVk } from '@fortawesome/free-brands-svg-icons';

@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { Icon } from 'components/ui/Icon';
-import { IAddUserDataModel, IAddUserModalOptions } from 'components/ui/Modal/components/AddUser/types';
-import { IChooseModalOptions } from 'components/ui/Modal/components/ChooseModal/types';
-import { IEditUserDataModel, IEditUserModalOptions } from 'components/ui/Modal/components/EditUser/types';
-import { Table } from 'components/ui/Table';
-import { Layout } from 'components/widgets/Layout';
-import { Link } from 'components/widgets/Link';
-import { Text } from 'components/widgets/Text';
-import { Title } from 'components/widgets/Title';
+import { Icon } from 'components/core/Icon';
+import { Layout } from 'components/core/Layout';
+import { Link } from 'components/core/Link';
+import { IAddUserDataModel, IAddUserModalOptions } from 'components/core/Modal/components/AddUser/types';
+import { IChooseModalOptions } from 'components/core/Modal/components/ChooseModal/types';
+import { IEditUserDataModel, IEditUserModalOptions } from 'components/core/Modal/components/EditUser/types';
+import { Table } from 'components/core/Table';
+import { Text } from 'components/core/Text';
+import { Title } from 'components/core/Title';
 
 import { fetchDataByPageId, getTableDataByPageId } from './helpers';
 import { IDashboardMore, TableDataTypes } from './types';

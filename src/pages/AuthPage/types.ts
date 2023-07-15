@@ -1,7 +1,7 @@
 import { Dispatch } from 'react';
 import { NavigateFunction } from 'react-router-dom';
 
-import { IMessageModalOptions } from 'components/ui/Modal/components/MessageModal/types';
+import { IMessageModalOptions } from 'components/core/Modal/components/MessageModal/types';
 
 import { ModalTypes } from 'enums/modalTypes';
 import { ICloseModal, IHideLoader, IOpenModal, IShowLoader } from 'store/reducers/PageReducer/types';

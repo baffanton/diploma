@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Layout } from 'components/widgets/Layout';
-import { Title } from 'components/widgets/Title';
+import { Layout } from 'components/core/Layout';
+import { Title } from 'components/core/Title';
 
 import News from './components/News';
 import { IHomeNews } from './types';

@@ -22,6 +22,8 @@ export interface IUsersModel {
     placement: string;
     position: string;
     phone: string;
+    username: string;
+    password: string;
 }
 
 export interface IFinancialHelpModel {

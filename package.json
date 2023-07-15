@@ -37,7 +37,7 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test",
+        "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!@codemirror)/'",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
@@ -68,6 +68,7 @@
         "eslint-import-resolver-typescript": "^3.5.5",
         "eslint-plugin-import": "^2.27.5",
         "eslint-plugin-react": "^7.32.2",
-        "eslint-plugin-simple-import-sort": "^10.0.0"
+        "eslint-plugin-simple-import-sort": "^10.0.0",
+        "jest": "^27.5.1"
     }
 }

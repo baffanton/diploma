@@ -1,8 +1,8 @@
-import { IAddUserModalOptions } from 'components/ui/Modal/components/AddUser/types';
-import { IChooseModalOptions } from 'components/ui/Modal/components/ChooseModal/types';
-import { IEditUserModalOptions } from 'components/ui/Modal/components/EditUser/types';
-import { IMessageModalOptions } from 'components/ui/Modal/components/MessageModal/types';
-import { INewsModalOptions } from 'components/ui/Modal/components/NewsModal/types';
+import { IAddUserModalOptions } from 'components/core/Modal/components/AddUser/types';
+import { IChooseModalOptions } from 'components/core/Modal/components/ChooseModal/types';
+import { IEditUserModalOptions } from 'components/core/Modal/components/EditUser/types';
+import { IMessageModalOptions } from 'components/core/Modal/components/MessageModal/types';
+import { INewsModalOptions } from 'components/core/Modal/components/NewsModal/types';
 
 import {
     ICloseModal,

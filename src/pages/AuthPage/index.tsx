@@ -3,11 +3,11 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
-import { Button } from 'components/ui/Button';
-import { IMessageModalOptions } from 'components/ui/Modal/components/MessageModal/types';
-import { TextBox } from 'components/ui/TextBox';
-import { Layout } from 'components/widgets/Layout';
-import { Text } from 'components/widgets/Text';
+import { Button } from 'components/core/Button';
+import { Layout } from 'components/core/Layout';
+import { IMessageModalOptions } from 'components/core/Modal/components/MessageModal/types';
+import { Text } from 'components/core/Text';
+import { TextBox } from 'components/core/TextBox';
 
 import { IAuthData, IAuthPage } from './types';
 import { schema } from './validateScheme';

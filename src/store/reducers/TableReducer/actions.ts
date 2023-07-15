@@ -1,5 +1,5 @@
-import { IAddUserDataModel } from 'components/ui/Modal/components/AddUser/types';
-import { IEditUserDataModel } from 'components/ui/Modal/components/EditUser/types';
+import { IAddUserDataModel } from 'components/core/Modal/components/AddUser/types';
+import { IEditUserDataModel } from 'components/core/Modal/components/EditUser/types';
 
 import {
     IFetchAwards,

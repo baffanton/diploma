@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Icon } from 'components/ui/Icon';
-import { Layout } from 'components/widgets/Layout';
-import { Text } from 'components/widgets/Text';
+import { Icon } from 'components/core/Icon';
+import { Layout } from 'components/core/Layout';
+import { Text } from 'components/core/Text';
 
 import { IControlPanel } from './types';
 import { SizeEnum } from 'enums/sizeTypes';

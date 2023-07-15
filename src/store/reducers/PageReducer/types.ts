@@ -1,4 +1,4 @@
-import { IModalProps } from 'components/ui/Modal/types';
+import { IModalProps } from 'components/core/Modal/types';
 
 export const MODAL_OPEN = 'PAGE/OPEN_MODAL';
 export const MODAL_CLOSE = 'PAGE/CLOSE_MODAL';

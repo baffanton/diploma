@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { Layout } from 'components/widgets/Layout';
-import { Text } from 'components/widgets/Text';
+import { Layout } from 'components/core/Layout';
+import { Text } from 'components/core/Text';
 
 import { DashboardRow } from './components/DashboardRow';
 import { ControlRows } from './config';

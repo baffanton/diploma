@@ -1,6 +1,6 @@
 import { Dispatch } from 'react';
 
-import { INewsModalOptions } from 'components/ui/Modal/components/NewsModal/types';
+import { INewsModalOptions } from 'components/core/Modal/components/NewsModal/types';
 
 import { ModalTypes } from 'enums/modalTypes';
 import { ICloseModal, IOpenModal } from 'store/reducers/PageReducer/types';
