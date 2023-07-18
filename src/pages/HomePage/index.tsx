@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { Layout } from 'components/core/Layout';
+import Header from 'components/shared/Header';
 
 import { HomeEvents } from './components/HomeEvents';
 import { HomeNews } from './components/HomeNews';
 import { IHomePage } from './types';
-import Header from 'components/shared/Header';
 import { fetchEvents, fetchNews } from 'store/reducers/HomePageReducer/actions';
 import { hideLoader, showLoader } from 'store/reducers/PageReducer/actions';
 

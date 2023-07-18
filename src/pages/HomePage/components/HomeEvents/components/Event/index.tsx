@@ -28,7 +28,7 @@ const Event: React.FC<IEventElememt> = ({ event }) => {
 
     if (moreClicked) {
         return (
-            <Layout className="event-active">
+            <Layout className="event-active" id="event-active">
                 <Layout className="event-active__header">
                     <Text className="event-active__title" fontSize={SizeEnum.large}>
                         {title}

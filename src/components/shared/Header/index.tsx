@@ -33,7 +33,7 @@ const Header: React.FC<IHeader> = ({ firstname, lastname, surname, role, imageUr
     };
 
     return (
-        <Layout className="header">
+        <Layout className="header" id="header">
             <Layout className="header__container">
                 <Layout className="header__links">
                     <Link href="https://vk.com/eurochem_prof">

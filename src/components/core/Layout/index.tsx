@@ -5,9 +5,9 @@ import cx from 'classnames';
 
 import './style.scss';
 
-const Layout: React.FC<ILayout> = ({ className, children, onClick }) => {
+const Layout: React.FC<ILayout> = ({ className, children, onClick, id }) => {
     return (
-        <div className={cx('layout', className)} onClick={onClick}>
+        <div className={cx('layout', className)} id={id} data-testid={id} onClick={onClick}>
             {children}
         </div>
     );

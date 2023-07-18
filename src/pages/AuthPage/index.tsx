@@ -74,7 +74,7 @@ const AuthPage: React.FC<IAuthPage> = ({ closeModal, openModal, showLoader, hide
     };
 
     return (
-        <Layout className="auth-page">
+        <Layout className="auth-page" id="auth-page">
             <Layout className="auth-page__body">
                 <Layout className="auth-page__company-logo">{getCompanyLogo()}</Layout>
                 <form className="auth-page__form" onSubmit={handleSubmit(onSubmit)}>

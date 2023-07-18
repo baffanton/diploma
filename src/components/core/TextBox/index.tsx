@@ -11,26 +11,29 @@ import { SizeEnum } from 'enums/sizeTypes';
 
 import './style.scss';
 
-const TextBox: React.FC<ITextBox> = ({
-    id,
-    name = '',
-    label,
-    onChange,
-    classNameInput = '',
-    classNameLabel = '',
-    classNameContainer = '',
-    placeholder = '',
-    error,
-    register,
-    value,
-    icon,
-    onIconClick,
-    labelPosition,
-    type = InputTypesEnum.text,
-    heightType = SizeEnum.medium,
-    colorTheme = ColorThemeType.primary,
-    disabled,
-}) => {
+const TextBox: React.FC<ITextBox> = (
+    {
+        id,
+        name = '',
+        label,
+        onChange,
+        classNameInput = '',
+        classNameLabel = '',
+        classNameContainer = '',
+        placeholder = '',
+        error,
+        register,
+        value,
+        icon,
+        onIconClick,
+        labelPosition,
+        type = InputTypesEnum.text,
+        heightType = SizeEnum.medium,
+        colorTheme = ColorThemeType.primary,
+        disabled,
+    },
+    { ...props },
+) => {
     const inputClassNames = cx(
         'text-box__input',
         `text-box__input_color_${colorTheme}`,
@@ -66,6 +69,7 @@ const TextBox: React.FC<ITextBox> = ({
                         onChange={onChange}
                         value={value}
                         disabled={disabled}
+                        autoComplete={type === InputTypesEnum.password ? 'on' : 'off'}
                         {...register}
                     />
                     <Icon
@@ -88,6 +92,7 @@ const TextBox: React.FC<ITextBox> = ({
                 onChange={onChange}
                 value={value}
                 disabled={disabled}
+                autoComplete={type === InputTypesEnum.password ? 'on' : 'off'}
                 {...register}
             />
         );
