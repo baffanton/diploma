@@ -63,12 +63,16 @@
     display: flex;
     align-items: center;
     width: auto;
-    margin-left: 0.6rem;
+    margin-left: 12px;
+}
+
+.news-modal__source-container .icon_disabled > * {
+    fill: darkGrey;
 }
 
 .news-modal__source-item {
     color: $darkBlue;
-    padding: 0 0.2rem;
+    padding: 0 4px;
 }
 
 .news-modal__source-item:hover {

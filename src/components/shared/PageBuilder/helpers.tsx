@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Modal } from 'components/core/Modal';
 import { IModalProps } from 'components/core/Modal/types';
 

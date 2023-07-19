@@ -1,8 +1,6 @@
 import React from 'react';
-
 import { IEventModel } from './types';
 import { fireEvent, render, screen } from '@testing-library/react';
-
 import { Event } from '.';
 
 describe('Event tests', () => {

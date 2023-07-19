@@ -3,4 +3,5 @@ export interface ILink {
     href: string;
     className?: string;
     onClick?: () => void;
+    disabled?: boolean;
 }

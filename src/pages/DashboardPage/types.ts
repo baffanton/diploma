@@ -6,6 +6,5 @@ export interface IDashboardPage {
     title: string;
     tableConfig: ITableColumn[];
     url: DashboardPagesUrlEnum;
-    exportUrl: string;
     isClickable: boolean;
 }

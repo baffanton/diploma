@@ -13,8 +13,4 @@ export const sportConfig: ITableColumn[] = [
         Header: 'Дата',
         accessor: 'date',
     },
-    {
-        Header: 'Место',
-        accessor: 'place',
-    },
 ];

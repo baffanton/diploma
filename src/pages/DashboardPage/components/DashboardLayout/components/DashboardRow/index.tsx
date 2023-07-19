@@ -1,11 +1,8 @@
 import React from 'react';
-
 import { Layout } from 'components/core/Layout';
-
 import { ControlPanel } from './components/ControlPanel';
 import { IControlPanelItem } from './components/ControlPanel/types';
 import { IDashboardRow } from './types';
-
 import './style.scss';
 
 const DashboardRow: React.FC<IDashboardRow> = ({ panels }) => {

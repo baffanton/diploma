@@ -1,5 +1,5 @@
 export interface ISecurityModel {
-    userId: string;
+    id: string;
     name: string;
     place: string;
     date: string;
@@ -7,7 +7,7 @@ export interface ISecurityModel {
 }
 
 export interface ISportModel {
-    userId: string;
+    id: string;
     title: string;
     sportType: string;
     date: string;
@@ -15,7 +15,7 @@ export interface ISportModel {
 }
 
 export interface IUsersModel {
-    userId: string;
+    id: string;
     firstname: string;
     lastname: string;
     surname: string;
@@ -27,28 +27,28 @@ export interface IUsersModel {
 }
 
 export interface IFinancialHelpModel {
-    userId: string;
+    id: string;
     name: string;
     date: string;
     result: string;
 }
 
 export interface ILegalHelpModel {
-    userId: string;
+    id: string;
     name: string;
     date: string;
     result: string;
 }
 
 export interface IAwardsModel {
-    userId: string;
+    id: string;
     title: string;
     date: string;
     place: string;
 }
 
 export interface IEducationModel {
-    userId: string;
+    id: string;
     name: string;
     place: string;
     startDate: string;

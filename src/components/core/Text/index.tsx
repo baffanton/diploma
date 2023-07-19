@@ -1,11 +1,9 @@
 import React from 'react';
-
 import { IText } from './types';
 import cx from 'classnames';
 import { SizeEnum } from 'enums/sizeTypes';
 import { StyleEnum } from 'enums/styleTypes';
 import { WeightEnum } from 'enums/weightTypes';
-
 import './style.scss';
 
 const Text: React.FC<IText> = ({

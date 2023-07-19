@@ -1,6 +1,5 @@
 import { IAddUserDataModel } from 'components/core/Modal/components/AddUser/types';
 import { IEditUserDataModel } from 'components/core/Modal/components/EditUser/types';
-
 import {
     IFetchAwards,
     IFetchEducation,
@@ -156,13 +155,18 @@ export const fetchEducation = () => (dispatch: (arg0: IFetchEducation) => void) 
 };
 
 export const deleteUser = async (id: string): Promise<AxiosResponse<void>> => {
-    return await request(RequestTypesEnum.delete, `${RequestApiEnum.deleteUser}${id}`, null);
+    return await request(RequestTypesEnum.delete, `${RequestApiEnum.deleteUser}/${id}`, null);
 };
 
-export const addUser = async (data: IAddUserDataModel): Promise<AxiosResponse<void>> => {
-    return await request(RequestTypesEnum.post, RequestApiEnum.addUser, data);
+export const addUser = async (id: string, data: IAddUserDataModel): Promise<AxiosResponse<void>> => {
+    const newUser = {
+        id,
+        ...data,
+    };
+
+    return await request(RequestTypesEnum.post, RequestApiEnum.addUser, newUser);
 };
 
-export const editUser = async (data: IEditUserDataModel): Promise<AxiosResponse<void>> => {
-    return await request(RequestTypesEnum.post, RequestApiEnum.editUser, data);
+export const editUser = async (id: string, data: IEditUserDataModel): Promise<AxiosResponse<void>> => {
+    return await request(RequestTypesEnum.put, `${RequestApiEnum.editUser}/${id}`, data);
 };

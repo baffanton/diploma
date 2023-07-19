@@ -1,5 +1,4 @@
 import { FieldError, UseFormRegisterReturn } from 'react-hook-form';
-
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { ColorThemeType } from 'enums/colorThemeTypes';
 import { InputTypesEnum } from 'enums/inputTypes';

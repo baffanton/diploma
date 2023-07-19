@@ -1,9 +1,7 @@
 import React from 'react';
-
 import { IIcon } from './types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import cx from 'classnames';
-
 import './style.scss';
 
 const Icon: React.FC<IIcon> = ({ src, className = '', pointer, heightType, fontAwesomeIcon, onClick, disabled }) => {

@@ -1,13 +1,11 @@
-import { Dispatch } from 'react';
-import { NavigateFunction } from 'react-router-dom';
-
 import { IModalProps } from 'components/core/Modal/types';
-
+import { Dispatch } from '@reduxjs/toolkit';
+import { IUserData } from 'store/reducers/UserReducer/helpers';
 import { IFetchUser } from 'store/reducers/UserReducer/types';
 
 export interface IPageBuilder {
     isOpenModal: boolean;
     modal: IModalProps | null;
     loaderPoints: number;
-    fetchUser: (navigate: NavigateFunction) => Dispatch<IFetchUser>;
+    fetchUser: (user: IUserData) => Dispatch<IFetchUser>;
 }

@@ -3,49 +3,45 @@
 .choose-modal {
     display: flex;
     flex-direction: column;
-    width: 26.5rem;
+    width: 700px;
     height: auto;
     background-color: $white;
-    border-radius: 1rem;
+    border-radius: 20px;
     color: $darkBlue;
 }
 
 .choose-modal__header {
     display: flex;
     width: 100%;
+    padding-top: 16px;
 }
 
 .choose-modal__title {
-    padding: 0.4rem 0 0.4rem 0.8rem;
-    border-bottom: 0.15rem solid $blue;
+    border-bottom: 3px solid $blue;
     width: 100%;
+    padding: 0 16px 16px;
 }
 
 .choose-modal__close {
     position: absolute;
-    right: 0;
+    right: 16px;
     color: $darkBlue;
-    margin: 0.5rem 0.8rem 0 0;
 }
 
 .choose-modal__body {
-    padding: 0.8rem;
+    padding: 16px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
 }
 
 .choose-modal__button-container {
-    margin-top: 1.6rem;
+    margin-top: 32px;
     display: flex;
     justify-content: space-between;
-    padding: 0 1.6rem;
 }
 
-.choose-modal__button-accept {
-    width: 10rem;
-}
-
+.choose-modal__button-accept,
 .choose-modal__button-close {
-    width: 10rem;
+    width: 275px;
 }

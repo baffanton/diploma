@@ -2,7 +2,7 @@ import { ITableColumn } from '../components/DashboardMore/types';
 
 export const legalHelpConfig: ITableColumn[] = [
     {
-        Header: 'Пользователь',
+        Header: 'Сотрудник',
         accessor: 'name',
     },
     {

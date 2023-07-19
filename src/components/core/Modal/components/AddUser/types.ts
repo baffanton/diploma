@@ -4,13 +4,14 @@ export interface IAddUserModal {
 }
 
 export interface IAddUserModalOptions {
-    onAddUserHandler: (data: IAddUserDataModel) => void;
+    onAddUserHandler: (id: string, data: IAddUserDataModel) => void;
 }
 
 export interface IAddUserDataModel {
     firstname: string;
     lastname: string;
     surname: string;
-    username: string;
-    password: string;
+    workPlace: string;
+    position: string;
+    phone: string;
 }

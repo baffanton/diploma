@@ -1,9 +1,9 @@
 @import 'global.scss';
 
 .add-user-modal {
-    width: 27.5rem;
+    width: 1100px;
     background-color: $white;
-    border-radius: 1rem;
+    border-radius: 20px;
 }
 
 .add-user-modal__form {
@@ -13,10 +13,10 @@
 .add-user-modal__header {
     display: flex;
     justify-content: center;
-    padding: 0.8rem;
+    padding: 16px;
     background-color: $darkBlue;
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     z-index: 1;
 }
 
@@ -26,30 +26,44 @@
 
 .add-user-modal__close {
     position: absolute;
-    right: 0.8rem;
+    right: 16px;
     color: $white;
 }
 
 .add-user-modal__body {
-    padding: 0 1.6rem;
+    padding: 0 32px;
     display: flex;
     flex-direction: column;
 }
 
+.add-user-modal__panel {
+    display: flex;
+    width: 100%;
+}
+
+.add-user-modal__personal-data,
+.add-user-modal__work-info {
+    width: 50%;
+    padding: 10px;
+}
+
 .add-user-modal__block-title {
-    padding: 0.8rem 0.8rem 0.4rem 0.8rem;
+    padding: 16px 16px 8px 16px;
     text-align: center;
     color: $darkBlue;
 }
 
 .add-user-modal__lastname,
 .add-user-modal__name,
-.add-user-modal__username {
-    margin-bottom: 0.4rem;
+.add-user-modal__username,
+.add-user-modal__work-place,
+.add-user-modal__position,
+.add-user-modal__phone {
+    margin-bottom: 8px;
 }
 
 .add-user-modal__submit-button-container {
-    padding: 0.8rem 0;
+    margin: 20px 10px 30px 10px;
 }
 
 .add-user-modal__submit-button {

@@ -6,15 +6,15 @@ export const educationConfig: ITableColumn[] = [
         accessor: 'name',
     },
     {
-        Header: 'Место',
+        Header: 'Место учебы',
         accessor: 'place',
     },
     {
-        Header: 'Дата начала',
-        accessor: 'startDate',
+        Header: 'Год начала',
+        accessor: 'startYear',
     },
     {
-        Header: 'Дата окончания',
-        accessor: 'endDate',
+        Header: 'Год окончания',
+        accessor: 'endYear',
     },
 ];

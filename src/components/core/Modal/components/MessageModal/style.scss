@@ -17,33 +17,33 @@
 }
 
 .message-modal__title {
-    padding: 0.4rem 0 0.4rem 0.8rem;
-    border-bottom: 0.15rem solid $blue;
+    padding: 8px 0 8px 16px;
+    border-bottom: 3px solid $blue;
     width: 100%;
 }
 
 .message-modal__close {
     position: absolute;
     right: 0;
-    height: 1.75rem;
+    height: 35px;
     color: $darkBlue;
     cursor: pointer;
-    margin: 0.5rem 0.8rem 0 0;
+    margin: 10px 16px 0 0;
 }
 
 .message-modal__body {
-    padding: 0.8rem;
+    padding: 16px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
 }
 
 .message-modal__button-container {
-    margin-top: 1.5rem;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
 }
 
 .message-modal__button-close {
-    width: 10rem;
+    width: 200px;
 }

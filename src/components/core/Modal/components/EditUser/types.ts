@@ -5,13 +5,15 @@ export interface IEditUserModel {
 
 export interface IEditUserModalOptions {
     user: any;
-    onEditUserHandler: (data: IEditUserDataModel) => void;
+    onEditUserHandler: (id: string, data: IEditUserDataModel) => void;
 }
 
 export interface IEditUserDataModel {
+    id: string;
     firstname: string;
     lastname: string;
     surname: string;
-    username: string;
-    password: string;
+    workPlace: string;
+    position: string;
+    phone: string;
 }

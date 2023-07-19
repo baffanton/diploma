@@ -15,7 +15,7 @@ export const usersConfig: ITableColumn[] = [
     },
     {
         Header: 'Место работы',
-        accessor: 'placement',
+        accessor: 'workPlace',
     },
     {
         Header: 'Должность',

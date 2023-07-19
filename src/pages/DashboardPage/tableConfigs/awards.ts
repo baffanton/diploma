@@ -10,7 +10,7 @@ export const awardsConfig: ITableColumn[] = [
         accessor: 'date',
     },
     {
-        Header: 'Место',
-        accessor: 'place',
+        Header: 'Результат',
+        accessor: 'result',
     },
 ];

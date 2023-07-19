@@ -1,10 +1,8 @@
 import React from 'react';
-
 import { ITitle } from './types';
 import cx from 'classnames';
 import { SizeEnum } from 'enums/sizeTypes';
 import { WeightEnum } from 'enums/weightTypes';
-
 import './style.scss';
 
 const Title: React.FC<ITitle> = ({

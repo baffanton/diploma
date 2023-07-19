@@ -1,15 +1,12 @@
 import React from 'react';
-
 import { Icon } from 'components/core/Icon';
 import { Layout } from 'components/core/Layout';
 import { Link } from 'components/core/Link';
 import { Text } from 'components/core/Text';
-
 import { INewsModal } from './types';
 import { faTelegram, faVk } from '@fortawesome/free-brands-svg-icons';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { SizeEnum } from 'enums/sizeTypes';
-
 import './style.scss';
 
 const NewsModal: React.FC<INewsModal> = ({ onClose, option }) => {
@@ -35,18 +32,20 @@ const NewsModal: React.FC<INewsModal> = ({ onClose, option }) => {
                     <Layout className="news-modal__source">
                         <Text className="news-modal__source-title">Источники: </Text>
                         <Layout className="news-modal__source-container">
-                            <Link href={source.vk}>
+                            <Link href={source.vk} disabled={!source.vk}>
                                 <Icon
                                     className="news-modal__source-item"
                                     fontAwesomeIcon={faVk}
                                     heightType={SizeEnum.medium}
+                                    disabled={!source.vk}
                                 />
                             </Link>
-                            <Link href={source.tg}>
+                            <Link href={source.tg} disabled={!source.tg}>
                                 <Icon
                                     className="news-modal__source-item"
                                     fontAwesomeIcon={faTelegram}
                                     heightType={SizeEnum.medium}
+                                    disabled={!source.tg}
                                 />
                             </Link>
                         </Layout>

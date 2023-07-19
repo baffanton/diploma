@@ -1,0 +1,474 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddUserModal tests Modal snapshot 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="layout add-user-modal"
+      >
+        <div
+          class="layout add-user-modal__header"
+        >
+          <p
+            class="text text_size_l text_style_default text_weight_default add-user-modal__title"
+          >
+            Новый пользователь
+          </p>
+          <svg
+            aria-hidden="true"
+            class="svg-inline--fa fa-xmark icon icon_pointer icon_heightType_s add-user-modal__close"
+            data-icon="xmark"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            viewBox="0 0 384 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
+        <div
+          class="layout add-user-modal__body"
+        >
+          <form
+            class="add-user-modal__form"
+          >
+            <div
+              class="layout add-user-modal__panel"
+            >
+              <div
+                class="layout add-user-modal__personal-data"
+              >
+                <p
+                  class="text text_size_m text_style_default text_weight_bold add-user-modal__block-title"
+                >
+                  Личные данные
+                </p>
+                <div
+                  class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__lastname"
+                >
+                  <div
+                    class="layout text-box__label-container text-box__label-container_position_top"
+                  >
+                    <label
+                      class="text-box__label text-box__label_color_primary text-box__label_height_m"
+                      for="lastname"
+                    >
+                      Фамилия
+                    </label>
+                  </div>
+                  <input
+                    autocomplete="off"
+                    class="text-box__input text-box__input_color_primary text-box__input_height_m"
+                    id="lastname"
+                    name="lastname"
+                    placeholder="Введите фамилию"
+                    type="text"
+                    value=""
+                  />
+                </div>
+                <div
+                  class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__name"
+                >
+                  <div
+                    class="layout text-box__label-container text-box__label-container_position_top"
+                  >
+                    <label
+                      class="text-box__label text-box__label_color_primary text-box__label_height_m"
+                      for="name"
+                    >
+                      Имя
+                    </label>
+                  </div>
+                  <input
+                    autocomplete="off"
+                    class="text-box__input text-box__input_color_primary text-box__input_height_m"
+                    id="name"
+                    name="firstname"
+                    placeholder="Введите имя"
+                    type="text"
+                    value=""
+                  />
+                </div>
+                <div
+                  class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__surname"
+                >
+                  <div
+                    class="layout text-box__label-container text-box__label-container_position_top"
+                  >
+                    <label
+                      class="text-box__label text-box__label_color_primary text-box__label_height_m"
+                      for="surname"
+                    >
+                      Отчество
+                    </label>
+                  </div>
+                  <input
+                    autocomplete="off"
+                    class="text-box__input text-box__input_color_primary text-box__input_height_m"
+                    id="surname"
+                    name="surname"
+                    placeholder="Введите отчество"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+              <div
+                class="layout add-user-modal__personal-data"
+              >
+                <p
+                  class="text text_size_m text_style_default text_weight_bold add-user-modal__block-title"
+                >
+                  Данные о работе
+                </p>
+                <div
+                  class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__work-place"
+                >
+                  <div
+                    class="layout text-box__label-container text-box__label-container_position_top"
+                  >
+                    <label
+                      class="text-box__label text-box__label_color_primary text-box__label_height_m"
+                      for="workPlace"
+                    >
+                      Место работы
+                    </label>
+                  </div>
+                  <input
+                    autocomplete="off"
+                    class="text-box__input text-box__input_color_primary text-box__input_height_m"
+                    id="workPlace"
+                    name="workPlace"
+                    placeholder="Введите место работы"
+                    type="text"
+                    value=""
+                  />
+                </div>
+                <div
+                  class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__position"
+                >
+                  <div
+                    class="layout text-box__label-container text-box__label-container_position_top"
+                  >
+                    <label
+                      class="text-box__label text-box__label_color_primary text-box__label_height_m"
+                      for="position"
+                    >
+                      Должность
+                    </label>
+                  </div>
+                  <input
+                    autocomplete="off"
+                    class="text-box__input text-box__input_color_primary text-box__input_height_m"
+                    id="position"
+                    name="position"
+                    placeholder="Введите должность"
+                    type="text"
+                    value=""
+                  />
+                </div>
+                <div
+                  class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__phone"
+                >
+                  <div
+                    class="layout text-box__label-container text-box__label-container_position_top"
+                  >
+                    <label
+                      class="text-box__label text-box__label_color_primary text-box__label_height_m"
+                      for="phone"
+                    >
+                      Номер телефона
+                    </label>
+                  </div>
+                  <input
+                    autocomplete="off"
+                    class="text-box__input text-box__input_color_primary text-box__input_height_m"
+                    id="phone"
+                    name="phone"
+                    placeholder="Введите номер телефона"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="layout add-user-modal__submit-button-container"
+            >
+              <button
+                class="button button_height_m button_theme_primary add-user-modal__submit-button"
+              >
+                Добавить пользователя
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="layout add-user-modal"
+    >
+      <div
+        class="layout add-user-modal__header"
+      >
+        <p
+          class="text text_size_l text_style_default text_weight_default add-user-modal__title"
+        >
+          Новый пользователь
+        </p>
+        <svg
+          aria-hidden="true"
+          class="svg-inline--fa fa-xmark icon icon_pointer icon_heightType_s add-user-modal__close"
+          data-icon="xmark"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          viewBox="0 0 384 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+      <div
+        class="layout add-user-modal__body"
+      >
+        <form
+          class="add-user-modal__form"
+        >
+          <div
+            class="layout add-user-modal__panel"
+          >
+            <div
+              class="layout add-user-modal__personal-data"
+            >
+              <p
+                class="text text_size_m text_style_default text_weight_bold add-user-modal__block-title"
+              >
+                Личные данные
+              </p>
+              <div
+                class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__lastname"
+              >
+                <div
+                  class="layout text-box__label-container text-box__label-container_position_top"
+                >
+                  <label
+                    class="text-box__label text-box__label_color_primary text-box__label_height_m"
+                    for="lastname"
+                  >
+                    Фамилия
+                  </label>
+                </div>
+                <input
+                  autocomplete="off"
+                  class="text-box__input text-box__input_color_primary text-box__input_height_m"
+                  id="lastname"
+                  name="lastname"
+                  placeholder="Введите фамилию"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__name"
+              >
+                <div
+                  class="layout text-box__label-container text-box__label-container_position_top"
+                >
+                  <label
+                    class="text-box__label text-box__label_color_primary text-box__label_height_m"
+                    for="name"
+                  >
+                    Имя
+                  </label>
+                </div>
+                <input
+                  autocomplete="off"
+                  class="text-box__input text-box__input_color_primary text-box__input_height_m"
+                  id="name"
+                  name="firstname"
+                  placeholder="Введите имя"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__surname"
+              >
+                <div
+                  class="layout text-box__label-container text-box__label-container_position_top"
+                >
+                  <label
+                    class="text-box__label text-box__label_color_primary text-box__label_height_m"
+                    for="surname"
+                  >
+                    Отчество
+                  </label>
+                </div>
+                <input
+                  autocomplete="off"
+                  class="text-box__input text-box__input_color_primary text-box__input_height_m"
+                  id="surname"
+                  name="surname"
+                  placeholder="Введите отчество"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+            <div
+              class="layout add-user-modal__personal-data"
+            >
+              <p
+                class="text text_size_m text_style_default text_weight_bold add-user-modal__block-title"
+              >
+                Данные о работе
+              </p>
+              <div
+                class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__work-place"
+              >
+                <div
+                  class="layout text-box__label-container text-box__label-container_position_top"
+                >
+                  <label
+                    class="text-box__label text-box__label_color_primary text-box__label_height_m"
+                    for="workPlace"
+                  >
+                    Место работы
+                  </label>
+                </div>
+                <input
+                  autocomplete="off"
+                  class="text-box__input text-box__input_color_primary text-box__input_height_m"
+                  id="workPlace"
+                  name="workPlace"
+                  placeholder="Введите место работы"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__position"
+              >
+                <div
+                  class="layout text-box__label-container text-box__label-container_position_top"
+                >
+                  <label
+                    class="text-box__label text-box__label_color_primary text-box__label_height_m"
+                    for="position"
+                  >
+                    Должность
+                  </label>
+                </div>
+                <input
+                  autocomplete="off"
+                  class="text-box__input text-box__input_color_primary text-box__input_height_m"
+                  id="position"
+                  name="position"
+                  placeholder="Введите должность"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__phone"
+              >
+                <div
+                  class="layout text-box__label-container text-box__label-container_position_top"
+                >
+                  <label
+                    class="text-box__label text-box__label_color_primary text-box__label_height_m"
+                    for="phone"
+                  >
+                    Номер телефона
+                  </label>
+                </div>
+                <input
+                  autocomplete="off"
+                  class="text-box__input text-box__input_color_primary text-box__input_height_m"
+                  id="phone"
+                  name="phone"
+                  placeholder="Введите номер телефона"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="layout add-user-modal__submit-button-container"
+          >
+            <button
+              class="button button_height_m button_theme_primary add-user-modal__submit-button"
+            >
+              Добавить пользователя
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

@@ -1,5 +1,4 @@
 import { Dispatch } from 'react';
-
 import { TableDataTypes } from './types';
 import { DashboardPagesUrlEnum } from 'enums/dashboardPages';
 import {
@@ -81,4 +80,91 @@ const fetchDataByPageId = (
     }
 };
 
-export { getTableDataByPageId, fetchDataByPageId };
+const getHeaderConfigByPageId = (id: DashboardPagesUrlEnum): string[] => {
+    switch (id) {
+        case DashboardPagesUrlEnum.users:
+            return ['Фамилия', 'Имя', 'Отчество', 'Место работы', 'Должность', 'Номер телефона'];
+        case DashboardPagesUrlEnum.awards:
+            return ['Мероприятие', 'Дата', 'Результат'];
+        case DashboardPagesUrlEnum.education:
+            return ['Сотрудник', 'Место учебы', 'Год начала', 'Год окончания'];
+        case DashboardPagesUrlEnum.financialHelp:
+        case DashboardPagesUrlEnum.legalHelp:
+            return ['Сотрудник', 'Дата обращения', 'Результат'];
+        case DashboardPagesUrlEnum.security:
+            return ['Сотрудник', 'Место проверки', 'Дата', 'Результат'];
+        case DashboardPagesUrlEnum.sport:
+            return ['Событие', 'Вид спорта', 'Дата'];
+    }
+};
+
+const getBodyConfigByPageId = (id: DashboardPagesUrlEnum, tableData: TableDataTypes | []) => {
+    switch (id) {
+        case DashboardPagesUrlEnum.users: {
+            return tableData.map((item) => {
+                const { lastname, firstname, surname, workPlace, position, phone } = item;
+
+                return { lastname, firstname, surname, workPlace, position, phone };
+            });
+        }
+        case DashboardPagesUrlEnum.awards: {
+            return tableData.map((item) => {
+                const { title, date, result } = item;
+
+                return { title, date, result };
+            });
+        }
+        case DashboardPagesUrlEnum.education: {
+            return tableData.map((item) => {
+                const { name, place, startYear, endYear } = item;
+
+                return { name, place, startYear, endYear };
+            });
+        }
+        case DashboardPagesUrlEnum.financialHelp:
+        case DashboardPagesUrlEnum.legalHelp: {
+            return tableData.map((item) => {
+                const { name, date, result } = item;
+
+                return { name, date, result };
+            });
+        }
+        case DashboardPagesUrlEnum.security: {
+            return tableData.map((item) => {
+                const { name, place, date, result } = item;
+
+                return { name, place, date, result };
+            });
+        }
+        case DashboardPagesUrlEnum.sport: {
+            return tableData.map((item) => {
+                const { title, sportType, date } = item;
+
+                return { title, sportType, date };
+            });
+        }
+    }
+};
+
+const getFileNameByPageId = (id: DashboardPagesUrlEnum) => {
+    const currentDate = new Date().toLocaleDateString();
+
+    switch (id) {
+        case DashboardPagesUrlEnum.users:
+            return `Пользователи от ${currentDate.replaceAll('.', '-')}`;
+        case DashboardPagesUrlEnum.awards:
+            return `Награждения от ${currentDate.replaceAll('.', '-')}`;
+        case DashboardPagesUrlEnum.education:
+            return `Образование от ${currentDate.replaceAll('.', '-')}`;
+        case DashboardPagesUrlEnum.financialHelp:
+            return `Материальная помощь от ${currentDate.replaceAll('.', '-')}`;
+        case DashboardPagesUrlEnum.legalHelp:
+            return `Юридическая помощь от ${currentDate.replaceAll('.', '-')}`;
+        case DashboardPagesUrlEnum.security:
+            return `Охрана труда от ${currentDate.replaceAll('.', '-')}`;
+        case DashboardPagesUrlEnum.sport:
+            return `Спортивная жизнь от ${currentDate.replaceAll('.', '-')}`;
+    }
+};
+
+export { getTableDataByPageId, fetchDataByPageId, getHeaderConfigByPageId, getBodyConfigByPageId, getFileNameByPageId };

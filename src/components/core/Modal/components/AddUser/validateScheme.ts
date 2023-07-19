@@ -4,6 +4,11 @@ export const schema = yup.object({
     firstname: yup.string().required('Поле не может быть пустым*'),
     lastname: yup.string().required('Поле не может быть пустым*'),
     surname: yup.string().required('Поле не может быть пустым*'),
-    username: yup.string().required('Поле не может быть пустым*'),
-    password: yup.string().required('Поле не может быть пустым*').min(6, 'Не менее 6 символов'),
+    workPlace: yup.string().required('Поле не может быть пустым*'),
+    position: yup.string().required('Поле не может быть пустым*'),
+    phone: yup
+        .string()
+        .required('Поле не может быть пустым*')
+        .min(11, 'Не менее 11 символов')
+        .max(11, 'Не более 11 символов'),
 });

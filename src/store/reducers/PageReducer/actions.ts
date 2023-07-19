@@ -3,7 +3,6 @@ import { IChooseModalOptions } from 'components/core/Modal/components/ChooseModa
 import { IEditUserModalOptions } from 'components/core/Modal/components/EditUser/types';
 import { IMessageModalOptions } from 'components/core/Modal/components/MessageModal/types';
 import { INewsModalOptions } from 'components/core/Modal/components/NewsModal/types';
-
 import {
     ICloseModal,
     IHideLoader,

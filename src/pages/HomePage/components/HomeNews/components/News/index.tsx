@@ -1,17 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import { Icon } from 'components/core/Icon';
 import { Layout } from 'components/core/Layout';
 import { INewsModalOptions } from 'components/core/Modal/components/NewsModal/types';
 import { Text } from 'components/core/Text';
 import { Title } from 'components/core/Title';
-
 import { INews } from './types';
 import { ModalTypes } from 'enums/modalTypes';
 import { SizeEnum } from 'enums/sizeTypes';
 import { closeModal, openModal } from 'store/reducers/PageReducer/actions';
-
 import './style.scss';
 
 const News: React.FC<INews> = ({ item, openModal, closeModal }) => {
@@ -51,7 +48,7 @@ const News: React.FC<INews> = ({ item, openModal, closeModal }) => {
     );
 };
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         openModal(modalTypes: ModalTypes, onClose: () => void, option: INewsModalOptions) {
             return dispatch(openModal(modalTypes, onClose, option));

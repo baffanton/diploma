@@ -1,50 +1,69 @@
 import { NavigateFunction } from 'react-router-dom';
-
-import { hideLoader, showLoader } from '../PageReducer/actions';
-import { IFetchUser, USER_FETCH } from './types';
-import axios, { AxiosResponse } from 'axios';
+import { closeModal, hideLoader, openModal, showLoader } from '../PageReducer/actions';
+import { ILogInResponse, IUserData } from './helpers';
+import { IFetchUser, ILogInUser, ILogOutUser, USER_FETCH, USER_LOGIN, USER_LOGOUT } from './types';
+import { AxiosResponse } from 'axios';
+import { ModalTypes } from 'enums/modalTypes';
 import { RequestApiEnum } from 'enums/requestApi';
 import { RequestTypesEnum } from 'enums/requestTypes';
-import { BASE_URL, request } from 'helpers/request';
+import { request } from 'helpers/request';
+import { IAuthData } from 'pages/AuthPage/types';
 
-export const getToken = async (username: string, password: string): Promise<AxiosResponse<string>> => {
-    return await axios.post(`${BASE_URL}/auth/login`, { username, password }, { withCredentials: true });
+export const loginUser =
+    (authData: IAuthData, navigate: NavigateFunction) => (dispatch: (arg0: ILogInUser) => void) => {
+        // @ts-ignore
+        dispatch(showLoader());
+
+        request(RequestTypesEnum.post, RequestApiEnum.getToken, authData)
+            .then((res) => {
+                const { data } = res;
+
+                localStorage.setItem('token', data.accessToken);
+                localStorage.setItem('user', JSON.stringify(data.user));
+
+                dispatch({ type: USER_LOGIN });
+
+                // @ts-ignore
+                dispatch(fetchUser(data.user));
+
+                navigate('/home');
+            })
+            .catch(() => {
+                dispatch(
+                    // @ts-ignore
+                    openModal(ModalTypes.messageModal, dispatch(closeModal()), {
+                        message: 'Неверный логин или пароль',
+                    }),
+                );
+            })
+            .finally(() => {
+                // @ts-ignore
+                dispatch(hideLoader());
+            });
+    };
+
+export const getToken = async (authData: IAuthData): Promise<AxiosResponse<ILogInResponse>> => {
+    return await request(RequestTypesEnum.post, RequestApiEnum.getToken, authData);
 };
 
-export const refreshToken = async (): Promise<AxiosResponse<string>> => {
-    return await axios.get(`${BASE_URL}/auth/refresh`, {
-        withCredentials: true,
+export const logoutUser = () => (dispatch: (arg0: ILogOutUser) => void) => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+
+    dispatch({
+        type: USER_LOGOUT,
     });
 };
 
-export const fetchUser = (navigate: NavigateFunction) => (dispatch: (arg0: IFetchUser) => void) => {
-    // @ts-ignore
-    dispatch(showLoader());
-    request(RequestTypesEnum.get, RequestApiEnum.getUser, null)
-        .then((res) => {
-            const { data } = res;
+export const fetchUser = (user: IUserData) => (dispatch: (arg0: IFetchUser) => void) => {
+    const { firstname, lastname, surname, imageUrl, role } = user;
 
-            if (!data) {
-                return null;
-            }
-
-            const { firstname, lastname, surname, imageUrl, role } = data;
-
-            dispatch({
-                type: USER_FETCH,
-                firstname,
-                lastname,
-                surname,
-                imageUrl,
-                role,
-                auth: true,
-            });
-        })
-        .catch(() => {
-            navigate('/');
-        })
-        .finally(() => {
-            // @ts-ignore
-            dispatch(hideLoader());
-        });
+    dispatch({
+        type: USER_FETCH,
+        firstname,
+        lastname,
+        surname,
+        imageUrl,
+        role,
+    });
 };

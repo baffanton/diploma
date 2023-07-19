@@ -1,39 +1,33 @@
 import React from 'react';
-
 import { Layout } from 'components/core/Layout';
-
 import { Icon } from '../Icon';
 import { ITextBox } from './types';
 import cx from 'classnames';
 import { ColorThemeType } from 'enums/colorThemeTypes';
 import { InputTypesEnum } from 'enums/inputTypes';
 import { SizeEnum } from 'enums/sizeTypes';
-
 import './style.scss';
 
-const TextBox: React.FC<ITextBox> = (
-    {
-        id,
-        name = '',
-        label,
-        onChange,
-        classNameInput = '',
-        classNameLabel = '',
-        classNameContainer = '',
-        placeholder = '',
-        error,
-        register,
-        value,
-        icon,
-        onIconClick,
-        labelPosition,
-        type = InputTypesEnum.text,
-        heightType = SizeEnum.medium,
-        colorTheme = ColorThemeType.primary,
-        disabled,
-    },
-    { ...props },
-) => {
+const TextBox: React.FC<ITextBox> = ({
+    id,
+    name = '',
+    label,
+    onChange,
+    classNameInput = '',
+    classNameLabel = '',
+    classNameContainer = '',
+    placeholder = '',
+    error,
+    register,
+    value,
+    icon,
+    onIconClick,
+    labelPosition,
+    type = InputTypesEnum.text,
+    heightType = SizeEnum.medium,
+    colorTheme = ColorThemeType.primary,
+    disabled,
+}) => {
     const inputClassNames = cx(
         'text-box__input',
         `text-box__input_color_${colorTheme}`,

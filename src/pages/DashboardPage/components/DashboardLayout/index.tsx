@@ -1,15 +1,12 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
 import { Layout } from 'components/core/Layout';
 import { Text } from 'components/core/Text';
-
 import { DashboardRow } from './components/DashboardRow';
 import { ControlRows } from './config';
 import { IDashboardLayout } from './types';
 import { UserRolesEnum } from 'enums/userTypes';
-
 import './style.scss';
 
 const DashboardLayout: React.FC<IDashboardLayout> = ({ auth, role }) => {
@@ -33,7 +30,7 @@ const DashboardLayout: React.FC<IDashboardLayout> = ({ auth, role }) => {
     );
 };
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state) => {
     const { user } = state;
 
     return {

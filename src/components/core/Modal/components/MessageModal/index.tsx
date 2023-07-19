@@ -1,14 +1,11 @@
 import React from 'react';
-
 import { Button } from 'components/core/Button';
 import { Icon } from 'components/core/Icon';
 import { Layout } from 'components/core/Layout';
 import { Text } from 'components/core/Text';
-
 import { IMessageModal } from './types';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { SizeEnum } from 'enums/sizeTypes';
-
 import './style.scss';
 
 const MessageModal: React.FC<IMessageModal> = ({ onClose, option }) => {

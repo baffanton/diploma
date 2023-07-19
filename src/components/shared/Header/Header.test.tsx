@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-
 import Header from './index';
 import { UserRolesEnum } from 'enums/userTypes';
 import { renderWithRedux } from 'helpers/renderWithRedux';

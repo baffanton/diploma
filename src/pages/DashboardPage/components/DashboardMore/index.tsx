@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import { downloadExcel } from 'react-export-table-to-excel';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
+import { Button } from 'components/core/Button';
 import { Icon } from 'components/core/Icon';
 import { Layout } from 'components/core/Layout';
-import { Link } from 'components/core/Link';
 import { IAddUserDataModel, IAddUserModalOptions } from 'components/core/Modal/components/AddUser/types';
 import { IChooseModalOptions } from 'components/core/Modal/components/ChooseModal/types';
 import { IEditUserDataModel, IEditUserModalOptions } from 'components/core/Modal/components/EditUser/types';
 import { Table } from 'components/core/Table';
-import { Text } from 'components/core/Text';
 import { Title } from 'components/core/Title';
-
-import { fetchDataByPageId, getTableDataByPageId } from './helpers';
+import {
+    fetchDataByPageId,
+    getBodyConfigByPageId,
+    getFileNameByPageId,
+    getHeaderConfigByPageId,
+    getTableDataByPageId,
+} from './helpers';
 import { IDashboardMore, TableDataTypes } from './types';
 import { faArrowLeft, faDownload, faUserMinus, faUserPen, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { DashboardPagesUrlEnum } from 'enums/dashboardPages';
@@ -32,7 +36,6 @@ import {
     fetchSport,
     fetchUsers,
 } from 'store/reducers/TableReducer/actions';
-
 import './style.scss';
 
 const DashboardMore: React.FC<IDashboardMore> = ({
@@ -60,7 +63,7 @@ const DashboardMore: React.FC<IDashboardMore> = ({
     const [selectedRowIndex, setSelectedRowIndex] = useState<string | null>(null);
     const [tableData, setTableData] = useState<TableDataTypes | []>([]);
 
-    const { id, title, exportUrl, tableConfig, isClickable } = page;
+    const { id, title, tableConfig, isClickable } = page;
 
     useEffect(() => {
         if (auth && role === UserRolesEnum.user) {
@@ -79,10 +82,12 @@ const DashboardMore: React.FC<IDashboardMore> = ({
             fetchAwards,
             fetchEducation,
         );
+    }, [id]);
 
+    useEffect(() => {
         const newData = getTableDataByPageId(id, security, sport, users, financialHelp, legalHelp, awards, education);
         setTableData(newData || []);
-    }, [id, page, sport, security, users, awards, education, legalHelp, financialHelp]);
+    }, [users, security, sport, financialHelp, legalHelp, awards, education]);
 
     const onBackButtonHandler = () => {
         return navigate('/dashboard');
@@ -98,9 +103,9 @@ const DashboardMore: React.FC<IDashboardMore> = ({
         });
     };
 
-    const onAddMemberHandler = (data: IAddUserDataModel) => {
+    const onAddMemberHandler = (id: string, data: IAddUserDataModel) => {
         showLoader();
-        addUser(data)
+        addUser(id, data)
             .then(() => {
                 fetchUsers();
                 setSelectedRowIndex(null);
@@ -111,9 +116,9 @@ const DashboardMore: React.FC<IDashboardMore> = ({
             });
     };
 
-    const onEditMemberHandler = (data: IEditUserDataModel) => {
+    const onEditMemberHandler = (id: string, data: IEditUserDataModel) => {
         showLoader();
-        editUser(data)
+        editUser(id, data)
             .then(() => {
                 fetchUsers();
                 setSelectedRowIndex(null);
@@ -129,7 +134,7 @@ const DashboardMore: React.FC<IDashboardMore> = ({
             return null;
         }
 
-        const { userId } = tableData[Number(selectedRowIndex)];
+        const { id: userId } = tableData[Number(selectedRowIndex)];
 
         showLoader();
         deleteUser(userId)
@@ -170,6 +175,17 @@ const DashboardMore: React.FC<IDashboardMore> = ({
         });
     };
 
+    const onExportHandler = () => {
+        return downloadExcel({
+            fileName: getFileNameByPageId(id),
+            sheet: '',
+            tablePayload: {
+                header: getHeaderConfigByPageId(id),
+                body: getBodyConfigByPageId(id, tableData),
+            },
+        });
+    };
+
     return (
         <Layout className="dashboard-more">
             <Layout className="dashboard-more__work-elements">
@@ -183,18 +199,12 @@ const DashboardMore: React.FC<IDashboardMore> = ({
                 <Title className="dashboard-more__title" fontSize={SizeEnum.large}>
                     {title}
                 </Title>
-                <Link className="dashboard-more__export" href={exportUrl}>
-                    <Text className="dashboard-more__export-title" fontSize={SizeEnum.large}>
-                        Экспорт
-                    </Text>
-                    <Layout className="dashboard-more__export-icon-container">
-                        <Icon
-                            className="dashboard-more__export-icon"
-                            heightType={SizeEnum.medium}
-                            fontAwesomeIcon={faDownload}
-                        />
-                    </Layout>
-                </Link>
+                <Button
+                    className="dashboard-more__export"
+                    onClick={onExportHandler}
+                    icon={faDownload}
+                    title="Экспорт"
+                />
                 {id === DashboardPagesUrlEnum.users && (
                     <Layout className="dashboard-more__edit-panel">
                         <Icon
@@ -231,7 +241,7 @@ const DashboardMore: React.FC<IDashboardMore> = ({
     );
 };
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state) => {
     const { table, user } = state;
 
     return {
@@ -247,7 +257,7 @@ const mapStateToProps = (state: any) => {
     };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         fetchSecurity() {
             return dispatch(fetchSecurity());

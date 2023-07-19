@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { NavigateFunction, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
-
+import { Outlet, Route, Routes, useNavigate } from 'react-router-dom';
 import { Layout } from 'components/core/Layout';
 import { Loader } from 'components/core/Loader';
-
 import { getModal } from './helpers';
 import { IPageBuilder } from './types';
 import AuthPage from 'pages/AuthPage';
@@ -14,7 +12,7 @@ import DashboardMore from 'pages/DashboardPage/components/DashboardMore';
 import { DashboardPagesConfig } from 'pages/DashboardPage/config';
 import HomePage from 'pages/HomePage';
 import { fetchUser } from 'store/reducers/UserReducer/actions';
-
+import { IUserData } from 'store/reducers/UserReducer/helpers';
 import './style.scss';
 
 const PageBuilder: React.FC<IPageBuilder> = ({ isOpenModal, modal, loaderPoints, fetchUser }) => {
@@ -22,12 +20,13 @@ const PageBuilder: React.FC<IPageBuilder> = ({ isOpenModal, modal, loaderPoints,
 
     useEffect(() => {
         const token = localStorage.getItem('token');
+        const user = localStorage.getItem('user');
 
-        if (!token) {
+        if (!token || !user) {
             return navigate('/');
         }
 
-        fetchUser(navigate);
+        fetchUser(JSON.parse(user));
     }, []);
 
     return (
@@ -56,7 +55,7 @@ const PageBuilder: React.FC<IPageBuilder> = ({ isOpenModal, modal, loaderPoints,
     );
 };
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state) => {
     const { page } = state;
 
     return {
@@ -66,10 +65,10 @@ const mapStateToProps = (state: any) => {
     };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        fetchUser(navigate: NavigateFunction) {
-            return dispatch(fetchUser(navigate));
+        fetchUser(user: IUserData) {
+            return dispatch(fetchUser(user));
         },
     };
 };

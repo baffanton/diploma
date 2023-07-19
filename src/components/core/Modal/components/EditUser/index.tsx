@@ -1,12 +1,10 @@
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-
 import { Button } from 'components/core/Button';
 import { Icon } from 'components/core/Icon';
 import { Layout } from 'components/core/Layout';
 import { Text } from 'components/core/Text';
 import { TextBox } from 'components/core/TextBox';
-
 import { IEditUserDataModel, IEditUserModel } from './types';
 import { schema } from './validateScheme';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
@@ -15,7 +13,6 @@ import { ColorThemeType } from 'enums/colorThemeTypes';
 import { LabelPositionEnum } from 'enums/labelPositionTypes';
 import { SizeEnum } from 'enums/sizeTypes';
 import { WeightEnum } from 'enums/weightTypes';
-
 import './style.scss';
 
 const EditUserModal: React.FC<IEditUserModel> = ({ option, onClose }) => {
@@ -31,14 +28,15 @@ const EditUserModal: React.FC<IEditUserModel> = ({ option, onClose }) => {
             firstname: user.firstname,
             lastname: user.lastname,
             surname: user.surname,
-            username: user.username,
-            password: user.password,
+            workPlace: user.workPlace,
+            position: user.position,
+            phone: user.phone,
         },
         resolver: yupResolver(schema),
     });
 
     const onSubmit: SubmitHandler<IEditUserDataModel> = (formData) => {
-        onEditUserHandler(formData);
+        onEditUserHandler(user.id, formData);
     };
 
     return (
@@ -56,70 +54,83 @@ const EditUserModal: React.FC<IEditUserModel> = ({ option, onClose }) => {
             </Layout>
             <Layout className="edit-user-modal__body">
                 <form className="edit-user-modal__form" onSubmit={handleSubmit(onSubmit)}>
-                    <Layout className="edit-user-modal__personal-data">
-                        <Text className="edit-user-modal__block-title" fontWeight={WeightEnum.bold}>
-                            Личные данные
-                        </Text>
-                        <TextBox
-                            id="lastname"
-                            label="Фамилия"
-                            labelPosition={LabelPositionEnum.top}
-                            placeholder="Введите фамилию"
-                            register={register('lastname')}
-                            error={errors.lastname}
-                            colorTheme={ColorThemeType.primary}
-                            heightType={SizeEnum.short}
-                            classNameContainer="edit-user-modal__lastname"
-                        />
-                        <TextBox
-                            id="name"
-                            label="Имя"
-                            labelPosition={LabelPositionEnum.top}
-                            placeholder="Введите имя"
-                            register={register('firstname')}
-                            error={errors.firstname}
-                            colorTheme={ColorThemeType.primary}
-                            heightType={SizeEnum.short}
-                            classNameContainer="edit-user-modal__name"
-                        />
-                        <TextBox
-                            id="surname"
-                            label="Отчество"
-                            labelPosition={LabelPositionEnum.top}
-                            placeholder="Введите отчество"
-                            register={register('surname')}
-                            error={errors.surname}
-                            colorTheme={ColorThemeType.primary}
-                            heightType={SizeEnum.short}
-                            classNameContainer="edit-user-modal__surname"
-                        />
-                    </Layout>
-                    <Layout className="edit-user-modal__login-details">
-                        <Text className="edit-user-modal__block-title" fontWeight={WeightEnum.bold}>
-                            Данные для входа
-                        </Text>
-                        <TextBox
-                            id="username"
-                            label="Имя пользователя"
-                            labelPosition={LabelPositionEnum.top}
-                            placeholder="Введите имя пользователя"
-                            register={register('username')}
-                            error={errors.username}
-                            colorTheme={ColorThemeType.primary}
-                            heightType={SizeEnum.short}
-                            classNameContainer="edit-user-modal__username"
-                        />
-                        <TextBox
-                            id="password"
-                            label="Пароль"
-                            labelPosition={LabelPositionEnum.top}
-                            placeholder="Введите пароль"
-                            register={register('password')}
-                            error={errors.password}
-                            colorTheme={ColorThemeType.primary}
-                            heightType={SizeEnum.short}
-                            classNameContainer="edit-user-modal__password"
-                        />
+                    <Layout className="edit-user-modal__panel">
+                        <Layout className="edit-user-modal__personal-data">
+                            <Text className="edit-user-modal__block-title" fontWeight={WeightEnum.bold}>
+                                Личные данные
+                            </Text>
+                            <TextBox
+                                id="lastname"
+                                label="Фамилия"
+                                labelPosition={LabelPositionEnum.top}
+                                placeholder="Введите фамилию"
+                                register={register('lastname')}
+                                error={errors.lastname}
+                                colorTheme={ColorThemeType.primary}
+                                heightType={SizeEnum.medium}
+                                classNameContainer="edit-user-modal__lastname"
+                            />
+                            <TextBox
+                                id="name"
+                                label="Имя"
+                                labelPosition={LabelPositionEnum.top}
+                                placeholder="Введите имя"
+                                register={register('firstname')}
+                                error={errors.firstname}
+                                colorTheme={ColorThemeType.primary}
+                                heightType={SizeEnum.medium}
+                                classNameContainer="edit-user-modal__name"
+                            />
+                            <TextBox
+                                id="surname"
+                                label="Отчество"
+                                labelPosition={LabelPositionEnum.top}
+                                placeholder="Введите отчество"
+                                register={register('surname')}
+                                error={errors.surname}
+                                colorTheme={ColorThemeType.primary}
+                                heightType={SizeEnum.medium}
+                                classNameContainer="edit-user-modal__surname"
+                            />
+                        </Layout>
+                        <Layout className="edit-user-modal__work-info">
+                            <Text className="edit-user-modal__block-title" fontWeight={WeightEnum.bold}>
+                                Данные о работе
+                            </Text>
+                            <TextBox
+                                id="workPlace"
+                                label="Место работы"
+                                labelPosition={LabelPositionEnum.top}
+                                placeholder="Введите место работы"
+                                register={register('workPlace')}
+                                error={errors.workPlace}
+                                colorTheme={ColorThemeType.primary}
+                                heightType={SizeEnum.medium}
+                                classNameContainer="edit-user-modal__work-place"
+                            />
+                            <TextBox
+                                id="position"
+                                label="Должность"
+                                labelPosition={LabelPositionEnum.top}
+                                placeholder="Введите должность"
+                                register={register('position')}
+                                error={errors.position}
+                                colorTheme={ColorThemeType.primary}
+                                heightType={SizeEnum.medium}
+                                classNameContainer="edit-user-modal__position"
+                            />
+                            <TextBox
+                                id="phone"
+                                label="Номер телефона"
+                                labelPosition={LabelPositionEnum.top}
+                                placeholder="Введите номер телефона"
+                                register={register('phone')}
+                                error={errors.phone}
+                                colorTheme={ColorThemeType.primary}
+                                heightType={SizeEnum.medium}
+                                classNameContainer="edit-user-modal__phone"
+                            />
+                        </Layout>
                     </Layout>
                     <Layout className="edit-user-modal__submit-button-container">
                         <Button

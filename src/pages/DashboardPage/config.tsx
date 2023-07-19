@@ -7,8 +7,6 @@ import { sportConfig } from './tableConfigs/sport';
 import { usersConfig } from './tableConfigs/users';
 import { IDashboardPage } from './types';
 import { DashboardPagesUrlEnum } from 'enums/dashboardPages';
-import { ExportUrls } from 'enums/exportUrls';
-import { BASE_URL } from 'helpers/request';
 
 export const DashboardPagesConfig: IDashboardPage[] = [
     {
@@ -16,7 +14,6 @@ export const DashboardPagesConfig: IDashboardPage[] = [
         title: 'Награждения',
         tableConfig: awardsConfig,
         url: DashboardPagesUrlEnum.awards,
-        exportUrl: `${BASE_URL}${ExportUrls.exportAwards}`,
         isClickable: false,
     },
     {
@@ -24,7 +21,6 @@ export const DashboardPagesConfig: IDashboardPage[] = [
         title: 'Образование',
         tableConfig: educationConfig,
         url: DashboardPagesUrlEnum.education,
-        exportUrl: `${BASE_URL}${ExportUrls.exportEducation}`,
         isClickable: false,
     },
     {
@@ -32,7 +28,6 @@ export const DashboardPagesConfig: IDashboardPage[] = [
         title: 'Материальная помощь',
         tableConfig: financialHelpConfig,
         url: DashboardPagesUrlEnum.financialHelp,
-        exportUrl: `${BASE_URL}${ExportUrls.exportFinancialHelp}`,
         isClickable: false,
     },
     {
@@ -40,7 +35,6 @@ export const DashboardPagesConfig: IDashboardPage[] = [
         title: 'Юридическая помощь',
         tableConfig: legalHelpConfig,
         url: DashboardPagesUrlEnum.legalHelp,
-        exportUrl: `${BASE_URL}${ExportUrls.exportLegalHelp}`,
         isClickable: false,
     },
     {
@@ -48,7 +42,6 @@ export const DashboardPagesConfig: IDashboardPage[] = [
         title: 'Участники',
         tableConfig: usersConfig,
         url: DashboardPagesUrlEnum.users,
-        exportUrl: `${BASE_URL}${ExportUrls.exportUsers}`,
         isClickable: true,
     },
     {
@@ -56,7 +49,6 @@ export const DashboardPagesConfig: IDashboardPage[] = [
         title: 'Охрана труда',
         tableConfig: securityConfig,
         url: DashboardPagesUrlEnum.security,
-        exportUrl: `${BASE_URL}${ExportUrls.exportSeciruty}`,
         isClickable: false,
     },
     {
@@ -64,7 +56,6 @@ export const DashboardPagesConfig: IDashboardPage[] = [
         title: 'Спортивная жизнь',
         tableConfig: sportConfig,
         url: DashboardPagesUrlEnum.sport,
-        exportUrl: `${BASE_URL}${ExportUrls.exportSport}`,
         isClickable: false,
     },
 ];

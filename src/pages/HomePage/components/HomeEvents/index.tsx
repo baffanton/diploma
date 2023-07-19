@@ -1,13 +1,10 @@
 import React from 'react';
-
 import { Layout } from 'components/core/Layout';
 import { Title } from 'components/core/Title';
-
 import { Event } from './components/Event';
 import { IHomeEvents } from './types';
 import { SizeEnum } from 'enums/sizeTypes';
 import { WeightEnum } from 'enums/weightTypes';
-
 import './style.scss';
 
 const HomeEvents: React.FC<IHomeEvents> = ({ events }) => {

@@ -1,11 +1,9 @@
 import React from 'react';
-
 import { Button } from 'components/core/Button';
-
 import { faEye } from '@fortawesome/free-solid-svg-icons';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
-describe('Button component', () => {
+describe('Button tests', () => {
     it('Button renders', () => {
         render(<Button onClick={() => null} />);
 
@@ -18,13 +16,13 @@ describe('Button component', () => {
         expect(screen.queryByRole('button')).toBeNull();
     });
 
-    it('Button snapshot', () => {
+    it('Button with icon snapshot', () => {
         const button = render(<Button icon={faEye} title="Eye" onClick={() => null} />);
 
         expect(button).toMatchSnapshot();
     });
 
-    it('Button with icon snapshot', () => {
+    it('Button snapshot', () => {
         const button = render(<Button onClick={() => null} />);
 
         expect(button).toMatchSnapshot();
@@ -34,5 +32,16 @@ describe('Button component', () => {
         render(<Button onClick={() => null} />);
 
         expect(screen.getByRole('button')).toHaveClass('button');
+    });
+    it('Button dosn`t respond with disabled', () => {
+        let clickWorking = false;
+        const onClickHandler = () => {
+            clickWorking = true;
+        };
+        render(<Button onClick={onClickHandler} disabled />);
+
+        fireEvent.click(screen.getByRole('button'));
+
+        expect(clickWorking).toEqual(false);
     });
 });

@@ -1,14 +1,11 @@
 import React from 'react';
-
 import { Icon } from 'components/core/Icon';
 import { Layout } from 'components/core/Layout';
 import { Text } from 'components/core/Text';
-
 import { IButton } from './types';
 import cx from 'classnames';
 import { ColorThemeType } from 'enums/colorThemeTypes';
 import { SizeEnum } from 'enums/sizeTypes';
-
 import './style.scss';
 
 const Button: React.FC<IButton> = ({

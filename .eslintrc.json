@@ -35,27 +35,30 @@
         "quotes": ["error", "single"],
         "semi": ["error", "always"],
         "simple-import-sort/imports": [
-            "error",
+            "warn",
             {
                 "groups": [
-                    // Packages `react` related packages come first.
-                    ["^react", "^@?w"],
-                    // Internal packages.
-                    ["^(@|components)(/.*|$)"],
-                    // Side effect imports.
-                    ["^\u0000"],
-                    // Parent imports. Put `..` last.
-                    ["^..(?!/?$)", "^../?$"],
-                    // Other relative imports. Put same-folder imports and `.` last.
-                    ["^./(?=.*/)(?!/?$)", "^.(?!/?$)", "^./?$"],
-                    // Style imports.
-                    ["^.+.?(css)$"]
+                    [
+                        "^react",
+                        "^@?w",
+                        "^(@|components)(/.*|$)",
+                        "^\u0000",
+                        "^..(?!/?$)",
+                        "^../?$",
+                        "^./(?=.*/)(?!/?$)",
+                        "^.(?!/?$)",
+                        "^./?$",
+                        "^.+.?(css)$"
+                    ]
                 ]
             }
         ],
         "import/named": "off",
         "@typescript-eslint/ban-ts-ignore": "off",
         "@typescript-eslint/ban-ts-comment": "off",
-        "react/jsx-key": "off"
+        "react/jsx-key": "off",
+        "no-debugger": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "prefer-const": "warn"
     }
 }

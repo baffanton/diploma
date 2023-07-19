@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
-
 import { Icon } from 'components/core/Icon';
 import { Layout } from 'components/core/Layout';
 import { Link } from 'components/core/Link';
 import { Text } from 'components/core/Text';
-
 import { IEventElememt } from './types';
 import { faTelegram, faVk } from '@fortawesome/free-brands-svg-icons';
 import { SizeEnum } from 'enums/sizeTypes';
-
 import './style.scss';
 
 const Event: React.FC<IEventElememt> = ({ event }) => {
@@ -59,18 +56,20 @@ const Event: React.FC<IEventElememt> = ({ event }) => {
                             <Text className="event-active__source" fontSize={SizeEnum.medium}>
                                 Источник:
                             </Text>
-                            <Link href={vk ?? ''}>
+                            <Link href={vk ?? ''} disabled={!vk}>
                                 <Icon
                                     className="event-active__link"
                                     fontAwesomeIcon={faVk}
                                     heightType={SizeEnum.medium}
+                                    disabled={!vk}
                                 />
                             </Link>
-                            <Link href={telegram ?? ''}>
+                            <Link href={telegram ?? ''} disabled={!telegram}>
                                 <Icon
                                     className="event-active__link"
                                     fontAwesomeIcon={faTelegram}
                                     heightType={SizeEnum.medium}
+                                    disabled={!telegram}
                                 />
                             </Link>
                         </Layout>

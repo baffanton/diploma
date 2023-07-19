@@ -1,14 +1,11 @@
 import React, { useMemo } from 'react';
 import { useTable } from 'react-table';
-
 import { Layout } from 'components/core/Layout';
 import { Title } from 'components/core/Title';
-
 import { ITable } from './types';
 import cx from 'classnames';
 import { SizeEnum } from 'enums/sizeTypes';
 import { WeightEnum } from 'enums/weightTypes';
-
 import './style.scss';
 
 const Table: React.FC<ITable> = ({ config, tableData, isClickable = false, selectedRowIndex, setSelectedRowIndex }) => {
