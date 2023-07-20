@@ -29,9 +29,14 @@ export const loginUser =
                 navigate('/home');
             })
             .catch(() => {
+                const onCloseHandler = () => {
+                    //@ts-ignore
+                    dispatch(closeModal());
+                };
+
                 dispatch(
                     // @ts-ignore
-                    openModal(ModalTypes.messageModal, dispatch(closeModal()), {
+                    openModal(ModalTypes.messageModal, onCloseHandler, {
                         message: 'Неверный логин или пароль',
                     }),
                 );

@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { Button } from 'components/core/Button';
 import { Layout } from 'components/core/Layout';
-import { Text } from 'components/core/Text';
 import { TextBox } from 'components/core/TextBox';
 import { IAuthData, IAuthPage } from './types';
 import { schema } from './validateScheme';
@@ -80,11 +79,6 @@ const AuthPage: React.FC<IAuthPage> = ({ loginUser, auth }) => {
                             onIconClick={onIconClick}
                             type={isShowPassword ? InputTypesEnum.text : InputTypesEnum.password}
                         />
-                    </Layout>
-                    <Layout className="auth-page__management">
-                        <Text className="auth-page__forget" fontSize={SizeEnum.medium} pointer>
-                            Забыли пароль?
-                        </Text>
                     </Layout>
                     <Layout className="auth-page__submit-button-container">
                         <Button
