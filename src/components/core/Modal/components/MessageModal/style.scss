@@ -9,11 +9,13 @@
     border-radius: 20px;
     color: $darkBlue;
     top: -10%;
+    position: relative;
 }
 
 .message-modal__header {
     display: flex;
     width: 100%;
+    position: relative;
 }
 
 .message-modal__title {

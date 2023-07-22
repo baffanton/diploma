@@ -72,6 +72,7 @@ const DashboardMore: React.FC<IDashboardMore> = ({
     }, [auth, role]);
 
     useEffect(() => {
+        showLoader();
         fetchDataByPageId(
             id,
             fetchSecurity,
@@ -82,6 +83,7 @@ const DashboardMore: React.FC<IDashboardMore> = ({
             fetchAwards,
             fetchEducation,
         );
+        hideLoader();
     }, [id]);
 
     useEffect(() => {

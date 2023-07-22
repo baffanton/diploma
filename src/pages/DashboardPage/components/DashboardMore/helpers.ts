@@ -1,6 +1,7 @@
 import { Dispatch } from 'react';
 import { TableDataTypes } from './types';
 import { DashboardPagesUrlEnum } from 'enums/dashboardPages';
+import { replace } from 'helpers/replace';
 import {
     IAwardsModel,
     IEducationModel,
@@ -151,19 +152,19 @@ const getFileNameByPageId = (id: DashboardPagesUrlEnum) => {
 
     switch (id) {
         case DashboardPagesUrlEnum.users:
-            return `Пользователи от ${currentDate.replaceAll('.', '-')}`;
+            return `Пользователи от ${replace(currentDate, '.', '-')}`;
         case DashboardPagesUrlEnum.awards:
-            return `Награждения от ${currentDate.replaceAll('.', '-')}`;
+            return `Награждения от ${replace(currentDate, '.', '-')}`;
         case DashboardPagesUrlEnum.education:
-            return `Образование от ${currentDate.replaceAll('.', '-')}`;
+            return `Образование от ${replace(currentDate, '.', '-')}`;
         case DashboardPagesUrlEnum.financialHelp:
-            return `Материальная помощь от ${currentDate.replaceAll('.', '-')}`;
+            return `Материальная помощь от ${replace(currentDate, '.', '-')}`;
         case DashboardPagesUrlEnum.legalHelp:
-            return `Юридическая помощь от ${currentDate.replaceAll('.', '-')}`;
+            return `Юридическая помощь от ${replace(currentDate, '.', '-')}`;
         case DashboardPagesUrlEnum.security:
-            return `Охрана труда от ${currentDate.replaceAll('.', '-')}`;
+            return `Охрана труда от ${replace(currentDate, '.', '-')}`;
         case DashboardPagesUrlEnum.sport:
-            return `Спортивная жизнь от ${currentDate.replaceAll('.', '-')}`;
+            return `Спортивная жизнь от ${replace(currentDate, '.', '-')}`;
     }
 };
 

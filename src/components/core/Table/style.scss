@@ -33,6 +33,11 @@
     background-color: $blue;
 }
 
+.table__thead_th {
+    font-size: 25px;
+    font-weight: 400;
+}
+
 .table__container {
     height: 670px;
     overflow-x: auto;
@@ -56,6 +61,8 @@
 .table__tbody_td {
     padding: 20px 10px;
     border-bottom: 3px solid $blue;
+    font-size: 25px;
+    font-weight: 400;
 }
 
 .table__tbody_td:not(:last-child) {
