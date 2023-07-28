@@ -1,16 +1,16 @@
 @import 'global.scss';
 
-.add-user-modal {
+.change-user-modal {
     width: 1100px;
     background-color: $white;
     border-radius: 20px;
 }
 
-.add-user-modal__form {
+.change-user-modal__form {
     box-sizing: border-box;
 }
 
-.add-user-modal__header {
+.change-user-modal__header {
     display: flex;
     justify-content: center;
     padding: 16px;
@@ -21,52 +21,52 @@
     position: relative;
 }
 
-.add-user-modal__title {
+.change-user-modal__title {
     color: $white;
 }
 
-.add-user-modal__close {
+.change-user-modal__close {
     position: absolute;
     right: 16px;
     color: $white;
 }
 
-.add-user-modal__body {
+.change-user-modal__body {
     padding: 0 32px;
     display: flex;
     flex-direction: column;
 }
 
-.add-user-modal__panel {
+.change-user-modal__panel {
     display: flex;
     width: 100%;
 }
 
-.add-user-modal__personal-data,
-.add-user-modal__work-info {
+.change-user-modal__personal-data,
+.change-user-modal__work-info {
     width: 50%;
-    padding: 10px;
+    padding: 0 10px;
 }
 
-.add-user-modal__block-title {
+.change-user-modal__block-title {
     padding: 16px 16px 8px 16px;
     text-align: center;
     color: $darkBlue;
 }
 
-.add-user-modal__lastname,
-.add-user-modal__name,
-.add-user-modal__username,
-.add-user-modal__work-place,
-.add-user-modal__position,
-.add-user-modal__phone {
+.change-user-modal__lastname,
+.change-user-modal__name,
+.change-user-modal__username,
+.change-user-modal__work-place,
+.change-user-modal__position,
+.change-user-modal__phone {
     margin-bottom: 8px;
 }
 
-.add-user-modal__submit-button-container {
+.change-user-modal__submit-button-container {
     margin: 20px 10px 30px 10px;
 }
 
-.add-user-modal__submit-button {
+.change-user-modal__submit-button {
     width: 100%;
 }

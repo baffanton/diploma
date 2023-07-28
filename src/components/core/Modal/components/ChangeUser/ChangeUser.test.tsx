@@ -1,17 +1,19 @@
 import React from 'react';
-import { AddUserModal } from 'components/core/Modal/components/AddUser';
-import { IAddUserDataModel, IAddUserModalOptions } from './types';
+import { ChangeUserModal } from 'components/core/Modal/components/ChangeUser';
+import { IChangeUserDataModel, IChangeUserModalOptions } from './types';
 import { act, fireEvent, render } from '@testing-library/react';
+import { ChangeUserDataTypes } from 'enums/changeUserDataTypes';
 
-describe('AddUserModal tests', () => {
+describe('ChangeUserModal tests', () => {
     it('calls the onSubmit function', async () => {
         const mockSubmitHandler = jest.fn();
 
-        const mockOptions: IAddUserModalOptions = {
-            onAddUserHandler: (id: string, data: IAddUserDataModel) => mockSubmitHandler(id, data),
+        const mockOptions: IChangeUserModalOptions = {
+            type: ChangeUserDataTypes.add,
+            onSubmitHandler: (id: string, data: IChangeUserDataModel) => mockSubmitHandler(id, data),
         };
 
-        const { getByLabelText, getByRole } = render(<AddUserModal onClose={() => null} option={mockOptions} />);
+        const { getByLabelText, getByRole } = render(<ChangeUserModal onClose={() => null} option={mockOptions} />);
 
         await act(async () => {
             fireEvent.change(getByLabelText('Фамилия'), { target: { value: 'Баяндин' } });
@@ -31,12 +33,13 @@ describe('AddUserModal tests', () => {
     it('with invalid fields', async () => {
         const mockSubmitHandler = jest.fn();
 
-        const mockOptions: IAddUserModalOptions = {
-            onAddUserHandler: (id: string, data: IAddUserDataModel) => mockSubmitHandler(id, data),
+        const mockOptions: IChangeUserModalOptions = {
+            type: ChangeUserDataTypes.add,
+            onSubmitHandler: (id: string, data: IChangeUserDataModel) => mockSubmitHandler(id, data),
         };
 
         const { container, getByLabelText, getByRole } = render(
-            <AddUserModal onClose={() => null} option={mockOptions} />,
+            <ChangeUserModal onClose={() => null} option={mockOptions} />,
         );
 
         await act(async () => {
@@ -53,11 +56,12 @@ describe('AddUserModal tests', () => {
         expect(container.getElementsByClassName('text-box__error').length).toBe(2);
     });
     it('Modal snapshot', () => {
-        const mockOptions: IAddUserModalOptions = {
-            onAddUserHandler: () => null,
+        const mockOptions: IChangeUserModalOptions = {
+            type: ChangeUserDataTypes.add,
+            onSubmitHandler: () => null,
         };
 
-        const modal = render(<AddUserModal onClose={() => null} option={mockOptions} />);
+        const modal = render(<ChangeUserModal onClose={() => null} option={mockOptions} />);
 
         expect(modal).toMatchSnapshot();
     });

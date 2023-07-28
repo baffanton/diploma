@@ -1,7 +1,6 @@
 import { Dispatch } from 'react';
-import { IAddUserModalOptions } from 'components/core/Modal/components/AddUser/types';
+import { IChangeUserModalOptions } from 'components/core/Modal/components/ChangeUser/types';
 import { IChooseModalOptions } from 'components/core/Modal/components/ChooseModal/types';
-import { IEditUserModalOptions } from 'components/core/Modal/components/EditUser/types';
 import { ModalTypes } from 'enums/modalTypes';
 import { UserRolesEnum } from 'enums/userTypes';
 import { IDashboardPage } from 'pages/DashboardPage/types';
@@ -45,7 +44,7 @@ export interface IDashboardMore {
     openModal: (
         modalTypes: ModalTypes,
         onClose: () => void,
-        options: IAddUserModalOptions | IEditUserModalOptions | IChooseModalOptions,
+        options: IChangeUserModalOptions | IChooseModalOptions,
     ) => Dispatch<IOpenModal>;
     showLoader: () => Dispatch<IShowLoader>;
     hideLoader: () => Dispatch<IHideLoader>;

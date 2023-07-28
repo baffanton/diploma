@@ -1,24 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AddUserModal tests Modal snapshot 1`] = `
+exports[`ChangeUserModal tests Modal snapshot 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
       <div
-        class="layout add-user-modal"
+        class="layout change-user-modal"
       >
         <div
-          class="layout add-user-modal__header"
+          class="layout change-user-modal__header"
         >
           <p
-            class="text text_size_l text_style_default text_weight_default add-user-modal__title"
+            class="text text_size_l text_style_default text_weight_default change-user-modal__title"
           >
             Новый пользователь
           </p>
           <svg
             aria-hidden="true"
-            class="svg-inline--fa fa-xmark icon icon_pointer icon_heightType_s add-user-modal__close"
+            class="svg-inline--fa fa-xmark icon icon_pointer icon_heightType_s change-user-modal__close"
             data-icon="xmark"
             data-prefix="fas"
             focusable="false"
@@ -33,24 +33,24 @@ Object {
           </svg>
         </div>
         <div
-          class="layout add-user-modal__body"
+          class="layout change-user-modal__body"
         >
           <form
-            class="add-user-modal__form"
+            class="change-user-modal__form"
           >
             <div
-              class="layout add-user-modal__panel"
+              class="layout change-user-modal__panel"
             >
               <div
-                class="layout add-user-modal__personal-data"
+                class="layout change-user-modal__personal-data"
               >
                 <p
-                  class="text text_size_m text_style_default text_weight_bold add-user-modal__block-title"
+                  class="text text_size_m text_style_default text_weight_bold change-user-modal__block-title"
                 >
                   Личные данные
                 </p>
                 <div
-                  class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__lastname"
+                  class="layout text-box__wrapper text-box__wrapper_label_top change-user-modal__lastname"
                 >
                   <div
                     class="layout text-box__label-container text-box__label-container_position_top"
@@ -73,7 +73,7 @@ Object {
                   />
                 </div>
                 <div
-                  class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__name"
+                  class="layout text-box__wrapper text-box__wrapper_label_top change-user-modal__name"
                 >
                   <div
                     class="layout text-box__label-container text-box__label-container_position_top"
@@ -96,7 +96,7 @@ Object {
                   />
                 </div>
                 <div
-                  class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__surname"
+                  class="layout text-box__wrapper text-box__wrapper_label_top change-user-modal__surname"
                 >
                   <div
                     class="layout text-box__label-container text-box__label-container_position_top"
@@ -120,15 +120,15 @@ Object {
                 </div>
               </div>
               <div
-                class="layout add-user-modal__personal-data"
+                class="layout change-user-modal__work-info"
               >
                 <p
-                  class="text text_size_m text_style_default text_weight_bold add-user-modal__block-title"
+                  class="text text_size_m text_style_default text_weight_bold change-user-modal__block-title"
                 >
                   Данные о работе
                 </p>
                 <div
-                  class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__work-place"
+                  class="layout text-box__wrapper text-box__wrapper_label_top change-user-modal__work-place"
                 >
                   <div
                     class="layout text-box__label-container text-box__label-container_position_top"
@@ -151,7 +151,7 @@ Object {
                   />
                 </div>
                 <div
-                  class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__position"
+                  class="layout text-box__wrapper text-box__wrapper_label_top change-user-modal__position"
                 >
                   <div
                     class="layout text-box__label-container text-box__label-container_position_top"
@@ -174,7 +174,7 @@ Object {
                   />
                 </div>
                 <div
-                  class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__phone"
+                  class="layout text-box__wrapper text-box__wrapper_label_top change-user-modal__phone"
                 >
                   <div
                     class="layout text-box__label-container text-box__label-container_position_top"
@@ -199,10 +199,10 @@ Object {
               </div>
             </div>
             <div
-              class="layout add-user-modal__submit-button-container"
+              class="layout change-user-modal__submit-button-container"
             >
               <button
-                class="button button_height_m button_theme_primary add-user-modal__submit-button"
+                class="button button_height_m button_theme_primary change-user-modal__submit-button"
               >
                 Добавить пользователя
               </button>
@@ -214,19 +214,19 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="layout add-user-modal"
+      class="layout change-user-modal"
     >
       <div
-        class="layout add-user-modal__header"
+        class="layout change-user-modal__header"
       >
         <p
-          class="text text_size_l text_style_default text_weight_default add-user-modal__title"
+          class="text text_size_l text_style_default text_weight_default change-user-modal__title"
         >
           Новый пользователь
         </p>
         <svg
           aria-hidden="true"
-          class="svg-inline--fa fa-xmark icon icon_pointer icon_heightType_s add-user-modal__close"
+          class="svg-inline--fa fa-xmark icon icon_pointer icon_heightType_s change-user-modal__close"
           data-icon="xmark"
           data-prefix="fas"
           focusable="false"
@@ -241,24 +241,24 @@ Object {
         </svg>
       </div>
       <div
-        class="layout add-user-modal__body"
+        class="layout change-user-modal__body"
       >
         <form
-          class="add-user-modal__form"
+          class="change-user-modal__form"
         >
           <div
-            class="layout add-user-modal__panel"
+            class="layout change-user-modal__panel"
           >
             <div
-              class="layout add-user-modal__personal-data"
+              class="layout change-user-modal__personal-data"
             >
               <p
-                class="text text_size_m text_style_default text_weight_bold add-user-modal__block-title"
+                class="text text_size_m text_style_default text_weight_bold change-user-modal__block-title"
               >
                 Личные данные
               </p>
               <div
-                class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__lastname"
+                class="layout text-box__wrapper text-box__wrapper_label_top change-user-modal__lastname"
               >
                 <div
                   class="layout text-box__label-container text-box__label-container_position_top"
@@ -281,7 +281,7 @@ Object {
                 />
               </div>
               <div
-                class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__name"
+                class="layout text-box__wrapper text-box__wrapper_label_top change-user-modal__name"
               >
                 <div
                   class="layout text-box__label-container text-box__label-container_position_top"
@@ -304,7 +304,7 @@ Object {
                 />
               </div>
               <div
-                class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__surname"
+                class="layout text-box__wrapper text-box__wrapper_label_top change-user-modal__surname"
               >
                 <div
                   class="layout text-box__label-container text-box__label-container_position_top"
@@ -328,15 +328,15 @@ Object {
               </div>
             </div>
             <div
-              class="layout add-user-modal__personal-data"
+              class="layout change-user-modal__work-info"
             >
               <p
-                class="text text_size_m text_style_default text_weight_bold add-user-modal__block-title"
+                class="text text_size_m text_style_default text_weight_bold change-user-modal__block-title"
               >
                 Данные о работе
               </p>
               <div
-                class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__work-place"
+                class="layout text-box__wrapper text-box__wrapper_label_top change-user-modal__work-place"
               >
                 <div
                   class="layout text-box__label-container text-box__label-container_position_top"
@@ -359,7 +359,7 @@ Object {
                 />
               </div>
               <div
-                class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__position"
+                class="layout text-box__wrapper text-box__wrapper_label_top change-user-modal__position"
               >
                 <div
                   class="layout text-box__label-container text-box__label-container_position_top"
@@ -382,7 +382,7 @@ Object {
                 />
               </div>
               <div
-                class="layout text-box__wrapper text-box__wrapper_label_top add-user-modal__phone"
+                class="layout text-box__wrapper text-box__wrapper_label_top change-user-modal__phone"
               >
                 <div
                   class="layout text-box__label-container text-box__label-container_position_top"
@@ -407,10 +407,10 @@ Object {
             </div>
           </div>
           <div
-            class="layout add-user-modal__submit-button-container"
+            class="layout change-user-modal__submit-button-container"
           >
             <button
-              class="button button_height_m button_theme_primary add-user-modal__submit-button"
+              class="button button_height_m button_theme_primary change-user-modal__submit-button"
             >
               Добавить пользователя
             </button>

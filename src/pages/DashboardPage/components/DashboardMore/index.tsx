@@ -5,9 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from 'components/core/Button';
 import { Icon } from 'components/core/Icon';
 import { Layout } from 'components/core/Layout';
-import { IAddUserDataModel, IAddUserModalOptions } from 'components/core/Modal/components/AddUser/types';
+import { IChangeUserDataModel, IChangeUserModalOptions } from 'components/core/Modal/components/ChangeUser/types';
 import { IChooseModalOptions } from 'components/core/Modal/components/ChooseModal/types';
-import { IEditUserDataModel, IEditUserModalOptions } from 'components/core/Modal/components/EditUser/types';
 import { Table } from 'components/core/Table';
 import { Title } from 'components/core/Title';
 import {
@@ -19,6 +18,7 @@ import {
 } from './helpers';
 import { IDashboardMore, TableDataTypes } from './types';
 import { faArrowLeft, faDownload, faUserMinus, faUserPen, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { ChangeUserDataTypes } from 'enums/changeUserDataTypes';
 import { DashboardPagesUrlEnum } from 'enums/dashboardPages';
 import { ModalTypes } from 'enums/modalTypes';
 import { SizeEnum } from 'enums/sizeTypes';
@@ -100,12 +100,13 @@ const DashboardMore: React.FC<IDashboardMore> = ({
     };
 
     const onAddMemberButtonHandler = () => {
-        openModal(ModalTypes.addUser, closeModalHandler, {
-            onAddUserHandler: onAddMemberHandler,
+        openModal(ModalTypes.changeModal, closeModalHandler, {
+            onSubmitHandler: onAddMemberHandler,
+            type: ChangeUserDataTypes.add,
         });
     };
 
-    const onAddMemberHandler = (id: string, data: IAddUserDataModel) => {
+    const onAddMemberHandler = (id: string, data: IChangeUserDataModel) => {
         showLoader();
         addUser(id, data)
             .then(() => {
@@ -118,7 +119,7 @@ const DashboardMore: React.FC<IDashboardMore> = ({
             });
     };
 
-    const onEditMemberHandler = (id: string, data: IEditUserDataModel) => {
+    const onEditMemberHandler = (id: string, data: IChangeUserDataModel) => {
         showLoader();
         editUser(id, data)
             .then(() => {
@@ -171,9 +172,10 @@ const DashboardMore: React.FC<IDashboardMore> = ({
 
         const selectedUser = tableData[Number(selectedRowIndex)];
 
-        openModal(ModalTypes.editModal, closeModalHandler, {
+        openModal(ModalTypes.changeModal, closeModalHandler, {
             user: selectedUser,
-            onEditUserHandler: onEditMemberHandler,
+            onSubmitHandler: onEditMemberHandler,
+            type: ChangeUserDataTypes.edit,
         });
     };
 
@@ -285,11 +287,7 @@ const mapDispatchToProps = (dispatch) => {
         closeModal() {
             return dispatch(closeModal());
         },
-        openModal(
-            modalTypes: ModalTypes,
-            onClose: () => void,
-            options: IChooseModalOptions | IAddUserModalOptions | IEditUserModalOptions,
-        ) {
+        openModal(modalTypes: ModalTypes, onClose: () => void, options: IChooseModalOptions | IChangeUserModalOptions) {
             return dispatch(openModal(modalTypes, onClose, options));
         },
         showLoader() {

@@ -1,5 +1,4 @@
-import { IAddUserDataModel } from 'components/core/Modal/components/AddUser/types';
-import { IEditUserDataModel } from 'components/core/Modal/components/EditUser/types';
+import { IChangeUserDataModel } from 'components/core/Modal/components/ChangeUser/types';
 import {
     IFetchAwards,
     IFetchEducation,
@@ -158,7 +157,7 @@ export const deleteUser = async (id: string): Promise<AxiosResponse<void>> => {
     return await request(RequestTypesEnum.delete, `${RequestApiEnum.deleteUser}/${id}`, null);
 };
 
-export const addUser = async (id: string, data: IAddUserDataModel): Promise<AxiosResponse<void>> => {
+export const addUser = async (id: string, data: IChangeUserDataModel): Promise<AxiosResponse<void>> => {
     const newUser = {
         id,
         ...data,
@@ -167,6 +166,6 @@ export const addUser = async (id: string, data: IAddUserDataModel): Promise<Axio
     return await request(RequestTypesEnum.post, RequestApiEnum.addUser, newUser);
 };
 
-export const editUser = async (id: string, data: IEditUserDataModel): Promise<AxiosResponse<void>> => {
+export const editUser = async (id: string, data: IChangeUserDataModel): Promise<AxiosResponse<void>> => {
     return await request(RequestTypesEnum.put, `${RequestApiEnum.editUser}/${id}`, data);
 };

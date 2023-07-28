@@ -5,58 +5,66 @@ import { Icon } from 'components/core/Icon';
 import { Layout } from 'components/core/Layout';
 import { Text } from 'components/core/Text';
 import { TextBox } from 'components/core/TextBox';
-import { IEditUserDataModel, IEditUserModel } from './types';
+import { IChangeUserDataModel, IChangeUserModal } from './types';
 import { schema } from './validateScheme';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { ChangeUserDataTypes } from 'enums/changeUserDataTypes';
 import { ColorThemeType } from 'enums/colorThemeTypes';
 import { LabelPositionEnum } from 'enums/labelPositionTypes';
 import { SizeEnum } from 'enums/sizeTypes';
 import { WeightEnum } from 'enums/weightTypes';
+import { v4 as uuid } from 'uuid';
 import './style.scss';
 
-const EditUserModal: React.FC<IEditUserModel> = ({ option, onClose }) => {
-    const { user, onEditUserHandler } = option;
+const ChangeUserModal: React.FC<IChangeUserModal> = ({ option, onClose }) => {
+    const { type, user, onSubmitHandler } = option;
+    const isEdit = type === ChangeUserDataTypes.edit;
 
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<IEditUserDataModel>({
+    } = useForm<IChangeUserDataModel>({
         mode: 'onSubmit',
         defaultValues: {
-            firstname: user.firstname,
-            lastname: user.lastname,
-            surname: user.surname,
-            workPlace: user.workPlace,
-            position: user.position,
-            phone: user.phone,
+            firstname: isEdit ? user.firstname : '',
+            lastname: isEdit ? user.lastname : '',
+            surname: isEdit ? user.surname : '',
+            workPlace: isEdit ? user.workPlace : '',
+            position: isEdit ? user.position : '',
+            phone: isEdit ? user.phone : '',
         },
         resolver: yupResolver(schema),
     });
 
-    const onSubmit: SubmitHandler<IEditUserDataModel> = (formData) => {
-        onEditUserHandler(user.id, formData);
+    const onSubmit: SubmitHandler<IChangeUserDataModel> = (formData) => {
+        if (isEdit) {
+            onSubmitHandler(user.id, formData);
+        }
+
+        const id = uuid();
+        onSubmitHandler(id, formData);
     };
 
     return (
-        <Layout className="edit-user-modal">
-            <Layout className="edit-user-modal__header">
-                <Text className="edit-user-modal__title" fontSize={SizeEnum.large}>
-                    Изменение данных пользователя
+        <Layout className="change-user-modal">
+            <Layout className="change-user-modal__header">
+                <Text className="change-user-modal__title" fontSize={SizeEnum.large}>
+                    {isEdit ? 'Изменение данных пользователя' : 'Новый пользователь'}
                 </Text>
                 <Icon
-                    className="edit-user-modal__close"
+                    className="change-user-modal__close"
                     onClick={() => onClose()}
                     fontAwesomeIcon={faXmark}
                     heightType={SizeEnum.short}
                 />
             </Layout>
-            <Layout className="edit-user-modal__body">
-                <form className="edit-user-modal__form" onSubmit={handleSubmit(onSubmit)}>
-                    <Layout className="edit-user-modal__panel">
-                        <Layout className="edit-user-modal__personal-data">
-                            <Text className="edit-user-modal__block-title" fontWeight={WeightEnum.bold}>
+            <Layout className="change-user-modal__body">
+                <form className="change-user-modal__form" onSubmit={handleSubmit(onSubmit)}>
+                    <Layout className="change-user-modal__panel">
+                        <Layout className="change-user-modal__personal-data">
+                            <Text className="change-user-modal__block-title" fontWeight={WeightEnum.bold}>
                                 Личные данные
                             </Text>
                             <TextBox
@@ -68,7 +76,7 @@ const EditUserModal: React.FC<IEditUserModel> = ({ option, onClose }) => {
                                 error={errors.lastname}
                                 colorTheme={ColorThemeType.primary}
                                 heightType={SizeEnum.medium}
-                                classNameContainer="edit-user-modal__lastname"
+                                classNameContainer="change-user-modal__lastname"
                             />
                             <TextBox
                                 id="name"
@@ -79,7 +87,7 @@ const EditUserModal: React.FC<IEditUserModel> = ({ option, onClose }) => {
                                 error={errors.firstname}
                                 colorTheme={ColorThemeType.primary}
                                 heightType={SizeEnum.medium}
-                                classNameContainer="edit-user-modal__name"
+                                classNameContainer="change-user-modal__name"
                             />
                             <TextBox
                                 id="surname"
@@ -90,11 +98,11 @@ const EditUserModal: React.FC<IEditUserModel> = ({ option, onClose }) => {
                                 error={errors.surname}
                                 colorTheme={ColorThemeType.primary}
                                 heightType={SizeEnum.medium}
-                                classNameContainer="edit-user-modal__surname"
+                                classNameContainer="change-user-modal__surname"
                             />
                         </Layout>
-                        <Layout className="edit-user-modal__work-info">
-                            <Text className="edit-user-modal__block-title" fontWeight={WeightEnum.bold}>
+                        <Layout className="change-user-modal__work-info">
+                            <Text className="change-user-modal__block-title" fontWeight={WeightEnum.bold}>
                                 Данные о работе
                             </Text>
                             <TextBox
@@ -106,7 +114,7 @@ const EditUserModal: React.FC<IEditUserModel> = ({ option, onClose }) => {
                                 error={errors.workPlace}
                                 colorTheme={ColorThemeType.primary}
                                 heightType={SizeEnum.medium}
-                                classNameContainer="edit-user-modal__work-place"
+                                classNameContainer="change-user-modal__work-place"
                             />
                             <TextBox
                                 id="position"
@@ -117,7 +125,7 @@ const EditUserModal: React.FC<IEditUserModel> = ({ option, onClose }) => {
                                 error={errors.position}
                                 colorTheme={ColorThemeType.primary}
                                 heightType={SizeEnum.medium}
-                                classNameContainer="edit-user-modal__position"
+                                classNameContainer="change-user-modal__position"
                             />
                             <TextBox
                                 id="phone"
@@ -128,18 +136,18 @@ const EditUserModal: React.FC<IEditUserModel> = ({ option, onClose }) => {
                                 error={errors.phone}
                                 colorTheme={ColorThemeType.primary}
                                 heightType={SizeEnum.medium}
-                                classNameContainer="edit-user-modal__phone"
+                                classNameContainer="change-user-modal__phone"
                             />
                         </Layout>
                     </Layout>
-                    <Layout className="edit-user-modal__submit-button-container">
+                    <Layout className="change-user-modal__submit-button-container">
                         <Button
-                            className="edit-user-modal__submit-button"
+                            className="change-user-modal__submit-button"
                             colorTheme={ColorThemeType.primary}
                             heightType={SizeEnum.medium}
                             onClick={() => null}
                         >
-                            Изменить данные
+                            {isEdit ? 'Изменить данные' : 'Добавить пользователя'}
                         </Button>
                     </Layout>
                 </form>
@@ -148,4 +156,4 @@ const EditUserModal: React.FC<IEditUserModel> = ({ option, onClose }) => {
     );
 };
 
-export { EditUserModal };
+export { ChangeUserModal };

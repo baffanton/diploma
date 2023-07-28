@@ -1,6 +1,5 @@
-import { IAddUserModalOptions } from 'components/core/Modal/components/AddUser/types';
+import { IChangeUserModalOptions } from 'components/core/Modal/components/ChangeUser/types';
 import { IChooseModalOptions } from 'components/core/Modal/components/ChooseModal/types';
-import { IEditUserModalOptions } from 'components/core/Modal/components/EditUser/types';
 import { IMessageModalOptions } from 'components/core/Modal/components/MessageModal/types';
 import { INewsModalOptions } from 'components/core/Modal/components/NewsModal/types';
 import {
@@ -19,12 +18,7 @@ export const openModal =
     (
         modalType: ModalTypes,
         closeModal: () => void,
-        option:
-            | IAddUserModalOptions
-            | IChooseModalOptions
-            | IMessageModalOptions
-            | INewsModalOptions
-            | IEditUserModalOptions,
+        option: IChooseModalOptions | IMessageModalOptions | INewsModalOptions | IChangeUserModalOptions,
     ) =>
     (dispatch: (arg0: IOpenModal) => void) => {
         const modal = {

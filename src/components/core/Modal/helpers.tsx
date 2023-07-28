@@ -1,7 +1,6 @@
 import React from 'react';
-import { AddUserModal } from './components/AddUser';
+import { ChangeUserModal } from './components/ChangeUser';
 import { ChooseModal } from './components/ChooseModal';
-import { EditUserModal } from './components/EditUser';
 import { MessageModal } from './components/MessageModal';
 import { NewsModal } from './components/NewsModal';
 import { ModalTypes } from 'enums/modalTypes';
@@ -14,10 +13,8 @@ export const getModal = (type: ModalTypes, closeModal: () => void, option): Reac
             return <MessageModal onClose={closeModal} option={option} />;
         case ModalTypes.chooseModal:
             return <ChooseModal onClose={closeModal} option={option} />;
-        case ModalTypes.addUser:
-            return <AddUserModal onClose={closeModal} option={option} />;
-        case ModalTypes.editModal:
-            return <EditUserModal onClose={closeModal} option={option} />;
+        case ModalTypes.changeModal:
+            return <ChangeUserModal onClose={closeModal} option={option} />;
         default:
             return null;
     }
